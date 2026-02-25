@@ -1,12 +1,14 @@
 ---
-title: "GPT-5 vs Gemini Flash vs Claude Opus — 6 Models, Same Fortune, Real Costs"
+title: 'GPT-5 vs Gemini Flash vs Claude Opus — 6 Models, Same Fortune, Real Costs'
 published: true
-description: "I ran the same birth chart through 6 LLMs. $0.0003 to $0.0442 per request. Here's what actually happened."
+description: I ran the same birth chart through 6 LLMs. $0.0003 to $0.0442 per request. Here's what actually happened.
 tags:
   - ai
   - llm
   - webdev
   - productivity
+id: 3285129
+date: '2026-02-25T16:06:42Z'
 ---
 
 I'm building a saju app — saju is Korean four-pillar fortune-telling based on birth date/time. When it came time to pick LLM providers for production, I didn't trust benchmarks. I needed to run my actual prompts with real birth data and compare.

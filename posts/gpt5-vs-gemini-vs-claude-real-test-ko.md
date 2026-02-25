@@ -1,12 +1,14 @@
 ---
-title: "GPT-5 vs Gemini Flash vs Claude Opus — 사주 앱에서 6모델 실전 비교"
+title: GPT-5 vs Gemini Flash vs Claude Opus — 사주 앱에서 6모델 실전 비교
 published: true
-description: "같은 사주 데이터로 6개 모델을 돌렸다. $0.0003부터 $0.0442까지, 결과물 차이는?"
+description: '같은 사주 데이터로 6개 모델을 돌렸다. $0.0003부터 $0.0442까지, 결과물 차이는?'
 tags:
   - ai
   - llm
   - webdev
   - productivity
+id: 3285128
+date: '2026-02-25T16:06:41Z'
 ---
 
 사주 앱 프로덕션 세팅을 하면서, 어떤 모델을 쓸지 결정해야 했다.
