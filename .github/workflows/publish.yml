@@ -31,6 +31,16 @@ jobs:
               print(msg)
               log_lines.append(msg)
 
+          def api_call(method, url, payload=None):
+              data = json.dumps(payload).encode("utf-8") if payload else None
+              req = urllib.request.Request(url, data=data, method=method,
+                  headers={"api-key": api_key, "Content-Type": "application/json"})
+              try:
+                  resp = urllib.request.urlopen(req)
+                  return resp.status, json.loads(resp.read())
+              except urllib.error.HTTPError as e:
+                  return e.code, e.read().decode()
+
           for filepath in sorted(glob.glob("posts/*.md")):
               with open(filepath) as f:
                   content = f.read()
@@ -57,70 +67,59 @@ jobs:
               tags = re.findall(r'^\s*-\s*(\w+)', fm, re.M)
 
               log(f"  title: {title}")
-              log(f"  desc: {desc}")
               log(f"  tags: {tags}")
-              log(f"  body_len: {len(body)}")
 
-              payload = {
+              # Step 1: Create as DRAFT
+              log(f"  step1: creating draft...")
+              code, result = api_call("POST", "https://dev.to/api/articles", {
                   "article": {
                       "title": title,
                       "body_markdown": body,
                       "description": desc,
-                      "published": True,
+                      "published": False,
                       "tags": tags[:4]
                   }
-              }
-              data = json.dumps(payload).encode("utf-8")
+              })
+              log(f"  step1 result: HTTP {code}")
 
-              for attempt in range(3):
-                  req = urllib.request.Request(
-                      "https://dev.to/api/articles",
-                      data=data,
-                      headers={
-                          "api-key": api_key,
-                          "Content-Type": "application/json; charset=utf-8"
-                      }
-                  )
-                  try:
-                      resp = urllib.request.urlopen(req)
-                      result = json.loads(resp.read())
-                      aid = result["id"]
-                      pub_date = result.get("published_at", "")
-                      log(f"  OK id={aid}")
-
-                      new_fm = fm.rstrip() + f"\nid: {aid}\ndate: '{pub_date}'\n"
-                      with open(filepath, "w") as f:
-                          f.write("---" + new_fm + "---" + parts[2])
-                      published += 1
-                      break
-                  except urllib.error.HTTPError as e:
-                      err = e.read().decode()
-                      hdrs = dict(e.headers)
-                      log(f"  attempt {attempt+1} HTTP {e.code}: {err[:500]}")
-                      log(f"  headers: {json.dumps({k:v for k,v in hdrs.items() if 'rate' in k.lower() or 'retry' in k.lower()})}")
-                      if e.code in (429, 403):
-                          wait = 60 * (attempt + 1)
-                          log(f"  rate limited, wait {wait}s")
-                          time.sleep(wait)
-                      else:
-                          failed += 1
-                          break
-                  except Exception as e:
-                      log(f"  attempt {attempt+1} ERR: {str(e)[:300]}")
-                      failed += 1
-                      break
-              else:
+              if code != 201:
+                  log(f"  step1 error: {str(result)[:300]}")
                   failed += 1
+                  time.sleep(15)
+                  continue
 
-              time.sleep(15)
+              aid = result["id"]
+              log(f"  draft created id={aid}")
+              time.sleep(5)
 
-          summary = f"Done: {published} published, {failed} failed"
-          log(summary)
+              # Step 2: Update to PUBLISHED
+              log(f"  step2: publishing...")
+              code2, result2 = api_call("PUT", f"https://dev.to/api/articles/{aid}", {
+                  "article": {"published": True}
+              })
+              log(f"  step2 result: HTTP {code2}")
 
-          # Write log to file for debugging
+              if code2 == 200:
+                  pub_date = result2.get("published_at", "")
+                  log(f"  PUBLISHED! id={aid}")
+                  new_fm = fm.rstrip() + f"\nid: {aid}\ndate: '{pub_date}'\n"
+                  with open(filepath, "w") as f:
+                      f.write("---" + new_fm + "---" + parts[2])
+                  published += 1
+              else:
+                  log(f"  step2 error: {str(result2)[:300]}")
+                  # Still save draft id
+                  new_fm = fm.rstrip() + f"\nid: {aid}\n"
+                  with open(filepath, "w") as f:
+                      f.write("---" + new_fm + "---" + parts[2])
+                  published += 1
+                  log(f"  saved as draft id={aid}")
+
+              time.sleep(30)
+
+          log(f"\nDone: {published} published, {failed} failed")
           with open("publish-log.txt", "w") as f:
               f.write("\n".join(log_lines))
-
           if failed > 0:
               exit(1)
           PYEOF
@@ -128,7 +127,7 @@ jobs:
         if: always()
         run: |
           if [ -f publish-log.txt ]; then
-            echo "=== Publish Log ==="
+            echo "=== Log ==="
             cat publish-log.txt
           fi
           git config user.name "github-actions[bot]"
@@ -136,7 +135,7 @@ jobs:
           git add posts/*.md
           git add -f publish-log.txt 2>/dev/null || true
           if git diff --cached --quiet; then
-            echo "No changes to commit"
+            echo "No changes"
           else
             git commit -m "chore: update published articles [skip ci]"
             git push
