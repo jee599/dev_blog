@@ -7,6 +7,8 @@ tags:
   - webdev
   - llm
   - costoptimization
+id: 3285018
+date: '2026-02-25T15:22:09Z'
 ---
 
 > **TL;DR** — 프롬프트 캐싱, 모델 라우팅, Structured Output. 이 세 가지로 월 $3,316 → $406. 사주 앱이 아니어도 LLM 쓰는 서비스라면 거의 그대로 적용 가능하다.
