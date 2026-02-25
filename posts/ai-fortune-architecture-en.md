@@ -7,6 +7,8 @@ tags:
   - webdev
   - llm
   - architecture
+id: 3284998
+date: '2026-02-25T15:16:32Z'
 ---
 
 > **TLDR** — LLMs can't do calendar math. Code computes, AI interprets. That one line is the entire architecture.

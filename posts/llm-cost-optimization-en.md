@@ -7,6 +7,8 @@ tags:
   - webdev
   - llm
   - costoptimization
+id: 3285003
+date: '2026-02-25T15:17:02Z'
 ---
 
 > **TLDR** — Prompt caching, model routing, structured output. Three changes: $3,316/month to $406. None of this is specific to fortune-telling. Any LLM-powered service can use these.
