@@ -9,7 +9,7 @@ tags:
   - costoptimization
 ---
 
-> **TL;DR** — Prompt caching, model routing, structured output. Three changes: $3,316/month to $406. None of this is specific to fortune-telling. Any LLM-powered service can use these.
+> **TLDR** — Prompt caching, model routing, structured output. Three changes: $3,316/month to $406. None of this is specific to fortune-telling. Any LLM-powered service can use these.
 
 One free analysis: $0.085. At 1,000 daily users, that's $2,550/month — for a free tier.
 

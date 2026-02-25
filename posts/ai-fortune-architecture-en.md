@@ -9,7 +9,7 @@ tags:
   - architecture
 ---
 
-> **TL;DR** — LLMs can't do calendar math. Code computes, AI interprets. That one line is the entire architecture.
+> **TLDR** — LLMs can't do calendar math. Code computes, AI interprets. That one line is the entire architecture.
 
 The first lesson I learned building a fortune-telling app: it's not about what you ask AI to do — it's about **what you don't**.
 
