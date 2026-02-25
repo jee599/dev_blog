@@ -23,46 +23,38 @@ jobs:
           import os, json, re, glob, time, urllib.request, urllib.error
 
           api_key = os.environ["DEVTO_KEY"]
-          published_count = 0
+          published = 0
+          failed = 0
 
           for filepath in sorted(glob.glob("posts/*.md")):
               with open(filepath) as f:
                   content = f.read()
 
-              # Check if already has id
               if re.search(r"^id:\s*\d+", content, re.M):
-                  print(f"SKIP: {filepath} (already published)")
+                  print(f"SKIP: {filepath}")
                   continue
 
-              print(f"\n=== PUBLISHING: {filepath} ===")
+              print(f"\nPUBLISHING: {filepath}")
 
-              # Parse frontmatter
               parts = content.split("---", 2)
               if len(parts) < 3:
-                  print(f"  ERROR: invalid frontmatter")
+                  print(f"  ERROR: bad frontmatter")
+                  failed += 1
                   continue
 
               fm = parts[1]
               body = parts[2].strip()
 
-              # Extract title
               m = re.search(r'^title:\s*["\']?(.*?)["\']?\s*$', fm, re.M)
               title = m.group(1) if m else ""
-
-              # Extract description
               m = re.search(r'^description:\s*["\']?(.*?)["\']?\s*$', fm, re.M)
               desc = m.group(1) if m else ""
-
-              # Extract tags
               tags = re.findall(r'^\s*-\s*(\w+)', fm, re.M)
 
-              print(f"  Title: {title}")
-              print(f"  Desc: {desc[:60]}...")
-              print(f"  Tags: {tags}")
-              print(f"  Body: {len(body)} chars")
+              print(f"  title: {title}")
+              print(f"  tags: {tags}")
 
-              # API call
-              article_data = json.dumps({
+              data = json.dumps({
                   "article": {
                       "title": title,
                       "body_markdown": body,
@@ -72,41 +64,53 @@ jobs:
                   }
               }).encode()
 
-              req = urllib.request.Request(
-                  "https://dev.to/api/articles",
-                  data=article_data,
-                  headers={
-                      "api-key": api_key,
-                      "Content-Type": "application/json"
-                  }
-              )
+              # Retry up to 3 times with backoff
+              for attempt in range(3):
+                  req = urllib.request.Request(
+                      "https://dev.to/api/articles",
+                      data=data,
+                      headers={
+                          "api-key": api_key,
+                          "Content-Type": "application/json"
+                      }
+                  )
+                  try:
+                      resp = urllib.request.urlopen(req)
+                      result = json.loads(resp.read())
+                      aid = result["id"]
+                      pub_date = result.get("published_at", "")
+                      print(f"  OK id={aid}")
 
-              try:
-                  resp = urllib.request.urlopen(req)
-                  result = json.loads(resp.read())
-                  article_id = result["id"]
-                  pub_date = result.get("published_at", "")
-                  print(f"  SUCCESS! id={article_id}")
+                      new_fm = fm.rstrip() + f"\nid: {aid}\ndate: '{pub_date}'\n"
+                      with open(filepath, "w") as f:
+                          f.write("---" + new_fm + "---" + parts[2])
+                      published += 1
+                      break
+                  except urllib.error.HTTPError as e:
+                      err = e.read().decode()
+                      print(f"  attempt {attempt+1} FAIL (HTTP {e.code}): {err[:200]}")
+                      if e.code == 429:
+                          wait = 30 * (attempt + 1)
+                          print(f"  rate limited, waiting {wait}s...")
+                          time.sleep(wait)
+                      else:
+                          failed += 1
+                          break
+                  except Exception as e:
+                      print(f"  attempt {attempt+1} ERROR: {e}")
+                      failed += 1
+                      break
+              else:
+                  failed += 1
 
-                  # Write id and date back to frontmatter
-                  new_fm = fm.rstrip() + f"\nid: {article_id}\ndate: '{pub_date}'\n"
-                  new_content = "---" + new_fm + "---" + parts[2]
-                  with open(filepath, "w") as f:
-                      f.write(new_content)
-
-                  published_count += 1
-
-              except urllib.error.HTTPError as e:
-                  error_body = e.read().decode()
-                  print(f"  FAILED (HTTP {e.code}): {error_body[:300]}")
-
-              # Rate limit
-              print("  Waiting 15s...")
               time.sleep(15)
 
-          print(f"\n=== Done: {published_count} articles published ===")
+          print(f"\nDone: {published} published, {failed} failed")
+          if failed > 0:
+              exit(1)
           PYEOF
       - name: Commit article IDs
+        if: always()
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
