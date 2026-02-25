@@ -7,8 +7,6 @@ tags:
   - productivity
   - saas
   - claude
-id: 3284990
-date: '2026-02-25T15:11:25Z'
 ---
 
 "Remove the login wall first. Magic link auth is your biggest drop-off point."

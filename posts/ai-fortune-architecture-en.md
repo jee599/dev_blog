@@ -7,8 +7,6 @@ tags:
   - webdev
   - llm
   - architecture
-id: 3284998
-date: '2026-02-25T15:16:32Z'
 ---
 
 The first lesson I learned building a saju (Korean four-pillar fortune telling) app: it's not about what you ask AI to do — it's about **what you don't**.

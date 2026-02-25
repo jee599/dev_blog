@@ -7,8 +7,6 @@ tags:
   - webdev
   - llm
   - costoptimization
-id: 3285018
-date: '2026-02-25T15:22:09Z'
 ---
 
 무료 분석 1건에 $0.085. 하루 1,000명이면 월 $2,550.

@@ -7,8 +7,6 @@ tags:
   - webdev
   - llm
   - costoptimization
-id: 3285003
-date: '2026-02-25T15:17:02Z'
 ---
 
 One free analysis: $0.085. At 1,000 daily users, that's $2,550/month — for a free tier.
