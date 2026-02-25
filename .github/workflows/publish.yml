@@ -25,20 +25,25 @@ jobs:
           api_key = os.environ["DEVTO_KEY"]
           published = 0
           failed = 0
+          log_lines = []
+
+          def log(msg):
+              print(msg)
+              log_lines.append(msg)
 
           for filepath in sorted(glob.glob("posts/*.md")):
               with open(filepath) as f:
                   content = f.read()
 
               if re.search(r"^id:\s*\d+", content, re.M):
-                  print(f"SKIP: {filepath}")
+                  log(f"SKIP: {filepath}")
                   continue
 
-              print(f"\nPUBLISHING: {filepath}")
+              log(f"\nPUBLISHING: {filepath}")
 
               parts = content.split("---", 2)
               if len(parts) < 3:
-                  print(f"  ERROR: bad frontmatter")
+                  log(f"  ERROR: bad frontmatter")
                   failed += 1
                   continue
 
@@ -51,10 +56,12 @@ jobs:
               desc = m.group(1) if m else ""
               tags = re.findall(r'^\s*-\s*(\w+)', fm, re.M)
 
-              print(f"  title: {title}")
-              print(f"  tags: {tags}")
+              log(f"  title: {title}")
+              log(f"  desc: {desc}")
+              log(f"  tags: {tags}")
+              log(f"  body_len: {len(body)}")
 
-              data = json.dumps({
+              payload = {
                   "article": {
                       "title": title,
                       "body_markdown": body,
@@ -62,16 +69,16 @@ jobs:
                       "published": True,
                       "tags": tags[:4]
                   }
-              }).encode()
+              }
+              data = json.dumps(payload).encode("utf-8")
 
-              # Retry up to 3 times with backoff
               for attempt in range(3):
                   req = urllib.request.Request(
                       "https://dev.to/api/articles",
                       data=data,
                       headers={
                           "api-key": api_key,
-                          "Content-Type": "application/json"
+                          "Content-Type": "application/json; charset=utf-8"
                       }
                   )
                   try:
@@ -79,7 +86,7 @@ jobs:
                       result = json.loads(resp.read())
                       aid = result["id"]
                       pub_date = result.get("published_at", "")
-                      print(f"  OK id={aid}")
+                      log(f"  OK id={aid}")
 
                       new_fm = fm.rstrip() + f"\nid: {aid}\ndate: '{pub_date}'\n"
                       with open(filepath, "w") as f:
@@ -88,16 +95,16 @@ jobs:
                       break
                   except urllib.error.HTTPError as e:
                       err = e.read().decode()
-                      print(f"  attempt {attempt+1} FAIL (HTTP {e.code}): {err[:200]}")
+                      log(f"  attempt {attempt+1} HTTP {e.code}: {err[:500]}")
                       if e.code == 429:
                           wait = 30 * (attempt + 1)
-                          print(f"  rate limited, waiting {wait}s...")
+                          log(f"  rate limited, wait {wait}s")
                           time.sleep(wait)
                       else:
                           failed += 1
                           break
                   except Exception as e:
-                      print(f"  attempt {attempt+1} ERROR: {e}")
+                      log(f"  attempt {attempt+1} ERR: {str(e)[:300]}")
                       failed += 1
                       break
               else:
@@ -105,16 +112,27 @@ jobs:
 
               time.sleep(15)
 
-          print(f"\nDone: {published} published, {failed} failed")
+          summary = f"Done: {published} published, {failed} failed"
+          log(summary)
+
+          # Write log to file for debugging
+          with open("publish-log.txt", "w") as f:
+              f.write("\n".join(log_lines))
+
           if failed > 0:
               exit(1)
           PYEOF
-      - name: Commit article IDs
+      - name: Commit results
         if: always()
         run: |
+          if [ -f publish-log.txt ]; then
+            echo "=== Publish Log ==="
+            cat publish-log.txt
+          fi
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add posts/*.md
+          git add -f publish-log.txt 2>/dev/null || true
           if git diff --cached --quiet; then
             echo "No changes to commit"
           else
