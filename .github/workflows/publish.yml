@@ -4,6 +4,8 @@ on:
     branches: [main]
     paths:
       - 'posts/*.md'
+      - '.github/workflows/publish.yml'
+  workflow_dispatch:
 
 permissions:
   contents: write
