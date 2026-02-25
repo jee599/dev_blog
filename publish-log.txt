@@ -2,18 +2,16 @@
 PUBLISHING: posts/ai-fortune-architecture-en.md
   title: Why You Shouldn't Let AI Do Your Fortune Telling — And How to Do It Right
   tags: ['ai', 'webdev', 'llm', 'architecture']
-  step1: creating draft...
-  step1 result: HTTP 403
-  step1 error: 
+  result: HTTP 403
+  error: 
 SKIP: posts/ai-fortune-architecture-ko.md
 SKIP: posts/designing-saas-with-claude-en.md
 
 PUBLISHING: posts/designing-saas-with-claude-ko.md
   title: Claude 하나로 1인 SaaS 전체를 설계한 기록
   tags: ['ai', 'productivity', 'saas', 'claude']
-  step1: creating draft...
-  step1 result: HTTP 403
-  step1 error: 
+  result: HTTP 403
+  error: 
 SKIP: posts/gpt5-vs-gemini-vs-claude-real-test-en.md
 SKIP: posts/gpt5-vs-gemini-vs-claude-real-test-ko.md
 SKIP: posts/llm-cost-optimization-en.md
@@ -23,8 +21,7 @@ SKIP: posts/nextjs-6-languages-one-day-en.md
 PUBLISHING: posts/nextjs-6-languages-one-day-ko.md
   title: Next.js 앱을 하루만에 6개국어로 만든 방법
   tags: ['webdev', 'nextjs', 'beginners', 'ai']
-  step1: creating draft...
-  step1 result: HTTP 403
-  step1 error: 
+  result: HTTP 403
+  error: 
 
 Done: 0 published, 3 failed
