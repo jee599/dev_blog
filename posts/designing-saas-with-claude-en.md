@@ -1,10 +1,15 @@
 ---
 title: How I Designed an Entire SaaS Using Claude Alone
 published: true
-description: 9 sessions. 20 deliverables. 6 virtual experts. Solo, one day, $0.
-tags: [ai, productivity, saas, claude]
+description: '9 sessions. 20 deliverables. 6 virtual experts. Solo, one day, $0.'
+tags:
+  - ai
+  - productivity
+  - saas
+  - claude
 series: AI Fortune App Build Log
 id: 3284916
+date: '2026-02-25T14:48:51Z'
 ---
 
 > **TL;DR** — Tell Claude to "assemble a panel of 6 experts and hold a meeting." It catches blind spots a solo builder would miss. Not real experts, but way better than flying solo.

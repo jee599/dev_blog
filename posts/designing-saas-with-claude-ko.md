@@ -1,10 +1,15 @@
 ---
 title: Claude 하나로 1인 SaaS 전체를 설계한 기록
 published: true
-description: 9개 세션, 20개 산출물, 가상 전문가 6명. 혼자, 하루, $0.
-tags: [ai, productivity, saas, claude]
+description: '9개 세션, 20개 산출물, 가상 전문가 6명. 혼자, 하루, $0.'
+tags:
+  - ai
+  - productivity
+  - saas
+  - claude
 series: AI 사주 앱 빌드 로그
 id: 3284917
+date: '2026-02-25T14:48:49Z'
 ---
 
 > **TL;DR** — Claude에게 "전문가 6명을 구성해서 회의해줘"라고 시키면, 1인 개발자가 놓치기 쉬운 사각지대를 잡아낸다. 진짜 전문가 6명은 아니지만, 혼자보다는 훨씬 낫다.
