@@ -13,6 +13,27 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Check DEV.to API key
+        run: |
+          STATUS=$(curl -s -o /dev/null -w "%{http_code}" \
+            -H "api-key: ${{ secrets.DEVTO_TOKEN }}" \
+            https://dev.to/api/articles/me?per_page=1)
+          echo "DEV.to API status: $STATUS"
+          if [ "$STATUS" != "200" ]; then
+            echo "::error::DEV.to API key is invalid or expired (HTTP $STATUS)"
+            exit 1
+          fi
+          echo "API key is valid"
+      - name: List post files
+        run: |
+          echo "Files found:"
+          ls -la posts/*.md
+          echo "---"
+          for f in posts/*.md; do
+            echo "=== $f ==="
+            head -15 "$f"
+            echo ""
+          done
       - name: Publish articles on DEV.to
         uses: sinedied/publish-devto@v2
         with:
