@@ -2,8 +2,13 @@
 title: AI에게 사주를 맡기면 안 되는 이유 — 그리고 올바르게 맡기는 법
 published: false
 description: LLM에 만세력 계산을 시켰더니 간지가 틀렸다. 3주 날린 뒤 깨달은 구조.
-tags: [ai, webdev, llm, architecture]
+tags:
+  - ai
+  - webdev
+  - llm
+  - architecture
 series: AI 사주 앱 빌드 로그
+id: 3284918
 ---
 
 > **TL;DR** — LLM에 만세력 계산을 시키면 틀린다. 계산은 코드로, 해석만 AI로. 이 한 줄이 아키텍처의 전부다.

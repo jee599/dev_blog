@@ -1,9 +1,14 @@
 ---
 title: LLM API 비용을 88% 줄인 방법
 published: false
-description: 무료 분석 1건 $0.085, 월 $2,550. 이걸 $406으로 만든 구조.
-tags: [ai, webdev, llm, costoptimization]
+description: '무료 분석 1건 $0.085, 월 $2,550. 이걸 $406으로 만든 구조.'
+tags:
+  - ai
+  - webdev
+  - llm
+  - costoptimization
 series: AI 사주 앱 빌드 로그
+id: 3284919
 ---
 
 > **TL;DR** — 프롬프트 캐싱, 모델 라우팅, Structured Output. 이 세 가지로 월 $3,316 → $406. 사주 앱이 아니어도 LLM 쓰는 서비스라면 거의 그대로 적용 가능하다.

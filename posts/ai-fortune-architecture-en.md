@@ -2,8 +2,13 @@
 title: Why You Shouldn't Let AI Do Your Fortune Telling — And How to Do It Right
 published: false
 description: I asked an LLM to calculate a birth chart. The base numbers were wrong. 3 weeks wasted.
-tags: [ai, webdev, llm, architecture]
+tags:
+  - ai
+  - webdev
+  - llm
+  - architecture
 series: AI Fortune App Build Log
+id: 3284915
 ---
 
 > **TL;DR** — LLMs can't do calendar math. Code computes, AI interprets. That one line is the entire architecture.
