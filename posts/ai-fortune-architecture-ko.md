@@ -7,7 +7,6 @@ tags:
   - webdev
   - llm
   - architecture
-series: AI 사주 앱 빌드 로그
 id: 3284918
 date: '2026-02-25T14:48:50Z'
 ---

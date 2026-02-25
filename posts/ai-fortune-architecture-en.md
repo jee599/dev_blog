@@ -7,7 +7,6 @@ tags:
   - webdev
   - llm
   - architecture
-series: AI Fortune App Build Log
 id: 3284915
 date: '2026-02-25T14:48:51Z'
 ---

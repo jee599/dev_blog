@@ -1,13 +1,8 @@
 ---
 title: How I Cut LLM API Costs by 88%
 published: true
-description: 'One free analysis costs $0.085. At 1,000 users/day, that''s $2,550/month. Here''s how I got it to $406.'
-tags:
-  - ai
-  - webdev
-  - llm
-  - costoptimization
-series: AI Fortune App Build Log
+description: One free analysis costs $0.085. At 1,000 users/day, that's $2,550/month. Here's how I got it to $406.
+tags: [ai, webdev, llm, costoptimization]
 id: 3284933
 date: '2026-02-25T14:48:48Z'
 ---

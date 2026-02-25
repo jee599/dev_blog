@@ -1,13 +1,8 @@
 ---
 title: How I Designed an Entire SaaS Using Claude Alone
 published: true
-description: '9 sessions. 20 deliverables. 6 virtual experts. Solo, one day, $0.'
-tags:
-  - ai
-  - productivity
-  - saas
-  - claude
-series: AI Fortune App Build Log
+description: 9 sessions. 20 deliverables. 6 virtual experts. Solo, one day, $0.
+tags: [ai, productivity, saas, claude]
 id: 3284916
 date: '2026-02-25T14:48:51Z'
 ---
