@@ -6,6 +6,8 @@ on:
       - 'posts/*.md'
       - '.github/workflows/publish.yml'
   workflow_dispatch:
+  schedule:
+    - cron: '0 */6 * * *'
 
 permissions:
   contents: write
@@ -69,51 +71,29 @@ jobs:
               log(f"  title: {title}")
               log(f"  tags: {tags}")
 
-              # Step 1: Create as DRAFT
-              log(f"  step1: creating draft...")
+              # Create article
               code, result = api_call("POST", "https://dev.to/api/articles", {
                   "article": {
                       "title": title,
                       "body_markdown": body,
                       "description": desc,
-                      "published": False,
+                      "published": True,
                       "tags": tags[:4]
                   }
               })
-              log(f"  step1 result: HTTP {code}")
+              log(f"  result: HTTP {code}")
 
-              if code != 201:
-                  log(f"  step1 error: {str(result)[:300]}")
-                  failed += 1
-                  time.sleep(15)
-                  continue
-
-              aid = result["id"]
-              log(f"  draft created id={aid}")
-              time.sleep(5)
-
-              # Step 2: Update to PUBLISHED
-              log(f"  step2: publishing...")
-              code2, result2 = api_call("PUT", f"https://dev.to/api/articles/{aid}", {
-                  "article": {"published": True}
-              })
-              log(f"  step2 result: HTTP {code2}")
-
-              if code2 == 200:
-                  pub_date = result2.get("published_at", "")
-                  log(f"  PUBLISHED! id={aid}")
+              if code == 201:
+                  aid = result["id"]
+                  pub_date = result.get("published_at", "")
+                  log(f"  PUBLISHED id={aid}")
                   new_fm = fm.rstrip() + f"\nid: {aid}\ndate: '{pub_date}'\n"
                   with open(filepath, "w") as f:
                       f.write("---" + new_fm + "---" + parts[2])
                   published += 1
               else:
-                  log(f"  step2 error: {str(result2)[:300]}")
-                  # Still save draft id
-                  new_fm = fm.rstrip() + f"\nid: {aid}\n"
-                  with open(filepath, "w") as f:
-                      f.write("---" + new_fm + "---" + parts[2])
-                  published += 1
-                  log(f"  saved as draft id={aid}")
+                  log(f"  error: {str(result)[:300]}")
+                  failed += 1
 
               time.sleep(30)
 
