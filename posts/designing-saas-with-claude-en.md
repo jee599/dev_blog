@@ -7,6 +7,8 @@ tags:
   - productivity
   - saas
   - claude
+id: 3284990
+date: '2026-02-25T15:11:25Z'
 ---
 
 > **TL;DR** — Tell Claude to "assemble a panel of 6 experts and hold a meeting." It catches blind spots a solo builder would miss. Not real experts, but way better than flying solo.
