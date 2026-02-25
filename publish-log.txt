@@ -5,6 +5,14 @@ PUBLISHING: posts/ai-fortune-architecture-en.md
   tags: ['ai', 'webdev', 'llm', 'architecture']
   body_len: 4551
   attempt 1 HTTP 403: 
+  headers: {"Retry-After": "0"}
+  rate limited, wait 60s
+  attempt 2 HTTP 403: 
+  headers: {"Retry-After": "0"}
+  rate limited, wait 120s
+  attempt 3 HTTP 403: 
+  headers: {"Retry-After": "0"}
+  rate limited, wait 180s
 SKIP: posts/ai-fortune-architecture-ko.md
 SKIP: posts/designing-saas-with-claude-en.md
 
@@ -14,6 +22,14 @@ PUBLISHING: posts/designing-saas-with-claude-ko.md
   tags: ['ai', 'productivity', 'saas', 'claude']
   body_len: 1997
   attempt 1 HTTP 403: 
+  headers: {"Retry-After": "0"}
+  rate limited, wait 60s
+  attempt 2 HTTP 403: 
+  headers: {"Retry-After": "0"}
+  rate limited, wait 120s
+  attempt 3 HTTP 403: 
+  headers: {"Retry-After": "0"}
+  rate limited, wait 180s
 SKIP: posts/gpt5-vs-gemini-vs-claude-real-test-en.md
 SKIP: posts/gpt5-vs-gemini-vs-claude-real-test-ko.md
 SKIP: posts/llm-cost-optimization-en.md
@@ -26,4 +42,12 @@ PUBLISHING: posts/nextjs-6-languages-one-day-ko.md
   tags: ['webdev', 'nextjs', 'beginners', 'ai']
   body_len: 2825
   attempt 1 HTTP 403: 
+  headers: {"Retry-After": "0"}
+  rate limited, wait 60s
+  attempt 2 HTTP 403: 
+  headers: {"Retry-After": "0"}
+  rate limited, wait 120s
+  attempt 3 HTTP 403: 
+  headers: {"Retry-After": "0"}
+  rate limited, wait 180s
 Done: 0 published, 3 failed
