@@ -11,8 +11,6 @@ id: 3285003
 date: '2026-02-25T15:17:02Z'
 ---
 
-> **TL;DR** — Prompt caching, model routing, structured output. Three changes: $3,316/month to $406. None of this is specific to fortune-telling. Any LLM-powered service can use these.
-
 One free analysis: $0.085. At 1,000 daily users, that's $2,550/month — for a free tier.
 
 Even at a 3% paid conversion rate, revenue couldn't cover the free tier costs.

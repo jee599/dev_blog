@@ -1,6 +1,9 @@
 name: Publish to DEV.to
 on:
-  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'posts/*.md'
 
 permissions:
   contents: write

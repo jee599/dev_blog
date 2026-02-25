@@ -11,11 +11,9 @@ id: 3284998
 date: '2026-02-25T15:16:32Z'
 ---
 
-> **TL;DR** — LLMs can't do calendar math. Code computes, AI interprets. That one line is the entire architecture.
+The first lesson I learned building a saju (Korean four-pillar fortune telling) app: it's not about what you ask AI to do — it's about **what you don't**.
 
-The first lesson I learned building a fortune-telling app: it's not about what you ask AI to do — it's about **what you don't**.
-
-This series is a build log toward launching a saju (Korean four-pillar fortune telling) app. Revenue is still $0. Real conversion and revenue data will come after launch. This isn't a success story — it's a debugging diary.
+Revenue is still $0. This isn't a success story — it's a debugging diary.
 
 ---
 
