@@ -1,13 +1,12 @@
 ---
-title: "How I Designed an Entire SaaS Using Claude Alone"
-published: true
-description: "9 sessions. 20 deliverables. 6 virtual experts. A consulting firm would charge weeks and tens of thousands. Solo, one day, $0."
-tags: [ai, claude, saas, promptengineering]
-series: "AI Fortune App Build Log"
+title: How I Designed an Entire SaaS Using Claude Alone
+published: false
+description: 9 sessions. 20 deliverables. 6 virtual experts. Solo, one day, $0.
+tags: [ai, productivity, saas, claude]
+series: AI Fortune App Build Log
 ---
 
-> **TL;DR** — Tell Claude to "assemble a panel of 6 experts and hold a meeting."
-> It catches blind spots a solo builder would miss. Not real experts, but way better than flying solo.
+> **TL;DR** — Tell Claude to "assemble a panel of 6 experts and hold a meeting." It catches blind spots a solo builder would miss. Not real experts, but way better than flying solo.
 
 "Remove the login wall first. Magic link auth is your biggest drop-off point."
 
@@ -18,6 +17,7 @@ In one day, I ran 9 sessions with Claude. Twenty deliverables came out. Business
 If I'd hired a consulting firm for this, it would've been weeks and tens of thousands of dollars.
 
 Solo, one day, $0.
+
 
 ---
 
@@ -35,6 +35,7 @@ Turn 4: "Compare scenarios A/B/C with prompt caching" (ultra-concrete)
 Asking "write me a business plan" in one shot gets generic output.
 
 Ramp up depth gradually, and each step benefits from the full context of everything before it. The results get dramatically more precise.
+
 
 ---
 
@@ -56,39 +57,31 @@ When you're building solo, you only have your own perspective. This gives you si
 
 It's not the same as six real experts — but it's remarkably effective at catching blind spots a solo builder would miss.
 
+
 ---
 
-## Six Key Decisions From the Panel
+## Key Decisions From the Panel
 
-**First, remove the login wall.** The PM pointed out magic link auth was the biggest drop-off point. Free analysis switched to fully anonymous.
+The first call was removing the login wall. The PM pointed out magic link auth was the biggest drop-off point. Free analysis switched to fully anonymous.
 
-**Second, cut free tier costs by 94%.** Algorithm formatting plus a one-line AI summary instead of full LLM calls. Per-request cost: $0.085 → $0.005.
+Free tier costs got slashed by 94%. Algorithm formatting plus a one-line AI summary instead of full LLM calls brought per-request cost from $0.085 down to $0.005.
 
-**Third, register the business immediately.** Don't wait for user validation — payment integration needs it now.
+Business registration was moved to immediate — don't wait for user validation when payment integration needs it now.
 
-**Fourth, GA4 and rate limiting are non-negotiable.** No analytics means driving blind. No rate limits on a free API means a cost bomb.
+GA4 and rate limiting were non-negotiable. No analytics means driving blind. No rate limits on a free API means a cost bomb waiting to happen.
 
-**Fifth, prioritize KakaoTalk sharing and OG images.** For a fortune service, viral sharing is the only free marketing channel.
+KakaoTalk (Korea's dominant messaging app) sharing and OG images got prioritized. For a fortune service in Korea, viral sharing is the only free marketing channel.
 
-**Sixth, Korea PMF first.** No English localization resources until paid conversion hits 3%.
+Global expansion was shelved. No English localization resources until paid conversion hits 3% in Korea.
 
-Would I have thought of all six on my own? Honestly, items three (immediate registration) and four (rate limiting) would have come to me much later.
+Would I have thought of all these on my own? Honestly, immediate business registration and rate limiting would have come to me much later.
+
 
 ---
 
 ## This Conversation Is a Framework
 
-The process maps to any project:
-
-```
-1. Share the vision    → "I want to build this" (big picture)
-2. Set the strategy    → "Design the business model" (choose from options)
-3. Expert review       → "Have the panel validate this" (simulation)
-4. Design              → "Build a landing page for this strategy" (working HTML)
-5. Cost analysis       → "How much does this cost to run?" (per-token)
-6. Expansion design    → "What if we go international?" (architecture)
-7. Task generation     → "Make this executable in Claude Code" (TASK MD)
-```
+The process maps to any project. Start with a vision to set the big picture, then lock in the strategy with concrete choices. Run the expert panel to validate assumptions. Design a landing page in working HTML. Analyze costs at the per-token level. Plan the expansion architecture. Finally, convert everything into task files executable in Claude Code.
 
 Using AI as a tool and thinking with AI are different things.
 

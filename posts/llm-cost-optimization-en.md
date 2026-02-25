@@ -1,13 +1,12 @@
 ---
-title: "How I Cut LLM API Costs by 88% With Three Techniques"
-published: true
-description: "One free analysis: $0.085. At 1,000 daily users, that's $2,550/month — for a free tier. That's not a business. That's a charity."
-tags: [llm, ai, costoptimization, saas]
-series: "AI Fortune App Build Log"
+title: How I Cut LLM API Costs by 88%
+published: false
+description: One free analysis costs $0.085. At 1,000 users/day, that's $2,550/month. Here's how I got it to $406.
+tags: [ai, webdev, llm, costoptimization]
+series: AI Fortune App Build Log
 ---
 
-> **TL;DR** — Prompt caching, model routing, structured output. Three changes: $3,316/month → $406.
-> None of this is specific to fortune-telling. Any LLM-powered service can use these.
+> **TL;DR** — Prompt caching, model routing, structured output. Three changes: $3,316/month to $406. None of this is specific to fortune-telling. Any LLM-powered service can use these.
 
 One free analysis: $0.085. At 1,000 daily users, that's $2,550/month — for a free tier.
 
@@ -15,11 +14,12 @@ Even at a 3% paid conversion rate, revenue couldn't cover the free tier costs.
 
 That's not a business. That's a charity.
 
-So I tore apart the cost structure. Three changes. 88% reduction.
+So I tore apart the cost structure.
+
 
 ---
 
-## 1. Prompt Caching — Stop Buying the Same Textbook Every Class
+## Prompt Caching — Stop Buying the Same Textbook Every Class
 
 Every LLM API call sends a "system prompt." The fortune interpretation guidelines, Five Elements rules, output format specs — identical every time, sent from scratch every time.
 
@@ -32,21 +32,16 @@ Doesn't change (cache): interpretation guidelines, element rules, output format
 Changes every time (fresh): user's birth data, engine calculation JSON
 ```
 
-The cost difference:
-
-```
-Claude cache_control:    90% reduction on cache hits
-Gemini Context Caching:  75% reduction
-OpenAI prefix caching:   50% reduction (automatic)
-```
+Claude's cache_control cuts input costs by 90% on cache hits. Gemini Context Caching gives 75%. OpenAI's prefix caching applies automatically at 50%.
 
 In real numbers: if the system prompt is 2,000 tokens and user data is 500 tokens, 80% of the input is cacheable.
 
 Input cost drops to nearly one-fifth.
 
+
 ---
 
-## 2. Model Routing — Stop Calling a Professor for Every Question
+## Model Routing — Stop Calling a Professor for Every Question
 
 At first, I ran everything through Claude Sonnet — free and paid. "Better model, better results, right?"
 
@@ -62,23 +57,16 @@ Deep premium consultation      → Claude Opus     $0.045/request
 
 Free analysis **barely needs an LLM at all.** The engine already computes Five Element distribution and Ten Gods relationships accurately. Format that into text with code — $0 LLM cost. Add one line of yearly fortune from a lightweight model — $0.001.
 
-Free tier breakdown:
+The free tier breaks down like this: personality analysis and career fit use algorithm formatting at $0 each, yearly fortune gets a lightweight 3-line summary at $0.001, and the overall score is another lightweight 1-line call at $0.001. Total: $0.002 per request.
 
-```
-Personality:     algorithm formatting  → $0
-Career fit:      algorithm formatting  → $0
-Yearly fortune:  lightweight 3-line    → $0.001
-Summary score:   lightweight 1-line    → $0.001
-Total:           $0.002/request
-```
-
-From $0.085 to $0.002. A 97% cut.
+From $0.085 to $0.002. **A 97% cut.**
 
 Users barely notice the difference — the free tier is a teaser anyway. The real depth lives in the paid analysis.
 
+
 ---
 
-## 3. Structured Output — Cut the Small Talk
+## Structured Output — Cut the Small Talk
 
 LLMs are chatty. "Let me begin the analysis. First, looking at the Five Elements..." That preamble costs tokens. And output tokens are **3-5x more expensive** than input tokens.
 
@@ -107,6 +95,7 @@ Add "Respond only in this JSON structure" to the prompt. No preamble, just data.
 
 50-80% reduction in output tokens. Since output is the expensive side, the impact is significant.
 
+
 ---
 
 ## The Combined Effect
@@ -119,9 +108,9 @@ Structured output:     → $406  (-23%)
 After optimization:    $406/month (88% reduction)
 ```
 
-※ These numbers are simulation estimates based on 1,000 requests/day. Actual operating data will be shared post-launch.
+These numbers are simulation estimates based on 1,000 requests/day. Actual operating data will be shared post-launch.
 
-These three strategies are independent — apply them in any order or all at once. And none of this is specific to fortune telling. Any LLM-powered service can use these same techniques almost as-is.
+All three strategies are independent — apply them in any order or all at once. And none of this is specific to fortune telling. Any LLM-powered service can use these same techniques almost as-is.
 
 The core idea is simple. Cache what doesn't change. Use cheap models where they're sufficient. Minimize output when you can.
 
