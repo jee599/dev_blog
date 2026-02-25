@@ -7,8 +7,6 @@ tags:
   - webdev
   - llm
   - architecture
-id: 3284918
-date: '2026-02-25T14:48:50Z'
 ---
 
 > **TL;DR** — LLM에 만세력 계산을 시키면 틀린다. 계산은 코드로, 해석만 AI로. 이 한 줄이 아키텍처의 전부다.
