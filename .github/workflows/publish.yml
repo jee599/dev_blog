@@ -15,31 +15,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Debug publish one file via API
-        run: |
-          echo "Testing direct DEV.to API with ai-fortune-architecture-en.md..."
-          # Extract frontmatter
-          TITLE=$(sed -n 's/^title: *//p' posts/ai-fortune-architecture-en.md | tr -d '"')
-          DESC=$(sed -n 's/^description: *//p' posts/ai-fortune-architecture-en.md | tr -d "'\"")
-          # Extract body (everything after second ---)
-          BODY=$(awk '/^---$/{n++; next} n>=1' posts/ai-fortune-architecture-en.md)
-          echo "Title: $TITLE"
-          echo "Desc: $DESC"
-          echo "Body length: $(echo "$BODY" | wc -c)"
-          # Try to create article
-          RESPONSE=$(curl -s -w "\n%{http_code}" \
-            -X POST https://dev.to/api/articles \
-            -H "api-key: ${{ secrets.DEVTO_TOKEN }}" \
-            -H "Content-Type: application/json" \
-            -d "$(jq -n \
-              --arg title "$TITLE" \
-              --arg body "$BODY" \
-              --arg desc "$DESC" \
-              '{article: {title: $title, body_markdown: $body, description: $desc, published: true, tags: ["ai","webdev","llm","architecture"]}}')")
-          HTTP_CODE=$(echo "$RESPONSE" | tail -1)
-          BODY_RESP=$(echo "$RESPONSE" | sed '$d')
-          echo "HTTP Status: $HTTP_CODE"
-          echo "Response: $BODY_RESP"
       - name: Publish articles on DEV.to
         uses: sinedied/publish-devto@v2
         with:
