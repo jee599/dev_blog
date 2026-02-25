@@ -1,0 +1,29 @@
+
+PUBLISHING: posts/ai-fortune-architecture-en.md
+  title: Why You Shouldn't Let AI Do Your Fortune Telling — And How to Do It Right
+  desc: I asked an LLM to calculate a birth chart. The base numbers were wrong. 3 weeks wasted.
+  tags: ['ai', 'webdev', 'llm', 'architecture']
+  body_len: 4551
+  attempt 1 HTTP 403: 
+SKIP: posts/ai-fortune-architecture-ko.md
+SKIP: posts/designing-saas-with-claude-en.md
+
+PUBLISHING: posts/designing-saas-with-claude-ko.md
+  title: Claude 하나로 1인 SaaS 전체를 설계한 기록
+  desc: 9개 세션, 20개 산출물, 가상 전문가 6명. 혼자, 하루, $0.
+  tags: ['ai', 'productivity', 'saas', 'claude']
+  body_len: 1997
+  attempt 1 HTTP 403: 
+SKIP: posts/gpt5-vs-gemini-vs-claude-real-test-en.md
+SKIP: posts/gpt5-vs-gemini-vs-claude-real-test-ko.md
+SKIP: posts/llm-cost-optimization-en.md
+SKIP: posts/llm-cost-optimization-ko.md
+SKIP: posts/nextjs-6-languages-one-day-en.md
+
+PUBLISHING: posts/nextjs-6-languages-one-day-ko.md
+  title: Next.js 앱을 하루만에 6개국어로 만든 방법
+  desc: 한국어, 영어, 일본어, 중국어, 베트남어, 힌디어. next-intl로 하루만에.
+  tags: ['webdev', 'nextjs', 'beginners', 'ai']
+  body_len: 2825
+  attempt 1 HTTP 403: 
+Done: 0 published, 3 failed
