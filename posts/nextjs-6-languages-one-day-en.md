@@ -1,12 +1,14 @@
 ---
-title: "How I Added 6 Languages to a Next.js App in One Day"
+title: How I Added 6 Languages to a Next.js App in One Day
 published: true
-description: "Korean, English, Japanese, Chinese, Vietnamese, Hindi. One day with next-intl. Here's every gotcha."
+description: 'Korean, English, Japanese, Chinese, Vietnamese, Hindi. One day with next-intl. Here''s every gotcha.'
 tags:
   - webdev
   - nextjs
   - beginners
   - ai
+id: 3285149
+date: '2026-02-25T16:12:11Z'
 ---
 
 I decided to ship my AI fortune-telling app to 6 countries. Korea, US, Japan, China, Vietnam, India.
