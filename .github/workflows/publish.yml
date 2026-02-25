@@ -44,3 +44,4 @@ jobs:
           files: 'posts/*.md'
           branch: main
           conventional_commits: true
+          # retry trigger
