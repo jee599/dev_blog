@@ -1,12 +1,8 @@
 ---
 title: Claude 하나로 1인 SaaS 전체를 설계한 기록
-published: false
-description: '9개 세션, 20개 산출물, 가상 전문가 6명. 혼자, 하루, $0.'
-tags:
-  - ai
-  - productivity
-  - saas
-  - claude
+published: true
+description: 9개 세션, 20개 산출물, 가상 전문가 6명. 혼자, 하루, $0.
+tags: [ai, productivity, saas, claude]
 series: AI 사주 앱 빌드 로그
 id: 3284917
 ---

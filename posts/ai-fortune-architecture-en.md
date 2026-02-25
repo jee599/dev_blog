@@ -1,6 +1,6 @@
 ---
 title: Why You Shouldn't Let AI Do Your Fortune Telling — And How to Do It Right
-published: false
+published: true
 description: I asked an LLM to calculate a birth chart. The base numbers were wrong. 3 weeks wasted.
 tags:
   - ai

@@ -1,12 +1,8 @@
 ---
 title: LLM API 비용을 88% 줄인 방법
-published: false
-description: '무료 분석 1건 $0.085, 월 $2,550. 이걸 $406으로 만든 구조.'
-tags:
-  - ai
-  - webdev
-  - llm
-  - costoptimization
+published: true
+description: 무료 분석 1건 $0.085, 월 $2,550. 이걸 $406으로 만든 구조.
+tags: [ai, webdev, llm, costoptimization]
 series: AI 사주 앱 빌드 로그
 id: 3284919
 ---
