@@ -169,29 +169,14 @@ jobs:
               aid = result["id"]
               log(f"  draft created id={aid}")
 
-              # ── Step 2: Publish the draft ──
-              time.sleep(5)
-              log(f"  step 2: publishing draft {aid} ...")
-              code2, result2, hdrs2 = api_call("PUT", f"{BASE}/articles/{aid}", {
-                  "article": {"published": True}
-              })
-              log(f"  step 2 result: HTTP {code2}")
-
-              if code2 == 200:
-                  pub_date = result2.get("published_at", "")
-                  log(f"  PUBLISHED id={aid}")
-                  new_fm = fm.rstrip() + f"\nid: {aid}\ndate: '{pub_date}'\n"
-                  with open(filepath, "w") as f:
-                      f.write("---" + new_fm + "---" + parts[2])
-                  published += 1
-              else:
-                  # Draft exists but publish failed — record draft id so we don't re-create
-                  log(f"  FAILED to publish draft: {str(result2)[:300]}")
-                  log(f"  Recording draft id={aid} to avoid duplicates on next run")
-                  new_fm = fm.rstrip() + f"\nid: {aid}\ndate: 'draft'\n"
-                  with open(filepath, "w") as f:
-                      f.write("---" + new_fm + "---" + parts[2])
-                  failed += 1
+              # ── Step 2: Do NOT auto-publish ──
+              # We intentionally stop at draft creation so the user can review on DEV.to
+              # and publish manually when ready.
+              log(f"  DRAFT saved id={aid} (manual publish)")
+              new_fm = fm.rstrip() + f"\nid: {aid}\ndate: 'draft'\n"
+              with open(filepath, "w") as f:
+                  f.write("---" + new_fm + "---" + parts[2])
+              published += 1
 
               time.sleep(BETWEEN_POSTS)
 
