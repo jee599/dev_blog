@@ -77,17 +77,13 @@ ${subject}
 
 바뀐 파일은 이렇다.
 
-```text
-$(printf "%s\n" "$name_status" | head -n 200)
-```
+    $(printf "%s\n" "$name_status" | head -n 200 | sed 's/^/ /')
 
 ---
 
 검증은 이렇게 했다.
 
-```bash
-# 여기에 실제로 돌린 커맨드를 붙인다
-```
+    (여기에 실제로 돌린 커맨드를 붙인다)
 
 PASS/FAIL을 한 줄로 적는다.
 
