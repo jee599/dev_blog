@@ -7,6 +7,8 @@ tags:
   - productivity
   - saas
   - claude
+id: 3286025
+date: '2026-02-26T00:01:21Z'
 ---
 
 "로그인 벽부터 제거하세요. magic link 인증이 최대 이탈 원인입니다."
