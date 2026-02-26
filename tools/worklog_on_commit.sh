@@ -56,31 +56,54 @@ name_status="$(git show --name-status --pretty="" -1 | sed '/^$/d' | head -n 200
 diffstat="$(git show --stat --pretty="" -1 | sed '/^$/d' | tail -n 5)"
 
 cat > "$out_file" <<MD
-# [${project}] worklog — ${date} ${time}
+---
+title: "[${project}] ${subject}"
+published: false
+description: "${project} 작업 로그. 커밋 ${sha}."
+tags: ai, webdev, productivity, buildinpublic
+---
 
 ${subject}
 
----
-
-## Context
-
-(why this commit happened)
-
-## What changed
-
-$(printf "%s\n" "$name_status" | sed 's/^/""/g' | sed 's/^""//')
-
-## QA / Gate
-
-(paste the exact commands you ran and PASS/FAIL)
-
-## Links
-
-- Commit: ${sha}
-- Branch: ${branch}
-- Remote: ${remote}
+이 커밋은 기록용이다.
 
 ---
+
+이유는 이거다.
+
+(여기에 배경을 짧게 쓴다. 길어지면 문단을 나눈다.)
+
+---
+
+바뀐 파일은 이렇다.
+
+```text
+$(printf "%s\n" "$name_status" | head -n 200)
+```
+
+---
+
+검증은 이렇게 했다.
+
+```bash
+# 여기에 실제로 돌린 커맨드를 붙인다
+```
+
+PASS/FAIL을 한 줄로 적는다.
+
+---
+
+메모.
+
+(의도, 리스크, 롤백, 다음 작업을 짧게)
+
+---
+
+Refs.
+
+commit ${sha}
+branch ${branch}
+remote ${remote}
 
 > "Ship small. Log everything."
 MD
