@@ -7,6 +7,8 @@ tags:
   - llm
   - productivity
   - webdev
+id: 3286741
+date: 'draft'
 ---
 
 “어떤 모델이 제일 좋아요?”

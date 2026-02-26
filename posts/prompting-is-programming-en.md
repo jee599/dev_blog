@@ -7,6 +7,8 @@ tags:
   - llm
   - beginners
   - webdev
+id: 3286744
+date: 'draft'
 ---
 
 When people hear “prompt engineering,” they think “how to ask AI better questions.”

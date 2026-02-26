@@ -7,6 +7,8 @@ tags:
   - llm
   - costoptimization
   - productivity
+id: 3286733
+date: 'draft'
 ---
 
 AI 사이드 프로젝트를 시작하면서 가장 먼저 든 생각이 “이거 비용 구조가 어떻게 되는 거지?”였다.

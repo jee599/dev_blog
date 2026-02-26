@@ -7,6 +7,8 @@ tags:
   - llm
   - beginners
   - webdev
+id: 3286747
+date: 'draft'
 ---
 
 “프롬프트 엔지니어링”이라고 하면 대부분 “AI한테 잘 질문하는 법”을 떠올린다.
