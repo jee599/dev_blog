@@ -2,14 +2,42 @@ Fetching existing articles from DEV.to ...
   Found 10 existing article(s) on DEV.to
 
 SKIP (has id): posts/ai-fortune-architecture-en.md
-SKIP (has id): posts/ai-fortune-architecture-ko.md
-SKIP (has id): posts/designing-saas-with-claude-en.md
+
+PUBLISHING: posts/ai-fortune-architecture-ko.md
+  title: AI에게 사주를 맡기면 안 되는 이유 — 그리고 올바르게 맡기는 법
+  tags: ['ai', 'webdev', 'llm', 'architecture']
+  DUPLICATE found on DEV.to (id=3285115) — writing id to file
+
+PUBLISHING: posts/designing-saas-with-claude-en.md
+  title: How I Designed an Entire SaaS Using Claude Alone
+  tags: ['ai', 'productivity', 'saas', 'claude']
+  DUPLICATE found on DEV.to (id=3285114) — writing id to file
 SKIP (has id): posts/designing-saas-with-claude-ko.md
-SKIP (has id): posts/gpt5-vs-gemini-vs-claude-real-test-en.md
-SKIP (has id): posts/gpt5-vs-gemini-vs-claude-real-test-ko.md
-SKIP (has id): posts/llm-cost-optimization-en.md
-SKIP (has id): posts/llm-cost-optimization-ko.md
-SKIP (has id): posts/nextjs-6-languages-one-day-en.md
+
+PUBLISHING: posts/gpt5-vs-gemini-vs-claude-real-test-en.md
+  title: GPT-5 vs Gemini Flash vs Claude Opus — 6 Models, Same Fortune, Real Costs
+  tags: ['ai', 'llm', 'webdev', 'productivity']
+  DUPLICATE found on DEV.to (id=3285129) — writing id to file
+
+PUBLISHING: posts/gpt5-vs-gemini-vs-claude-real-test-ko.md
+  title: GPT-5 vs Gemini Flash vs Claude Opus — 사주 앱에서 6모델 실전 비교
+  tags: ['ai', 'llm', 'webdev', 'productivity']
+  DUPLICATE found on DEV.to (id=3285128) — writing id to file
+
+PUBLISHING: posts/llm-cost-optimization-en.md
+  title: How I Cut LLM API Costs by 88%
+  tags: ['ai', 'webdev', 'llm', 'costoptimization']
+  DUPLICATE found on DEV.to (id=3285130) — writing id to file
+
+PUBLISHING: posts/llm-cost-optimization-ko.md
+  title: LLM API 비용을 88% 줄인 방법
+  tags: ['ai', 'webdev', 'llm', 'costoptimization']
+  DUPLICATE found on DEV.to (id=3285148) — writing id to file
+
+PUBLISHING: posts/nextjs-6-languages-one-day-en.md
+  title: How I Added 6 Languages to a Next.js App in One Day
+  tags: ['webdev', 'nextjs', 'beginners', 'ai']
+  DUPLICATE found on DEV.to (id=3285149) — writing id to file
 SKIP (has id): posts/nextjs-6-languages-one-day-ko.md
 
-Done: 0 published, 0 failed
+Done: 7 published, 0 failed
