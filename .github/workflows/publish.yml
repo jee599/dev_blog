@@ -22,9 +22,22 @@ jobs:
           DEVTO_KEY: ${{ secrets.DEVTO_TOKEN }}
         run: |
           python3 << 'PYEOF'
-          import os, json, re, glob, time, urllib.request, urllib.error
+          import os, json, re, glob, time, random, urllib.request, urllib.error
 
           api_key = os.environ["DEVTO_KEY"]
+          BASE = "https://dev.to/api"
+          HEADERS = {
+              "api-key": api_key,
+              "Content-Type": "application/json",
+              "Accept": "application/vnd.forem.api-v1+json",
+              "User-Agent": "dev-blog-publisher/1.0 (GitHub Actions)",
+          }
+
+          # Retry config
+          MAX_RETRIES = 4
+          BASE_DELAY = 15  # seconds
+          BETWEEN_POSTS = 35  # seconds between posts
+
           published = 0
           failed = 0
           log_lines = []
@@ -33,22 +46,73 @@ jobs:
               print(msg)
               log_lines.append(msg)
 
-          def api_call(method, url, payload=None):
-              data = json.dumps(payload).encode("utf-8") if payload else None
-              req = urllib.request.Request(url, data=data, method=method,
-                  headers={"api-key": api_key, "Content-Type": "application/json"})
-              try:
-                  resp = urllib.request.urlopen(req)
-                  return resp.status, json.loads(resp.read())
-              except urllib.error.HTTPError as e:
-                  return e.code, e.read().decode()
+          def api_call(method, url, payload=None, retries=MAX_RETRIES):
+              """Make an API call with retry + exponential backoff + jitter."""
+              for attempt in range(retries + 1):
+                  data = json.dumps(payload).encode("utf-8") if payload else None
+                  req = urllib.request.Request(url, data=data, method=method, headers=HEADERS)
+                  try:
+                      resp = urllib.request.urlopen(req)
+                      body = json.loads(resp.read())
+                      return resp.status, body, dict(resp.headers)
+                  except urllib.error.HTTPError as e:
+                      code = e.code
+                      raw = e.read().decode("utf-8", errors="replace")
+                      resp_headers = dict(e.headers) if e.headers else {}
 
+                      # Log full error details
+                      log(f"    attempt {attempt+1}: HTTP {code}")
+                      log(f"    response body: {raw[:500]}")
+                      rate_remaining = resp_headers.get("x-ratelimit-remaining", "?")
+                      rate_reset = resp_headers.get("x-ratelimit-reset", "?")
+                      retry_after = resp_headers.get("retry-after", "?")
+                      log(f"    rate-limit-remaining={rate_remaining}  reset={rate_reset}  retry-after={retry_after}")
+
+                      # Retry on 403, 429, or 5xx
+                      if code in (403, 429) or code >= 500:
+                          if attempt < retries:
+                              delay = BASE_DELAY * (2 ** attempt) + random.uniform(1, 5)
+                              log(f"    retrying in {delay:.1f}s ...")
+                              time.sleep(delay)
+                              continue
+                      # Non-retryable or out of retries
+                      return code, raw, resp_headers
+                  except Exception as exc:
+                      log(f"    attempt {attempt+1}: exception {exc}")
+                      if attempt < retries:
+                          delay = BASE_DELAY * (2 ** attempt) + random.uniform(1, 5)
+                          time.sleep(delay)
+                          continue
+                      return 0, str(exc), {}
+              return 0, "max retries exhausted", {}
+
+          # ── Fetch existing articles to detect duplicates ──
+          existing_titles = set()
+          existing_map = {}  # title -> article dict
+          log("Fetching existing articles from DEV.to ...")
+          page = 1
+          while True:
+              code, body, _ = api_call("GET", f"{BASE}/articles/me?per_page=100&page={page}")
+              if code != 200 or not isinstance(body, list) or len(body) == 0:
+                  if code != 200:
+                      log(f"  Warning: /articles/me returned HTTP {code}: {str(body)[:200]}")
+                  break
+              for art in body:
+                  t = art.get("title", "").strip()
+                  existing_titles.add(t)
+                  existing_map[t] = art
+              if len(body) < 100:
+                  break
+              page += 1
+          log(f"  Found {len(existing_titles)} existing article(s) on DEV.to\n")
+
+          # ── Process each markdown file ──
           for filepath in sorted(glob.glob("posts/*.md")):
               with open(filepath) as f:
                   content = f.read()
 
               if re.search(r"^id:\s*\d+", content, re.M):
-                  log(f"SKIP: {filepath}")
+                  log(f"SKIP (has id): {filepath}")
                   continue
 
               log(f"\nPUBLISHING: {filepath}")
@@ -60,42 +124,76 @@ jobs:
                   continue
 
               fm = parts[1]
-              body = parts[2].strip()
+              body_md = parts[2].strip()
 
               m = re.search(r'^title:\s*["\']?(.*?)["\']?\s*$', fm, re.M)
-              title = m.group(1) if m else ""
+              title = m.group(1).strip() if m else ""
               m = re.search(r'^description:\s*["\']?(.*?)["\']?\s*$', fm, re.M)
-              desc = m.group(1) if m else ""
+              desc = m.group(1).strip() if m else ""
               tags = re.findall(r'^\s*-\s*(\w+)', fm, re.M)
 
               log(f"  title: {title}")
               log(f"  tags: {tags}")
 
-              # Create article
-              code, result = api_call("POST", "https://dev.to/api/articles", {
+              # ── Check for duplicate ──
+              if title in existing_titles:
+                  art = existing_map[title]
+                  aid = art["id"]
+                  pub_date = art.get("published_at", "")
+                  log(f"  DUPLICATE found on DEV.to (id={aid}) — writing id to file")
+                  new_fm = fm.rstrip() + f"\nid: {aid}\ndate: '{pub_date}'\n"
+                  with open(filepath, "w") as f:
+                      f.write("---" + new_fm + "---" + parts[2])
+                  published += 1
+                  continue
+
+              # ── Step 1: Create as DRAFT ──
+              log(f"  step 1: creating draft ...")
+              code, result, hdrs = api_call("POST", f"{BASE}/articles", {
                   "article": {
                       "title": title,
-                      "body_markdown": body,
+                      "body_markdown": body_md,
                       "description": desc,
-                      "published": True,
-                      "tags": tags[:4]
+                      "published": False,
+                      "tags": tags[:4],
                   }
               })
-              log(f"  result: HTTP {code}")
+              log(f"  step 1 result: HTTP {code}")
 
-              if code == 201:
-                  aid = result["id"]
-                  pub_date = result.get("published_at", "")
+              if code != 201:
+                  log(f"  FAILED to create draft: {str(result)[:300]}")
+                  failed += 1
+                  time.sleep(BETWEEN_POSTS)
+                  continue
+
+              aid = result["id"]
+              log(f"  draft created id={aid}")
+
+              # ── Step 2: Publish the draft ──
+              time.sleep(5)
+              log(f"  step 2: publishing draft {aid} ...")
+              code2, result2, hdrs2 = api_call("PUT", f"{BASE}/articles/{aid}", {
+                  "article": {"published": True}
+              })
+              log(f"  step 2 result: HTTP {code2}")
+
+              if code2 == 200:
+                  pub_date = result2.get("published_at", "")
                   log(f"  PUBLISHED id={aid}")
                   new_fm = fm.rstrip() + f"\nid: {aid}\ndate: '{pub_date}'\n"
                   with open(filepath, "w") as f:
                       f.write("---" + new_fm + "---" + parts[2])
                   published += 1
               else:
-                  log(f"  error: {str(result)[:300]}")
+                  # Draft exists but publish failed — record draft id so we don't re-create
+                  log(f"  FAILED to publish draft: {str(result2)[:300]}")
+                  log(f"  Recording draft id={aid} to avoid duplicates on next run")
+                  new_fm = fm.rstrip() + f"\nid: {aid}\ndate: 'draft'\n"
+                  with open(filepath, "w") as f:
+                      f.write("---" + new_fm + "---" + parts[2])
                   failed += 1
 
-              time.sleep(30)
+              time.sleep(BETWEEN_POSTS)
 
           log(f"\nDone: {published} published, {failed} failed")
           with open("publish-log.txt", "w") as f:
@@ -107,7 +205,7 @@ jobs:
         if: always()
         run: |
           if [ -f publish-log.txt ]; then
-            echo "=== Log ==="
+            echo "=== Publish Log ==="
             cat publish-log.txt
           fi
           git config user.name "github-actions[bot]"
