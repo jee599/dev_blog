@@ -1,58 +1,15 @@
 Fetching existing articles from DEV.to ...
-  Found 7 existing article(s) on DEV.to
+  Found 10 existing article(s) on DEV.to
 
-
-PUBLISHING: posts/ai-fortune-architecture-en.md
-  title: Why You Shouldn't Let AI Do Your Fortune Telling — And How to Do It Right
-  tags: ['ai', 'webdev', 'llm', 'architecture']
-  step 1: creating draft ...
-  step 1 result: HTTP 201
-  draft created id=3286023
-  step 2: publishing draft 3286023 ...
-  step 2 result: HTTP 200
-  PUBLISHED id=3286023
+SKIP (has id): posts/ai-fortune-architecture-en.md
 SKIP (has id): posts/ai-fortune-architecture-ko.md
 SKIP (has id): posts/designing-saas-with-claude-en.md
-
-PUBLISHING: posts/designing-saas-with-claude-ko.md
-  title: Claude 하나로 1인 SaaS 전체를 설계한 기록
-  tags: ['ai', 'productivity', 'saas', 'claude']
-  step 1: creating draft ...
-  step 1 result: HTTP 201
-  draft created id=3286025
-  step 2: publishing draft 3286025 ...
-  step 2 result: HTTP 200
-  PUBLISHED id=3286025
+SKIP (has id): posts/designing-saas-with-claude-ko.md
 SKIP (has id): posts/gpt5-vs-gemini-vs-claude-real-test-en.md
 SKIP (has id): posts/gpt5-vs-gemini-vs-claude-real-test-ko.md
 SKIP (has id): posts/llm-cost-optimization-en.md
 SKIP (has id): posts/llm-cost-optimization-ko.md
 SKIP (has id): posts/nextjs-6-languages-one-day-en.md
+SKIP (has id): posts/nextjs-6-languages-one-day-ko.md
 
-PUBLISHING: posts/nextjs-6-languages-one-day-ko.md
-  title: Next.js 앱을 하루만에 6개국어로 만든 방법
-  tags: ['webdev', 'nextjs', 'beginners', 'ai']
-  step 1: creating draft ...
-    attempt 1: HTTP 429
-    response body: {"error":"Rate limit reached, try again in 300 seconds","status":429}
-    rate-limit-remaining=?  reset=?  retry-after=?
-    retrying in 16.8s ...
-    attempt 2: HTTP 429
-    response body: {"error":"Rate limit reached, try again in 300 seconds","status":429}
-    rate-limit-remaining=?  reset=?  retry-after=?
-    retrying in 31.9s ...
-    attempt 3: HTTP 429
-    response body: {"error":"Rate limit reached, try again in 300 seconds","status":429}
-    rate-limit-remaining=?  reset=?  retry-after=?
-    retrying in 63.7s ...
-    attempt 4: HTTP 429
-    response body: {"error":"Rate limit reached, try again in 300 seconds","status":429}
-    rate-limit-remaining=?  reset=?  retry-after=?
-    retrying in 122.6s ...
-  step 1 result: HTTP 201
-  draft created id=3286031
-  step 2: publishing draft 3286031 ...
-  step 2 result: HTTP 200
-  PUBLISHED id=3286031
-
-Done: 3 published, 0 failed
+Done: 0 published, 0 failed
