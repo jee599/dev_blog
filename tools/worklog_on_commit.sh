@@ -31,6 +31,26 @@ if [[ -z "${project}" ]]; then
   esac
 fi
 
+# Project-specific default tags (max 4, lowercase)
+tags="ai, webdev, productivity, buildinpublic"
+case "$project" in
+  saju)
+    tags="ai, llm, webdev, saju"
+    ;;
+  coffeechat)
+    tags="webdev, nextjs, supabase, saas"
+    ;;
+  tradingbot)
+    tags="ai, trading, python, automation"
+    ;;
+  dev_blog)
+    tags="ai, webdev, productivity, buildinpublic"
+    ;;
+  *)
+    tags="ai, webdev, productivity, buildinpublic"
+    ;;
+esac
+
 # Gather commit metadata
 sha="$(git rev-parse --short HEAD)"
 subject="$(git log -1 --pretty=%s)"
@@ -60,7 +80,7 @@ cat > "$out_file" <<MD
 title: "[${project}] ${subject}"
 published: false
 description: "${project} 작업 로그. 커밋 ${sha}."
-tags: ai, webdev, productivity, buildinpublic
+tags: ${tags}
 ---
 
 ${subject}
