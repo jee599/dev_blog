@@ -7,8 +7,6 @@ tags:
   - nextjs
   - beginners
   - ai
-id: 3285149
-date: '2026-02-25T16:12:11Z'
 ---
 
 I decided to ship my AI fortune-telling app to 6 countries. Korea, US, Japan, China, Vietnam, India.
