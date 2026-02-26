@@ -9,55 +9,13 @@ SKIP (has id): posts/gpt5-vs-gemini-vs-claude-real-test-en.md
 SKIP (has id): posts/gpt5-vs-gemini-vs-claude-real-test-ko.md
 SKIP (has id): posts/llm-cost-optimization-en.md
 SKIP (has id): posts/llm-cost-optimization-ko.md
-
-PUBLISHING: posts/llm-cost-skill-tree-en.md
-  title: The Skill Tree That Can Cut Your LLM API Bill by 70%
-  tags: ['ai', 'llm', 'costoptimization', 'productivity']
-  step 1: creating draft ...
-  step 1 result: HTTP 201
-  draft created id=3286732
-  DRAFT saved id=3286732 (manual publish)
-
-PUBLISHING: posts/llm-cost-skill-tree-ko.md
-  title: LLM API 비용을 70% 줄이는 프로의 스킬 트리
-  tags: ['ai', 'llm', 'costoptimization', 'productivity']
-  step 1: creating draft ...
-  step 1 result: HTTP 201
-  draft created id=3286733
-  DRAFT saved id=3286733 (manual publish)
-
-PUBLISHING: posts/model-routing-cocktail-en.md
-  title: Claude vs GPT vs Gemini — how to cocktail them like a pro
-  tags: ['ai', 'llm', 'productivity', 'webdev']
-  step 1: creating draft ...
-  step 1 result: HTTP 201
-  draft created id=3286739
-  DRAFT saved id=3286739 (manual publish)
-
-PUBLISHING: posts/model-routing-cocktail-ko.md
-  title: Claude vs GPT vs Gemini — 칵테일해서 쓰는 법
-  tags: ['ai', 'llm', 'productivity', 'webdev']
-  step 1: creating draft ...
-  step 1 result: HTTP 201
-  draft created id=3286741
-  DRAFT saved id=3286741 (manual publish)
+SKIP (has id): posts/llm-cost-skill-tree-en.md
+SKIP (has id): posts/llm-cost-skill-tree-ko.md
+SKIP (has id): posts/model-routing-cocktail-en.md
+SKIP (has id): posts/model-routing-cocktail-ko.md
 SKIP (has id): posts/nextjs-6-languages-one-day-en.md
 SKIP (has id): posts/nextjs-6-languages-one-day-ko.md
+SKIP (has id): posts/prompting-is-programming-en.md
+SKIP (has id): posts/prompting-is-programming-ko.md
 
-PUBLISHING: posts/prompting-is-programming-en.md
-  title: \"Ask ChatGPT nicely\" is amateur hour
-  tags: ['ai', 'llm', 'beginners', 'webdev']
-  step 1: creating draft ...
-  step 1 result: HTTP 201
-  draft created id=3286744
-  DRAFT saved id=3286744 (manual publish)
-
-PUBLISHING: posts/prompting-is-programming-ko.md
-  title: ChatGPT에 \"잘 물어보기\"는 아마추어다
-  tags: ['ai', 'llm', 'beginners', 'webdev']
-  step 1: creating draft ...
-  step 1 result: HTTP 201
-  draft created id=3286747
-  DRAFT saved id=3286747 (manual publish)
-
-Done: 6 published, 0 failed
+Done: 0 published, 0 failed
