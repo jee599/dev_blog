@@ -1,5 +1,5 @@
 Fetching existing articles from DEV.to ...
-  Found 16 existing article(s) on DEV.to
+  Found 22 existing article(s) on DEV.to
 
 SKIP (has id): posts/ai-fortune-architecture-en.md
 SKIP (has id): posts/ai-fortune-architecture-ko.md
@@ -17,69 +17,11 @@ SKIP (has id): posts/nextjs-6-languages-one-day-en.md
 SKIP (has id): posts/nextjs-6-languages-one-day-ko.md
 SKIP (has id): posts/prompting-is-programming-en.md
 SKIP (has id): posts/prompting-is-programming-ko.md
+SKIP (has id): posts/trading-bot-15-strategies-en.md
+SKIP (has id): posts/trading-bot-15-strategies-ko.md
+SKIP (has id): posts/trading-bot-arena-strategies-en.md
+SKIP (has id): posts/trading-bot-arena-strategies-ko.md
+SKIP (has id): posts/trading-bot-win-rate-lie-en.md
+SKIP (has id): posts/trading-bot-win-rate-lie-ko.md
 
-PUBLISHING: posts/trading-bot-15-strategies-en.md
-  title: I Had AI Build 15 Trading Strategies. Only 1 Survived.
-  tags: ['ai', 'trading', 'python', 'beginners']
-  step 1: creating draft ...
-  step 1 result: HTTP 201
-  draft created id=3292498
-  DRAFT saved id=3292498 (manual publish)
-
-PUBLISHING: posts/trading-bot-15-strategies-ko.md
-  title: AI한테 트레이딩 전략 15개 만들게 했다. 살아남은 건 1개.
-  tags: ['ai', 'trading', 'python', 'beginners']
-  step 1: creating draft ...
-  step 1 result: HTTP 201
-  draft created id=3292502
-  DRAFT saved id=3292502 (manual publish)
-
-PUBLISHING: posts/trading-bot-arena-strategies-en.md
-  title: I Stole the #1 Strategy from HuggingFace's AI Trading Arena
-  tags: ['ai', 'trading', 'python', 'machinelearning']
-  step 1: creating draft ...
-  step 1 result: HTTP 201
-  draft created id=3292504
-  DRAFT saved id=3292504 (manual publish)
-
-PUBLISHING: posts/trading-bot-arena-strategies-ko.md
-  title: HuggingFace AI 트레이딩 아레나에서 1위 전략을 훔쳐왔다
-  tags: ['ai', 'trading', 'python', 'machinelearning']
-  step 1: creating draft ...
-  step 1 result: HTTP 201
-  draft created id=3292511
-  DRAFT saved id=3292511 (manual publish)
-
-PUBLISHING: posts/trading-bot-win-rate-lie-en.md
-  title: 44% Win Rate and Still Profitable?
-  tags: ['ai', 'trading', 'python', 'beginners']
-  step 1: creating draft ...
-    attempt 1: HTTP 429
-    response body: {"error":"Rate limit reached, try again in 300 seconds","status":429}
-    rate-limit-remaining=?  reset=?  retry-after=?
-    retrying in 19.4s ...
-    attempt 2: HTTP 429
-    response body: {"error":"Rate limit reached, try again in 300 seconds","status":429}
-    rate-limit-remaining=?  reset=?  retry-after=?
-    retrying in 32.9s ...
-    attempt 3: HTTP 429
-    response body: {"error":"Rate limit reached, try again in 300 seconds","status":429}
-    rate-limit-remaining=?  reset=?  retry-after=?
-    retrying in 61.5s ...
-    attempt 4: HTTP 429
-    response body: {"error":"Rate limit reached, try again in 300 seconds","status":429}
-    rate-limit-remaining=?  reset=?  retry-after=?
-    retrying in 121.7s ...
-  step 1 result: HTTP 201
-  draft created id=3292525
-  DRAFT saved id=3292525 (manual publish)
-
-PUBLISHING: posts/trading-bot-win-rate-lie-ko.md
-  title: 승률 44%인데 돈을 번다고?
-  tags: ['ai', 'trading', 'python', 'beginners']
-  step 1: creating draft ...
-  step 1 result: HTTP 201
-  draft created id=3292527
-  DRAFT saved id=3292527 (manual publish)
-
-Done: 6 published, 0 failed
+Done: 0 published, 0 failed
