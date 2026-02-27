@@ -7,6 +7,8 @@ tags:
   - trading
   - python
   - beginners
+id: 3292498
+date: 'draft'
 ---
 
 I assumed more complex strategies would make more money.

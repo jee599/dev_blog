@@ -7,6 +7,8 @@ tags:
   - trading
   - python
   - machinelearning
+id: 3292504
+date: 'draft'
 ---
 
 There's an AI trading arena on HuggingFace called "Prompt & Dump."

@@ -7,6 +7,8 @@ tags:
   - trading
   - python
   - beginners
+id: 3292527
+date: 'draft'
 ---
 
 승률 44.3%. 100번 중 56번을 진다.

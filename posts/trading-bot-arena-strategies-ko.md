@@ -7,6 +7,8 @@ tags:
   - trading
   - python
   - machinelearning
+id: 3292511
+date: 'draft'
 ---
 
 HuggingFace에 "Prompt & Dump"라는 AI 트레이딩 아레나가 있다.

@@ -7,6 +7,8 @@ tags:
   - trading
   - python
   - beginners
+id: 3292502
+date: 'draft'
 ---
 
 전략이 복잡할수록 수익이 높을 거라고 생각했다.

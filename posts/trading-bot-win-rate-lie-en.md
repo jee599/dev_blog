@@ -7,6 +7,8 @@ tags:
   - trading
   - python
   - beginners
+id: 3292525
+date: 'draft'
 ---
 
 44.3% win rate. Loses 56 out of 100 trades.
