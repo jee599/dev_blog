@@ -111,7 +111,14 @@ jobs:
               with open(filepath) as f:
                   content = f.read()
 
-              if re.search(r"^id:\s*\d+", content, re.M):
+              m_id = re.search(r"^id:\s*(\d+)", content, re.M)
+              m_pub = re.search(r"^published:\s*(true|false)\s*$", content, re.M | re.I)
+              m_date = re.search(r"^date:\s*['"]?(.*?)['"]?\s*$", content, re.M)
+              has_id = bool(m_id)
+              should_publish = (m_pub.group(1).lower() == "true") if m_pub else False
+              current_date = (m_date.group(1).strip() if m_date else "")
+
+              if has_id and not (should_publish and current_date == "draft"):
                   log(f"SKIP (has id): {filepath}")
                   continue
 
@@ -134,6 +141,32 @@ jobs:
 
               log(f"  title: {title}")
               log(f"  tags: {tags}")
+
+              if has_id and should_publish and current_date == "draft":
+                  aid = int(m_id.group(1))
+                  log(f"  draft detected (id={aid}) -> publish update")
+                  code2, result2, _ = api_call("PUT", f"{BASE}/articles/{aid}", {
+                      "article": {
+                          "published": True,
+                          "title": title,
+                          "body_markdown": body_md,
+                          "description": desc,
+                          "tags": tags[:4],
+                      }
+                  })
+                  log(f"  publish draft result: HTTP {code2}")
+                  if code2 in (200, 201):
+                      pub_date = result2.get("published_at") or result2.get("published_timestamp") or ""
+                      fm2 = re.sub(r"^date:\s*.*$", f"date: '{pub_date}'", fm, flags=re.M)
+                      with open(filepath, "w") as f:
+                          f.write("---" + fm2 + "---" + parts[2])
+                      log(f"  PUBLISHED existing draft id={aid}")
+                      published += 1
+                  else:
+                      log(f"  FAILED publish existing draft id={aid}: {str(result2)[:300]}")
+                      failed += 1
+                  time.sleep(BETWEEN_POSTS)
+                  continue
 
               # ── Check for duplicate ──
               if title in existing_titles:
