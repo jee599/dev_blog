@@ -1,50 +1,14 @@
 Fetching existing articles from DEV.to ...
-  Found 22 existing article(s) on DEV.to
+  Found 28 existing article(s) on DEV.to
 
 SKIP (has id): posts/ai-fortune-architecture-en.md
 SKIP (has id): posts/ai-fortune-architecture-ko.md
-
-PUBLISHING: posts/anthropic-13-free-courses-review-en.md
-  title: Anthropic Dropped 13 Free Courses — I Broke Down Every Single One
-  tags: ['ai', 'productivity', 'claude', 'beginners']
-  draft detected (id=3303794) -> publish update
-  publish draft result: HTTP 200
-  PUBLISHED existing draft id=3303794
-
-PUBLISHING: posts/anthropic-13-free-courses-review-ko.md
-  title: Anthropic이 공짜로 풀어놓은 13개 강의, 내가 다 뜯어봤다
-  tags: ['ai', 'productivity', 'claude', 'beginners']
-  draft detected (id=3303795) -> publish update
-  publish draft result: HTTP 200
-  PUBLISHED existing draft id=3303795
-
-PUBLISHING: posts/building-real-apps-with-claude-api-en.md
-  title: Building Real Apps With the Claude API — Tool Use, RAG, and Agent Patterns Explained
-  tags: ['ai', 'webdev', 'llm', 'beginners']
-  draft detected (id=3303796) -> publish update
-  publish draft result: HTTP 200
-  PUBLISHED existing draft id=3303796
-
-PUBLISHING: posts/building-real-apps-with-claude-api-ko.md
-  title: Claude API로 앱 만들기 — Tool Use, RAG, Agent 패턴 전부 정리
-  tags: ['ai', 'webdev', 'llm', 'beginners']
-  draft detected (id=3303799) -> publish update
-  publish draft result: HTTP 200
-  PUBLISHED existing draft id=3303799
-
-PUBLISHING: posts/claude-code-config-guide-en.md
-  title: If You Installed Claude Code and Only Chat With It — You’re Missing the Point
-  tags: ['ai', 'webdev', 'claude', 'productivity']
-  draft detected (id=3303801) -> publish update
-  publish draft result: HTTP 200
-  PUBLISHED existing draft id=3303801
-
-PUBLISHING: posts/claude-code-config-guide-ko.md
-  title: Claude Code, 깔아놓고 채팅만 하고 있다면 — CLAUDE.md, Hooks, MCP 설정법
-  tags: ['ai', 'webdev', 'claude', 'productivity']
-  draft detected (id=3303802) -> publish update
-  publish draft result: HTTP 200
-  PUBLISHED existing draft id=3303802
+SKIP (has id): posts/anthropic-13-free-courses-review-en.md
+SKIP (has id): posts/anthropic-13-free-courses-review-ko.md
+SKIP (has id): posts/building-real-apps-with-claude-api-en.md
+SKIP (has id): posts/building-real-apps-with-claude-api-ko.md
+SKIP (has id): posts/claude-code-config-guide-en.md
+SKIP (has id): posts/claude-code-config-guide-ko.md
 SKIP (has id): posts/designing-saas-with-claude-en.md
 SKIP (has id): posts/designing-saas-with-claude-ko.md
 SKIP (has id): posts/gpt5-vs-gemini-vs-claude-real-test-en.md
@@ -66,4 +30,4 @@ SKIP (has id): posts/trading-bot-arena-strategies-ko.md
 SKIP (has id): posts/trading-bot-win-rate-lie-en.md
 SKIP (has id): posts/trading-bot-win-rate-lie-ko.md
 
-Done: 6 published, 0 failed
+Done: 0 published, 0 failed
