@@ -7,6 +7,8 @@ tags:
   - webdev
   - claude
   - productivity
+id: 3303789
+date: 'draft'
 ---
 
 Claude Code를 깔았다. `claude`를 치면 대화창이 뜬다. 거기서 “이 버그 고쳐줘” “테스트 짜줘”를 한다.

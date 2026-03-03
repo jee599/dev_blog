@@ -7,6 +7,8 @@ tags:
   - productivity
   - claude
   - beginners
+id: 3303779
+date: 'draft'
 ---
 
 Anthropic이 Skilljar라는 플랫폼에 강의 13개를 올려놨다. 전부 무료. 수료증도 준다. Anthropic 계정도 필요 없고, 이메일로 Skilljar 가입만 하면 바로 들을 수 있다.
