@@ -1,14 +1,12 @@
 ---
 title: "If You Installed Claude Code and Only Chat With It — You’re Missing the Point"
-published: false
+published: true
 description: "Claude Code’s real power isn’t in the chat. It’s in 3 config files."
 tags:
   - ai
   - webdev
   - claude
   - productivity
-id: 3303786
-date: 'draft'
 ---
 
 You installed Claude Code. You type `claude`. A chat opens. You ask it to fix bugs and write tests.

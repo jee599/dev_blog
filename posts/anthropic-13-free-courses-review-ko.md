@@ -1,14 +1,12 @@
 ---
 title: "Anthropic이 공짜로 풀어놓은 13개 강의, 내가 다 뜯어봤다"
-published: false
+published: true
 description: "무료, 수료증 발급, 로그인만 하면 끝. 근데 진짜 쓸 만한 건 5개다."
 tags:
   - ai
   - productivity
   - claude
   - beginners
-id: 3303779
-date: 'draft'
 ---
 
 Anthropic이 Skilljar라는 플랫폼에 강의 13개를 올려놨다. 전부 무료. 수료증도 준다. Anthropic 계정도 필요 없고, 이메일로 Skilljar 가입만 하면 바로 들을 수 있다.

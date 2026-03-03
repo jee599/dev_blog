@@ -1,14 +1,12 @@
 ---
 title: "Anthropic Dropped 13 Free Courses — I Broke Down Every Single One"
-published: false
+published: true
 description: "Free, certificates included, email signup only. But only 5 are worth your time."
 tags:
   - ai
   - productivity
   - claude
   - beginners
-id: 3303776
-date: 'draft'
 ---
 
 Anthropic quietly put 13 courses on a platform called Skilljar. All free. Certificates included. You don’t even need an Anthropic account — just sign up with your email and you’re in.

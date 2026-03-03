@@ -1,14 +1,12 @@
 ---
 title: "Claude API로 앱 만들기 — Tool Use, RAG, Agent 패턴 전부 정리"
-published: false
+published: true
 description: "API 호출만으로는 서비스가 안 된다. Tool Use, RAG, Agent 패턴까지 알아야 진짜 앱이 나온다."
 tags:
   - ai
   - webdev
   - llm
   - beginners
-id: 3303784
-date: 'draft'
 ---
 
 Claude API를 호출하는 건 쉽다. `messages.create`에 프롬프트 넣으면 답이 온다.

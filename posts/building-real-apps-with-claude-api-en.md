@@ -1,14 +1,12 @@
 ---
 title: "Building Real Apps With the Claude API — Tool Use, RAG, and Agent Patterns Explained"
-published: false
+published: true
 description: "API calls alone don’t make a product. You need Tool Use, RAG, and Workflows to build something real."
 tags:
   - ai
   - webdev
   - llm
   - beginners
-id: 3303782
-date: 'draft'
 ---
 
 Calling the Claude API is easy. Put a prompt in `messages.create`, get an answer back.
