@@ -8,7 +8,7 @@ tags:
   - claude
   - productivity
 id: 3303801
-date: 'draft'
+date: '2026-03-03T03:05:26Z'
 ---
 
 You installed Claude Code. You type `claude`. A chat opens. You ask it to fix bugs and write tests.

@@ -8,7 +8,7 @@ tags:
   - llm
   - beginners
 id: 3303796
-date: 'draft'
+date: '2026-03-03T03:04:15Z'
 ---
 
 Calling the Claude API is easy. Put a prompt in `messages.create`, get an answer back.

@@ -8,7 +8,7 @@ tags:
   - claude
   - beginners
 id: 3303794
-date: 'draft'
+date: '2026-03-03T03:03:04Z'
 ---
 
 Anthropic quietly put 13 courses on a platform called Skilljar. All free. Certificates included. You don’t even need an Anthropic account — just sign up with your email and you’re in.

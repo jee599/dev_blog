@@ -8,7 +8,7 @@ tags:
   - llm
   - beginners
 id: 3303799
-date: 'draft'
+date: '2026-03-03T03:04:50Z'
 ---
 
 Claude API를 호출하는 건 쉽다. `messages.create`에 프롬프트 넣으면 답이 온다.

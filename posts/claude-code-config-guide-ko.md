@@ -8,7 +8,7 @@ tags:
   - claude
   - productivity
 id: 3303802
-date: 'draft'
+date: '2026-03-03T03:06:01Z'
 ---
 
 Claude Code를 깔았다. `claude`를 치면 대화창이 뜬다. 거기서 “이 버그 고쳐줘” “테스트 짜줘”를 한다.
