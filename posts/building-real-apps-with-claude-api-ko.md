@@ -7,6 +7,8 @@ tags:
   - webdev
   - llm
   - beginners
+id: 3303799
+date: 'draft'
 ---
 
 Claude API를 호출하는 건 쉽다. `messages.create`에 프롬프트 넣으면 답이 온다.

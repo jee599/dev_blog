@@ -7,6 +7,8 @@ tags:
   - webdev
   - claude
   - productivity
+id: 3303801
+date: 'draft'
 ---
 
 You installed Claude Code. You type `claude`. A chat opens. You ask it to fix bugs and write tests.
