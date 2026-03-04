@@ -1,6 +1,6 @@
 ---
 title: "Claude Code Has Too Many Features. Here Are the 10 That Matter, Ranked. (1/2)"
-published: false
+published: true
 description: "CLAUDE.md to Subagents. These 5 are the foundation. Get them wrong and everything else breaks."
 tags:
   - ai

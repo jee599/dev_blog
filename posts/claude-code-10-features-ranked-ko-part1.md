@@ -1,6 +1,6 @@
 ---
 title: "Claude Code 기능 10개, 중요한 순서대로 정리했다 (1/2)"
-published: false
+published: true
 description: "CLAUDE.md부터 Subagents까지. 이 5개가 기반이다."
 tags:
   - ai

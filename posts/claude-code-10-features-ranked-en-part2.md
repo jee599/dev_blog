@@ -1,6 +1,6 @@
 ---
 title: "Claude Code Has Too Many Features. Here Are the 10 That Matter, Ranked. (2/2)"
-published: false
+published: true
 description: "Ralph Loop to Agent Teams. Scaling, parallelism, and quality gates."
 tags:
   - ai
