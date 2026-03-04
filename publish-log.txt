@@ -1,5 +1,5 @@
 Fetching existing articles from DEV.to ...
-  Found 28 existing article(s) on DEV.to
+  Found 32 existing article(s) on DEV.to
 
 SKIP (has id): posts/ai-fortune-architecture-en.md
 SKIP (has id): posts/ai-fortune-architecture-ko.md
@@ -7,38 +7,10 @@ SKIP (has id): posts/anthropic-13-free-courses-review-en.md
 SKIP (has id): posts/anthropic-13-free-courses-review-ko.md
 SKIP (has id): posts/building-real-apps-with-claude-api-en.md
 SKIP (has id): posts/building-real-apps-with-claude-api-ko.md
-
-PUBLISHING: posts/claude-code-10-features-ranked-en-part1.md
-  title: Claude Code Has Too Many Features. Here Are the 10 That Matter, Ranked. (1/2)
-  tags: ['ai', 'claudecode', 'productivity', 'webdev']
-  step 1: creating draft ...
-  step 1 result: HTTP 201
-  draft created id=3307240
-  DRAFT saved id=3307240 (manual publish)
-
-PUBLISHING: posts/claude-code-10-features-ranked-en-part2.md
-  title: Claude Code Has Too Many Features. Here Are the 10 That Matter, Ranked. (2/2)
-  tags: ['ai', 'claudecode', 'productivity', 'webdev']
-  step 1: creating draft ...
-  step 1 result: HTTP 201
-  draft created id=3307243
-  DRAFT saved id=3307243 (manual publish)
-
-PUBLISHING: posts/claude-code-10-features-ranked-ko-part1.md
-  title: Claude Code 기능 10개, 중요한 순서대로 정리했다 (1/2)
-  tags: ['ai', 'claudecode', 'productivity', 'webdev']
-  step 1: creating draft ...
-  step 1 result: HTTP 201
-  draft created id=3307245
-  DRAFT saved id=3307245 (manual publish)
-
-PUBLISHING: posts/claude-code-10-features-ranked-ko-part2.md
-  title: Claude Code 기능 10개, 중요한 순서대로 정리했다 (2/2)
-  tags: ['ai', 'claudecode', 'productivity', 'webdev']
-  step 1: creating draft ...
-  step 1 result: HTTP 201
-  draft created id=3307246
-  DRAFT saved id=3307246 (manual publish)
+SKIP (has id): posts/claude-code-10-features-ranked-en-part1.md
+SKIP (has id): posts/claude-code-10-features-ranked-en-part2.md
+SKIP (has id): posts/claude-code-10-features-ranked-ko-part1.md
+SKIP (has id): posts/claude-code-10-features-ranked-ko-part2.md
 SKIP (has id): posts/claude-code-config-guide-en.md
 SKIP (has id): posts/claude-code-config-guide-ko.md
 SKIP (has id): posts/designing-saas-with-claude-en.md
@@ -62,4 +34,4 @@ SKIP (has id): posts/trading-bot-arena-strategies-ko.md
 SKIP (has id): posts/trading-bot-win-rate-lie-en.md
 SKIP (has id): posts/trading-bot-win-rate-lie-ko.md
 
-Done: 4 published, 0 failed
+Done: 0 published, 0 failed
