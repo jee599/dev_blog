@@ -8,7 +8,7 @@ tags:
   - productivity
   - webdev
 id: 3307246
-date: 'draft'
+date: '2026-03-04T01:53:43Z'
 ---
 
 1편에서 기반 5개를 다뤘다. CLAUDE.md, Skills, Hooks, GitHub Actions, Subagents.

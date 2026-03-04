@@ -8,7 +8,7 @@ tags:
   - productivity
   - webdev
 id: 3307240
-date: 'draft'
+date: '2026-03-04T01:53:23Z'
 ---
 
 Claude Code has a feature overload problem. CLAUDE.md, Skills, Hooks, MCP, Ralph Loop, Agent Teams, Worktrees, Subagents, Plugins… Every blog post mentions different things. Half of them describe features that don’t exist yet or confuse community tools with official ones.

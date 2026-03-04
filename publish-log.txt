@@ -7,10 +7,34 @@ SKIP (has id): posts/anthropic-13-free-courses-review-en.md
 SKIP (has id): posts/anthropic-13-free-courses-review-ko.md
 SKIP (has id): posts/building-real-apps-with-claude-api-en.md
 SKIP (has id): posts/building-real-apps-with-claude-api-ko.md
-SKIP (has id): posts/claude-code-10-features-ranked-en-part1.md
-SKIP (has id): posts/claude-code-10-features-ranked-en-part2.md
-SKIP (has id): posts/claude-code-10-features-ranked-ko-part1.md
-SKIP (has id): posts/claude-code-10-features-ranked-ko-part2.md
+
+PUBLISHING: posts/claude-code-10-features-ranked-en-part1.md
+  title: Claude Code Has Too Many Features. Here Are the 10 That Matter, Ranked. (1/2)
+  tags: ['ai', 'claudecode', 'productivity', 'webdev']
+  draft detected (id=3307240) -> publish update
+  publish draft result: HTTP 200
+  PUBLISHED existing draft id=3307240
+
+PUBLISHING: posts/claude-code-10-features-ranked-en-part2.md
+  title: Claude Code Has Too Many Features. Here Are the 10 That Matter, Ranked. (2/2)
+  tags: ['ai', 'claudecode', 'productivity', 'webdev']
+  draft detected (id=3307243) -> publish update
+  publish draft result: HTTP 200
+  PUBLISHED existing draft id=3307243
+
+PUBLISHING: posts/claude-code-10-features-ranked-ko-part1.md
+  title: Claude Code 기능 10개, 중요한 순서대로 정리했다 (1/2)
+  tags: ['ai', 'claudecode', 'productivity', 'webdev']
+  draft detected (id=3307245) -> publish update
+  publish draft result: HTTP 200
+  PUBLISHED existing draft id=3307245
+
+PUBLISHING: posts/claude-code-10-features-ranked-ko-part2.md
+  title: Claude Code 기능 10개, 중요한 순서대로 정리했다 (2/2)
+  tags: ['ai', 'claudecode', 'productivity', 'webdev']
+  draft detected (id=3307246) -> publish update
+  publish draft result: HTTP 200
+  PUBLISHED existing draft id=3307246
 SKIP (has id): posts/claude-code-config-guide-en.md
 SKIP (has id): posts/claude-code-config-guide-ko.md
 SKIP (has id): posts/designing-saas-with-claude-en.md
@@ -34,4 +58,4 @@ SKIP (has id): posts/trading-bot-arena-strategies-ko.md
 SKIP (has id): posts/trading-bot-win-rate-lie-en.md
 SKIP (has id): posts/trading-bot-win-rate-lie-ko.md
 
-Done: 0 published, 0 failed
+Done: 4 published, 0 failed

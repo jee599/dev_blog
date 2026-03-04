@@ -8,7 +8,7 @@ tags:
   - productivity
   - webdev
 id: 3307243
-date: 'draft'
+date: '2026-03-04T01:53:37Z'
 ---
 
 Part 1 covered the foundation: CLAUDE.md, Skills, Hooks, GitHub Actions, and Subagents. Those 5 make Claude Code smart. These next 5 make it scale.
