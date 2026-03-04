@@ -7,6 +7,8 @@ tags:
   - claudecode
   - productivity
   - webdev
+id: 3307245
+date: 'draft'
 ---
 
 Claude Code를 쓰면서 기능이 너무 많아서 헷갈렸다. CLAUDE.md, Skills, Hooks, MCP, Ralph Loop, Agent Teams, Worktrees, Subagents, Plugins… 이름만 들으면 뭐가 뭔지 모르겠고, 블로그 글마다 말하는 게 다르다.

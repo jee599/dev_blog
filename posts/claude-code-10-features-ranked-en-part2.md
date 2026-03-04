@@ -7,6 +7,8 @@ tags:
   - claudecode
   - productivity
   - webdev
+id: 3307243
+date: 'draft'
 ---
 
 Part 1 covered the foundation: CLAUDE.md, Skills, Hooks, GitHub Actions, and Subagents. Those 5 make Claude Code smart. These next 5 make it scale.

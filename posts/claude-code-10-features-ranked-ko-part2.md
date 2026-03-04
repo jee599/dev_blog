@@ -7,6 +7,8 @@ tags:
   - claudecode
   - productivity
   - webdev
+id: 3307246
+date: 'draft'
 ---
 
 1편에서 기반 5개를 다뤘다. CLAUDE.md, Skills, Hooks, GitHub Actions, Subagents.
