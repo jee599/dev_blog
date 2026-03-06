@@ -1,5 +1,5 @@
 Fetching existing articles from DEV.to ...
-  Found 34 existing article(s) on DEV.to
+  Found 35 existing article(s) on DEV.to
 
 SKIP (has id): posts/ai-fortune-architecture-en.md
 SKIP (has id): posts/ai-fortune-architecture-ko.md
@@ -30,12 +30,14 @@ SKIP (has id): posts/nextjs-6-languages-one-day-ko.md
 SKIP (has id): posts/prompting-is-programming-en.md
 SKIP (has id): posts/prompting-is-programming-ko.md
 
-PUBLISHING: posts/saju-app-design-threejs-cosmic-ko.md
-  title: 사주 앱 디자인: ‘사주 사이트’를 검색하면 안 되는 이유, 그리고 Three.js로 우주를 깐 이야기
+PUBLISHING: posts/saju-app-design-threejs-cosmic-en.md
+  title: Why Googling Your Category Kills Your Design — and How I Built a Cosmic 3D Background with Three.js
   tags: ['ai', 'webdev', 'threejs', 'design']
-  draft detected (id=3313961) -> publish update
-  publish draft result: HTTP 200
-  PUBLISHED existing draft id=3313961
+  step 1: creating draft ...
+  step 1 result: HTTP 201
+  draft created id=3313966
+  DRAFT saved id=3313966 (manual publish)
+SKIP (has id): posts/saju-app-design-threejs-cosmic-ko.md
 SKIP (has id): posts/trading-bot-15-strategies-en.md
 SKIP (has id): posts/trading-bot-15-strategies-ko.md
 SKIP (has id): posts/trading-bot-arena-strategies-en.md
