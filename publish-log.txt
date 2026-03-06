@@ -33,10 +33,9 @@ SKIP (has id): posts/prompting-is-programming-ko.md
 PUBLISHING: posts/saju-app-design-threejs-cosmic-en.md
   title: Why Googling Your Category Kills Your Design — and How I Built a Cosmic 3D Background with Three.js
   tags: ['ai', 'webdev', 'threejs', 'design']
-  step 1: creating draft ...
-  step 1 result: HTTP 201
-  draft created id=3313966
-  DRAFT saved id=3313966 (manual publish)
+  draft detected (id=3313966) -> publish update
+  publish draft result: HTTP 200
+  PUBLISHED existing draft id=3313966
 SKIP (has id): posts/saju-app-design-threejs-cosmic-ko.md
 SKIP (has id): posts/trading-bot-15-strategies-en.md
 SKIP (has id): posts/trading-bot-15-strategies-ko.md

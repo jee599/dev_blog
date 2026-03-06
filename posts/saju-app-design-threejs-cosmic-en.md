@@ -8,7 +8,7 @@ tags:
   - threejs
   - design
 id: 3313966
-date: 'draft'
+date: '2026-03-06T02:03:52Z'
 ---
 
 Search “fortune telling website design” and you’ll get red backgrounds with gold text, dragon illustrations, and layouts that haven’t been updated since 2008.
