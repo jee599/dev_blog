@@ -19,18 +19,16 @@ SKIP (has id): posts/designing-saas-with-claude-ko.md
 PUBLISHING: posts/github-trending-100-patterns-en.md
   title: What 100 Trending GitHub Projects Tell Us About Where AI Is Actually Going
   tags: ['ai', 'opensource', 'productivity', 'webdev']
-  step 1: creating draft ...
-  step 1 result: HTTP 201
-  draft created id=3313951
-  DRAFT saved id=3313951 (manual publish)
+  draft detected (id=3313951) -> publish update
+  publish draft result: HTTP 200
+  PUBLISHED existing draft id=3313951
 
 PUBLISHING: posts/github-trending-100-patterns-ko.md
   title: 2월에 별 250,000개를 받은 프로젝트와, 나머지 99개의 공통점
   tags: ['ai', 'opensource', 'productivity', 'webdev']
-  step 1: creating draft ...
-  step 1 result: HTTP 201
-  draft created id=3313953
-  DRAFT saved id=3313953 (manual publish)
+  draft detected (id=3313953) -> publish update
+  publish draft result: HTTP 200
+  PUBLISHED existing draft id=3313953
 SKIP (has id): posts/gpt5-vs-gemini-vs-claude-real-test-en.md
 SKIP (has id): posts/gpt5-vs-gemini-vs-claude-real-test-ko.md
 SKIP (has id): posts/llm-cost-optimization-en.md

@@ -8,7 +8,7 @@ tags:
   - productivity
   - webdev
 id: 3313951
-date: 'draft'
+date: '2026-03-06T01:56:32Z'
 ---
 
 In February 2026, a single GitHub repo hit 250,000 stars in 60 days.
