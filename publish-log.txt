@@ -33,10 +33,9 @@ SKIP (has id): posts/prompting-is-programming-ko.md
 PUBLISHING: posts/saju-app-design-threejs-cosmic-ko.md
   title: 사주 앱 디자인: ‘사주 사이트’를 검색하면 안 되는 이유, 그리고 Three.js로 우주를 깐 이야기
   tags: ['ai', 'webdev', 'threejs', 'design']
-  step 1: creating draft ...
-  step 1 result: HTTP 201
-  draft created id=3313961
-  DRAFT saved id=3313961 (manual publish)
+  draft detected (id=3313961) -> publish update
+  publish draft result: HTTP 200
+  PUBLISHED existing draft id=3313961
 SKIP (has id): posts/trading-bot-15-strategies-en.md
 SKIP (has id): posts/trading-bot-15-strategies-ko.md
 SKIP (has id): posts/trading-bot-arena-strategies-en.md
