@@ -7,6 +7,8 @@ tags:
   - opensource
   - productivity
   - webdev
+id: 3313953
+date: 'draft'
 ---
 
 2026년 2월, 하나의 GitHub 레포지토리가 60일 만에 별 250,000개를 찍었다.
