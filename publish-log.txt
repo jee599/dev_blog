@@ -1,5 +1,5 @@
 Fetching existing articles from DEV.to ...
-  Found 32 existing article(s) on DEV.to
+  Found 34 existing article(s) on DEV.to
 
 SKIP (has id): posts/ai-fortune-architecture-en.md
 SKIP (has id): posts/ai-fortune-architecture-ko.md
@@ -15,20 +15,8 @@ SKIP (has id): posts/claude-code-config-guide-en.md
 SKIP (has id): posts/claude-code-config-guide-ko.md
 SKIP (has id): posts/designing-saas-with-claude-en.md
 SKIP (has id): posts/designing-saas-with-claude-ko.md
-
-PUBLISHING: posts/github-trending-100-patterns-en.md
-  title: What 100 Trending GitHub Projects Tell Us About Where AI Is Actually Going
-  tags: ['ai', 'opensource', 'productivity', 'webdev']
-  draft detected (id=3313951) -> publish update
-  publish draft result: HTTP 200
-  PUBLISHED existing draft id=3313951
-
-PUBLISHING: posts/github-trending-100-patterns-ko.md
-  title: 2월에 별 250,000개를 받은 프로젝트와, 나머지 99개의 공통점
-  tags: ['ai', 'opensource', 'productivity', 'webdev']
-  draft detected (id=3313953) -> publish update
-  publish draft result: HTTP 200
-  PUBLISHED existing draft id=3313953
+SKIP (has id): posts/github-trending-100-patterns-en.md
+SKIP (has id): posts/github-trending-100-patterns-ko.md
 SKIP (has id): posts/gpt5-vs-gemini-vs-claude-real-test-en.md
 SKIP (has id): posts/gpt5-vs-gemini-vs-claude-real-test-ko.md
 SKIP (has id): posts/llm-cost-optimization-en.md
@@ -41,6 +29,14 @@ SKIP (has id): posts/nextjs-6-languages-one-day-en.md
 SKIP (has id): posts/nextjs-6-languages-one-day-ko.md
 SKIP (has id): posts/prompting-is-programming-en.md
 SKIP (has id): posts/prompting-is-programming-ko.md
+
+PUBLISHING: posts/saju-app-design-threejs-cosmic-ko.md
+  title: 사주 앱 디자인: ‘사주 사이트’를 검색하면 안 되는 이유, 그리고 Three.js로 우주를 깐 이야기
+  tags: ['ai', 'webdev', 'threejs', 'design']
+  step 1: creating draft ...
+  step 1 result: HTTP 201
+  draft created id=3313961
+  DRAFT saved id=3313961 (manual publish)
 SKIP (has id): posts/trading-bot-15-strategies-en.md
 SKIP (has id): posts/trading-bot-15-strategies-ko.md
 SKIP (has id): posts/trading-bot-arena-strategies-en.md
@@ -48,4 +44,4 @@ SKIP (has id): posts/trading-bot-arena-strategies-ko.md
 SKIP (has id): posts/trading-bot-win-rate-lie-en.md
 SKIP (has id): posts/trading-bot-win-rate-lie-ko.md
 
-Done: 2 published, 0 failed
+Done: 1 published, 0 failed
