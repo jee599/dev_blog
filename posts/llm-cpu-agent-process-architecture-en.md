@@ -7,6 +7,8 @@ tags:
   - agenticai
   - llm
   - architecture
+id: 3328517
+date: 'draft'
 ---
 
 Most AI production failures between 2024 and 2026 weren’t caused by model quality.

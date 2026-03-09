@@ -23,6 +23,22 @@ SKIP (has id): posts/llm-cost-optimization-en.md
 SKIP (has id): posts/llm-cost-optimization-ko.md
 SKIP (has id): posts/llm-cost-skill-tree-en.md
 SKIP (has id): posts/llm-cost-skill-tree-ko.md
+
+PUBLISHING: posts/llm-cpu-agent-process-architecture-en.md
+  title: LLMs Are CPUs, Agents Are Processes — The Real Architecture of Agentic AI
+  tags: ['ai', 'agenticai', 'llm', 'architecture']
+  step 1: creating draft ...
+  step 1 result: HTTP 201
+  draft created id=3328517
+  DRAFT saved id=3328517 (manual publish)
+
+PUBLISHING: posts/llm-cpu-agent-process-architecture-ko.md
+  title: LLM은 CPU고, 에이전트는 프로세스다 — Agentic AI의 진짜 구조
+  tags: ['ai', 'agenticai', 'llm', 'architecture']
+  step 1: creating draft ...
+  step 1 result: HTTP 201
+  draft created id=3328522
+  DRAFT saved id=3328522 (manual publish)
 SKIP (has id): posts/model-routing-cocktail-en.md
 SKIP (has id): posts/model-routing-cocktail-ko.md
 SKIP (has id): posts/nextjs-6-languages-one-day-en.md
@@ -38,4 +54,4 @@ SKIP (has id): posts/trading-bot-arena-strategies-ko.md
 SKIP (has id): posts/trading-bot-win-rate-lie-en.md
 SKIP (has id): posts/trading-bot-win-rate-lie-ko.md
 
-Done: 0 published, 0 failed
+Done: 2 published, 0 failed

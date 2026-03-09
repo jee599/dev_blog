@@ -7,6 +7,8 @@ tags:
   - agenticai
   - llm
   - architecture
+id: 3328522
+date: 'draft'
 ---
 
 2024~2026년 프로덕션 AI 실패의 대부분은 모델 품질 때문이 아니었다.
