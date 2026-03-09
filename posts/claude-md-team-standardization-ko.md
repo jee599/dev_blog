@@ -7,6 +7,8 @@ tags:
   - productivity
   - beginners
   - webdev
+id: 3328613
+date: 'draft'
 ---
 
 팀의 AI 품질 편차는 모델 문제가 아니라 컨텍스트 표준 부재에서 나온다. 같은 질문에 다른 답이 나오는 이유는 팀원이 각자 다른 프롬프트/규칙을 쓰기 때문이다.

@@ -7,6 +7,8 @@ tags:
   - productivity
   - beginners
   - webdev
+id: 3328612
+date: 'draft'
 ---
 
 Inconsistent AI output across a team is usually a context problem, not a model problem. If everyone feeds different instructions, quality and style diverge.

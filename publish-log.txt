@@ -1,5 +1,5 @@
 Fetching existing articles from DEV.to ...
-  Found 38 existing article(s) on DEV.to
+  Found 40 existing article(s) on DEV.to
 
 SKIP (has id): posts/ai-fortune-architecture-en.md
 SKIP (has id): posts/ai-fortune-architecture-ko.md
@@ -13,6 +13,54 @@ SKIP (has id): posts/claude-code-10-features-ranked-ko-part1.md
 SKIP (has id): posts/claude-code-10-features-ranked-ko-part2.md
 SKIP (has id): posts/claude-code-config-guide-en.md
 SKIP (has id): posts/claude-code-config-guide-ko.md
+
+PUBLISHING: posts/claude-hooks-exit2-en.md
+  title: exit 0 Means Pass, exit 2 Means Block — Taming AI with Claude Code Hooks
+  tags: ['ai', 'llm', 'productivity', 'webdev']
+  step 1: creating draft ...
+  step 1 result: HTTP 201
+  draft created id=3328608
+  DRAFT saved id=3328608 (manual publish)
+
+PUBLISHING: posts/claude-hooks-exit2-ko.md
+  title: exit 0이면 통과, exit 2면 차단 — Claude Code Hooks로 AI를 길들이는 법
+  tags: ['ai', 'llm', 'productivity', 'webdev']
+  step 1: creating draft ...
+  step 1 result: HTTP 201
+  draft created id=3328611
+  DRAFT saved id=3328611 (manual publish)
+
+PUBLISHING: posts/claude-md-team-standardization-en.md
+  title: One File to Standardize AI Quality Across Your Entire Team
+  tags: ['ai', 'productivity', 'beginners', 'webdev']
+  step 1: creating draft ...
+  step 1 result: HTTP 201
+  draft created id=3328612
+  DRAFT saved id=3328612 (manual publish)
+
+PUBLISHING: posts/claude-md-team-standardization-ko.md
+  title: CLAUDE.md 하나로 팀 전체의 AI 품질을 통일한 방법
+  tags: ['ai', 'productivity', 'beginners', 'webdev']
+  step 1: creating draft ...
+  step 1 result: HTTP 201
+  draft created id=3328613
+  DRAFT saved id=3328613 (manual publish)
+
+PUBLISHING: posts/context-engineering-practical-en.md
+  title: Prompt Engineering Is Over — A Practical Guide to Context Engineering
+  tags: ['ai', 'llm', 'productivity', 'beginners']
+  step 1: creating draft ...
+  step 1 result: HTTP 201
+  draft created id=3328616
+  DRAFT saved id=3328616 (manual publish)
+
+PUBLISHING: posts/context-engineering-practical-ko.md
+  title: 프롬프트 잘 쓰는 시대는 끝났다 — Context Engineering 실전 가이드
+  tags: ['ai', 'llm', 'productivity', 'beginners']
+  step 1: creating draft ...
+  step 1 result: HTTP 201
+  draft created id=3328618
+  DRAFT saved id=3328618 (manual publish)
 SKIP (has id): posts/designing-saas-with-claude-en.md
 SKIP (has id): posts/designing-saas-with-claude-ko.md
 SKIP (has id): posts/github-trending-100-patterns-en.md
@@ -23,20 +71,24 @@ SKIP (has id): posts/llm-cost-optimization-en.md
 SKIP (has id): posts/llm-cost-optimization-ko.md
 SKIP (has id): posts/llm-cost-skill-tree-en.md
 SKIP (has id): posts/llm-cost-skill-tree-ko.md
+SKIP (has id): posts/llm-cpu-agent-process-architecture-en.md
+SKIP (has id): posts/llm-cpu-agent-process-architecture-ko.md
 
-PUBLISHING: posts/llm-cpu-agent-process-architecture-en.md
-  title: LLMs Are CPUs, Agents Are Processes — The Real Architecture of Agentic AI
-  tags: ['ai', 'agenticai', 'llm', 'architecture']
-  draft detected (id=3328517) -> publish update
-  publish draft result: HTTP 200
-  PUBLISHED existing draft id=3328517
+PUBLISHING: posts/mcp-usbc-protocol-en.md
+  title: The Protocol That Wants to Be USB-C for AI — How MCP Changes Everything
+  tags: ['ai', 'mcp', 'llm', 'productivity']
+  step 1: creating draft ...
+  step 1 result: HTTP 201
+  draft created id=3328619
+  DRAFT saved id=3328619 (manual publish)
 
-PUBLISHING: posts/llm-cpu-agent-process-architecture-ko.md
-  title: LLM은 CPU고, 에이전트는 프로세스다 — Agentic AI의 진짜 구조
-  tags: ['ai', 'agenticai', 'llm', 'architecture']
-  draft detected (id=3328522) -> publish update
-  publish draft result: HTTP 200
-  PUBLISHED existing draft id=3328522
+PUBLISHING: posts/mcp-usbc-protocol-ko.md
+  title: AI의 USB-C를 만들겠다는 프로토콜 — MCP가 바꾸는 것
+  tags: ['ai', 'mcp', 'llm', 'productivity']
+  step 1: creating draft ...
+  step 1 result: HTTP 201
+  draft created id=3328620
+  DRAFT saved id=3328620 (manual publish)
 SKIP (has id): posts/model-routing-cocktail-en.md
 SKIP (has id): posts/model-routing-cocktail-ko.md
 SKIP (has id): posts/nextjs-6-languages-one-day-en.md
@@ -52,4 +104,4 @@ SKIP (has id): posts/trading-bot-arena-strategies-ko.md
 SKIP (has id): posts/trading-bot-win-rate-lie-en.md
 SKIP (has id): posts/trading-bot-win-rate-lie-ko.md
 
-Done: 2 published, 0 failed
+Done: 8 published, 0 failed
