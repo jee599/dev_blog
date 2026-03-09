@@ -8,7 +8,7 @@ tags:
   - llm
   - productivity
 id: 3328620
-date: 'draft'
+date: '2026-03-09T02:52:08Z'
 ---
 
 AI 3개와 도구 3개를 연동하려면 과거엔 9개의 커스텀 코드가 필요했다. Claude용, ChatGPT용, Cursor용을 각각 따로 짜야 했기 때문이다. N×M 문제다.

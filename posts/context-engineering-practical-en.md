@@ -8,7 +8,7 @@ tags:
   - productivity
   - beginners
 id: 3328616
-date: 'draft'
+date: '2026-03-09T02:50:22Z'
 ---
 
 When LLM output quality drops, the bottleneck is often context design, not model capability. Context is the full token bundle: system prompt, tools, retrieved docs, memory, chat history, and the current user input.

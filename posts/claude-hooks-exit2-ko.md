@@ -8,7 +8,7 @@ tags:
   - productivity
   - webdev
 id: 3328611
-date: 'draft'
+date: '2026-03-09T02:48:36Z'
 ---
 
 CLAUDE.md는 강력하지만 컨텍스트 압력(context pressure)에서 지시가 밀릴 수 있다. Hooks는 다르다. LLM에게 부탁하는 게 아니라 실행 레벨에서 차단/강제를 수행한다.

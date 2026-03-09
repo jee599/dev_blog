@@ -17,50 +17,44 @@ SKIP (has id): posts/claude-code-config-guide-ko.md
 PUBLISHING: posts/claude-hooks-exit2-en.md
   title: exit 0 Means Pass, exit 2 Means Block — Taming AI with Claude Code Hooks
   tags: ['ai', 'llm', 'productivity', 'webdev']
-  step 1: creating draft ...
-  step 1 result: HTTP 201
-  draft created id=3328608
-  DRAFT saved id=3328608 (manual publish)
+  draft detected (id=3328608) -> publish update
+  publish draft result: HTTP 200
+  PUBLISHED existing draft id=3328608
 
 PUBLISHING: posts/claude-hooks-exit2-ko.md
   title: exit 0이면 통과, exit 2면 차단 — Claude Code Hooks로 AI를 길들이는 법
   tags: ['ai', 'llm', 'productivity', 'webdev']
-  step 1: creating draft ...
-  step 1 result: HTTP 201
-  draft created id=3328611
-  DRAFT saved id=3328611 (manual publish)
+  draft detected (id=3328611) -> publish update
+  publish draft result: HTTP 200
+  PUBLISHED existing draft id=3328611
 
 PUBLISHING: posts/claude-md-team-standardization-en.md
   title: One File to Standardize AI Quality Across Your Entire Team
   tags: ['ai', 'productivity', 'beginners', 'webdev']
-  step 1: creating draft ...
-  step 1 result: HTTP 201
-  draft created id=3328612
-  DRAFT saved id=3328612 (manual publish)
+  draft detected (id=3328612) -> publish update
+  publish draft result: HTTP 200
+  PUBLISHED existing draft id=3328612
 
 PUBLISHING: posts/claude-md-team-standardization-ko.md
   title: CLAUDE.md 하나로 팀 전체의 AI 품질을 통일한 방법
   tags: ['ai', 'productivity', 'beginners', 'webdev']
-  step 1: creating draft ...
-  step 1 result: HTTP 201
-  draft created id=3328613
-  DRAFT saved id=3328613 (manual publish)
+  draft detected (id=3328613) -> publish update
+  publish draft result: HTTP 200
+  PUBLISHED existing draft id=3328613
 
 PUBLISHING: posts/context-engineering-practical-en.md
   title: Prompt Engineering Is Over — A Practical Guide to Context Engineering
   tags: ['ai', 'llm', 'productivity', 'beginners']
-  step 1: creating draft ...
-  step 1 result: HTTP 201
-  draft created id=3328616
-  DRAFT saved id=3328616 (manual publish)
+  draft detected (id=3328616) -> publish update
+  publish draft result: HTTP 200
+  PUBLISHED existing draft id=3328616
 
 PUBLISHING: posts/context-engineering-practical-ko.md
   title: 프롬프트 잘 쓰는 시대는 끝났다 — Context Engineering 실전 가이드
   tags: ['ai', 'llm', 'productivity', 'beginners']
-  step 1: creating draft ...
-  step 1 result: HTTP 201
-  draft created id=3328618
-  DRAFT saved id=3328618 (manual publish)
+  draft detected (id=3328618) -> publish update
+  publish draft result: HTTP 200
+  PUBLISHED existing draft id=3328618
 SKIP (has id): posts/designing-saas-with-claude-en.md
 SKIP (has id): posts/designing-saas-with-claude-ko.md
 SKIP (has id): posts/github-trending-100-patterns-en.md
@@ -77,18 +71,16 @@ SKIP (has id): posts/llm-cpu-agent-process-architecture-ko.md
 PUBLISHING: posts/mcp-usbc-protocol-en.md
   title: The Protocol That Wants to Be USB-C for AI — How MCP Changes Everything
   tags: ['ai', 'mcp', 'llm', 'productivity']
-  step 1: creating draft ...
-  step 1 result: HTTP 201
-  draft created id=3328619
-  DRAFT saved id=3328619 (manual publish)
+  draft detected (id=3328619) -> publish update
+  publish draft result: HTTP 200
+  PUBLISHED existing draft id=3328619
 
 PUBLISHING: posts/mcp-usbc-protocol-ko.md
   title: AI의 USB-C를 만들겠다는 프로토콜 — MCP가 바꾸는 것
   tags: ['ai', 'mcp', 'llm', 'productivity']
-  step 1: creating draft ...
-  step 1 result: HTTP 201
-  draft created id=3328620
-  DRAFT saved id=3328620 (manual publish)
+  draft detected (id=3328620) -> publish update
+  publish draft result: HTTP 200
+  PUBLISHED existing draft id=3328620
 SKIP (has id): posts/model-routing-cocktail-en.md
 SKIP (has id): posts/model-routing-cocktail-ko.md
 SKIP (has id): posts/nextjs-6-languages-one-day-en.md

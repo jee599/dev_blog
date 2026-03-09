@@ -8,7 +8,7 @@ tags:
   - productivity
   - webdev
 id: 3328608
-date: 'draft'
+date: '2026-03-09T02:48:01Z'
 ---
 
 CLAUDE.md guidance is strong, but long sessions can dilute adherence. Hooks enforce behavior at execution time.
