@@ -8,7 +8,7 @@ tags:
   - llm
   - architecture
 id: 3328517
-date: 'draft'
+date: '2026-03-09T02:02:23Z'
 ---
 
 Most AI production failures between 2024 and 2026 weren’t caused by model quality.

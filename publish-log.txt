@@ -27,18 +27,16 @@ SKIP (has id): posts/llm-cost-skill-tree-ko.md
 PUBLISHING: posts/llm-cpu-agent-process-architecture-en.md
   title: LLMs Are CPUs, Agents Are Processes — The Real Architecture of Agentic AI
   tags: ['ai', 'agenticai', 'llm', 'architecture']
-  step 1: creating draft ...
-  step 1 result: HTTP 201
-  draft created id=3328517
-  DRAFT saved id=3328517 (manual publish)
+  draft detected (id=3328517) -> publish update
+  publish draft result: HTTP 200
+  PUBLISHED existing draft id=3328517
 
 PUBLISHING: posts/llm-cpu-agent-process-architecture-ko.md
   title: LLM은 CPU고, 에이전트는 프로세스다 — Agentic AI의 진짜 구조
   tags: ['ai', 'agenticai', 'llm', 'architecture']
-  step 1: creating draft ...
-  step 1 result: HTTP 201
-  draft created id=3328522
-  DRAFT saved id=3328522 (manual publish)
+  draft detected (id=3328522) -> publish update
+  publish draft result: HTTP 200
+  PUBLISHED existing draft id=3328522
 SKIP (has id): posts/model-routing-cocktail-en.md
 SKIP (has id): posts/model-routing-cocktail-ko.md
 SKIP (has id): posts/nextjs-6-languages-one-day-en.md
