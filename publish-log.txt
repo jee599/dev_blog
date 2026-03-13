@@ -1,5 +1,5 @@
 Fetching existing articles from DEV.to ...
-  Found 70 existing article(s) on DEV.to
+  Found 83 existing article(s) on DEV.to
 
 SKIP (has id): posts/ai-fortune-architecture-en.md
 SKIP (has id): posts/ai-fortune-architecture-ko.md
