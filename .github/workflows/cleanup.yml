@@ -1,0 +1,30 @@
+name: Cleanup DEV.to articles
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Unpublish jidonglab/build-log articles
+        env:
+          DEVTO_KEY: ${{ secrets.DEVTO_TOKEN }}
+        run: |
+          # jidonglab 새 기능, 빌드로그, LLMTrio 빌드로그 unpublish
+          IDS=(3349635 3350775 3350777 3351005 3351004 3349636 3349638 3351047 3345329 3345318 3340908 3340910 3351046 3340907 3347948 3347947 3347946 3347945 3345317)
+
+          for id in "${IDS[@]}"; do
+            echo "Unpublishing article $id..."
+            STATUS=$(curl -s -o /dev/null -w "%{http_code}" -X PUT \
+              -H "api-key: $DEVTO_KEY" \
+              -H "Content-Type: application/json" \
+              -d '{"article":{"published":false}}' \
+              "https://dev.to/api/articles/$id")
+            echo "  -> HTTP $STATUS"
+            sleep 3
+          done
+          echo "Done"
