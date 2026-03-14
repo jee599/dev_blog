@@ -1,58 +1,27 @@
 Fetching existing articles from DEV.to ...
-  Found 109 existing article(s) on DEV.to
+  Found 122 existing article(s) on DEV.to
 
-
-PUBLISHING: posts/2026-03-14-ai-chatbot-safety-legislation-ko.md
-  title: 워싱턴주 AI 챗봇 안전법 통과—78개 법안, 27개 주, 2026년이 분수령이다
-  tags: []
-  step 1: creating draft ...
-  step 1 result: HTTP 201
-  draft created id=3351045
-  DRAFT saved id=3351045 (manual publish)
 
 PUBLISHING: posts/2026-03-14-anthropic-partner-network-100m-ko.md
   title: Anthropic, 클로드 파트너 네트워크에 1억 달러 투자—기업 시장 선점 전략
   tags: []
-  step 1: creating draft ...
-    attempt 1: HTTP 429
-    response body: {"error":"Rate limit reached, try again in 30 seconds","status":429}
-    rate-limit-remaining=?  reset=?  retry-after=?
-    retrying in 16.0s ...
-    attempt 2: HTTP 429
-    response body: {"error":"Rate limit reached, try again in 30 seconds","status":429}
-    rate-limit-remaining=?  reset=?  retry-after=?
-    retrying in 34.6s ...
-  step 1 result: HTTP 201
-  draft created id=3351050
-  DRAFT saved id=3351050 (manual publish)
+  draft detected (id=3351050) -> publish update
+  publish draft result: HTTP 200
+  PUBLISHED existing draft id=3351050
 
 PUBLISHING: posts/2026-03-14-gemini-750m-ads-ko.md
   title: Gemini 사용자 7억 5천만 돌파—그리고 구글이 광고 가능성을 열었다
   tags: []
-  step 1: creating draft ...
-    attempt 1: HTTP 429
-    response body: {"error":"Rate limit reached, try again in 30 seconds","status":429}
-    rate-limit-remaining=?  reset=?  retry-after=?
-    retrying in 16.9s ...
-    attempt 2: HTTP 429
-    response body: {"error":"Rate limit reached, try again in 30 seconds","status":429}
-    rate-limit-remaining=?  reset=?  retry-after=?
-    retrying in 33.0s ...
-  step 1 result: HTTP 201
-  draft created id=3351059
-  DRAFT saved id=3351059 (manual publish)
+  draft detected (id=3351059) -> publish update
+  publish draft result: HTTP 200
+  PUBLISHED existing draft id=3351059
 
 PUBLISHING: posts/2026-03-14-nvidia-gtc-2026-rubin-nemoclaw-ko.md
   title: Nvidia GTC 2026 프리뷰: Rubin GPU·NemoClaw·CPU 전략, 에이전틱 AI 시대의 인프라 판이 바뀐다
   tags: []
-  step 1: creating draft ...
-    attempt 1: HTTP 429
-    response body: {"error":"Rate limit reached, try again in 30 seconds","status":429}
-    rate-limit-remaining=?  reset=?  retry-after=?
-    retrying in 19.3s ...
-  step 1 result: HTTP 201
-  draft created id=3351066
-  DRAFT saved id=3351066 (manual publish)
+  draft detected (id=3351066) -> publish update
+  publish draft result: HTTP 200
+  PUBLISHED existing draft id=3351066
 SKIP (has id): posts/ai-fortune-architecture-en.md
 SKIP (has id): posts/ai-fortune-architecture-ko.md
 SKIP (has id): posts/anthropic-13-free-courses-review-en.md
@@ -102,4 +71,4 @@ SKIP (has id): posts/trading-bot-arena-strategies-ko.md
 SKIP (has id): posts/trading-bot-win-rate-lie-en.md
 SKIP (has id): posts/trading-bot-win-rate-lie-ko.md
 
-Done: 4 published, 0 failed
+Done: 3 published, 0 failed

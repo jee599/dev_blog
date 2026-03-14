@@ -4,7 +4,7 @@ published: true
 description: "구글 Gemini가 월간 활성 사용자 7.5억을 넘어섰다. 바로 다음 날 구글 SVP Nick Fox가 광고 가능성을 부인하지 않았다. Demis Hassabis의 말과 정반대다."
 tags: ai, ainews, gemini, google
 id: 3351059
-date: 'draft'
+date: '2026-03-14T10:03:28Z'
 ---
 
 7억 5천만 명. 2025년 3월의 3억 5천만 명에서 정확히 1년 만에 두 배를 넘어섰다. 구글 Gemini의 숫자다. 그리고 구글은 이 타이밍을 골라 광고 가능성을 열었다.
