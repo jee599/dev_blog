@@ -10,7 +10,7 @@ jobs:
   cleanup:
     runs-on: ubuntu-latest
     steps:
-      - name: Unpublish low-view news + build logs
+      - name: Delete all unpublished articles
         env:
           DEVTO_KEY: ${{ secrets.DEVTO_TOKEN }}
         run: |
@@ -20,11 +20,11 @@ jobs:
           KEY = os.environ["DEVTO_KEY"]
           HEADERS = {"api-key": KEY, "Content-Type": "application/json", "User-Agent": "dev-blog-cleanup/1.0", "Accept": "application/vnd.forem.api-v1+json"}
 
-          # Fetch all my articles (published + unpublished)
+          # Fetch all unpublished articles
           all_articles = []
           page = 1
           while True:
-              url = f"https://dev.to/api/articles/me/all?per_page=100&page={page}"
+              url = f"https://dev.to/api/articles/me/unpublished?per_page=100&page={page}"
               req = urllib.request.Request(url, headers=HEADERS)
               resp = urllib.request.urlopen(req)
               arts = json.loads(resp.read())
@@ -35,65 +35,26 @@ jobs:
                   break
               page += 1
 
-          print(f"Total articles: {len(all_articles)}")
+          print(f"Unpublished articles found: {len(all_articles)}")
 
-          # Build log keywords
-          BUILD_LOG_KEYWORDS = [
-              "build log", "build-log", "빌드 로그", "빌드로그",
-              "jidonglab.com", "[jidonglab", "새 기능 추가",
-              "portfolio", "포트폴리오", "작업 정리",
-              "Three.js", "CosmicBackground", "z-index",
-              "toss.tech 스타일", "toss.tech-style",
-              "Paddle 결제", "Paddle payment",
-              "QA 3라운드", "3 rounds of QA",
-              "로딩 화면", "Loading screen",
-              "GitHub Actions로 Dev.to",
-              "Vercel Cloudflare migration",
-              "Toss 결제", "사주 분석 앱",
-          ]
-
-          unpublish_ids = []
-
+          deleted = 0
+          failed = 0
           for art in all_articles:
-              if not art.get("published"):
-                  continue
-
-              title = art.get("title", "")
               aid = art["id"]
-              views = art.get("page_views_count", 0)
-              tags = art.get("tag_list", [])
-
-              # 1. Build log / jidonglab feature articles -> always unpublish
-              is_build_log = any(kw.lower() in title.lower() for kw in BUILD_LOG_KEYWORDS)
-              if is_build_log:
-                  print(f"UNPUBLISH (build-log/jidonglab): id={aid} views={views} title={title[:60]}")
-                  unpublish_ids.append(aid)
-                  continue
-
-              # 2. AI news with views < 50 -> unpublish if not important
-              is_news = "ainews" in [t.lower().replace("-","") for t in tags] or "ai-news" in title.lower()
-              if is_news and views < 50:
-                  # Keep important topics (major companies, big funding, product launches)
-                  important_keywords = ["openai", "anthropic", "google", "nvidia", "meta", "apple", "microsoft"]
-                  is_important = any(kw in title.lower() for kw in important_keywords)
-                  if not is_important:
-                      print(f"UNPUBLISH (low-view news): id={aid} views={views} title={title[:60]}")
-                      unpublish_ids.append(aid)
-
-          print(f"\nTotal to unpublish: {len(unpublish_ids)}")
-
-          for aid in unpublish_ids:
-              data = json.dumps({"article": {"published": False}}).encode()
+              title = art.get("title", "")[:60]
+              print(f"  Deleting {aid}: {title}...")
               req = urllib.request.Request(
                   f"https://dev.to/api/articles/{aid}",
-                  data=data, method="PUT", headers=HEADERS
+                  method="DELETE", headers=HEADERS
               )
               try:
                   resp = urllib.request.urlopen(req)
-                  print(f"  Unpublished {aid}: HTTP {resp.status}")
+                  print(f"    -> HTTP {resp.status}")
+                  deleted += 1
               except Exception as e:
-                  print(f"  Failed {aid}: {e}")
+                  print(f"    -> Failed: {e}")
+                  failed += 1
               time.sleep(3)
 
-          print("Done")
+          print(f"\nDone: {deleted} deleted, {failed} failed")
           PYEOF
