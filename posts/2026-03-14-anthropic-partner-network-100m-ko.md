@@ -3,6 +3,8 @@ title: "Anthropic, 클로드 파트너 네트워크에 1억 달러 투자—기�
 published: true
 description: "Anthropic이 3월 12일 클로드 파트너 네트워크를 출범시키며 1억 달러를 투자했다. Accenture, Cognizant, Deloitte, Infosys 등 주요 컨설팅 기업들이 참여한다."
 tags: ai, ainews, claude, enterprise
+id: 3351050
+date: 'draft'
 ---
 
 Anthropic이 1억 달러짜리 수표를 썼다. 연구비가 아니다. 모델 학습 비용도 아니다. 기업 시장에서 클로드를 쉽게 떼어낼 수 없도록 만드는 채널 구축비다.

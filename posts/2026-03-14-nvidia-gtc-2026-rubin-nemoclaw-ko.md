@@ -3,6 +3,8 @@ title: "Nvidia GTC 2026 프리뷰: Rubin GPU·NemoClaw·CPU 전략, 에이전틱
 published: true
 description: "3월 16일 개막하는 Nvidia GTC 2026에서 차세대 GPU 아키텍처 Rubin과 오픈소스 에이전트 플랫폼 NemoClaw가 발표될 예정이다. 올해 GTC의 핵심 주제는 GPU가 아니라 에이전틱 AI다."
 tags: ai, ainews, nvidia, llm
+id: 3351066
+date: 'draft'
 ---
 
 3만 명이 산호세로 온다. 190개국에서. 3월 16일 젠슨 황이 SAP 센터 무대에 선다. 그리고 올해 GPU 컨퍼런스에서 가장 큰 이야기는 GPU가 아닐 수 있다.
