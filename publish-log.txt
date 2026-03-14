@@ -1,27 +1,9 @@
 Fetching existing articles from DEV.to ...
-  Found 122 existing article(s) on DEV.to
+  Found 99 existing article(s) on DEV.to
 
-
-PUBLISHING: posts/2026-03-14-anthropic-partner-network-100m-ko.md
-  title: Anthropic, 클로드 파트너 네트워크에 1억 달러 투자—기업 시장 선점 전략
-  tags: []
-  draft detected (id=3351050) -> publish update
-  publish draft result: HTTP 200
-  PUBLISHED existing draft id=3351050
-
-PUBLISHING: posts/2026-03-14-gemini-750m-ads-ko.md
-  title: Gemini 사용자 7억 5천만 돌파—그리고 구글이 광고 가능성을 열었다
-  tags: []
-  draft detected (id=3351059) -> publish update
-  publish draft result: HTTP 200
-  PUBLISHED existing draft id=3351059
-
-PUBLISHING: posts/2026-03-14-nvidia-gtc-2026-rubin-nemoclaw-ko.md
-  title: Nvidia GTC 2026 프리뷰: Rubin GPU·NemoClaw·CPU 전략, 에이전틱 AI 시대의 인프라 판이 바뀐다
-  tags: []
-  draft detected (id=3351066) -> publish update
-  publish draft result: HTTP 200
-  PUBLISHED existing draft id=3351066
+SKIP (has id): posts/2026-03-14-anthropic-partner-network-100m-ko.md
+SKIP (has id): posts/2026-03-14-gemini-750m-ads-ko.md
+SKIP (has id): posts/2026-03-14-nvidia-gtc-2026-rubin-nemoclaw-ko.md
 SKIP (has id): posts/ai-fortune-architecture-en.md
 SKIP (has id): posts/ai-fortune-architecture-ko.md
 SKIP (has id): posts/anthropic-13-free-courses-review-en.md
@@ -71,4 +53,4 @@ SKIP (has id): posts/trading-bot-arena-strategies-ko.md
 SKIP (has id): posts/trading-bot-win-rate-lie-en.md
 SKIP (has id): posts/trading-bot-win-rate-lie-ko.md
 
-Done: 3 published, 0 failed
+Done: 0 published, 0 failed
