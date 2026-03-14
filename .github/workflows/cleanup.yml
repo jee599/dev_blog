@@ -18,7 +18,7 @@ jobs:
           import json, urllib.request, time, os
 
           KEY = os.environ["DEVTO_KEY"]
-          HEADERS = {"api-key": KEY, "Content-Type": "application/json"}
+          HEADERS = {"api-key": KEY, "Content-Type": "application/json", "User-Agent": "dev-blog-cleanup/1.0", "Accept": "application/vnd.forem.api-v1+json"}
 
           # Fetch all my articles (published + unpublished)
           all_articles = []
