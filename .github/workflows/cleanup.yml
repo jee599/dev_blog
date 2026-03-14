@@ -10,21 +10,90 @@ jobs:
   cleanup:
     runs-on: ubuntu-latest
     steps:
-      - name: Unpublish jidonglab/build-log articles
+      - name: Unpublish low-view news + build logs
         env:
           DEVTO_KEY: ${{ secrets.DEVTO_TOKEN }}
         run: |
-          # jidonglab 새 기능, 빌드로그, LLMTrio 빌드로그 unpublish
-          IDS=(3349635 3350775 3350777 3351005 3351004 3349636 3349638 3351047 3345329 3345318 3340908 3340910 3351046 3340907 3347948 3347947 3347946 3347945 3345317)
+          python3 << 'PYEOF'
+          import json, urllib.request, time, os
 
-          for id in "${IDS[@]}"; do
-            echo "Unpublishing article $id..."
-            STATUS=$(curl -s -o /dev/null -w "%{http_code}" -X PUT \
-              -H "api-key: $DEVTO_KEY" \
-              -H "Content-Type: application/json" \
-              -d '{"article":{"published":false}}' \
-              "https://dev.to/api/articles/$id")
-            echo "  -> HTTP $STATUS"
-            sleep 3
-          done
-          echo "Done"
+          KEY = os.environ["DEVTO_KEY"]
+          HEADERS = {"api-key": KEY, "Content-Type": "application/json"}
+
+          # Fetch all my articles (published + unpublished)
+          all_articles = []
+          page = 1
+          while True:
+              url = f"https://dev.to/api/articles/me/all?per_page=100&page={page}"
+              req = urllib.request.Request(url, headers=HEADERS)
+              resp = urllib.request.urlopen(req)
+              arts = json.loads(resp.read())
+              if not arts:
+                  break
+              all_articles.extend(arts)
+              if len(arts) < 100:
+                  break
+              page += 1
+
+          print(f"Total articles: {len(all_articles)}")
+
+          # Build log keywords
+          BUILD_LOG_KEYWORDS = [
+              "build log", "build-log", "빌드 로그", "빌드로그",
+              "jidonglab.com", "[jidonglab", "새 기능 추가",
+              "portfolio", "포트폴리오", "작업 정리",
+              "Three.js", "CosmicBackground", "z-index",
+              "toss.tech 스타일", "toss.tech-style",
+              "Paddle 결제", "Paddle payment",
+              "QA 3라운드", "3 rounds of QA",
+              "로딩 화면", "Loading screen",
+              "GitHub Actions로 Dev.to",
+              "Vercel Cloudflare migration",
+              "Toss 결제", "사주 분석 앱",
+          ]
+
+          unpublish_ids = []
+
+          for art in all_articles:
+              if not art.get("published"):
+                  continue
+
+              title = art.get("title", "")
+              aid = art["id"]
+              views = art.get("page_views_count", 0)
+              tags = art.get("tag_list", [])
+
+              # 1. Build log / jidonglab feature articles -> always unpublish
+              is_build_log = any(kw.lower() in title.lower() for kw in BUILD_LOG_KEYWORDS)
+              if is_build_log:
+                  print(f"UNPUBLISH (build-log/jidonglab): id={aid} views={views} title={title[:60]}")
+                  unpublish_ids.append(aid)
+                  continue
+
+              # 2. AI news with views < 50 -> unpublish if not important
+              is_news = "ainews" in [t.lower().replace("-","") for t in tags] or "ai-news" in title.lower()
+              if is_news and views < 50:
+                  # Keep important topics (major companies, big funding, product launches)
+                  important_keywords = ["openai", "anthropic", "google", "nvidia", "meta", "apple", "microsoft"]
+                  is_important = any(kw in title.lower() for kw in important_keywords)
+                  if not is_important:
+                      print(f"UNPUBLISH (low-view news): id={aid} views={views} title={title[:60]}")
+                      unpublish_ids.append(aid)
+
+          print(f"\nTotal to unpublish: {len(unpublish_ids)}")
+
+          for aid in unpublish_ids:
+              data = json.dumps({"article": {"published": False}}).encode()
+              req = urllib.request.Request(
+                  f"https://dev.to/api/articles/{aid}",
+                  data=data, method="PUT", headers=HEADERS
+              )
+              try:
+                  resp = urllib.request.urlopen(req)
+                  print(f"  Unpublished {aid}: HTTP {resp.status}")
+              except Exception as e:
+                  print(f"  Failed {aid}: {e}")
+              time.sleep(3)
+
+          print("Done")
+          PYEOF
