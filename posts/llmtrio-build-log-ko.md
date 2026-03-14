@@ -3,6 +3,8 @@ title: "Claude, Codex, Gemini를 동시에 돌려봤다 — LLMTrio 빌드 로�
 published: true
 description: "프롬프트 하나에 AI 3개가 병렬로 일한다. 만드는 건 이틀, 버그 잡는 건 하루 종일."
 tags: ai, opensource, llm, webdev
+id: 3350777
+date: 'draft'
 ---
 
 프롬프트 하나를 넣으면 Claude, Codex, Gemini 세 개가 동시에 일한다. 각자 잘하는 걸 맡기고, 결과를 합친다. 터미널 세 개 띄워놓고 복붙하는 게 아니라 자동으로.

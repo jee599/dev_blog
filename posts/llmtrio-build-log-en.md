@@ -3,6 +3,8 @@ title: "Running Claude, Codex, and Gemini in Parallel — Building LLMTrio from 
 published: true
 description: "I built a tool that runs 3 AI coding agents simultaneously. Then I spent a full session fixing 7 sync bugs and redesigning the approval architecture."
 tags: ai, opensource, llm, webdev
+id: 3350775
+date: 'draft'
 ---
 
 I wanted Claude, Codex, and Gemini to work on the same task at the same time. Not sequentially. Not through copy-pasting between terminals. In parallel, with each model doing what it's best at, and the results merging automatically.

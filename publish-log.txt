@@ -31,6 +31,22 @@ SKIP (has id): posts/llm-cost-skill-tree-en.md
 SKIP (has id): posts/llm-cost-skill-tree-ko.md
 SKIP (has id): posts/llm-cpu-agent-process-architecture-en.md
 SKIP (has id): posts/llm-cpu-agent-process-architecture-ko.md
+
+PUBLISHING: posts/llmtrio-build-log-en.md
+  title: Running Claude, Codex, and Gemini in Parallel — Building LLMTrio from Scratch
+  tags: []
+  step 1: creating draft ...
+  step 1 result: HTTP 201
+  draft created id=3350775
+  DRAFT saved id=3350775 (manual publish)
+
+PUBLISHING: posts/llmtrio-build-log-ko.md
+  title: Claude, Codex, Gemini를 동시에 돌려봤다 — LLMTrio 빌드 로그
+  tags: []
+  step 1: creating draft ...
+  step 1 result: HTTP 201
+  draft created id=3350777
+  DRAFT saved id=3350777 (manual publish)
 SKIP (has id): posts/mcp-usbc-protocol-en.md
 SKIP (has id): posts/mcp-usbc-protocol-ko.md
 SKIP (has id): posts/model-routing-cocktail-en.md
@@ -48,4 +64,4 @@ SKIP (has id): posts/trading-bot-arena-strategies-ko.md
 SKIP (has id): posts/trading-bot-win-rate-lie-en.md
 SKIP (has id): posts/trading-bot-win-rate-lie-ko.md
 
-Done: 0 published, 0 failed
+Done: 2 published, 0 failed
