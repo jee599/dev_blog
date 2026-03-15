@@ -8,7 +8,7 @@ tags:
   - beginners
   - webdev
 id: 3286744
-date: 'draft'
+date: '2026-03-15T06:01:44Z'
 ---
 
 When people hear “prompt engineering,” they think “how to ask AI better questions.”

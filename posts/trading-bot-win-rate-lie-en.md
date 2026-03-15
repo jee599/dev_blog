@@ -8,7 +8,7 @@ tags:
   - python
   - beginners
 id: 3292525
-date: 'draft'
+date: '2026-03-15T06:01:44Z'
 ---
 
 44.3% win rate. Loses 56 out of 100 trades.

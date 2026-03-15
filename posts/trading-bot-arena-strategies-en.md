@@ -8,7 +8,7 @@ tags:
   - python
   - machinelearning
 id: 3292504
-date: 'draft'
+date: '2026-03-15T06:01:44Z'
 ---
 
 There's an AI trading arena on HuggingFace called "Prompt & Dump."

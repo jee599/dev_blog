@@ -8,7 +8,7 @@ tags:
   - python
   - beginners
 id: 3292498
-date: 'draft'
+date: '2026-03-15T06:01:44Z'
 ---
 
 I assumed more complex strategies would make more money.
