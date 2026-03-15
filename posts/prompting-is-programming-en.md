@@ -9,6 +9,7 @@ tags:
   - webdev
 id: 3286744
 date: '2026-03-15T06:01:44Z'
+hashnode_url: 'https://plzai.hashnode.dev/prompting-is-programming'
 ---
 
 When people hear “prompt engineering,” they think “how to ask AI better questions.”

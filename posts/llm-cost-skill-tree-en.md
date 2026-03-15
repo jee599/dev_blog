@@ -9,6 +9,7 @@ tags:
   - productivity
 id: 3286732
 date: '2026-03-15T06:01:44Z'
+hashnode_url: 'https://plzai.hashnode.dev/llm-cost-skill-tree'
 ---
 
 The first thing I thought when starting an AI side project was “how does the cost structure even work?”

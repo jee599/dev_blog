@@ -9,6 +9,7 @@ tags:
   - webdev
 id: 3286739
 date: '2026-03-15T06:01:44Z'
+hashnode_url: 'https://plzai.hashnode.dev/model-routing-cocktail'
 ---
 
 “Which model is the best?”

@@ -9,6 +9,7 @@ tags:
   - beginners
 id: 3292525
 date: '2026-03-15T06:01:44Z'
+hashnode_url: 'https://plzai.hashnode.dev/trading-bot-win-rate-lie'
 ---
 
 44.3% win rate. Loses 56 out of 100 trades.

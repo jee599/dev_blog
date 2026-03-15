@@ -9,6 +9,7 @@ tags:
   - machinelearning
 id: 3292504
 date: '2026-03-15T06:01:44Z'
+hashnode_url: 'https://plzai.hashnode.dev/trading-bot-arena-strategies'
 ---
 
 There's an AI trading arena on HuggingFace called "Prompt & Dump."
