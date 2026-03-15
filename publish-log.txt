@@ -1,5 +1,5 @@
 Fetching existing articles from DEV.to ...
-  Found 85 existing article(s) on DEV.to
+  Found 90 existing article(s) on DEV.to
 
 SKIP (has id): posts/2026-03-14-anthropic-partner-network-100m-ko.md
 SKIP (has id): posts/2026-03-14-gemini-750m-ads-ko.md
@@ -8,52 +8,46 @@ SKIP (has id): posts/2026-03-14-nvidia-gtc-2026-rubin-nemoclaw-ko.md
 PUBLISHING: posts/ai-agent-i18n-tarot-compatibility-en.md
   title: i18n + Tarot + Compatibility in One Day: Constraint Design Is the Real Skill
   tags: ['ai', 'webdev', 'productivity', 'llm']
-  step 1: creating draft ...
-  step 1 result: HTTP 201
-  draft created id=3353612
-  DRAFT saved id=3353612 (manual publish)
+  draft detected (id=3353612) -> publish update
+  publish draft result: HTTP 200
+  PUBLISHED existing draft id=3353612
 
 PUBLISHING: posts/ai-content-full-automation-en.md
   title: Full Content Automation: One Script Generates, Formats, and Publishes in Two Languages
   tags: ['ai', 'automation', 'devops', 'productivity']
-  step 1: creating draft ...
-  step 1 result: HTTP 201
-  draft created id=3353613
-  DRAFT saved id=3353613 (manual publish)
+  draft detected (id=3353613) -> publish update
+  publish draft result: HTTP 200
+  PUBLISHED existing draft id=3353613
 SKIP (has id): posts/ai-fortune-architecture-en.md
 SKIP (has id): posts/ai-fortune-architecture-ko.md
 
 PUBLISHING: posts/ai-multistack-bootstrap-strategy-en.md
   title: Structured Prompting for Multi-Stack Project Bootstraps With AI
   tags: ['ai', 'productivity', 'python', 'react']
-  step 1: creating draft ...
-  step 1 result: HTTP 201
-  draft created id=3353614
-  DRAFT saved id=3353614 (manual publish)
+  draft detected (id=3353614) -> publish update
+  publish draft result: HTTP 200
+  PUBLISHED existing draft id=3353614
 
 PUBLISHING: posts/ai-news-bilingual-script-pattern-en.md
   title: One Script, Two Languages: Building a Bilingual AI News Pipeline
   tags: ['ai', 'automation', 'productivity', 'devops']
-  step 1: creating draft ...
-  step 1 result: HTTP 201
-  draft created id=3353615
-  DRAFT saved id=3353615 (manual publish)
+  draft detected (id=3353615) -> publish update
+  publish draft result: HTTP 200
+  PUBLISHED existing draft id=3353615
 
 PUBLISHING: posts/ai-news-claude-automation-en.md
   title: Claude-Powered News Pipeline: From API Call to Production Markdown in One Script
   tags: ['ai', 'automation', 'claude', 'productivity']
-  step 1: creating draft ...
-  step 1 result: HTTP 201
-  draft created id=3353616
-  DRAFT saved id=3353616 (manual publish)
+  draft detected (id=3353616) -> publish update
+  publish draft result: HTTP 200
+  PUBLISHED existing draft id=3353616
 
 PUBLISHING: posts/ai-news-complete-workflow-en.md
   title: From Script to Deploy: A Complete AI News Generation Workflow
   tags: ['ai', 'automation', 'productivity', 'webdev']
-  step 1: creating draft ...
-  step 1 result: HTTP 201
-  draft created id=3353617
-  DRAFT saved id=3353617 (manual publish)
+  draft detected (id=3353617) -> publish update
+  publish draft result: HTTP 200
+  PUBLISHED existing draft id=3353617
 SKIP (has id): posts/anthropic-13-free-courses-review-en.md
 SKIP (has id): posts/anthropic-13-free-courses-review-ko.md
 SKIP (has id): posts/building-real-apps-with-claude-api-en.md
@@ -78,18 +72,16 @@ SKIP (has id): posts/github-trending-100-patterns-ko.md
 PUBLISHING: posts/gpt5-codex-5800-line-bootstrap-en.md
   title: 5,800 Lines in One Day: Bootstrapping a Full Pipeline With gpt-5-codex
   tags: ['ai', 'gpt5', 'python', 'react']
-  step 1: creating draft ...
-  step 1 result: HTTP 201
-  draft created id=3353618
-  DRAFT saved id=3353618 (manual publish)
+  draft detected (id=3353618) -> publish update
+  publish draft result: HTTP 200
+  PUBLISHED existing draft id=3353618
 
 PUBLISHING: posts/gpt5-codex-shorts-pipeline-en.md
   title: GPT-5 Codex Shorts Pipeline, How I Bootstrapped 5,800 Lines in 4 Commits
   tags: ['ai', 'gpt5', 'productivity', 'webdev']
-  step 1: creating draft ...
-  step 1 result: HTTP 201
-  draft created id=3353620
-  DRAFT saved id=3353620 (manual publish)
+  draft detected (id=3353620) -> publish update
+  publish draft result: HTTP 200
+  PUBLISHED existing draft id=3353620
 SKIP (has id): posts/gpt5-vs-gemini-vs-claude-real-test-en.md
 SKIP (has id): posts/gpt5-vs-gemini-vs-claude-real-test-ko.md
 SKIP (has id): posts/llm-cost-optimization-en.md

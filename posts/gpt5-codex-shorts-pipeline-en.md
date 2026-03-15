@@ -8,7 +8,7 @@ tags:
   - productivity
   - webdev
 id: 3353620
-date: 'draft'
+date: '2026-03-15T07:12:34Z'
 ---
 
 I generated 5,800 lines of new code with GPT-5 Codex across four commits. A pipeline that takes saju (Korean fortune-telling) data and produces vertical Shorts videos, from scratch. Here is the prompting strategy that made it work.

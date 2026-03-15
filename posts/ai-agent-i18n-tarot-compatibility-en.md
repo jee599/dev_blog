@@ -8,7 +8,7 @@ tags:
   - productivity
   - llm
 id: 3353612
-date: 'draft'
+date: '2026-03-15T06:00:11Z'
 ---
 
 I added AI tarot reading, rebuilt compatibility analysis, and overhauled translations across 8 languages — all in one day. 20 commits, 139 files changed. What made this possible was not coding speed. It was prompt decomposition.

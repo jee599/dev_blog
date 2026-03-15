@@ -8,7 +8,7 @@ tags:
   - python
   - react
 id: 3353614
-date: 'draft'
+date: '2026-03-15T07:09:36Z'
 ---
 
 ShortsMaker is a tool that generates short-form video from saju (Korean astrology) data. Python CLI for processing, React/Remotion for rendering. I bootstrapped the entire project with gpt-5-codex in 4 commits. Starting with code would have failed. Here is the structured approach that worked.

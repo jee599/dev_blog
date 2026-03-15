@@ -8,7 +8,7 @@ tags:
   - python
   - react
 id: 3353618
-date: 'draft'
+date: '2026-03-15T07:11:58Z'
 ---
 
 The hardest part of a new project is "where do I start." I started by handing the entire scaffolding job to gpt-5-codex. ShortsMaker — a tool that takes saju (Korean astrology) data and produces short-form video — went from zero to 5,800 lines across 4 commits in a single day.
