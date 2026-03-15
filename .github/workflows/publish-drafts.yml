@@ -1,0 +1,67 @@
+name: Publish draft articles
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Publish drafts to DEV.to
+        env:
+          DEVTO_KEY: ${{ secrets.DEVTO_TOKEN }}
+        run: |
+          python3 << 'PYEOF'
+          import json, urllib.request, time, os
+
+          KEY = os.environ["DEVTO_KEY"]
+          HEADERS = {
+              "api-key": KEY,
+              "Content-Type": "application/json",
+              "User-Agent": "dev-blog-publisher/1.0",
+              "Accept": "application/vnd.forem.api-v1+json",
+          }
+
+          # Draft article IDs to publish (excluding build logs)
+          DRAFT_IDS = [3286732, 3286739, 3286744, 3292498, 3292504, 3292525]
+
+          for aid in DRAFT_IDS:
+              print(f"Publishing {aid}...")
+              payload = json.dumps({"article": {"published": True}}).encode()
+              req = urllib.request.Request(
+                  f"https://dev.to/api/articles/{aid}",
+                  data=payload, method="PUT", headers=HEADERS,
+              )
+              try:
+                  resp = urllib.request.urlopen(req)
+                  result = json.loads(resp.read())
+                  title = result.get("title", "")[:60]
+                  url = result.get("url", "")
+                  print(f"  -> Published: {title}")
+                  print(f"     {url}")
+              except Exception as e:
+                  print(f"  -> Failed: {e}")
+              time.sleep(5)
+
+          print("\nDone")
+          PYEOF
+      - name: Update frontmatter
+        run: |
+          for id in 3286732 3286739 3286744 3292498 3292504 3292525; do
+            file=$(grep -rl "^id: $id" posts/ 2>/dev/null | head -1)
+            if [ -n "$file" ]; then
+              sed -i "s/date: 'draft'/date: '$(date -u +%Y-%m-%dT%H:%M:%SZ)'/" "$file"
+              echo "Updated: $file"
+            fi
+          done
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add posts/*.md
+          if ! git diff --cached --quiet; then
+            git commit -m "chore: update published dates [skip ci]"
+            git push
+          fi
