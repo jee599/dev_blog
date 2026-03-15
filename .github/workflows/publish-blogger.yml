@@ -20,18 +20,40 @@ jobs:
       - name: Publish Korean posts to Blogger
         env:
           BLOGGER_BLOG_ID: ${{ secrets.BLOGGER_BLOG_ID }}
-          GOOGLE_ACCESS_TOKEN: ${{ secrets.GOOGLE_ACCESS_TOKEN }}
+          GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
+          GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
+          GOOGLE_REFRESH_TOKEN: ${{ secrets.GOOGLE_REFRESH_TOKEN }}
         run: |
           python3 << 'PYEOF'
-          import os, json, re, glob, time, urllib.request, urllib.error
+          import os, json, re, glob, time, urllib.request, urllib.error, urllib.parse
           from html import escape as html_escape
 
           blog_id = os.environ.get("BLOGGER_BLOG_ID", "")
-          access_token = os.environ.get("GOOGLE_ACCESS_TOKEN", "")
+          client_id = os.environ.get("GOOGLE_CLIENT_ID", "")
+          client_secret = os.environ.get("GOOGLE_CLIENT_SECRET", "")
+          refresh_token = os.environ.get("GOOGLE_REFRESH_TOKEN", "")
 
-          if not blog_id or not access_token:
-              print("BLOGGER_BLOG_ID or GOOGLE_ACCESS_TOKEN not set, skipping")
+          if not all([blog_id, client_id, client_secret, refresh_token]):
+              print("Blogger secrets not set, skipping")
               exit(0)
+
+          # Get access token from refresh token
+          token_data = urllib.parse.urlencode({
+              "client_id": client_id,
+              "client_secret": client_secret,
+              "refresh_token": refresh_token,
+              "grant_type": "refresh_token",
+          }).encode()
+
+          req = urllib.request.Request("https://oauth2.googleapis.com/token", data=token_data, method="POST")
+          try:
+              resp = urllib.request.urlopen(req)
+              tokens = json.loads(resp.read())
+              access_token = tokens["access_token"]
+              print("Access token refreshed successfully")
+          except Exception as e:
+              print(f"Token refresh failed: {e}")
+              exit(1)
 
           HEADERS = {
               "Authorization": f"Bearer {access_token}",
@@ -40,54 +62,61 @@ jobs:
           }
 
           def md_to_html(md):
-              """Basic markdown to HTML conversion for Blogger."""
               lines = md.split('\n')
               html_lines = []
               in_code = False
-              code_lang = ""
+              code_buf = []
 
               for line in lines:
-                  # Code blocks
                   if line.startswith('```'):
                       if in_code:
-                          html_lines.append('</code></pre>')
+                          html_lines.append(f'<pre style="background:#1e1e2e;color:#cdd6f4;padding:16px;border-radius:8px;overflow-x:auto;font-family:monospace;font-size:14px;line-height:1.5;"><code>{chr(10).join(html_escape(l) for l in code_buf)}</code></pre>')
+                          code_buf = []
                           in_code = False
                       else:
-                          code_lang = line[3:].strip()
-                          html_lines.append(f'<pre><code class="language-{code_lang}">')
                           in_code = True
                       continue
 
                   if in_code:
-                      html_lines.append(html_escape(line))
+                      code_buf.append(line)
                       continue
 
-                  # Headers
                   if line.startswith('## '):
-                      html_lines.append(f'<h2>{line[3:]}</h2>')
+                      html_lines.append(f'<h2 style="margin-top:2em;margin-bottom:0.5em;font-size:1.4em;">{line[3:]}</h2>')
                   elif line.startswith('### '):
-                      html_lines.append(f'<h3>{line[4:]}</h3>')
-                  elif line.startswith('# '):
-                      html_lines.append(f'<h1>{line[2:]}</h1>')
-                  # Blockquotes
+                      html_lines.append(f'<h3 style="margin-top:1.5em;margin-bottom:0.5em;font-size:1.2em;">{line[4:]}</h3>')
                   elif line.startswith('> '):
-                      html_lines.append(f'<blockquote>{line[2:]}</blockquote>')
-                  # Images
+                      html_lines.append(f'<blockquote style="border-left:4px solid #00c471;padding:8px 16px;margin:16px 0;color:#555;background:#f9fafb;">{line[2:]}</blockquote>')
                   elif re.match(r'!\[([^\]]*)\]\(([^)]+)\)', line):
                       m = re.match(r'!\[([^\]]*)\]\(([^)]+)\)', line)
-                      html_lines.append(f'<img src="{m.group(2)}" alt="{m.group(1)}" />')
-                  # Empty line = paragraph break
+                      html_lines.append(f'<img src="{m.group(2)}" alt="{html_escape(m.group(1))}" style="max-width:100%;border-radius:8px;margin:16px 0;" />')
                   elif line.strip() == '':
-                      html_lines.append('<br/>')
+                      html_lines.append('')
+                  elif line.startswith('---'):
+                      html_lines.append('<hr style="margin:2em 0;border:none;border-top:1px solid #eee;" />')
                   else:
-                      # Inline formatting
                       processed = line
                       processed = re.sub(r'\*\*(.+?)\*\*', r'<strong>\1</strong>', processed)
-                      processed = re.sub(r'`([^`]+)`', r'<code>\1</code>', processed)
-                      processed = re.sub(r'\[([^\]]+)\]\(([^)]+)\)', r'<a href="\2">\1</a>', processed)
-                      html_lines.append(f'<p>{processed}</p>')
+                      processed = re.sub(r'`([^`]+)`', r'<code style="background:#f0f0f0;padding:2px 6px;border-radius:4px;font-size:0.9em;">\1</code>', processed)
+                      processed = re.sub(r'\[([^\]]+)\]\(([^)]+)\)', r'<a href="\2" style="color:#00c471;">\1</a>', processed)
+                      html_lines.append(f'<p style="line-height:1.8;margin:8px 0;">{processed}</p>')
 
               return '\n'.join(html_lines)
+
+          # Get existing posts to avoid duplicates
+          existing_titles = set()
+          try:
+              req = urllib.request.Request(
+                  f"https://www.googleapis.com/blogger/v3/blogs/{blog_id}/posts?maxResults=100",
+                  headers=HEADERS
+              )
+              resp = urllib.request.urlopen(req)
+              data = json.loads(resp.read())
+              for post in data.get("items", []):
+                  existing_titles.add(post["title"].strip())
+              print(f"Existing Blogger posts: {len(existing_titles)}")
+          except Exception as e:
+              print(f"Warning: couldn't fetch existing posts: {e}")
 
           published = 0
           skipped = 0
@@ -95,20 +124,16 @@ jobs:
           for filepath in sorted(glob.glob("posts/*-ko.md")):
               basename = os.path.basename(filepath)
 
-              # Skip build-log, date-prefixed news
               if "build-log" in basename:
-                  print(f"SKIP (build-log): {filepath}")
                   continue
 
               with open(filepath) as f:
                   content = f.read()
 
-              # Skip if already published to Blogger
               if "blogger_url:" in content:
                   skipped += 1
                   continue
 
-              # Parse frontmatter
               parts = content.split("---", 2)
               if len(parts) < 3:
                   continue
@@ -119,41 +144,37 @@ jobs:
               if len(body_md) < 100:
                   continue
 
-              # Extract title
               m = re.search(r'^title:\s*["\']?(.*?)["\']?\s*$', fm, re.M)
               title = m.group(1).strip() if m else ""
               if not title:
                   continue
 
-              # Extract tags
-              m = re.search(r'^tags:\s*(.*?)$', fm, re.M)
-              tags_str = m.group(1).strip() if m else ""
-              tags = [t.strip().strip("'\"") for t in re.split(r'[,\[\]]', tags_str) if t.strip().strip("'\"")]
+              if title in existing_titles:
+                  skipped += 1
+                  continue
 
-              # Check published flag
               m = re.search(r'^published:\s*(true|false)', fm, re.M | re.I)
               if m and m.group(1).lower() != "true":
                   continue
 
+              m = re.search(r'^tags:\s*(.*?)$', fm, re.M)
+              tags_str = m.group(1).strip() if m else ""
+              tags = [t.strip().strip("'\"") for t in re.split(r'[,\[\]]', tags_str) if t.strip().strip("'\"")][:5]
+
               print(f"\nPUBLISHING to Blogger: {title[:60]}")
 
-              # Convert markdown to HTML
               body_html = md_to_html(body_md)
 
-              # Add footer
               slug = basename.replace("-ko.md", "").replace(".md", "")
               canonical = f"https://jidonglab.com/blog/{slug}-ko"
-              body_html += f'\n<br/><hr/>\n<p><em>원문: <a href="{canonical}">Jidong Lab</a></em></p>'
-
-              # Labels (tags)
-              labels = tags[:5] if tags else ["AI"]
+              body_html += f'\n<br/><hr style="margin:2em 0;border:none;border-top:1px solid #eee;" />\n<p style="color:#888;font-size:0.9em;">원문: <a href="{canonical}" style="color:#00c471;">Jidong Lab</a></p>'
 
               payload = {
                   "kind": "blogger#post",
                   "blog": {"id": blog_id},
                   "title": title,
                   "content": body_html,
-                  "labels": labels,
+                  "labels": tags if tags else ["AI"],
               }
 
               data = json.dumps(payload).encode()
@@ -167,11 +188,11 @@ jobs:
                   blogger_id = result.get("id", "")
                   print(f"  -> Published: {blogger_url}")
 
-                  # Write blogger_url back to file
                   new_fm = fm.rstrip() + f"\nblogger_url: '{blogger_url}'\nblogger_id: '{blogger_id}'\n"
                   with open(filepath, "w") as f:
                       f.write("---" + new_fm + "---" + parts[2])
                   published += 1
+                  existing_titles.add(title)
               except urllib.error.HTTPError as e:
                   body = e.read().decode()
                   print(f"  -> Failed: HTTP {e.code}: {body[:300]}")
