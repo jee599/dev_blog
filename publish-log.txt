@@ -1,5 +1,5 @@
 Fetching existing articles from DEV.to ...
-  Found 111 existing article(s) on DEV.to
+  Found 63 existing article(s) on DEV.to
 
 SKIP (has id): posts/2026-03-14-anthropic-partner-network-100m-ko.md
 SKIP (has id): posts/2026-03-14-gemini-750m-ads-ko.md
@@ -12,8 +12,29 @@ SKIP (has id): posts/ai-multistack-bootstrap-strategy-en.md
 SKIP (has id): posts/ai-news-bilingual-script-pattern-en.md
 SKIP (has id): posts/ai-news-claude-automation-en.md
 SKIP (has id): posts/ai-news-complete-workflow-en.md
+
+PUBLISHING: posts/ai-trading-bot-14-sessions-en.md
+  title: Building an AI Trading Bot with Claude Code: 14 Sessions, 961 Tool Calls
+  tags: []
+  step 1: creating draft ...
+  step 1 result: HTTP 201
+  draft created id=3355787
+  DRAFT saved id=3355787 (manual publish)
 SKIP (has id): posts/anthropic-13-free-courses-review-en.md
 SKIP (has id): posts/anthropic-13-free-courses-review-ko.md
+
+PUBLISHING: posts/blog-automation-pipeline-105-sessions-en.md
+  title: Turning 105 Session Logs into Build Logs: A Claude Code Automation Pipeline
+  tags: []
+  step 1: creating draft ...
+  step 1 result: HTTP 201
+  draft created id=3355789
+  DRAFT saved id=3355789 (manual publish)
+
+PUBLISHING: posts/building-mentoring-platform-10-agents-en.md
+  title: Building a Mentoring Platform with 10 AI Agents: 6 Sessions, 1,289 Tool Calls
+  tags: []
+  DUPLICATE found on DEV.to (id=3355307) — writing id to file
 SKIP (has id): posts/building-real-apps-with-claude-api-en.md
 SKIP (has id): posts/building-real-apps-with-claude-api-ko.md
 SKIP (has id): posts/claude-code-10-features-ranked-en-part1.md
@@ -28,6 +49,11 @@ SKIP (has id): posts/claude-md-team-standardization-en.md
 SKIP (has id): posts/claude-md-team-standardization-ko.md
 SKIP (has id): posts/context-engineering-practical-en.md
 SKIP (has id): posts/context-engineering-practical-ko.md
+
+PUBLISHING: posts/dental-website-8-minutes-en.md
+  title: Building a Dental Clinic Website in 8 Minutes with Claude Code
+  tags: []
+  DUPLICATE found on DEV.to (id=3355310) — writing id to file
 SKIP (has id): posts/designing-saas-with-claude-en.md
 SKIP (has id): posts/designing-saas-with-claude-ko.md
 SKIP (has id): posts/github-trending-100-patterns-en.md
@@ -44,6 +70,11 @@ SKIP (has id): posts/llm-cpu-agent-process-architecture-en.md
 SKIP (has id): posts/llm-cpu-agent-process-architecture-ko.md
 SKIP (build-log): posts/llmtrio-build-log-en.md
 SKIP (build-log): posts/llmtrio-build-log-ko.md
+
+PUBLISHING: posts/llmtrio-multi-agent-orchestrator-86-sessions-en.md
+  title: Building a Multi-Agent LLM Orchestrator with Claude Code: 86 Sessions of Hard-Won Lessons
+  tags: []
+  DUPLICATE found on DEV.to (id=3355313) — writing id to file
 SKIP (has id): posts/mcp-usbc-protocol-en.md
 SKIP (has id): posts/mcp-usbc-protocol-ko.md
 SKIP (has id): posts/model-routing-cocktail-en.md
@@ -61,4 +92,9 @@ SKIP (has id): posts/trading-bot-arena-strategies-ko.md
 SKIP (has id): posts/trading-bot-win-rate-lie-en.md
 SKIP (has id): posts/trading-bot-win-rate-lie-ko.md
 
-Done: 0 published, 0 failed
+PUBLISHING: posts/writing-claude-code-book-with-claude-code-en.md
+  title: Writing a Claude Code Book with Claude Code: When PostToolUse Hooks Loop 25 Times
+  tags: []
+  DUPLICATE found on DEV.to (id=3355316) — writing id to file
+
+Done: 6 published, 0 failed

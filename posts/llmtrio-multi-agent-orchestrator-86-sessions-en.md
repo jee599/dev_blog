@@ -6,6 +6,8 @@ tags: ai, claudecode, multiagent, automation
 series: "Building with Claude Code: LLMTrio"
 canonical_url: https://jidonglab.com/posts/2026-03-15-LLMTrio-en
 hashnode_url: 'https://plzai.hashnode.dev/llmtrio-multi-agent-orchestrator-86-sessions'
+id: 3355313
+date: '2026-03-15T16:00:48.457Z'
 ---
 
 The idea behind multi-agent LLM orchestration is deceptively simple. Run Claude, Codex, and Gemini simultaneously, then route tasks to whichever model handles them best. After 86 sessions, here is what actually happened: the same security bug surfaced three separate times, TypeScript configuration was ignored in every single session, and API credits ran dry in a single day.

@@ -6,6 +6,8 @@ tags: ai, claudecode, hooks, automation
 series: "Building with Claude Code: Writing a Book"
 canonical_url: https://jidonglab.com/posts/2026-03-15-claudebook-en
 hashnode_url: 'https://plzai.hashnode.dev/writing-claude-code-book-with-claude-code'
+id: 3355316
+date: '2026-03-15T16:00:41.492Z'
 ---
 
 Misconfigure a single Claude Code hook and you get an agent that loops 25 times. This is what happened while writing a book about Claude Code using Claude Code. Out of 26 sessions and 147 tool calls, exactly three sessions produced anything useful.
