@@ -4,7 +4,7 @@ on:
   push:
     branches: [main]
     paths:
-      - 'posts/*-ko.md'
+      - 'posts/*-en.md'
   workflow_dispatch:
   schedule:
     - cron: '0 */6 * * *'
@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Publish Korean posts to Blogger
+      - name: Publish English posts to Blogger
         env:
           BLOGGER_BLOG_ID: ${{ secrets.BLOGGER_BLOG_ID }}
           GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
@@ -67,10 +67,14 @@ jobs:
               in_code = False
               code_buf = []
 
+              wrapper_open = '<div style="max-width:720px;margin:0 auto;font-family:-apple-system,BlinkMacSystemFont,\'Segoe UI\',sans-serif;font-size:17px;line-height:1.8;color:#333;">'
+              wrapper_close = '</div>'
+              html_lines.append(wrapper_open)
+
               for line in lines:
                   if line.startswith('```'):
                       if in_code:
-                          html_lines.append(f'<pre style="background:#1e1e2e;color:#cdd6f4;padding:16px;border-radius:8px;overflow-x:auto;font-family:monospace;font-size:14px;line-height:1.5;"><code>{chr(10).join(html_escape(l) for l in code_buf)}</code></pre>')
+                          html_lines.append(f'<pre style="background:#1e1e2e;color:#cdd6f4;padding:16px;border-radius:12px;overflow-x:auto;font-family:monospace;font-size:14px;line-height:1.5;"><code>{chr(10).join(html_escape(l) for l in code_buf)}</code></pre>')
                           code_buf = []
                           in_code = False
                       else:
@@ -82,14 +86,14 @@ jobs:
                       continue
 
                   if line.startswith('## '):
-                      html_lines.append(f'<h2 style="margin-top:2em;margin-bottom:0.5em;font-size:1.4em;">{line[3:]}</h2>')
+                      html_lines.append(f'<h2 style="margin-top:2em;margin-bottom:0.5em;font-size:1.4em;border-bottom:2px solid #00c471;padding-bottom:8px;">{line[3:]}</h2>')
                   elif line.startswith('### '):
                       html_lines.append(f'<h3 style="margin-top:1.5em;margin-bottom:0.5em;font-size:1.2em;">{line[4:]}</h3>')
                   elif line.startswith('> '):
                       html_lines.append(f'<blockquote style="border-left:4px solid #00c471;padding:8px 16px;margin:16px 0;color:#555;background:#f9fafb;">{line[2:]}</blockquote>')
                   elif re.match(r'!\[([^\]]*)\]\(([^)]+)\)', line):
                       m = re.match(r'!\[([^\]]*)\]\(([^)]+)\)', line)
-                      html_lines.append(f'<img src="{m.group(2)}" alt="{html_escape(m.group(1))}" style="max-width:100%;border-radius:8px;margin:16px 0;" />')
+                      html_lines.append(f'<img src="{m.group(2)}" alt="{html_escape(m.group(1))}" style="max-width:100%;border-radius:12px;margin:16px 0;box-shadow:0 4px 12px rgba(0,0,0,0.1);" />')
                   elif line.strip() == '':
                       html_lines.append('')
                   elif line.startswith('---'):
@@ -101,6 +105,7 @@ jobs:
                       processed = re.sub(r'\[([^\]]+)\]\(([^)]+)\)', r'<a href="\2" style="color:#00c471;">\1</a>', processed)
                       html_lines.append(f'<p style="line-height:1.8;margin:8px 0;">{processed}</p>')
 
+              html_lines.append(wrapper_close)
               return '\n'.join(html_lines)
 
           # Get existing posts to avoid duplicates
@@ -121,7 +126,7 @@ jobs:
           published = 0
           skipped = 0
 
-          for filepath in sorted(glob.glob("posts/*-ko.md")):
+          for filepath in sorted(glob.glob("posts/*-en.md")):
               basename = os.path.basename(filepath)
 
               if "build-log" in basename:
@@ -165,9 +170,9 @@ jobs:
 
               body_html = md_to_html(body_md)
 
-              slug = basename.replace("-ko.md", "").replace(".md", "")
-              canonical = f"https://jidonglab.com/blog/{slug}-ko"
-              body_html += f'\n<br/><hr style="margin:2em 0;border:none;border-top:1px solid #eee;" />\n<p style="color:#888;font-size:0.9em;">원문: <a href="{canonical}" style="color:#00c471;">Jidong Lab</a></p>'
+              slug = basename.replace("-en.md", "").replace(".md", "")
+              canonical = f"https://jidonglab.com/blog/{slug}-en"
+              body_html += f'\n<br/><hr style="margin:2em 0;border:none;border-top:1px solid #eee;" />\n<p style="color:#888;font-size:0.9em;">Original: <a href="{canonical}" style="color:#00c471;">Jidong Lab</a></p>'
 
               payload = {
                   "kind": "blogger#post",
