@@ -10,6 +10,8 @@ tags:
 id: 3303794
 date: '2026-03-03T03:03:04Z'
 hashnode_url: 'https://plzai.hashnode.dev/anthropic-13-free-courses-review'
+blogger_url: 'https://jidonglab.blogspot.com/2026/03/anthropic-dropped-13-free-courses-i.html'
+blogger_id: '8402275028760900674'
 ---
 
 Anthropic quietly put 13 courses on a platform called Skilljar. All free. Certificates included. You don’t even need an Anthropic account — just sign up with your email and you’re in.

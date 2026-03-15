@@ -10,6 +10,8 @@ tags:
 id: 3328608
 date: '2026-03-09T02:48:01Z'
 hashnode_url: 'https://plzai.hashnode.dev/claude-hooks-exit2'
+blogger_url: 'https://jidonglab.blogspot.com/2026/03/exit-0-means-pass-exit-2-means-block.html'
+blogger_id: '4850438741529476215'
 ---
 
 CLAUDE.md guidance is strong, but long sessions can dilute adherence. Hooks enforce behavior at execution time.

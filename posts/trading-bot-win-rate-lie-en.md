@@ -10,6 +10,8 @@ tags:
 id: 3292525
 date: '2026-03-15T06:01:44Z'
 hashnode_url: 'https://plzai.hashnode.dev/trading-bot-win-rate-lie'
+blogger_url: 'https://jidonglab.blogspot.com/2026/03/44-win-rate-and-still-profitable.html'
+blogger_id: '1496157782018646061'
 ---
 
 44.3% win rate. Loses 56 out of 100 trades.

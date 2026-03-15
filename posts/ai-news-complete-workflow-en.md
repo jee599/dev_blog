@@ -10,6 +10,8 @@ tags:
 id: 3353617
 date: '2026-03-15T07:11:23Z'
 hashnode_url: 'https://plzai.hashnode.dev/ai-news-complete-workflow'
+blogger_url: 'https://jidonglab.blogspot.com/2026/03/from-script-to-deploy-complete-ai-news.html'
+blogger_id: '659667002395079464'
 ---
 
 Getting AI to produce a single article is easy. Getting it to produce consistent, publication-ready content every day through an automated system is a different problem entirely. Here is the prompting and workflow design that makes daily AI news generation reliable.

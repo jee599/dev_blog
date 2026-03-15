@@ -10,6 +10,8 @@ tags:
 id: 3328612
 date: '2026-03-09T02:49:12Z'
 hashnode_url: 'https://plzai.hashnode.dev/claude-md-team-standardization'
+blogger_url: 'https://jidonglab.blogspot.com/2026/03/one-file-to-standardize-ai-quality.html'
+blogger_id: '2687380266668392905'
 ---
 
 Inconsistent AI output across a team is usually a context problem, not a model problem. If everyone feeds different instructions, quality and style diverge.
