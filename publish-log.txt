@@ -1,53 +1,17 @@
 Fetching existing articles from DEV.to ...
-  Found 90 existing article(s) on DEV.to
+  Found 111 existing article(s) on DEV.to
 
 SKIP (has id): posts/2026-03-14-anthropic-partner-network-100m-ko.md
 SKIP (has id): posts/2026-03-14-gemini-750m-ads-ko.md
 SKIP (has id): posts/2026-03-14-nvidia-gtc-2026-rubin-nemoclaw-ko.md
-
-PUBLISHING: posts/ai-agent-i18n-tarot-compatibility-en.md
-  title: i18n + Tarot + Compatibility in One Day: Constraint Design Is the Real Skill
-  tags: ['ai', 'webdev', 'productivity', 'llm']
-  draft detected (id=3353612) -> publish update
-  publish draft result: HTTP 200
-  PUBLISHED existing draft id=3353612
-
-PUBLISHING: posts/ai-content-full-automation-en.md
-  title: Full Content Automation: One Script Generates, Formats, and Publishes in Two Languages
-  tags: ['ai', 'automation', 'devops', 'productivity']
-  draft detected (id=3353613) -> publish update
-  publish draft result: HTTP 200
-  PUBLISHED existing draft id=3353613
+SKIP (has id): posts/ai-agent-i18n-tarot-compatibility-en.md
+SKIP (has id): posts/ai-content-full-automation-en.md
 SKIP (has id): posts/ai-fortune-architecture-en.md
 SKIP (has id): posts/ai-fortune-architecture-ko.md
-
-PUBLISHING: posts/ai-multistack-bootstrap-strategy-en.md
-  title: Structured Prompting for Multi-Stack Project Bootstraps With AI
-  tags: ['ai', 'productivity', 'python', 'react']
-  draft detected (id=3353614) -> publish update
-  publish draft result: HTTP 200
-  PUBLISHED existing draft id=3353614
-
-PUBLISHING: posts/ai-news-bilingual-script-pattern-en.md
-  title: One Script, Two Languages: Building a Bilingual AI News Pipeline
-  tags: ['ai', 'automation', 'productivity', 'devops']
-  draft detected (id=3353615) -> publish update
-  publish draft result: HTTP 200
-  PUBLISHED existing draft id=3353615
-
-PUBLISHING: posts/ai-news-claude-automation-en.md
-  title: Claude-Powered News Pipeline: From API Call to Production Markdown in One Script
-  tags: ['ai', 'automation', 'claude', 'productivity']
-  draft detected (id=3353616) -> publish update
-  publish draft result: HTTP 200
-  PUBLISHED existing draft id=3353616
-
-PUBLISHING: posts/ai-news-complete-workflow-en.md
-  title: From Script to Deploy: A Complete AI News Generation Workflow
-  tags: ['ai', 'automation', 'productivity', 'webdev']
-  draft detected (id=3353617) -> publish update
-  publish draft result: HTTP 200
-  PUBLISHED existing draft id=3353617
+SKIP (has id): posts/ai-multistack-bootstrap-strategy-en.md
+SKIP (has id): posts/ai-news-bilingual-script-pattern-en.md
+SKIP (has id): posts/ai-news-claude-automation-en.md
+SKIP (has id): posts/ai-news-complete-workflow-en.md
 SKIP (has id): posts/anthropic-13-free-courses-review-en.md
 SKIP (has id): posts/anthropic-13-free-courses-review-ko.md
 SKIP (has id): posts/building-real-apps-with-claude-api-en.md
@@ -68,20 +32,8 @@ SKIP (has id): posts/designing-saas-with-claude-en.md
 SKIP (has id): posts/designing-saas-with-claude-ko.md
 SKIP (has id): posts/github-trending-100-patterns-en.md
 SKIP (has id): posts/github-trending-100-patterns-ko.md
-
-PUBLISHING: posts/gpt5-codex-5800-line-bootstrap-en.md
-  title: 5,800 Lines in One Day: Bootstrapping a Full Pipeline With gpt-5-codex
-  tags: ['ai', 'gpt5', 'python', 'react']
-  draft detected (id=3353618) -> publish update
-  publish draft result: HTTP 200
-  PUBLISHED existing draft id=3353618
-
-PUBLISHING: posts/gpt5-codex-shorts-pipeline-en.md
-  title: GPT-5 Codex Shorts Pipeline, How I Bootstrapped 5,800 Lines in 4 Commits
-  tags: ['ai', 'gpt5', 'productivity', 'webdev']
-  draft detected (id=3353620) -> publish update
-  publish draft result: HTTP 200
-  PUBLISHED existing draft id=3353620
+SKIP (has id): posts/gpt5-codex-5800-line-bootstrap-en.md
+SKIP (has id): posts/gpt5-codex-shorts-pipeline-en.md
 SKIP (has id): posts/gpt5-vs-gemini-vs-claude-real-test-en.md
 SKIP (has id): posts/gpt5-vs-gemini-vs-claude-real-test-ko.md
 SKIP (has id): posts/llm-cost-optimization-en.md
@@ -109,4 +61,4 @@ SKIP (has id): posts/trading-bot-arena-strategies-ko.md
 SKIP (has id): posts/trading-bot-win-rate-lie-en.md
 SKIP (has id): posts/trading-bot-win-rate-lie-ko.md
 
-Done: 8 published, 0 failed
+Done: 0 published, 0 failed
