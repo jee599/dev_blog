@@ -1,6 +1,6 @@
 ---
 title: "\"Ask ChatGPT nicely\" is amateur hour"
-published: false
+published: true
 description: "9 prompting techniques developers actually need when building AI services"
 tags:
   - ai

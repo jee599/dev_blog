@@ -1,6 +1,6 @@
 ---
 title: "The Skill Tree That Can Cut Your LLM API Bill by 70%"
-published: false
+published: true
 description: "Cost engineering fundamentals I wish I knew before building my first AI service"
 tags:
   - ai

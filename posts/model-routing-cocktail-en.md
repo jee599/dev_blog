@@ -1,6 +1,6 @@
 ---
 title: "Claude vs GPT vs Gemini — how to cocktail them like a pro"
-published: false
+published: true
 description: "Using one model is amateur. Mixing three is where the savings are. A 2026 routing playbook."
 tags:
   - ai

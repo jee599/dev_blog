@@ -1,6 +1,6 @@
 ---
 title: I Stole the #1 Strategy from HuggingFace's AI Trading Arena
-published: false
+published: true
 description: "393% return, 36% win rate. The top player's secret wasn't accuracy — it was the size of each win."
 tags:
   - ai

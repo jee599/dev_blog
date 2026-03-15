@@ -1,6 +1,6 @@
 ---
 title: I Had AI Build 15 Trading Strategies. Only 1 Survived.
-published: false
+published: true
 description: 'MACD, RSI, Bollinger, ATR, DI... more complexity should mean more profit, right? 180-day backtest said otherwise.'
 tags:
   - ai

@@ -1,6 +1,6 @@
 ---
 title: "44% Win Rate and Still Profitable?"
-published: false
+published: true
 description: 'High win rate = good strategy? My bot loses 56% of trades and still makes money. Here is why.'
 tags:
   - ai
