@@ -10,6 +10,8 @@ tags:
 id: 3286744
 date: '2026-03-15T06:01:44Z'
 hashnode_url: 'https://plzai.hashnode.dev/prompting-is-programming'
+blogger_url: 'https://jidonglab.blogspot.com/2026/03/ask-chatgpt-nicely-is-amateur-hour.html'
+blogger_id: '4111507535479170951'
 ---
 
 When people hear “prompt engineering,” they think “how to ask AI better questions.”

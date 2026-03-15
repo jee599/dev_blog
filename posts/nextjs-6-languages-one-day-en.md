@@ -10,6 +10,8 @@ tags:
 id: 3285149
 date: '2026-02-25T16:12:11.346Z'
 hashnode_url: 'https://plzai.hashnode.dev/nextjs-6-languages-one-day'
+blogger_url: 'https://jidonglab.blogspot.com/2026/03/how-i-added-6-languages-to-nextjs-app.html'
+blogger_id: '1683926692579763633'
 ---
 
 I decided to ship my AI fortune-telling app to 6 countries. Korea, US, Japan, China, Vietnam, India.

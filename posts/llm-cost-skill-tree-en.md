@@ -10,6 +10,8 @@ tags:
 id: 3286732
 date: '2026-03-15T06:01:44Z'
 hashnode_url: 'https://plzai.hashnode.dev/llm-cost-skill-tree'
+blogger_url: 'https://jidonglab.blogspot.com/2026/03/the-skill-tree-that-can-cut-your-llm.html'
+blogger_id: '983203369509856792'
 ---
 
 The first thing I thought when starting an AI side project was “how does the cost structure even work?”

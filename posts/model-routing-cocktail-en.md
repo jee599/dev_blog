@@ -10,6 +10,8 @@ tags:
 id: 3286739
 date: '2026-03-15T06:01:44Z'
 hashnode_url: 'https://plzai.hashnode.dev/model-routing-cocktail'
+blogger_url: 'https://jidonglab.blogspot.com/2026/03/claude-vs-gpt-vs-gemini-how-to-cocktail.html'
+blogger_id: '3972735615016061654'
 ---
 
 “Which model is the best?”
