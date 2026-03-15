@@ -1,0 +1,197 @@
+name: Publish to Blogger
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'posts/*-ko.md'
+  workflow_dispatch:
+  schedule:
+    - cron: '0 */6 * * *'
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Publish Korean posts to Blogger
+        env:
+          BLOGGER_BLOG_ID: ${{ secrets.BLOGGER_BLOG_ID }}
+          GOOGLE_ACCESS_TOKEN: ${{ secrets.GOOGLE_ACCESS_TOKEN }}
+        run: |
+          python3 << 'PYEOF'
+          import os, json, re, glob, time, urllib.request, urllib.error
+          from html import escape as html_escape
+
+          blog_id = os.environ.get("BLOGGER_BLOG_ID", "")
+          access_token = os.environ.get("GOOGLE_ACCESS_TOKEN", "")
+
+          if not blog_id or not access_token:
+              print("BLOGGER_BLOG_ID or GOOGLE_ACCESS_TOKEN not set, skipping")
+              exit(0)
+
+          HEADERS = {
+              "Authorization": f"Bearer {access_token}",
+              "Content-Type": "application/json",
+              "User-Agent": "dev-blog-publisher/1.0",
+          }
+
+          def md_to_html(md):
+              """Basic markdown to HTML conversion for Blogger."""
+              lines = md.split('\n')
+              html_lines = []
+              in_code = False
+              code_lang = ""
+
+              for line in lines:
+                  # Code blocks
+                  if line.startswith('```'):
+                      if in_code:
+                          html_lines.append('</code></pre>')
+                          in_code = False
+                      else:
+                          code_lang = line[3:].strip()
+                          html_lines.append(f'<pre><code class="language-{code_lang}">')
+                          in_code = True
+                      continue
+
+                  if in_code:
+                      html_lines.append(html_escape(line))
+                      continue
+
+                  # Headers
+                  if line.startswith('## '):
+                      html_lines.append(f'<h2>{line[3:]}</h2>')
+                  elif line.startswith('### '):
+                      html_lines.append(f'<h3>{line[4:]}</h3>')
+                  elif line.startswith('# '):
+                      html_lines.append(f'<h1>{line[2:]}</h1>')
+                  # Blockquotes
+                  elif line.startswith('> '):
+                      html_lines.append(f'<blockquote>{line[2:]}</blockquote>')
+                  # Images
+                  elif re.match(r'!\[([^\]]*)\]\(([^)]+)\)', line):
+                      m = re.match(r'!\[([^\]]*)\]\(([^)]+)\)', line)
+                      html_lines.append(f'<img src="{m.group(2)}" alt="{m.group(1)}" />')
+                  # Empty line = paragraph break
+                  elif line.strip() == '':
+                      html_lines.append('<br/>')
+                  else:
+                      # Inline formatting
+                      processed = line
+                      processed = re.sub(r'\*\*(.+?)\*\*', r'<strong>\1</strong>', processed)
+                      processed = re.sub(r'`([^`]+)`', r'<code>\1</code>', processed)
+                      processed = re.sub(r'\[([^\]]+)\]\(([^)]+)\)', r'<a href="\2">\1</a>', processed)
+                      html_lines.append(f'<p>{processed}</p>')
+
+              return '\n'.join(html_lines)
+
+          published = 0
+          skipped = 0
+
+          for filepath in sorted(glob.glob("posts/*-ko.md")):
+              basename = os.path.basename(filepath)
+
+              # Skip build-log, date-prefixed news
+              if "build-log" in basename:
+                  print(f"SKIP (build-log): {filepath}")
+                  continue
+
+              with open(filepath) as f:
+                  content = f.read()
+
+              # Skip if already published to Blogger
+              if "blogger_url:" in content:
+                  skipped += 1
+                  continue
+
+              # Parse frontmatter
+              parts = content.split("---", 2)
+              if len(parts) < 3:
+                  continue
+
+              fm = parts[1]
+              body_md = parts[2].strip()
+
+              if len(body_md) < 100:
+                  continue
+
+              # Extract title
+              m = re.search(r'^title:\s*["\']?(.*?)["\']?\s*$', fm, re.M)
+              title = m.group(1).strip() if m else ""
+              if not title:
+                  continue
+
+              # Extract tags
+              m = re.search(r'^tags:\s*(.*?)$', fm, re.M)
+              tags_str = m.group(1).strip() if m else ""
+              tags = [t.strip().strip("'\"") for t in re.split(r'[,\[\]]', tags_str) if t.strip().strip("'\"")]
+
+              # Check published flag
+              m = re.search(r'^published:\s*(true|false)', fm, re.M | re.I)
+              if m and m.group(1).lower() != "true":
+                  continue
+
+              print(f"\nPUBLISHING to Blogger: {title[:60]}")
+
+              # Convert markdown to HTML
+              body_html = md_to_html(body_md)
+
+              # Add footer
+              slug = basename.replace("-ko.md", "").replace(".md", "")
+              canonical = f"https://jidonglab.com/blog/{slug}-ko"
+              body_html += f'\n<br/><hr/>\n<p><em>원문: <a href="{canonical}">Jidong Lab</a></em></p>'
+
+              # Labels (tags)
+              labels = tags[:5] if tags else ["AI"]
+
+              payload = {
+                  "kind": "blogger#post",
+                  "blog": {"id": blog_id},
+                  "title": title,
+                  "content": body_html,
+                  "labels": labels,
+              }
+
+              data = json.dumps(payload).encode()
+              url = f"https://www.googleapis.com/blogger/v3/blogs/{blog_id}/posts"
+              req = urllib.request.Request(url, data=data, method="POST", headers=HEADERS)
+
+              try:
+                  resp = urllib.request.urlopen(req)
+                  result = json.loads(resp.read())
+                  blogger_url = result.get("url", "")
+                  blogger_id = result.get("id", "")
+                  print(f"  -> Published: {blogger_url}")
+
+                  # Write blogger_url back to file
+                  new_fm = fm.rstrip() + f"\nblogger_url: '{blogger_url}'\nblogger_id: '{blogger_id}'\n"
+                  with open(filepath, "w") as f:
+                      f.write("---" + new_fm + "---" + parts[2])
+                  published += 1
+              except urllib.error.HTTPError as e:
+                  body = e.read().decode()
+                  print(f"  -> Failed: HTTP {e.code}: {body[:300]}")
+              except Exception as e:
+                  print(f"  -> Failed: {e}")
+
+              time.sleep(3)
+
+          print(f"\nDone: {published} published, {skipped} skipped")
+
+          PYEOF
+      - name: Commit blogger URLs
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add posts/*.md
+          if git diff --cached --quiet; then
+            echo "No changes"
+          else
+            git commit -m "chore: add Blogger URLs [skip ci]"
+            git push
+          fi
