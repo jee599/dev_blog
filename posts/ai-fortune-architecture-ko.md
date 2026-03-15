@@ -9,6 +9,8 @@ tags:
   - architecture
 id: 3285115
 date: '2026-02-25T16:01:23.478Z'
+blogger_url: 'https://jidonglab.blogspot.com/2026/03/ai.html'
+blogger_id: '3310539989379658642'
 ---
 
 사주 앱을 만들면서 가장 먼저 배운 건, AI한테 뭘 시킬지가 아니라 **뭘 안 시킬지**였다.

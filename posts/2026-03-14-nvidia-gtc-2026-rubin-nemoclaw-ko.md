@@ -5,6 +5,8 @@ description: "3월 16일 개막하는 Nvidia GTC 2026에서 차세대 GPU 아키
 tags: ai, ainews, nvidia, llm
 id: 3351066
 date: '2026-03-14T10:04:03Z'
+blogger_url: 'https://jidonglab.blogspot.com/2026/03/nvidia-gtc-2026-rubin-gpunemoclawcpu-ai.html'
+blogger_id: '4135123733650633739'
 ---
 
 3만 명이 산호세로 온다. 190개국에서. 3월 16일 젠슨 황이 SAP 센터 무대에 선다. 그리고 올해 GPU 컨퍼런스에서 가장 큰 이야기는 GPU가 아닐 수 있다.

@@ -9,6 +9,8 @@ tags:
   - beginners
 id: 3303795
 date: '2026-03-03T03:03:39Z'
+blogger_url: 'https://jidonglab.blogspot.com/2026/03/anthropic-13.html'
+blogger_id: '4501379195060540366'
 ---
 
 Anthropic이 Skilljar라는 플랫폼에 강의 13개를 올려놨다. 전부 무료. 수료증도 준다. Anthropic 계정도 필요 없고, 이메일로 Skilljar 가입만 하면 바로 들을 수 있다.
