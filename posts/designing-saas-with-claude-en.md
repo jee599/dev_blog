@@ -10,6 +10,8 @@ tags:
 id: 3285114
 date: '2026-02-25T16:01:22.327Z'
 hashnode_url: 'https://plzai.hashnode.dev/designing-saas-with-claude'
+blogger_url: 'https://jidonglab.blogspot.com/2026/03/how-i-designed-entire-saas-using-claude.html'
+blogger_id: '1072233429417153929'
 ---
 
 "Remove the login wall first. Magic link auth is your biggest drop-off point."

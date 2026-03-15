@@ -10,6 +10,8 @@ tags:
 id: 3313951
 date: '2026-03-06T01:56:32Z'
 hashnode_url: 'https://plzai.hashnode.dev/github-trending-100-patterns'
+blogger_url: 'https://jidonglab.blogspot.com/2026/03/what-100-trending-github-projects-tell.html'
+blogger_id: '6430408592974680214'
 ---
 
 In February 2026, a single GitHub repo hit 250,000 stars in 60 days.

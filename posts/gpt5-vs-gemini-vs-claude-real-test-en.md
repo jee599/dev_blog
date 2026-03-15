@@ -10,6 +10,8 @@ tags:
 id: 3285129
 date: '2026-02-25T16:06:42.178Z'
 hashnode_url: 'https://plzai.hashnode.dev/gpt5-vs-gemini-vs-claude-real-test'
+blogger_url: 'https://jidonglab.blogspot.com/2026/03/gpt-5-vs-gemini-flash-vs-claude-opus-6.html'
+blogger_id: '1128139870890932642'
 ---
 
 I'm building a saju app — saju is Korean four-pillar fortune-telling based on birth date/time. When it came time to pick LLM providers for production, I didn't trust benchmarks. I needed to run my actual prompts with real birth data and compare.

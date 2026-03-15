@@ -10,6 +10,8 @@ tags:
 id: 3353620
 date: '2026-03-15T07:12:34Z'
 hashnode_url: 'https://plzai.hashnode.dev/gpt5-codex-shorts-pipeline'
+blogger_url: 'https://jidonglab.blogspot.com/2026/03/gpt-5-codex-shorts-pipeline-how-i.html'
+blogger_id: '4638873382119315717'
 ---
 
 I generated 5,800 lines of new code with GPT-5 Codex across four commits. A pipeline that takes saju (Korean fortune-telling) data and produces vertical Shorts videos, from scratch. Here is the prompting strategy that made it work.
