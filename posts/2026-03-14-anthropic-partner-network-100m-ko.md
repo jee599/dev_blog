@@ -5,8 +5,6 @@ description: "Anthropic이 3월 12일 클로드 파트너 네트워크를 출범
 tags: ai, ainews, claude, enterprise
 id: 3351050
 date: '2026-03-14T10:02:53Z'
-blogger_url: 'https://jidonglab.blogspot.com/2026/03/anthropic-1.html'
-blogger_id: '8606171692626036001'
 ---
 
 Anthropic이 1억 달러짜리 수표를 썼다. 연구비가 아니다. 모델 학습 비용도 아니다. 기업 시장에서 클로드를 쉽게 떼어낼 수 없도록 만드는 채널 구축비다.
