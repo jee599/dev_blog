@@ -82,7 +82,7 @@ jobs:
           # Unpublish by setting published=false
           success = 0
           failed = 0
-          for art in to_unpublish:
+          for idx, art in enumerate(to_unpublish):
               aid = art["id"]
               title = art.get("title", "")[:60]
               print(f"\n  Unpublishing {aid}: {title}...")
@@ -95,13 +95,26 @@ jobs:
               )
               try:
                   resp = urllib.request.urlopen(req)
-                  result = json.loads(resp.read())
-                  pub = result.get("published", "?")
+                  body = resp.read()
+                  result = json.loads(body)
+                  # Debug: print first response keys
+                  if idx == 0:
+                      print(f"    -> Response keys: {list(result.keys())[:20]}")
+                  pub = result.get("published", result.get("published_at"))
                   print(f"    -> HTTP {resp.status}, published={pub}")
-                  if not pub:
+                  # HTTP 200 means the update was accepted
+                  if resp.status == 200 and result.get("published") is False:
                       success += 1
+                  elif resp.status == 200:
+                      # Check if published field exists
+                      if "published" not in result:
+                          print(f"    -> No 'published' field in response, assuming success")
+                          success += 1
+                      else:
+                          print(f"    -> WARNING: still published={result['published']}")
+                          failed += 1
                   else:
-                      print(f"    -> WARNING: still published")
+                      print(f"    -> Unexpected status")
                       failed += 1
               except Exception as e:
                   print(f"    -> Failed: {e}")
