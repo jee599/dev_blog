@@ -9,6 +9,7 @@ tags:
   - design
 id: 3313966
 date: '2026-03-06T02:03:52Z'
+hashnode_url: 'https://plzai.hashnode.dev/saju-app-design-threejs-cosmic'
 ---
 
 Search “fortune telling website design” and you’ll get red backgrounds with gold text, dragon illustrations, and layouts that haven’t been updated since 2008.

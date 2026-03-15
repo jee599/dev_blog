@@ -9,6 +9,7 @@ tags:
   - architecture
 id: 3286023
 date: '2026-02-26T00:00:40Z'
+hashnode_url: 'https://plzai.hashnode.dev/ai-fortune-architecture'
 ---
 
 The first lesson I learned building a saju (Korean four-pillar fortune telling) app: it's not about what you ask AI to do — it's about **what you don't**.

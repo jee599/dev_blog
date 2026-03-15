@@ -9,6 +9,7 @@ tags:
   - productivity
 id: 3328619
 date: '2026-03-09T02:51:33Z'
+hashnode_url: 'https://plzai.hashnode.dev/mcp-usbc-protocol'
 ---
 
 Connecting 3 AI apps to 3 tools used to require 9 custom integrations. Each model vendor needed its own connector format. MCP changes that by standardizing the interface between AI hosts and external tools.

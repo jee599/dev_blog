@@ -9,6 +9,7 @@ tags:
   - llm
 id: 3353612
 date: '2026-03-15T06:00:11Z'
+hashnode_url: 'https://plzai.hashnode.dev/ai-agent-i18n-tarot-compatibility'
 ---
 
 I added AI tarot reading, rebuilt compatibility analysis, and overhauled translations across 8 languages — all in one day. 20 commits, 139 files changed. What made this possible was not coding speed. It was prompt decomposition.

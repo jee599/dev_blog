@@ -9,6 +9,7 @@ tags:
   - webdev
 id: 3353617
 date: '2026-03-15T07:11:23Z'
+hashnode_url: 'https://plzai.hashnode.dev/ai-news-complete-workflow'
 ---
 
 Getting AI to produce a single article is easy. Getting it to produce consistent, publication-ready content every day through an automated system is a different problem entirely. Here is the prompting and workflow design that makes daily AI news generation reliable.

@@ -9,6 +9,7 @@ tags:
   - devops
 id: 3353615
 date: '2026-03-15T07:10:12Z'
+hashnode_url: 'https://plzai.hashnode.dev/ai-news-bilingual-script-pattern'
 ---
 
 I added an AI news section to my portfolio site and needed both English and Korean versions published simultaneously — English for the main site, Korean for DEV.to cross-posting. Building separate scripts per language was the obvious approach. It was also the wrong one.

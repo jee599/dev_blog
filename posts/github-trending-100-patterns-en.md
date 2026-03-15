@@ -9,6 +9,7 @@ tags:
   - webdev
 id: 3313951
 date: '2026-03-06T01:56:32Z'
+hashnode_url: 'https://plzai.hashnode.dev/github-trending-100-patterns'
 ---
 
 In February 2026, a single GitHub repo hit 250,000 stars in 60 days.

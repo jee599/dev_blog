@@ -9,6 +9,7 @@ tags:
   - webdev
 id: 3328612
 date: '2026-03-09T02:49:12Z'
+hashnode_url: 'https://plzai.hashnode.dev/claude-md-team-standardization'
 ---
 
 Inconsistent AI output across a team is usually a context problem, not a model problem. If everyone feeds different instructions, quality and style diverge.

@@ -9,6 +9,7 @@ tags:
   - productivity
 id: 3353616
 date: '2026-03-15T07:10:47Z'
+hashnode_url: 'https://plzai.hashnode.dev/ai-news-claude-automation'
 ---
 
 Running an AI news site means generating content every single day. I automated the entire workflow: one command produces 4 validated, formatted, publication-ready markdown files. Claude API + shell script + MCP file access + git hooks. Here is how each piece fits together.
