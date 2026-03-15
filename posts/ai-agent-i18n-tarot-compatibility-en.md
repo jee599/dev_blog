@@ -7,6 +7,8 @@ tags:
   - webdev
   - productivity
   - llm
+id: 3353612
+date: 'draft'
 ---
 
 I added AI tarot reading, rebuilt compatibility analysis, and overhauled translations across 8 languages — all in one day. 20 commits, 139 files changed. What made this possible was not coding speed. It was prompt decomposition.

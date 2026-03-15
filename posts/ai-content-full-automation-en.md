@@ -7,6 +7,8 @@ tags:
   - automation
   - devops
   - productivity
+id: 3353613
+date: 'draft'
 ---
 
 Generating content with AI is table stakes. Generating it in two languages, formatting it for two platforms, and publishing it automatically — that is the system I built. One script execution produces 8 files (4 stories x 2 languages) and pushes them live.
