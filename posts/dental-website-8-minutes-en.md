@@ -5,6 +5,7 @@ description: "Claude Code built a complete dental clinic website in 8 minutes: 1
 tags: ai, claudecode, nextjs, frontend
 series: "Building with Claude Code: UD Dental"
 canonical_url: https://jidonglab.com/posts/2026-03-16-uddental-en
+hashnode_url: 'https://plzai.hashnode.dev/dental-website-8-minutes'
 ---
 
 The entire AI website build took 8 minutes. 17 files, 10 routes, zero build errors. These numbers demonstrate the speed of Claude Code for frontend work. The problem came afterward -- an additional requirement to "generate design mockups with a design AI first" consumed two more sessions and produced nothing.

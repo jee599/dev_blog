@@ -5,6 +5,7 @@ description: "I built an AI mentoring platform using Claude Code with 10 paralle
 tags: ai, claudecode, multiagent, nextjs
 series: "Building with Claude Code: Coffee Chat"
 canonical_url: https://jidonglab.com/posts/2026-03-15-coffee-chat-en
+hashnode_url: 'https://plzai.hashnode.dev/building-mentoring-platform-10-agents'
 ---
 
 Six sessions. 1,289 tool calls. 84 files modified, 26 files created. That is how much tool usage went into a single Claude Code project. It all started with one sentence: "Have 10 agents build a master plan."
