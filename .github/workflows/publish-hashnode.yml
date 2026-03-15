@@ -1,0 +1,205 @@
+name: Publish to Hashnode
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'posts/*-en.md'
+  workflow_dispatch:
+  schedule:
+    - cron: '0 */6 * * *'
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Publish English posts to Hashnode
+        env:
+          HASHNODE_TOKEN: ${{ secrets.HASHNODE_TOKEN }}
+          HASHNODE_PUB_ID: ${{ secrets.HASHNODE_PUB_ID }}
+        run: |
+          python3 << 'PYEOF'
+          import os, json, re, glob, time, urllib.request, urllib.error
+
+          token = os.environ.get("HASHNODE_TOKEN", "")
+          pub_id = os.environ.get("HASHNODE_PUB_ID", "")
+
+          if not token or not pub_id:
+              print("HASHNODE_TOKEN or HASHNODE_PUB_ID not set, skipping")
+              exit(0)
+
+          GQL_URL = "https://gql.hashnode.com/"
+          HEADERS = {
+              "Authorization": token,
+              "Content-Type": "application/json",
+              "User-Agent": "dev-blog-publisher/1.0",
+          }
+
+          def gql(query, variables=None):
+              payload = {"query": query}
+              if variables:
+                  payload["variables"] = variables
+              data = json.dumps(payload).encode()
+              req = urllib.request.Request(GQL_URL, data=data, method="POST", headers=HEADERS)
+              resp = urllib.request.urlopen(req)
+              return json.loads(resp.read())
+
+          # Verify auth
+          try:
+              result = gql("{ me { username } }")
+              username = result["data"]["me"]["username"]
+              print(f"Authenticated as: {username}")
+          except Exception as e:
+              print(f"Auth failed: {e}")
+              exit(1)
+
+          # Get existing posts to avoid duplicates
+          existing_titles = set()
+          try:
+              result = gql("""
+                query($pubId: ObjectId!) {
+                  publication(id: $pubId) {
+                    posts(first: 50) {
+                      edges { node { title } }
+                    }
+                  }
+                }
+              """, {"pubId": pub_id})
+              for edge in result["data"]["publication"]["posts"]["edges"]:
+                  existing_titles.add(edge["node"]["title"].strip())
+              print(f"Existing posts: {len(existing_titles)}")
+          except Exception as e:
+              print(f"Warning: couldn't fetch existing posts: {e}")
+
+          published = 0
+          skipped = 0
+
+          for filepath in sorted(glob.glob("posts/*-en.md")):
+              basename = os.path.basename(filepath)
+
+              if "build-log" in basename:
+                  print(f"SKIP (build-log): {filepath}")
+                  continue
+
+              with open(filepath) as f:
+                  content = f.read()
+
+              # Skip if already published to Hashnode
+              if "hashnode_url:" in content:
+                  skipped += 1
+                  continue
+
+              # Parse frontmatter
+              parts = content.split("---", 2)
+              if len(parts) < 3:
+                  continue
+
+              fm = parts[1]
+              body_md = parts[2].strip()
+
+              if len(body_md) < 100:
+                  continue
+
+              # Extract title
+              m = re.search(r'^title:\s*["\']?(.*?)["\']?\s*$', fm, re.M)
+              title = m.group(1).strip() if m else ""
+              if not title:
+                  continue
+
+              # Skip duplicates
+              if title in existing_titles:
+                  skipped += 1
+                  continue
+
+              # Extract tags
+              m = re.search(r'^tags:\s*(.*?)$', fm, re.M)
+              tags_str = m.group(1).strip() if m else ""
+              tags = [t.strip().strip("'\"") for t in re.split(r'[,\[\]]', tags_str) if t.strip().strip("'\"")][:5]
+
+              # Check published flag
+              m = re.search(r'^published:\s*(true|false)', fm, re.M | re.I)
+              if m and m.group(1).lower() != "true":
+                  continue
+
+              print(f"\nPUBLISHING to Hashnode: {title[:60]}")
+
+              # Generate slug
+              slug = basename.replace("-en.md", "").replace(".md", "")
+
+              # Canonical URL
+              canonical = f"https://jidonglab.com/blog/{slug}-ko"
+
+              # Add footer
+              footer = f"\n\n---\n\n*Originally published at [Jidong Lab]({canonical})*"
+
+              # Build tags input
+              tags_input = [{"slug": t.lower().replace(" ", "-"), "name": t} for t in tags]
+
+              # Publish
+              mutation = """
+                mutation PublishPost($input: PublishPostInput!) {
+                  publishPost(input: $input) {
+                    post {
+                      id
+                      title
+                      url
+                      slug
+                    }
+                  }
+                }
+              """
+
+              variables = {
+                  "input": {
+                      "title": title,
+                      "contentMarkdown": body_md + footer,
+                      "publicationId": pub_id,
+                      "slug": slug,
+                      "tags": tags_input,
+                      "originalArticleURL": canonical,
+                  }
+              }
+
+              try:
+                  result = gql(mutation, variables)
+                  if "errors" in result:
+                      print(f"  -> Error: {result['errors'][0]['message']}")
+                      continue
+
+                  post = result["data"]["publishPost"]["post"]
+                  hashnode_url = post["url"]
+                  print(f"  -> Published: {hashnode_url}")
+
+                  # Write hashnode_url back to file
+                  new_fm = fm.rstrip() + f"\nhashnode_url: '{hashnode_url}'\n"
+                  with open(filepath, "w") as f:
+                      f.write("---" + new_fm + "---" + parts[2])
+                  published += 1
+                  existing_titles.add(title)
+              except urllib.error.HTTPError as e:
+                  body = e.read().decode()
+                  print(f"  -> Failed: HTTP {e.code}: {body[:300]}")
+              except Exception as e:
+                  print(f"  -> Failed: {e}")
+
+              time.sleep(3)
+
+          print(f"\nDone: {published} published, {skipped} skipped")
+
+          PYEOF
+      - name: Commit hashnode URLs
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add posts/*.md
+          if git diff --cached --quiet; then
+            echo "No changes"
+          else
+            git commit -m "chore: add Hashnode URLs [skip ci]"
+            git push
+          fi
