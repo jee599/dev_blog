@@ -7,10 +7,10 @@ permissions:
   contents: read
 
 jobs:
-  cleanup:
+  unpublish:
     runs-on: ubuntu-latest
     steps:
-      - name: Delete all unpublished articles
+      - name: Unpublish outdated Korean news articles
         env:
           DEVTO_KEY: ${{ secrets.DEVTO_TOKEN }}
         run: |
@@ -18,13 +18,38 @@ jobs:
           import json, urllib.request, time, os
 
           KEY = os.environ["DEVTO_KEY"]
-          HEADERS = {"api-key": KEY, "Content-Type": "application/json", "User-Agent": "dev-blog-cleanup/1.0", "Accept": "application/vnd.forem.api-v1+json"}
+          HEADERS = {
+              "api-key": KEY,
+              "Content-Type": "application/json",
+              "User-Agent": "dev-blog-cleanup/1.0",
+              "Accept": "application/vnd.forem.api-v1+json",
+          }
 
-          # Fetch all unpublished articles
+          # Titles to unpublish (partial match)
+          UNPUBLISH_TITLES = [
+              "promptfoo",
+              "Ollama",
+              "Gemini를 복제하려는",
+              "ChatGPT 대탈출",
+              "Claude가 의식이 있을 수 있다",
+              "클로드 파트너 네트워크에 1억 달러",
+              "Apple M5 Pro/Max",
+              "$100M 클로드 파트너 네트워크 출범",
+              "트럼프 행정부를 상대로 소송",
+              "OpenAI 로보틱스 리더 사임",
+              "Supply Chain Risk",
+              "OpenAI GPT-5.4 출시",
+              "Gemini 3.1 Pro, 115개",
+              "MCP가 AI의 USB-C",
+              "GLM-5, NVIDIA 없이",
+              "Opus 4.6 기본 모델 전환",
+          ]
+
+          # Fetch all published articles
           all_articles = []
           page = 1
           while True:
-              url = f"https://dev.to/api/articles/me/unpublished?per_page=100&page={page}"
+              url = f"https://dev.to/api/articles/me/published?per_page=100&page={page}"
               req = urllib.request.Request(url, headers=HEADERS)
               resp = urllib.request.urlopen(req)
               arts = json.loads(resp.read())
@@ -34,27 +59,56 @@ jobs:
               if len(arts) < 100:
                   break
               page += 1
+              time.sleep(1)
 
-          print(f"Unpublished articles found: {len(all_articles)}")
+          print(f"Total published articles: {len(all_articles)}")
 
-          deleted = 0
-          failed = 0
+          # Find matches
+          to_unpublish = []
           for art in all_articles:
+              title = art.get("title", "")
+              for pattern in UNPUBLISH_TITLES:
+                  if pattern in title:
+                      to_unpublish.append(art)
+                      print(f"  MATCH: [{art['id']}] {title}")
+                      break
+
+          print(f"\nArticles to unpublish: {len(to_unpublish)}")
+
+          if not to_unpublish:
+              print("No matching articles found. Exiting.")
+              exit(0)
+
+          # Unpublish by setting published=false
+          success = 0
+          failed = 0
+          for art in to_unpublish:
               aid = art["id"]
               title = art.get("title", "")[:60]
-              print(f"  Deleting {aid}: {title}...")
+              print(f"\n  Unpublishing {aid}: {title}...")
+              payload = json.dumps({"article": {"published": False}}).encode()
               req = urllib.request.Request(
                   f"https://dev.to/api/articles/{aid}",
-                  method="DELETE", headers=HEADERS
+                  data=payload,
+                  method="PUT",
+                  headers=HEADERS,
               )
               try:
                   resp = urllib.request.urlopen(req)
-                  print(f"    -> HTTP {resp.status}")
-                  deleted += 1
+                  result = json.loads(resp.read())
+                  pub = result.get("published", "?")
+                  print(f"    -> HTTP {resp.status}, published={pub}")
+                  if not pub:
+                      success += 1
+                  else:
+                      print(f"    -> WARNING: still published")
+                      failed += 1
               except Exception as e:
                   print(f"    -> Failed: {e}")
                   failed += 1
               time.sleep(3)
 
-          print(f"\nDone: {deleted} deleted, {failed} failed")
+          print(f"\nDone: {success} unpublished, {failed} failed")
+          if failed > 0:
+              exit(1)
           PYEOF
