@@ -16,22 +16,10 @@ SKIP (has id): posts/ai-multistack-bootstrap-strategy-en.md
 SKIP (has id): posts/ai-news-bilingual-script-pattern-en.md
 SKIP (has id): posts/ai-news-claude-automation-en.md
 SKIP (has id): posts/ai-news-complete-workflow-en.md
-
-PUBLISHING: posts/ai-trading-bot-14-sessions-en.md
-  title: Building an AI Trading Bot with Claude Code: 14 Sessions, 961 Tool Calls
-  tags: []
-  draft detected (id=3355787) -> publish update
-  publish draft result: HTTP 200
-  PUBLISHED existing draft id=3355787
+SKIP (has id): posts/ai-trading-bot-14-sessions-en.md
 SKIP (has id): posts/anthropic-13-free-courses-review-en.md
 SKIP (has id): posts/anthropic-13-free-courses-review-ko.md
-
-PUBLISHING: posts/blog-automation-pipeline-105-sessions-en.md
-  title: Turning 105 Session Logs into Build Logs: A Claude Code Automation Pipeline
-  tags: []
-  draft detected (id=3355789) -> publish update
-  publish draft result: HTTP 200
-  PUBLISHED existing draft id=3355789
+SKIP (has id): posts/blog-automation-pipeline-105-sessions-en.md
 SKIP (has id): posts/building-mentoring-platform-10-agents-en.md
 SKIP (has id): posts/building-real-apps-with-claude-api-en.md
 SKIP (has id): posts/building-real-apps-with-claude-api-ko.md
@@ -83,4 +71,4 @@ SKIP (has id): posts/trading-bot-win-rate-lie-en.md
 SKIP (has id): posts/trading-bot-win-rate-lie-ko.md
 SKIP (has id): posts/writing-claude-code-book-with-claude-code-en.md
 
-Done: 2 published, 0 failed
+Done: 0 published, 0 failed
