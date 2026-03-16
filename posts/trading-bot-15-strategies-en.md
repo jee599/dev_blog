@@ -10,6 +10,8 @@ tags:
 id: 3292498
 date: '2026-03-15T06:01:44Z'
 hashnode_url: 'https://plzai.hashnode.dev/trading-bot-15-strategies'
+blogger_url: 'https://jidonglab.blogspot.com/2026/03/i-had-ai-build-15-trading-strategies.html'
+blogger_id: '7061894259008944093'
 ---
 
 I assumed more complex strategies would make more money.

@@ -10,6 +10,8 @@ tags:
 id: 3292504
 date: '2026-03-15T06:01:44Z'
 hashnode_url: 'https://plzai.hashnode.dev/trading-bot-arena-strategies'
+blogger_url: 'https://jidonglab.blogspot.com/2026/03/i-stole-1-strategy-from-huggingfaces-ai.html'
+blogger_id: '5574642253078200741'
 ---
 
 There's an AI trading arena on HuggingFace called "Prompt & Dump."
