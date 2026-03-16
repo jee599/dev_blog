@@ -7,7 +7,7 @@ series: "Building with Claude Code: Trading Bot"
 canonical_url: https://jidonglab.com/posts/2026-03-15-trading-bot-en
 hashnode_url: 'https://plzai.hashnode.dev/ai-trading-bot-14-sessions'
 id: 3355787
-date: 'draft'
+date: '2026-03-15T20:35:02Z'
 ---
 
 I wrote leverage ratios, stop-loss ranges, symbol lists, and timeframes into `CLAUDE.md` at specification level, then said "build the entire bot based on this CLAUDE.md." Two hours and 48 minutes later, 27 files appeared. Over 14 sessions and 961 tool calls, this is the full record of building an AI trading bot with Claude Code.

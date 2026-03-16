@@ -7,7 +7,7 @@ series: "Building with Claude Code: Portfolio Hub"
 canonical_url: https://jidonglab.com/posts/2026-03-15-portfolio-site-en
 hashnode_url: 'https://plzai.hashnode.dev/blog-automation-pipeline-105-sessions'
 id: 3355789
-date: 'draft'
+date: '2026-03-15T20:35:38Z'
 ---
 
 I had 105 Claude Code session logs sitting in `.jsonl` files. Writing build logs meant opening each one, extracting the interesting parts, and assembling them into coherent posts. I never got around to it. So I built an automation pipeline instead. It handles session parsing, build log generation via Claude CLI, git push, and Cloudflare deployment in one pass.
