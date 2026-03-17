@@ -10,6 +10,8 @@ SKIP (build-log): posts/2026-03-16-portfolio-site-build-log-en.md
 SKIP (build-log): posts/2026-03-16-shortsmaker-build-log-en.md
 SKIP (build-log): posts/2026-03-17-portfolio-site-build-log-en.md
 SKIP (build-log): posts/2026-03-17-uddental-build-log-en.md
+SKIP (build-log): posts/2026-03-18-portfolio-site-build-log-en.md
+SKIP (build-log): posts/2026-03-18-uddental-build-log-en.md
 SKIP (has id): posts/ai-agent-i18n-tarot-compatibility-en.md
 SKIP (has id): posts/ai-content-full-automation-en.md
 SKIP (has id): posts/ai-fortune-architecture-en.md
