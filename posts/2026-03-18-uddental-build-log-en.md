@@ -1,119 +1,121 @@
 ---
-title: "Claude Code Fixed a Flipped Typography Hierarchy Across 3 Sections in 2 Minutes"
+title: "Claude Code Fixed 3 UI Bugs in 5 Minutes — By Reading 22 Files First"
 published: true
-description: "Vague report: 'sizes look reversed.' No file, no component. Claude Code diagnosed and fixed the hierarchy inversion in 2 min: 5 reads, 3 edits, 14 tool calls, 1 file changed."
-tags: claudecode, ai, webdev, nextjs
+description: "41 tool calls, 5 minutes, 3 files fixed. I gave Claude Opus a vague prompt — 'find weird stuff' — and it found bugs I forgot were there."
+tags: claudecode, ai, debugging, webdev
 series: "Building with Claude Code: uddental"
 canonical_url: https://jidonglab.com/posts/2026-03-18-uddental-en
 ---
 
-The bug report had exactly one sentence.
+A 🎨 color picker button was floating in the top-right corner of my production site.
 
-"진료과목 looks big and 어떤 치료가 필요하세요? looks small."
+I built it weeks earlier to test hero background colors during development. Deployed, forgot it existed. It sat there — `z-60`, fully visible to every visitor — until a friend pointed it out.
 
-No file path. No component name. No reproduction steps. Just: the visual sizes look reversed on the homepage.
-
-I handed it to Claude Code with a breadth-first prompt. Fourteen tool calls and two minutes later, the bug was found, fixed, and committed.
-
-**TL;DR** Three homepage sections on a dental clinic site had their heading hierarchy inverted — category labels were `h2`, section titles were `p`. FAQ and subpages were already using the correct eyebrow pattern. Claude Code found the inconsistency by reading the codebase itself, not by being told where to look. One file changed: `app/page.tsx`, 6 lines deleted, 6 lines added.
+**TL;DR** — 3 Claude Code sessions, 5 minutes, 41 tool calls. Claude Opus fixed three UI bugs in uddental's homepage: heading hierarchy reversed across three sections, a dev tool leaking into production, and two CSS animations set to loop forever. The most interesting session used a completely vague prompt: "find weird stuff and fix it."
 
 ---
 
-## The Prompt That Matters When You Don't Know Where the Bug Lives
+## The Headings Were Upside Down
 
-When you don't have a file path, the instinct is to narrow the search. Pick the most likely component. Start there. That instinct is usually wrong.
-
-Here's what I actually sent:
+Session 2 started with a specific observation but no proposed fix:
 
 ```
-[Wed 2026-03-18 09:42 GMT+9] In /Users/jidong/uddental/implementations/claude,
-inspect the deployed/UI heading hierarchy issue the user reported.
-
-Problem statement:
 On pages, combinations like:
-- small heading: "진료과목"
-- larger subheading: "어떤 치료가 필요하세요?"
+- small heading: "진료과목" (specialty category)
+- larger subheading: "어떤 치료가 필요하세요?" (what treatment do you need?)
 appear with the visual sizes reversed / hierarchy wrong.
-
-Please do the following:
-1) Inspect all relevant pages/components in this implementation
-   for section eyebrow/title/subtitle typography hierarchy issues.
-2) Find every place where the visual order is inverted.
-3) Fix all instances to match the correct pattern.
 ```
 
-Two things make this prompt work:
+Before touching any code, Claude ran `Read` five times. Homepage structure in `app/page.tsx`, then subpages, then the FAQ section — reading sequentially to establish what the *correct* pattern looked like before identifying where it broke.
 
-**First, the symptom is concrete.** Not "the UI looks wrong" — but "the category label is visually larger than the section title." Claude can search for structural patterns when given a specific description of the inversion. Vague symptoms produce vague investigations.
+The diagnostic approach: find a reference implementation first, then diff everything else against it.
 
-**Second, the scope is explicitly wide.** "Find every place" rather than "look in this component." The difference between those two framings is the difference between a patch and an actual fix.
+FAQ and all subpages had it right: small eyebrow text for category labels, large `h2` for the description. That set the baseline.
 
-If I'd pointed Claude at a single file, it might have fixed one section and missed two others with the identical problem. Wide scope turned a targeted bug report into a full audit.
+Three homepage sections — treatment journey, specialties, facilities — had it backwards. Category names in `h2` (visually large), descriptions in `p` (visually small). Same component structure, opposite visual weight.
+
+Fix: three `Edit` calls on a single file. No component refactoring, no shared utilities — direct corrections to `app/page.tsx`.
+
+**Tool usage:** `Read(5)` `Edit(3)` `Bash(4)` `Agent(1)` — **13 calls total.**
 
 ---
 
-## How Claude Diagnosed It Without a File Path
+## "Find Weird Stuff" — No Bug Report, No Bug Names
 
-Claude opened `app/page.tsx` first — reasonable for a homepage issue. Five Read tool calls followed: the main page, subpages, shared component files. Scanned sequentially.
+Session 3 was an experiment. Instead of describing what was broken, I wrote this:
 
-The diagnosis came back unambiguous. Three sections — treatment journey, treatment departments, and facility overview — all shared the same inverted pattern:
+```
+Find and remove/fix all weird empty space at the top, broken-looking layout gaps,
+and awkward UI artifacts. This includes unexpected blank areas, mispositioned overlays,
+inconsistent spacing, and any obviously wrong mobile layout behavior.
+```
+
+No component names. No reproduction steps. No mention of what I suspected.
+
+Claude ran `Read` 17 times. It went through `app/components/` file by file, then `globals.css`, then `app/page.tsx`, then each subpage. A full codebase sweep before writing a single line of output.
+
+Three issues surfaced.
+
+**The leaked dev tool.** `HeroBgPicker.tsx` — a floating color palette I built during development to test hero backgrounds — was still wired into the production layout. The button and color panel were rendering at `z-60` in the top-right corner of every page. Fully visible to every user. Classic dev tooling leak.
+
+**The infinite animations.** `globals.css` had two keyframe animations: `floatingPop` and `floatingGlow`. Both attached to the bottom CTA button. Both using `animation-iteration-count: infinite`. Every page load, the button bounced and glowed indefinitely.
+
+**The double blank lines.** `app/page.tsx` had duplicate empty lines between sections, creating uneven whitespace in the rendered layout.
+
+The fixes were proportional to the problems.
+
+`globals.css`: `infinite` → `1`. One word, one line. Double blank lines: removed. `HeroBgPicker.tsx`: replaced entirely with a minimal server component that just applies a fixed background color — all dev UI gone.
+
+That last decision shows up in the tool log as `Write(1)`. Claude chose to rewrite the file rather than edit it. Since all the picker logic was going away anyway, a fresh server component was cleaner than editing around it.
 
 ```tsx
-// Before — inverted hierarchy
-<h2 className="text-2xl font-bold">진료과목</h2>
-<p className="text-sm text-gray-500">어떤 치료가 필요하세요?</p>
+// Before: floating dev panel, z-60, color state, picker UI
+// After:
+export default function HeroBg() {
+  return <div className="absolute inset-0 bg-[#f8f9fa]" />;
+}
 ```
 
-`진료과목` ("Treatment Departments") was an `h2`. `어떤 치료가 필요하세요?` ("What treatment do you need?") was a plain `p`.
-
-By default, `h2` renders larger. So the category label dominated visually, and the section's real heading got buried. Visual weight was exactly backwards relative to importance.
-
-What made this read phase useful: Claude also checked the FAQ section and subpages, and found they were **already using the correct pattern**. The right implementation existed in the codebase — Claude used it as the reference without being told it was there.
+**Tool usage:** `Read(17)` `Edit(5)` `Bash(3)` `Agent(1)` `Write(1)` — **27 calls total.**
 
 ---
 
-## The Fix: Standard Eyebrow Label Pattern
+## Was Opus Overkill for UI Bugs?
 
-The correct hierarchy is the eyebrow label pattern you see in most modern design systems:
+All three sessions ran on `claude-opus-4-6`. That felt like overkill going in.
 
-```tsx
-// After — correct hierarchy
-<p className="text-sm font-semibold text-mint-600 uppercase tracking-wider">
-  진료과목
-</p>
-<h2 className="text-3xl font-bold text-gray-900">
-  어떤 치료가 필요하세요?
-</h2>
-```
+Session 3 changed my mind.
 
-Category label → small `p` with `uppercase`, `tracking-wider`, and accent color. Section title → large `h2` with full weight.
+The vague prompt — "find weird stuff" — required building a mental model of what the codebase is *supposed* to look like before identifying what *deviates* from it. That's not mechanical file reading. It's inference. And some of those inferences aren't obvious:
 
-Visual hierarchy now matches semantic hierarchy. The label is visually subordinate; the heading is the dominant element.
+**Is `HeroBgPicker.tsx` intentional production UI, or a dev tool that got left in?** You have to read the component to understand its purpose. A floating color picker with a panel that lets you swap background presets during development — that's clearly not a production feature. But that judgment requires reading enough context to make the call.
 
-Three Edit calls — one per broken section, all in `app/page.tsx`. Then `next build` via Bash. No errors. Committed.
+**Is `floatingPop infinite` a deliberate design choice?** It lives in `globals.css` right next to real production animation styles. Without reading the component that uses it, "bouncing forever" could look intentional.
 
-**Full tool breakdown:**
-Read ×5, Bash ×4, Edit ×3, Agent ×1 = **14 tool calls total**. Session time: 2 minutes. Changed files: 1. Lines modified: 6 deleted, 6 added.
+If you've used Claude Code with Sonnet for debugging, you've probably noticed it makes fewer reads before forming conclusions. That's usually fine — fewer reads means faster results when you've given a clear target. But for an open-ended "find anything wrong" session, fewer reads means more assumptions. Wrong assumptions produce wrong fixes or missed bugs.
 
----
+The model choice isn't about raw capability — it's about how much inference you're asking for under uncertainty.
 
-## Why Only the Homepage Was Broken
+For targeted bugs with specific reproduction steps → Sonnet.
+For "I don't know what's broken, please find it" → Opus.
 
-The subpages were built after the design pattern was established. The homepage sections were written earlier, before the eyebrow convention was finalized — and they were never updated. Classic multi-phase development drift.
+Full stats across all three sessions:
 
-This kind of inconsistency is hard to catch in code review because each section looks locally reasonable in isolation. A category label *can* be large. A description *can* be small. The problem only becomes visible when you notice the visual weight is inverted relative to importance — exactly the kind of thing that shows up in user reports, not in a linter.
+| Metric | Value |
+|--------|-------|
+| Sessions | 3 |
+| Total tool calls | 41 |
+| `Read` calls | 22 |
+| `Edit` calls | 8 |
+| `Bash` calls | 8 |
+| `Write` calls | 1 |
+| `Agent` calls | 2 |
+| Files changed | 3 |
+| Time elapsed | ~5 minutes |
 
----
+The 22 reads aren't inefficiency — they're the work. Claude Code with Claude Opus reading your entire codebase before touching anything is exactly the behavior you want when the prompt is deliberately underspecified.
 
-## The Underlying Pattern
-
-This session demonstrates something that comes up often with Claude Code: **the model uses the existing codebase as its own specification**.
-
-Claude found the correct implementation in FAQ and subpages, inferred it was the intended design, and applied it to the broken sections — without me describing what "correct" looks like. The codebase contained both the bug and the fix. Claude found both.
-
-If you're writing prompts for debugging tasks, that's the key insight. You don't need to describe the correct behavior from scratch if examples already exist in the codebase. Just ask for an exhaustive scan, and let the model find the pattern.
-
-> When you don't know where the bug is, don't narrow the scope — broaden it, and let the model find the pattern.
+> You don't have to describe the bug. Read enough code and it finds itself.
 
 ---
 
