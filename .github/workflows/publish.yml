@@ -108,9 +108,13 @@ jobs:
 
           # ── Process each markdown file ──
           for filepath in sorted(glob.glob("posts/*.md")):
-              # Skip build-log posts (not for DEV.to)
-              if "build-log" in os.path.basename(filepath):
+              # Skip build-log posts and Korean posts
+              fname = os.path.basename(filepath)
+              if "build-log" in fname:
                   log(f"SKIP (build-log): {filepath}")
+                  continue
+              if fname.endswith("-ko.md"):
+                  log(f"SKIP (korean): {filepath}")
                   continue
 
               with open(filepath) as f:
