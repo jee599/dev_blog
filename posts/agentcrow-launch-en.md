@@ -7,6 +7,8 @@ tags:
   - claude
   - productivity
   - opensource
+id: 3372582
+date: '2026-03-19T14:43:35.082Z'
 ---
 
 Claude Code's Agent Teams feature is genuinely impressive. You type a complex prompt, it spawns subagents, they work in parallel, each with its own context window. The architecture is there.
