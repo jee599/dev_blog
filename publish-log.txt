@@ -14,11 +14,10 @@ SKIP (build-log): posts/2026-03-18-portfolio-site-build-log-en.md
 SKIP (build-log): posts/2026-03-18-uddental-build-log-en.md
 SKIP (build-log): posts/2026-03-19-portfolio-site-build-log-en.md
 SKIP (build-log): posts/2026-03-19-uddental-build-log-en.md
-
-PUBLISHING: posts/agentcrow-launch-en.md
-  title: Claude Code Agent Teams Can Spawn Agents. It Just Doesn't Know Which Ones to Use.
-  tags: ['ai', 'claude', 'productivity', 'opensource']
-  DUPLICATE found on DEV.to (id=3372582) — writing id to file
+SKIP (build-log): posts/2026-03-20-agentochester-build-log-en.md
+SKIP (build-log): posts/2026-03-20-dev-blog-build-log-en.md
+SKIP (build-log): posts/2026-03-20-portfolio-site-build-log-en.md
+SKIP (has id): posts/agentcrow-launch-en.md
 SKIP (has id): posts/ai-agent-i18n-tarot-compatibility-en.md
 SKIP (has id): posts/ai-content-full-automation-en.md
 SKIP (has id): posts/ai-fortune-architecture-en.md
@@ -48,13 +47,7 @@ SKIP (has id): posts/context-engineering-practical-en.md
 SKIP (korean filename): posts/context-engineering-practical-ko.md
 SKIP (has id): posts/contextzip-claude-code-built-its-own-tool-en.md
 SKIP (has id): posts/contextzip-compress-context-90-percent-en.md
-
-PUBLISHING: posts/contextzip-promo-19-en.md
-  title: Java Spring Stacktraces: Hide the Framework, Keep the Bug
-  tags: ['ai', 'programming', 'productivity', 'opensource']
-  draft detected (id=3372455) -> publish update
-  publish draft result: HTTP 200
-  PUBLISHED existing draft id=3372455
+SKIP (has id): posts/contextzip-promo-19-en.md
 SKIP (has id): posts/contextzip-rtk-fork-90-percent-en.md
 SKIP (has id): posts/contextzip-rust-cli-without-writing-rust-en.md
 SKIP (has id): posts/dental-website-8-minutes-en.md
@@ -93,4 +86,4 @@ SKIP (has id): posts/trading-bot-win-rate-lie-en.md
 SKIP (korean filename): posts/trading-bot-win-rate-lie-ko.md
 SKIP (has id): posts/writing-claude-code-book-with-claude-code-en.md
 
-Done: 2 published, 0 failed
+Done: 0 published, 0 failed
