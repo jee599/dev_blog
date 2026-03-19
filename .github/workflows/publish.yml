@@ -114,11 +114,17 @@ jobs:
                   log(f"SKIP (build-log): {filepath}")
                   continue
               if fname.endswith("-ko.md"):
-                  log(f"SKIP (korean): {filepath}")
+                  log(f"SKIP (korean filename): {filepath}")
                   continue
 
               with open(filepath) as f:
                   content = f.read()
+
+              # Skip if title contains Korean characters
+              m_title = re.search(r'^title:\s*["\']?(.*?)["\']?\s*$', content, re.M)
+              if m_title and any('\uac00' <= c <= '\ud7a3' for c in m_title.group(1)):
+                  log(f"SKIP (korean title): {filepath}")
+                  continue
 
               m_id = re.search(r"^id:\s*(\d+)", content, re.M)
               m_pub = re.search(r"^published:\s*(true|false)\s*$", content, re.M | re.I)
