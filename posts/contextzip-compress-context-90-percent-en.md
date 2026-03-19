@@ -8,6 +8,8 @@ tags:
   - productivity
   - opensource
 hashnode_url: 'https://plzai.hashnode.dev/contextzip-compress-context-90-percent'
+id: 3372093
+date: '2026-03-19T12:07:06.064Z'
 ---
 
 My Claude Code session died mid-debug. Not because the problem was hard — because `npm install` dumped 150 lines of deprecated warnings into the context window.

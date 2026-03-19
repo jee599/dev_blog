@@ -1,5 +1,5 @@
 Fetching existing articles from DEV.to ...
-  Found 57 existing article(s) on DEV.to
+  Found 61 existing article(s) on DEV.to
 
 SKIP (korean filename): posts/2026-03-14-anthropic-partner-network-100m-ko.md
 SKIP (korean filename): posts/2026-03-14-gemini-750m-ads-ko.md
@@ -42,6 +42,21 @@ SKIP (korean filename): posts/claude-md-team-standardization-ko.md
 SKIP (has id): posts/context-engineering-practical-en.md
 SKIP (korean filename): posts/context-engineering-practical-ko.md
 SKIP (has id): posts/contextzip-claude-code-built-its-own-tool-en.md
+
+PUBLISHING: posts/contextzip-compress-context-90-percent-en.md
+  title: I Compressed Claude Code's Context by 90% — Here's How
+  tags: ['ai', 'claudecode', 'productivity', 'opensource']
+  DUPLICATE found on DEV.to (id=3372093) — writing id to file
+
+PUBLISHING: posts/contextzip-rtk-fork-90-percent-en.md
+  title: RTK Saves 60% of Tokens. I Made It Save 90%.
+  tags: ['rust', 'cli', 'opensource', 'ai']
+  DUPLICATE found on DEV.to (id=3372097) — writing id to file
+
+PUBLISHING: posts/contextzip-rust-cli-without-writing-rust-en.md
+  title: Building a 1,056-Test Rust CLI Without Writing Rust — Claude Code Did It
+  tags: ['ai', 'rust', 'devops', 'programming']
+  DUPLICATE found on DEV.to (id=3372104) — writing id to file
 SKIP (has id): posts/dental-website-8-minutes-en.md
 SKIP (has id): posts/designing-saas-with-claude-en.md
 SKIP (korean filename): posts/designing-saas-with-claude-ko.md
@@ -78,4 +93,4 @@ SKIP (has id): posts/trading-bot-win-rate-lie-en.md
 SKIP (korean filename): posts/trading-bot-win-rate-lie-ko.md
 SKIP (has id): posts/writing-claude-code-book-with-claude-code-en.md
 
-Done: 0 published, 0 failed
+Done: 3 published, 0 failed

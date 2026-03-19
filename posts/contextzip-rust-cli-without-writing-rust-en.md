@@ -8,6 +8,8 @@ tags:
   - devops
   - programming
 hashnode_url: 'https://plzai.hashnode.dev/contextzip-rust-cli-without-writing-rust'
+id: 3372104
+date: '2026-03-19T12:07:18.887Z'
 ---
 
 I don't write Rust. I can read it well enough to catch obvious bugs, but I've never typed `impl` or `fn main()` from scratch. Yet I shipped a 40-module Rust CLI with 1,056 tests in 3 weeks.
