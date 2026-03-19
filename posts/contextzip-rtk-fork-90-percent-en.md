@@ -7,6 +7,7 @@ tags:
   - cli
   - opensource
   - ai
+hashnode_url: 'https://plzai.hashnode.dev/contextzip-rtk-fork-90-percent'
 ---
 
 RTK is one of the best tools in the Claude Code ecosystem. 28k GitHub stars, 60-90% token savings on git, test, and ls output, 34 command modules with TOML-based filters. If you use Claude Code and don't have RTK installed, go install it now.
