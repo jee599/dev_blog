@@ -1,0 +1,46 @@
+name: Daily ContextZip Promo
+on:
+  schedule:
+    - cron: '0 14 * * *'  # 2 PM UTC = 11 PM KST
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Move today's scheduled post to posts/
+        run: |
+          DAY=$(( ($(date +%j) % 30) + 1 ))
+          DAY_PADDED=$(printf "%02d" $DAY)
+          SRC="scheduled/day-${DAY_PADDED}.md"
+
+          if [ ! -f "$SRC" ]; then
+            echo "No post for day $DAY_PADDED"
+            exit 0
+          fi
+
+          DEST="posts/contextzip-promo-${DAY_PADDED}-en.md"
+
+          # Skip if already published
+          if [ -f "$DEST" ]; then
+            echo "Already published: $DEST"
+            exit 0
+          fi
+
+          # Copy and set published: true
+          cp "$SRC" "$DEST"
+          sed -i 's/published: false/published: true/' "$DEST"
+
+          # Commit and push — triggers the existing publish.yml workflow
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add "posts/$DEST" 2>/dev/null || git add "$DEST"
+          git commit -m "promo: day ${DAY_PADDED} contextzip post" || exit 0
+          git push
