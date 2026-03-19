@@ -1,9 +1,9 @@
 Fetching existing articles from DEV.to ...
   Found 57 existing article(s) on DEV.to
 
-SKIP (korean): posts/2026-03-14-anthropic-partner-network-100m-ko.md
-SKIP (korean): posts/2026-03-14-gemini-750m-ads-ko.md
-SKIP (korean): posts/2026-03-14-nvidia-gtc-2026-rubin-nemoclaw-ko.md
+SKIP (korean filename): posts/2026-03-14-anthropic-partner-network-100m-ko.md
+SKIP (korean filename): posts/2026-03-14-gemini-750m-ads-ko.md
+SKIP (korean filename): posts/2026-03-14-nvidia-gtc-2026-rubin-nemoclaw-ko.md
 SKIP (build-log): posts/2026-03-16-LLMTrio-build-log-en.md
 SKIP (build-log): posts/2026-03-16-coffee-chat-build-log-en.md
 SKIP (build-log): posts/2026-03-16-portfolio-site-build-log-en.md
@@ -17,64 +17,74 @@ SKIP (build-log): posts/2026-03-19-uddental-build-log-en.md
 SKIP (has id): posts/ai-agent-i18n-tarot-compatibility-en.md
 SKIP (has id): posts/ai-content-full-automation-en.md
 SKIP (has id): posts/ai-fortune-architecture-en.md
-SKIP (korean): posts/ai-fortune-architecture-ko.md
+SKIP (korean filename): posts/ai-fortune-architecture-ko.md
 SKIP (has id): posts/ai-multistack-bootstrap-strategy-en.md
 SKIP (has id): posts/ai-news-bilingual-script-pattern-en.md
 SKIP (has id): posts/ai-news-claude-automation-en.md
 SKIP (has id): posts/ai-news-complete-workflow-en.md
 SKIP (has id): posts/ai-trading-bot-14-sessions-en.md
 SKIP (has id): posts/anthropic-13-free-courses-review-en.md
-SKIP (korean): posts/anthropic-13-free-courses-review-ko.md
+SKIP (korean filename): posts/anthropic-13-free-courses-review-ko.md
 SKIP (has id): posts/blog-automation-pipeline-105-sessions-en.md
 SKIP (has id): posts/building-mentoring-platform-10-agents-en.md
 SKIP (has id): posts/building-real-apps-with-claude-api-en.md
-SKIP (korean): posts/building-real-apps-with-claude-api-ko.md
+SKIP (korean filename): posts/building-real-apps-with-claude-api-ko.md
 SKIP (has id): posts/claude-code-10-features-ranked-en-part1.md
 SKIP (has id): posts/claude-code-10-features-ranked-en-part2.md
-SKIP (has id): posts/claude-code-10-features-ranked-ko-part1.md
-SKIP (has id): posts/claude-code-10-features-ranked-ko-part2.md
+SKIP (korean title): posts/claude-code-10-features-ranked-ko-part1.md
+SKIP (korean title): posts/claude-code-10-features-ranked-ko-part2.md
 SKIP (has id): posts/claude-code-config-guide-en.md
-SKIP (korean): posts/claude-code-config-guide-ko.md
+SKIP (korean filename): posts/claude-code-config-guide-ko.md
 SKIP (has id): posts/claude-hooks-exit2-en.md
-SKIP (korean): posts/claude-hooks-exit2-ko.md
+SKIP (korean filename): posts/claude-hooks-exit2-ko.md
 SKIP (has id): posts/claude-md-team-standardization-en.md
-SKIP (korean): posts/claude-md-team-standardization-ko.md
+SKIP (korean filename): posts/claude-md-team-standardization-ko.md
 SKIP (has id): posts/context-engineering-practical-en.md
-SKIP (korean): posts/context-engineering-practical-ko.md
+SKIP (korean filename): posts/context-engineering-practical-ko.md
+
+PUBLISHING: posts/contextzip-claude-code-built-its-own-tool-en.md
+  title: Claude Code Is Wasting Your Tokens. I Fixed It in 3 Weeks Without Writing a Single Line of Code.
+  tags: []
+  step 1: creating draft ...
+    attempt 1: HTTP 422
+    response body: {"error":"Title has already been used in the last five minutes","status":422}
+    rate-limit-remaining=?  reset=?  retry-after=?
+  step 1 result: HTTP 422
+  FAILED to create draft: {"error":"Title has already been used in the last five minutes","status":422}
 SKIP (has id): posts/dental-website-8-minutes-en.md
 SKIP (has id): posts/designing-saas-with-claude-en.md
-SKIP (korean): posts/designing-saas-with-claude-ko.md
+SKIP (korean filename): posts/designing-saas-with-claude-ko.md
 SKIP (has id): posts/github-trending-100-patterns-en.md
-SKIP (korean): posts/github-trending-100-patterns-ko.md
+SKIP (korean filename): posts/github-trending-100-patterns-ko.md
 SKIP (has id): posts/gpt5-codex-5800-line-bootstrap-en.md
 SKIP (has id): posts/gpt5-codex-shorts-pipeline-en.md
 SKIP (has id): posts/gpt5-vs-gemini-vs-claude-real-test-en.md
-SKIP (korean): posts/gpt5-vs-gemini-vs-claude-real-test-ko.md
+SKIP (korean filename): posts/gpt5-vs-gemini-vs-claude-real-test-ko.md
 SKIP (has id): posts/llm-cost-optimization-en.md
-SKIP (korean): posts/llm-cost-optimization-ko.md
+SKIP (korean filename): posts/llm-cost-optimization-ko.md
 SKIP (has id): posts/llm-cost-skill-tree-en.md
-SKIP (korean): posts/llm-cost-skill-tree-ko.md
+SKIP (korean filename): posts/llm-cost-skill-tree-ko.md
 SKIP (has id): posts/llm-cpu-agent-process-architecture-en.md
-SKIP (korean): posts/llm-cpu-agent-process-architecture-ko.md
+SKIP (korean filename): posts/llm-cpu-agent-process-architecture-ko.md
 SKIP (build-log): posts/llmtrio-build-log-en.md
 SKIP (build-log): posts/llmtrio-build-log-ko.md
 SKIP (has id): posts/llmtrio-multi-agent-orchestrator-86-sessions-en.md
 SKIP (has id): posts/mcp-usbc-protocol-en.md
-SKIP (korean): posts/mcp-usbc-protocol-ko.md
+SKIP (korean filename): posts/mcp-usbc-protocol-ko.md
 SKIP (has id): posts/model-routing-cocktail-en.md
-SKIP (korean): posts/model-routing-cocktail-ko.md
+SKIP (korean filename): posts/model-routing-cocktail-ko.md
 SKIP (has id): posts/nextjs-6-languages-one-day-en.md
-SKIP (korean): posts/nextjs-6-languages-one-day-ko.md
+SKIP (korean filename): posts/nextjs-6-languages-one-day-ko.md
 SKIP (has id): posts/prompting-is-programming-en.md
-SKIP (korean): posts/prompting-is-programming-ko.md
+SKIP (korean filename): posts/prompting-is-programming-ko.md
 SKIP (has id): posts/saju-app-design-threejs-cosmic-en.md
-SKIP (korean): posts/saju-app-design-threejs-cosmic-ko.md
+SKIP (korean filename): posts/saju-app-design-threejs-cosmic-ko.md
 SKIP (has id): posts/trading-bot-15-strategies-en.md
-SKIP (korean): posts/trading-bot-15-strategies-ko.md
+SKIP (korean filename): posts/trading-bot-15-strategies-ko.md
 SKIP (has id): posts/trading-bot-arena-strategies-en.md
-SKIP (korean): posts/trading-bot-arena-strategies-ko.md
+SKIP (korean filename): posts/trading-bot-arena-strategies-ko.md
 SKIP (has id): posts/trading-bot-win-rate-lie-en.md
-SKIP (korean): posts/trading-bot-win-rate-lie-ko.md
+SKIP (korean filename): posts/trading-bot-win-rate-lie-ko.md
 SKIP (has id): posts/writing-claude-code-book-with-claude-code-en.md
 
-Done: 0 published, 0 failed
+Done: 0 published, 1 failed
