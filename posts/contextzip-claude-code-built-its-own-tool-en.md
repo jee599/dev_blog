@@ -8,6 +8,7 @@ tags:
   - rust
   - productivity
 id: 3372032
+hashnode_url: 'https://plzai.hashnode.dev/contextzip-claude-code-built-its-own-tool'
 ---
 
 I burned through my Claude Code context window three times in one session. The third time, I snapped.
