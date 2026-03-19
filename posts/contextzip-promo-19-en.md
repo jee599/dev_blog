@@ -9,6 +9,8 @@ tags:
   - opensource
 series: "ContextZip Daily"
 canonical_url: "https://github.com/jee599/contextzip"
+id: 3372455
+date: 'draft'
 ---
 
 A NullPointerException in a Spring Boot controller. Your code has the bug on one line. Spring's stack trace is 80+ lines.
