@@ -15,7 +15,9 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Move today's scheduled post to posts/
+      - name: Publish today's post
+        env:
+          DEVTO_TOKEN: ${{ secrets.DEVTO_TOKEN }}
         run: |
           DAY_OF_YEAR=$(date +%-j)
           DAY=$(( (DAY_OF_YEAR % 30) + 1 ))
@@ -29,19 +31,60 @@ jobs:
 
           DEST="posts/contextzip-promo-${DAY_PADDED}-en.md"
 
-          # Skip if already published
           if [ -f "$DEST" ]; then
             echo "Already published: $DEST"
             exit 0
           fi
 
-          # Copy and set published: true
           cp "$SRC" "$DEST"
           sed -i 's/published: false/published: true/' "$DEST"
 
-          # Commit and push — triggers the existing publish.yml workflow
+          # Commit
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add "posts/$DEST" 2>/dev/null || git add "$DEST"
+          git add "$DEST"
           git commit -m "promo: day ${DAY_PADDED} contextzip post" || exit 0
           git push
+
+          # Publish to DEV.to directly
+          python3 - "$DEST" <<'PYEOF'
+          import sys, os, json, re, urllib.request
+
+          api_key = os.environ.get("DEVTO_TOKEN", "")
+          if not api_key:
+              print("No DEVTO_TOKEN")
+              sys.exit(0)
+
+          filepath = sys.argv[1]
+          with open(filepath) as f:
+              content = f.read()
+
+          parts = content.split("---", 2)
+          if len(parts) < 3:
+              sys.exit(1)
+
+          fm, body = parts[1], parts[2].strip()
+          title_m = re.search(r'^title:\s*"?(.+?)"?\s*$', fm, re.M)
+          title = title_m.group(1) if title_m else "Untitled"
+          tags = re.findall(r'^\s+-\s+(\w+)', fm, re.M)[:4]
+
+          data = json.dumps({"article": {
+              "title": title,
+              "body_markdown": body,
+              "published": True,
+              "tags": tags,
+              "series": "ContextZip Daily"
+          }}).encode()
+
+          req = urllib.request.Request(
+              "https://dev.to/api/articles",
+              data=data,
+              headers={"api-key": api_key, "Content-Type": "application/json"}
+          )
+          try:
+              resp = urllib.request.urlopen(req)
+              result = json.loads(resp.read())
+              print(f"Published: {result.get('url', '?')}")
+          except urllib.error.HTTPError as e:
+              print(f"HTTP {e.code}: {e.read().decode()}")
+          PYEOF
