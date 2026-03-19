@@ -1,12 +1,14 @@
 ---
 title: "40 Identical TypeScript Errors? Group Them Into 1"
 published: false
-description: "TypeScript often reports the same error 40 times across files. ContextZip groups duplicates into a single entry."
+description: "TypeScript often reports the same type error 40+ times across different files. ContextZip groups semantic duplicates into a single entry to save context."
 tags:
   - ai
   - claudecode
   - webdev
   - productivity
+series: "ContextZip Daily"
+canonical_url: "https://github.com/jee599/contextzip"
 ---
 
 You renamed an interface property. TypeScript reports the error in every file that uses it. 40 files, 40 identical error messages:
@@ -48,3 +50,9 @@ eval "$(contextzip init)"
 ```
 
 **GitHub:** [github.com/contextzip/contextzip](https://github.com/contextzip/contextzip)
+
+---
+
+*Part of the [ContextZip Daily](https://dev.to/ji_ai/series/contextzip-daily) series. Follow for daily tips on optimizing your AI coding workflow.*
+
+**Install:** `npx contextzip` | **GitHub:** [jee599/contextzip](https://github.com/jee599/contextzip)

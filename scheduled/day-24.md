@@ -1,12 +1,14 @@
 ---
 title: "Security Warnings Preserved, Deprecated Noise Deleted"
 published: false
-description: "ContextZip distinguishes between actionable security warnings and noise warnings. One stays, the other goes."
+description: "Not all warnings are noise. ContextZip distinguishes between actionable security warnings and ignorable deprecation notices. Critical ones stay."
 tags:
   - ai
   - productivity
   - opensource
   - devops
+series: "ContextZip Daily"
+canonical_url: "https://github.com/jee599/contextzip"
 ---
 
 Not all warnings are noise. `npm audit` security warnings matter. `npm warn deprecated` warnings don't. ContextZip knows the difference.
@@ -57,3 +59,9 @@ eval "$(contextzip init)"
 ```
 
 **GitHub:** [github.com/contextzip/contextzip](https://github.com/contextzip/contextzip)
+
+---
+
+*Part of the [ContextZip Daily](https://dev.to/ji_ai/series/contextzip-daily) series. Follow for daily tips on optimizing your AI coding workflow.*
+
+**Install:** `npx contextzip` | **GitHub:** [jee599/contextzip](https://github.com/jee599/contextzip)

@@ -1,12 +1,14 @@
 ---
 title: "Docker Build Failed? ContextZip Keeps the Context That Matters"
 published: false
-description: "When Docker builds fail, the error is buried in layers of cache output. ContextZip surfaces the failure."
+description: "When Docker builds fail, the error is buried in 100+ lines of cached layer output. ContextZip surfaces the actual failure line automatically."
 tags:
   - ai
   - devops
   - productivity
   - opensource
+series: "ContextZip Daily"
+canonical_url: "https://github.com/jee599/contextzip"
 ---
 
 Docker build failed. The error is on line 47 of 120. Lines 1-46 are cached layer confirmations. Lines 48-120 are cleanup output. Your AI reads all 120 lines to find the one error.
@@ -61,3 +63,9 @@ eval "$(contextzip init)"
 ```
 
 **GitHub:** [github.com/contextzip/contextzip](https://github.com/contextzip/contextzip)
+
+---
+
+*Part of the [ContextZip Daily](https://dev.to/ji_ai/series/contextzip-daily) series. Follow for daily tips on optimizing your AI coding workflow.*
+
+**Install:** `npx contextzip` | **GitHub:** [jee599/contextzip](https://github.com/jee599/contextzip)

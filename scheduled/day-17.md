@@ -1,12 +1,14 @@
 ---
 title: "How I Built a 1,056-Test Rust CLI in 3 Weeks"
 published: false
-description: "Building ContextZip: a Rust CLI with 1,056 tests, pattern-based output filtering, and zero runtime dependencies."
+description: "Building ContextZip in Rust: 1,056 tests, pattern-based output filtering, zero runtime dependencies, and sub-millisecond processing latency."
 tags:
   - rust
   - opensource
   - programming
   - ai
+series: "ContextZip Daily"
+canonical_url: "https://github.com/jee599/contextzip"
 ---
 
 ContextZip started as a fork of RTK (Reduce Toolkit). Three weeks later, it was a different tool with 1,056 tests and coverage for 102 CLI command patterns.
@@ -48,3 +50,9 @@ eval "$(contextzip init)"
 ```
 
 **GitHub:** [github.com/contextzip/contextzip](https://github.com/contextzip/contextzip)
+
+---
+
+*Part of the [ContextZip Daily](https://dev.to/ji_ai/series/contextzip-daily) series. Follow for daily tips on optimizing your AI coding workflow.*
+
+**Install:** `npx contextzip` | **GitHub:** [jee599/contextzip](https://github.com/jee599/contextzip)

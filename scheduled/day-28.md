@@ -1,12 +1,14 @@
 ---
 title: "ANSI Spinners, Progress Bars, Decorations — All Gone"
 published: false
-description: "Terminal animations look great for humans but consume real tokens in AI context. ContextZip strips them all."
+description: "Terminal spinner animations and progress bars look great for humans but consume real tokens in AI context. ContextZip strips every animated element."
 tags:
   - ai
   - productivity
   - programming
   - claudecode
+series: "ContextZip Daily"
+canonical_url: "https://github.com/jee599/contextzip"
 ---
 
 Watch your terminal during `npm install`. See that spinning dot? That progress bar crawling across the screen? Those are ANSI animations — cursor movements that redraw the same line hundreds of times.
@@ -52,3 +54,9 @@ eval "$(contextzip init)"
 ```
 
 **GitHub:** [github.com/contextzip/contextzip](https://github.com/contextzip/contextzip)
+
+---
+
+*Part of the [ContextZip Daily](https://dev.to/ji_ai/series/contextzip-daily) series. Follow for daily tips on optimizing your AI coding workflow.*
+
+**Install:** `npx contextzip` | **GitHub:** [jee599/contextzip](https://github.com/jee599/contextzip)

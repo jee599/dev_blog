@@ -1,12 +1,14 @@
 ---
 title: "Java Spring Stacktraces: Hide the Framework, Keep the Bug"
 published: false
-description: "Spring Boot stack traces are 80+ lines of framework internals. ContextZip strips them to your code's frames."
+description: "Spring Boot stack traces are 80+ lines of framework internals. ContextZip filters them to your application code frames for cleaner AI context."
 tags:
   - ai
   - programming
   - productivity
   - opensource
+series: "ContextZip Daily"
+canonical_url: "https://github.com/jee599/contextzip"
 ---
 
 A NullPointerException in a Spring Boot controller. Your code has the bug on one line. Spring's stack trace is 80+ lines.
@@ -56,3 +58,9 @@ eval "$(contextzip init)"
 ```
 
 **GitHub:** [github.com/contextzip/contextzip](https://github.com/contextzip/contextzip)
+
+---
+
+*Part of the [ContextZip Daily](https://dev.to/ji_ai/series/contextzip-daily) series. Follow for daily tips on optimizing your AI coding workflow.*
+
+**Install:** `npx contextzip` | **GitHub:** [jee599/contextzip](https://github.com/jee599/contextzip)

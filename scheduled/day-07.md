@@ -1,12 +1,14 @@
 ---
 title: "The Hidden Cost of ANSI Color Codes in AI Context"
 published: false
-description: "ANSI escape codes are invisible to you but consume real tokens in your AI's context window."
+description: "ANSI escape codes are invisible to you in the terminal but they consume real tokens in your AI coding agent's context window. Here's how to strip them."
 tags:
   - ai
   - programming
   - productivity
   - claudecode
+series: "ContextZip Daily"
+canonical_url: "https://github.com/jee599/contextzip"
 ---
 
 Open your terminal. Run `ls --color`. The filenames look normal to you — colored by type.
@@ -56,3 +58,9 @@ eval "$(contextzip init)"
 ```
 
 **GitHub:** [github.com/contextzip/contextzip](https://github.com/contextzip/contextzip)
+
+---
+
+*Part of the [ContextZip Daily](https://dev.to/ji_ai/series/contextzip-daily) series. Follow for daily tips on optimizing your AI coding workflow.*
+
+**Install:** `npx contextzip` | **GitHub:** [jee599/contextzip](https://github.com/jee599/contextzip)

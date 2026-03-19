@@ -1,12 +1,14 @@
 ---
 title: "Track Every Token You Save With contextzip gain"
 published: false
-description: "ContextZip tracks your cumulative savings. See exactly how much context you've reclaimed over time."
+description: "ContextZip tracks cumulative token savings across sessions. See exactly how much AI context window space you've reclaimed over days and weeks."
 tags:
   - ai
   - productivity
   - claudecode
   - opensource
+series: "ContextZip Daily"
+canonical_url: "https://github.com/jee599/contextzip"
 ---
 
 How much context are you actually saving? ContextZip tracks it.
@@ -64,3 +66,9 @@ eval "$(contextzip init)"
 ```
 
 **GitHub:** [github.com/contextzip/contextzip](https://github.com/contextzip/contextzip)
+
+---
+
+*Part of the [ContextZip Daily](https://dev.to/ji_ai/series/contextzip-daily) series. Follow for daily tips on optimizing your AI coding workflow.*
+
+**Install:** `npx contextzip` | **GitHub:** [jee599/contextzip](https://github.com/jee599/contextzip)

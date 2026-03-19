@@ -1,12 +1,14 @@
 ---
 title: "I Benchmarked 102 CLI Commands — Here's How Much Context They Waste"
 published: false
-description: "Real benchmark data from 102 common CLI commands showing how much output is noise vs. signal for AI agents."
+description: "I benchmarked 102 common CLI commands and measured how much of their output is noise vs. signal for AI coding agents. The results were eye-opening."
 tags:
   - ai
   - productivity
   - programming
   - opensource
+series: "ContextZip Daily"
+canonical_url: "https://github.com/jee599/contextzip"
 ---
 
 I ran 102 common CLI commands through ContextZip and measured the before/after output size. The results were worse than I expected.
@@ -48,3 +50,9 @@ eval "$(contextzip init)"
 Every command shows its savings inline: `💾 contextzip: 200 → 40 chars`. You see exactly what you're saving.
 
 **GitHub:** [github.com/contextzip/contextzip](https://github.com/contextzip/contextzip)
+
+---
+
+*Part of the [ContextZip Daily](https://dev.to/ji_ai/series/contextzip-daily) series. Follow for daily tips on optimizing your AI coding workflow.*
+
+**Install:** `npx contextzip` | **GitHub:** [jee599/contextzip](https://github.com/jee599/contextzip)

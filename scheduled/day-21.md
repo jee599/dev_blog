@@ -1,12 +1,14 @@
 ---
 title: "Why RTK Wasn't Enough (And What I Added)"
 published: false
-description: "ContextZip started as a fork of RTK (Reduce Toolkit). Here's what was missing and what I built on top."
+description: "ContextZip started as a fork of RTK (Reduce Toolkit) for basic output cleaning. Here's what was missing and what I built to make it AI-aware."
 tags:
   - rust
   - opensource
   - ai
   - productivity
+series: "ContextZip Daily"
+canonical_url: "https://github.com/jee599/contextzip"
 ---
 
 RTK (Reduce Toolkit) is a solid Rust CLI for reducing AI context size. I used it daily. Then I hit its limits.
@@ -45,3 +47,9 @@ eval "$(contextzip init)"
 ```
 
 **GitHub:** [github.com/contextzip/contextzip](https://github.com/contextzip/contextzip)
+
+---
+
+*Part of the [ContextZip Daily](https://dev.to/ji_ai/series/contextzip-daily) series. Follow for daily tips on optimizing your AI coding workflow.*
+
+**Install:** `npx contextzip` | **GitHub:** [jee599/contextzip](https://github.com/jee599/contextzip)

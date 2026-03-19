@@ -1,12 +1,14 @@
 ---
 title: "Your Node.js Stack Traces Are Eating Your Context Window"
 published: false
-description: "Node.js errors include dozens of internal framework frames. Your AI reads all of them. It doesn't need to."
+description: "Node.js error stack traces include dozens of internal framework frames your AI wastes tokens reading. ContextZip strips them and keeps only your code."
 tags:
   - ai
   - claudecode
   - programming
   - productivity
+series: "ContextZip Daily"
+canonical_url: "https://github.com/jee599/contextzip"
 ---
 
 A typical Node.js error stack trace is 30-50 lines. Your code caused maybe 3 of those lines. The other 27-47 are `node:internal/modules/cjs/loader`, `node:internal/modules/run_main`, and friends.
@@ -54,3 +56,9 @@ eval "$(contextzip init)"
 Zero config. Your debugging context stays clean.
 
 **GitHub:** [github.com/contextzip/contextzip](https://github.com/contextzip/contextzip)
+
+---
+
+*Part of the [ContextZip Daily](https://dev.to/ji_ai/series/contextzip-daily) series. Follow for daily tips on optimizing your AI coding workflow.*
+
+**Install:** `npx contextzip` | **GitHub:** [jee599/contextzip](https://github.com/jee599/contextzip)

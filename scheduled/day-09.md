@@ -1,12 +1,14 @@
 ---
 title: "Claude Code Forgot My Code. Here's Why."
 published: false
-description: "Your AI coding agent has a fixed context window. CLI noise pushes your code out. Here's the fix."
+description: "Your AI coding agent has a fixed context window. Every line of CLI noise pushes out actual code context. Here's how to reclaim 60-90% of that wasted space."
 tags:
   - ai
   - claudecode
   - productivity
   - programming
+series: "ContextZip Daily"
+canonical_url: "https://github.com/jee599/contextzip"
 ---
 
 You've been working with Claude Code for 20 minutes. It was tracking your architecture perfectly. Then you ran a build command. Suddenly it's asking about files it already read. It "forgot" your code.
@@ -53,3 +55,9 @@ Your context window stays available for what matters: your code, your architectu
 **After ContextZip:** Your code stays in context 2-3x longer.
 
 **GitHub:** [github.com/contextzip/contextzip](https://github.com/contextzip/contextzip)
+
+---
+
+*Part of the [ContextZip Daily](https://dev.to/ji_ai/series/contextzip-daily) series. Follow for daily tips on optimizing your AI coding workflow.*
+
+**Install:** `npx contextzip` | **GitHub:** [jee599/contextzip](https://github.com/jee599/contextzip)

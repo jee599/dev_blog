@@ -1,12 +1,14 @@
 ---
 title: "The npm Deprecated Warning Nobody Reads (But Claude Does)"
 published: false
-description: "npm deprecated warnings are meant for humans to ignore. Your AI reads every one and wastes context on them."
+description: "npm deprecated package warnings are meant for humans to glance at and ignore. Your AI reads every single one and wastes precious context tokens on them."
 tags:
   - ai
   - webdev
   - productivity
   - claudecode
+series: "ContextZip Daily"
+canonical_url: "https://github.com/jee599/contextzip"
 ---
 
 `npm warn deprecated inflight@1.0.6: This module is not supported and is being kept for compatibility purposes.`
@@ -51,3 +53,9 @@ eval "$(contextzip init)"
 ```
 
 **GitHub:** [github.com/contextzip/contextzip](https://github.com/contextzip/contextzip)
+
+---
+
+*Part of the [ContextZip Daily](https://dev.to/ji_ai/series/contextzip-daily) series. Follow for daily tips on optimizing your AI coding workflow.*
+
+**Install:** `npx contextzip` | **GitHub:** [jee599/contextzip](https://github.com/jee599/contextzip)

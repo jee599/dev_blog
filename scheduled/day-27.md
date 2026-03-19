@@ -1,12 +1,14 @@
 ---
 title: "Contributing to ContextZip: Good First Issues for Beginners"
 published: false
-description: "ContextZip is open source and beginner-friendly. Here are easy ways to contribute your first PR."
+description: "ContextZip is open source, MIT-licensed, and beginner-friendly. Here are easy first-PR opportunities to contribute patterns, tests, or docs."
 tags:
   - opensource
   - beginners
   - rust
   - programming
+series: "ContextZip Daily"
+canonical_url: "https://github.com/jee599/contextzip"
 ---
 
 ContextZip is open source, MIT-licensed, and actively looking for contributors. If you've been wanting to contribute to a Rust project, here are concrete ways to start.
@@ -52,3 +54,9 @@ eval "$(contextzip init)"
 Use it for a week. Notice which commands still produce noise. File an issue or open a PR.
 
 **GitHub:** [github.com/contextzip/contextzip](https://github.com/contextzip/contextzip)
+
+---
+
+*Part of the [ContextZip Daily](https://dev.to/ji_ai/series/contextzip-daily) series. Follow for daily tips on optimizing your AI coding workflow.*
+
+**Install:** `npx contextzip` | **GitHub:** [jee599/contextzip](https://github.com/jee599/contextzip)

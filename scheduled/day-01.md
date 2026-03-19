@@ -1,12 +1,14 @@
 ---
 title: "One Command to Save 90% of Your Claude Code Tokens"
 published: false
-description: "CLI output is full of noise that eats your AI context window. One command fixes it."
+description: "CLI output floods your AI context window with noise — deprecation warnings, ANSI codes, progress bars. One command strips it all automatically."
 tags:
   - ai
   - claudecode
   - productivity
   - opensource
+series: "ContextZip Daily"
+canonical_url: "https://github.com/jee599/contextzip"
 ---
 
 You just ran `npm install` inside Claude Code. 847 lines of output. Deprecation warnings, progress bars, ANSI color codes, duplicate messages.
@@ -51,3 +53,9 @@ It strips ANSI codes, collapses duplicate warnings, removes framework stack fram
 **GitHub:** [github.com/contextzip/contextzip](https://github.com/contextzip/contextzip)
 
 5 seconds to install. Works with Claude Code, Cursor, Windsurf, or any AI agent that runs CLI commands.
+
+---
+
+*Part of the [ContextZip Daily](https://dev.to/ji_ai/series/contextzip-daily) series. Follow for daily tips on optimizing your AI coding workflow.*
+
+**Install:** `npx contextzip` | **GitHub:** [jee599/contextzip](https://github.com/jee599/contextzip)

@@ -1,12 +1,14 @@
 ---
 title: "The Architecture of a Transparent CLI Proxy"
 published: false
-description: "How ContextZip intercepts command output without changing command behavior. A look at the proxy architecture."
+description: "How ContextZip intercepts CLI output without changing command behavior, exit codes, or stderr. A look at the transparent shell proxy architecture."
 tags:
   - rust
   - programming
   - opensource
   - ai
+series: "ContextZip Daily"
+canonical_url: "https://github.com/jee599/contextzip"
 ---
 
 ContextZip wraps your shell commands without changing their behavior. No modified binaries. No PATH manipulation. No LD_PRELOAD tricks. Here's how.
@@ -75,3 +77,9 @@ eval "$(contextzip init)"
 ```
 
 **GitHub:** [github.com/contextzip/contextzip](https://github.com/contextzip/contextzip)
+
+---
+
+*Part of the [ContextZip Daily](https://dev.to/ji_ai/series/contextzip-daily) series. Follow for daily tips on optimizing your AI coding workflow.*
+
+**Install:** `npx contextzip` | **GitHub:** [jee599/contextzip](https://github.com/jee599/contextzip)

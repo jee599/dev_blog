@@ -1,12 +1,14 @@
 ---
 title: "5 Seconds to Install. 60-90% Less Noise. Forever."
 published: false
-description: "ContextZip installs in one command, configures itself, and silently saves your AI context from that moment on."
+description: "ContextZip installs in one command, configures itself, and silently saves your AI coding agent's context window from that moment on. Zero setup."
 tags:
   - ai
   - productivity
   - opensource
   - beginners
+series: "ContextZip Daily"
+canonical_url: "https://github.com/jee599/contextzip"
 ---
 
 Here's the entire ContextZip setup:
@@ -63,3 +65,9 @@ eval "$(contextzip init)"
 ```
 
 **GitHub:** [github.com/contextzip/contextzip](https://github.com/contextzip/contextzip)
+
+---
+
+*Part of the [ContextZip Daily](https://dev.to/ji_ai/series/contextzip-daily) series. Follow for daily tips on optimizing your AI coding workflow.*
+
+**Install:** `npx contextzip` | **GitHub:** [jee599/contextzip](https://github.com/jee599/contextzip)

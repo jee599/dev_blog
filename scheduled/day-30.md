@@ -1,12 +1,14 @@
 ---
 title: "Open Source, MIT License, Fork of RTK — The Full Story"
 published: false
-description: "ContextZip's origin story: a fork of RTK that grew into a language-aware CLI output optimizer for AI agents."
+description: "The full origin story of ContextZip: a fork of RTK that grew into a language-aware CLI output optimizer purpose-built for AI coding agents."
 tags:
   - opensource
   - rust
   - ai
   - programming
+series: "ContextZip Daily"
+canonical_url: "https://github.com/jee599/contextzip"
 ---
 
 ContextZip exists because I kept running out of context window in Claude Code. Not because my code was too long, but because `npm install` output was eating 40% of it.
@@ -58,4 +60,6 @@ eval "$(contextzip init)"
 
 ---
 
-*This is part 30 of 30 in the ContextZip Daily series. Thanks for reading.*
+*Part of the [ContextZip Daily](https://dev.to/ji_ai/series/contextzip-daily) series. Follow for daily tips on optimizing your AI coding workflow.*
+
+**Install:** `npx contextzip` | **GitHub:** [jee599/contextzip](https://github.com/jee599/contextzip)

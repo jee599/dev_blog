@@ -1,12 +1,14 @@
 ---
 title: "Go Goroutine Crashes: 97% of the Output Is Noise"
 published: false
-description: "When a Go program panics with 50 goroutines, the runtime dumps every stack. Your AI needs the first 5 lines."
+description: "When a Go program panics with 50 goroutines, the runtime dumps every stack trace. Your AI only needs the first few lines to debug the issue."
 tags:
   - ai
   - programming
   - productivity
   - opensource
+series: "ContextZip Daily"
+canonical_url: "https://github.com/jee599/contextzip"
 ---
 
 Go's panic behavior is aggressive. When one goroutine panics, the runtime dumps the stack trace of *every* goroutine. A production Go service with 50 active goroutines produces 2,000+ lines of stack dump on a single panic.
@@ -65,3 +67,9 @@ eval "$(contextzip init)"
 ```
 
 **GitHub:** [github.com/contextzip/contextzip](https://github.com/contextzip/contextzip)
+
+---
+
+*Part of the [ContextZip Daily](https://dev.to/ji_ai/series/contextzip-daily) series. Follow for daily tips on optimizing your AI coding workflow.*
+
+**Install:** `npx contextzip` | **GitHub:** [jee599/contextzip](https://github.com/jee599/contextzip)

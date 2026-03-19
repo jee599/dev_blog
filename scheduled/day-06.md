@@ -1,12 +1,14 @@
 ---
 title: "Python Tracebacks in Claude Code? Hide the Framework Frames"
 published: false
-description: "Django and Flask tracebacks are 90% framework internals. ContextZip strips them, keeps your code's frames."
+description: "Django and Flask tracebacks are 90% framework internals that waste your AI's context window. ContextZip strips them down to your application code frames."
 tags:
   - ai
   - claudecode
   - productivity
   - programming
+series: "ContextZip Daily"
+canonical_url: "https://github.com/jee599/contextzip"
 ---
 
 A Django traceback for a simple `TemplateDoesNotExist` error is 40+ lines. 35 of those lines are Django internals — `django/template/loader.py`, `django/core/handlers/base.py`, `django/middleware/common.py`.
@@ -58,3 +60,9 @@ eval "$(contextzip init)"
 ```
 
 **GitHub:** [github.com/contextzip/contextzip](https://github.com/contextzip/contextzip)
+
+---
+
+*Part of the [ContextZip Daily](https://dev.to/ji_ai/series/contextzip-daily) series. Follow for daily tips on optimizing your AI coding workflow.*
+
+**Install:** `npx contextzip` | **GitHub:** [jee599/contextzip](https://github.com/jee599/contextzip)

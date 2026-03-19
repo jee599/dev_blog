@@ -1,12 +1,14 @@
 ---
 title: "Rust Panic Traces: From 2% Savings to 80%"
 published: false
-description: "Rust backtraces include runtime frames that add nothing to debugging. ContextZip strips them to the essentials."
+description: "Rust panic backtraces include 20-30 runtime frames that add nothing to debugging. ContextZip strips them down to the 2-3 frames that actually matter."
 tags:
   - ai
   - rust
   - productivity
   - opensource
+series: "ContextZip Daily"
+canonical_url: "https://github.com/jee599/contextzip"
 ---
 
 A simple Rust panic — `unwrap()` on a `None` — produces a backtrace with 20-30 frames. Most are `std::rt::lang_start`, `std::panicking::*`, and `core::result::*` internals. Your bug is in 2-3 frames.
@@ -61,3 +63,9 @@ eval "$(contextzip init)"
 ```
 
 **GitHub:** [github.com/contextzip/contextzip](https://github.com/contextzip/contextzip)
+
+---
+
+*Part of the [ContextZip Daily](https://dev.to/ji_ai/series/contextzip-daily) series. Follow for daily tips on optimizing your AI coding workflow.*
+
+**Install:** `npx contextzip` | **GitHub:** [jee599/contextzip](https://github.com/jee599/contextzip)

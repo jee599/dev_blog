@@ -1,12 +1,14 @@
 ---
 title: "Every Command Shows Its Savings: contextzip: 200 → 40"
 published: false
-description: "ContextZip shows a savings line after every command. See exactly how much noise was stripped, in real-time."
+description: "ContextZip shows a savings line after every command. See exactly how many characters of noise were stripped from your AI's context in real-time."
 tags:
   - ai
   - productivity
   - claudecode
   - opensource
+series: "ContextZip Daily"
+canonical_url: "https://github.com/jee599/contextzip"
 ---
 
 After every command, ContextZip appends one line:
@@ -59,3 +61,9 @@ eval "$(contextzip init)"
 ```
 
 **GitHub:** [github.com/contextzip/contextzip](https://github.com/contextzip/contextzip)
+
+---
+
+*Part of the [ContextZip Daily](https://dev.to/ji_ai/series/contextzip-daily) series. Follow for daily tips on optimizing your AI coding workflow.*
+
+**Install:** `npx contextzip` | **GitHub:** [jee599/contextzip](https://github.com/jee599/contextzip)

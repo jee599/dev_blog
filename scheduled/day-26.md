@@ -1,12 +1,14 @@
 ---
 title: "From 326K Chars to 127K: Real Benchmark Results"
 published: false
-description: "Detailed benchmark results from running ContextZip on real project outputs. Numbers from actual codebases."
+description: "Detailed benchmark results from running ContextZip on real-world project outputs across Node.js, Python, Rust, Go, and Java codebases."
 tags:
   - ai
   - productivity
   - programming
   - opensource
+series: "ContextZip Daily"
+canonical_url: "https://github.com/jee599/contextzip"
 ---
 
 Abstract percentages are easy to doubt. Here are concrete numbers from real projects.
@@ -56,3 +58,9 @@ eval "$(contextzip init)"
 ```
 
 **GitHub:** [github.com/contextzip/contextzip](https://github.com/contextzip/contextzip)
+
+---
+
+*Part of the [ContextZip Daily](https://dev.to/ji_ai/series/contextzip-daily) series. Follow for daily tips on optimizing your AI coding workflow.*
+
+**Install:** `npx contextzip` | **GitHub:** [jee599/contextzip](https://github.com/jee599/contextzip)

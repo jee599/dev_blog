@@ -1,12 +1,14 @@
 ---
 title: "Before/After: What Claude Code Actually Sees"
 published: false
-description: "A visual comparison of raw CLI output vs. what your AI actually needs to do its job."
+description: "A visual before-and-after comparison of raw CLI output vs. the clean, signal-only version your AI coding agent actually needs to do its job."
 tags:
   - ai
   - claudecode
   - productivity
   - tutorial
+series: "ContextZip Daily"
+canonical_url: "https://github.com/jee599/contextzip"
 ---
 
 You see a colorful terminal. Your AI sees raw text peppered with escape codes, duplicate warnings, and framework internals. Here's what that gap looks like across real commands.
@@ -60,3 +62,9 @@ eval "$(contextzip init)"
 ```
 
 **GitHub:** [github.com/contextzip/contextzip](https://github.com/contextzip/contextzip)
+
+---
+
+*Part of the [ContextZip Daily](https://dev.to/ji_ai/series/contextzip-daily) series. Follow for daily tips on optimizing your AI coding workflow.*
+
+**Install:** `npx contextzip` | **GitHub:** [jee599/contextzip](https://github.com/jee599/contextzip)

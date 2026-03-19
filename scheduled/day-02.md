@@ -1,12 +1,14 @@
 ---
 title: "Stop Wasting Tokens on npm Install Noise"
 published: false
-description: "npm install dumps hundreds of deprecation warnings into your AI's context. Here's how to filter them automatically."
+description: "npm install dumps hundreds of deprecation warnings into your AI coding agent's context window. Here's how to filter them out automatically with one tool."
 tags:
   - ai
   - productivity
   - webdev
   - opensource
+series: "ContextZip Daily"
+canonical_url: "https://github.com/jee599/contextzip"
 ---
 
 Run `npm install` in a medium-sized project. Count the deprecation warnings.
@@ -47,3 +49,9 @@ eval "$(contextzip init)"
 No config. No per-project setup. It just works as a transparent shell proxy.
 
 **GitHub:** [github.com/contextzip/contextzip](https://github.com/contextzip/contextzip)
+
+---
+
+*Part of the [ContextZip Daily](https://dev.to/ji_ai/series/contextzip-daily) series. Follow for daily tips on optimizing your AI coding workflow.*
+
+**Install:** `npx contextzip` | **GitHub:** [jee599/contextzip](https://github.com/jee599/contextzip)

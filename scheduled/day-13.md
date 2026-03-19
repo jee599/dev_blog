@@ -1,12 +1,14 @@
 ---
 title: "Zero Config, Zero Overhead: The Invisible CLI Proxy"
 published: false
-description: "ContextZip works as a transparent shell proxy. No config files, no per-command setup, no latency overhead."
+description: "ContextZip works as a transparent shell proxy — zero config files, no per-command setup, sub-millisecond latency. Install once, forget forever."
 tags:
   - ai
   - opensource
   - productivity
   - programming
+series: "ContextZip Daily"
+canonical_url: "https://github.com/jee599/contextzip"
 ---
 
 Most developer tools need config files. `.eslintrc`, `tsconfig.json`, `prettier.config.js`. ContextZip needs nothing.
@@ -53,3 +55,9 @@ eval "$(contextzip init)"
 ```
 
 **GitHub:** [github.com/contextzip/contextzip](https://github.com/contextzip/contextzip)
+
+---
+
+*Part of the [ContextZip Daily](https://dev.to/ji_ai/series/contextzip-daily) series. Follow for daily tips on optimizing your AI coding workflow.*
+
+**Install:** `npx contextzip` | **GitHub:** [jee599/contextzip](https://github.com/jee599/contextzip)

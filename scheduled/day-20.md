@@ -1,12 +1,14 @@
 ---
 title: "Web Scraping for Claude Code: Strip Nav, Keep Content"
 published: false
-description: "When your AI scrapes a webpage, it gets navbars, footers, and scripts. ContextZip extracts just the content."
+description: "When your AI scrapes a webpage, it gets navbars, footers, cookie banners, and script tags. ContextZip extracts just the meaningful text content."
 tags:
   - ai
   - webdev
   - productivity
   - claudecode
+series: "ContextZip Daily"
+canonical_url: "https://github.com/jee599/contextzip"
 ---
 
 Claude Code can fetch web pages. But when it does, it gets the full HTML — navigation bars, footer links, cookie banners, script tags, SVG icons, meta tags.
@@ -68,3 +70,9 @@ eval "$(contextzip init)"
 ```
 
 **GitHub:** [github.com/contextzip/contextzip](https://github.com/contextzip/contextzip)
+
+---
+
+*Part of the [ContextZip Daily](https://dev.to/ji_ai/series/contextzip-daily) series. Follow for daily tips on optimizing your AI coding workflow.*
+
+**Install:** `npx contextzip` | **GitHub:** [jee599/contextzip](https://github.com/jee599/contextzip)

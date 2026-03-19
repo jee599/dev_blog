@@ -1,12 +1,14 @@
 ---
 title: "contextzip gain --graph: Watch Your Daily Savings Grow"
 published: false
-description: "ContextZip tracks every byte saved and shows you a daily graph. See the cumulative impact of cleaner context."
+description: "ContextZip tracks every byte saved across all your sessions and shows cumulative impact over time. See how much cleaner your AI context has become."
 tags:
   - ai
   - productivity
   - opensource
   - claudecode
+series: "ContextZip Daily"
+canonical_url: "https://github.com/jee599/contextzip"
 ---
 
 After a week of using ContextZip, run:
@@ -64,3 +66,9 @@ eval "$(contextzip init)"
 Use it for a week. Then run `contextzip gain --graph` and see your own numbers.
 
 **GitHub:** [github.com/contextzip/contextzip](https://github.com/contextzip/contextzip)
+
+---
+
+*Part of the [ContextZip Daily](https://dev.to/ji_ai/series/contextzip-daily) series. Follow for daily tips on optimizing your AI coding workflow.*
+
+**Install:** `npx contextzip` | **GitHub:** [jee599/contextzip](https://github.com/jee599/contextzip)

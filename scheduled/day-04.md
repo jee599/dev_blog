@@ -1,12 +1,14 @@
 ---
 title: "Docker Build Output: 50 Lines You Don't Need"
 published: false
-description: "Docker builds dump layer hashes, download progress, and cache metadata into your AI context. Filter it."
+description: "Docker builds dump layer hashes, download progress bars, and cache metadata into your AI context window. Here's how to filter the noise automatically."
 tags:
   - ai
   - devops
   - productivity
   - opensource
+series: "ContextZip Daily"
+canonical_url: "https://github.com/jee599/contextzip"
 ---
 
 Docker builds are verbose by design. Layer IDs, download progress bars, sha256 hashes, cache status for every step. When you run `docker build` inside Claude Code, all of that goes into the context window.
@@ -57,3 +59,9 @@ eval "$(contextzip init)"
 Works transparently with `docker build`, `docker compose up`, and any other Docker command.
 
 **GitHub:** [github.com/contextzip/contextzip](https://github.com/contextzip/contextzip)
+
+---
+
+*Part of the [ContextZip Daily](https://dev.to/ji_ai/series/contextzip-daily) series. Follow for daily tips on optimizing your AI coding workflow.*
+
+**Install:** `npx contextzip` | **GitHub:** [jee599/contextzip](https://github.com/jee599/contextzip)
