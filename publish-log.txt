@@ -41,16 +41,7 @@ SKIP (has id): posts/claude-md-team-standardization-en.md
 SKIP (korean filename): posts/claude-md-team-standardization-ko.md
 SKIP (has id): posts/context-engineering-practical-en.md
 SKIP (korean filename): posts/context-engineering-practical-ko.md
-
-PUBLISHING: posts/contextzip-claude-code-built-its-own-tool-en.md
-  title: Claude Code Is Wasting Your Tokens. I Fixed It in 3 Weeks Without Writing a Single Line of Code.
-  tags: []
-  step 1: creating draft ...
-    attempt 1: HTTP 422
-    response body: {"error":"Title has already been used in the last five minutes","status":422}
-    rate-limit-remaining=?  reset=?  retry-after=?
-  step 1 result: HTTP 422
-  FAILED to create draft: {"error":"Title has already been used in the last five minutes","status":422}
+SKIP (has id): posts/contextzip-claude-code-built-its-own-tool-en.md
 SKIP (has id): posts/dental-website-8-minutes-en.md
 SKIP (has id): posts/designing-saas-with-claude-en.md
 SKIP (korean filename): posts/designing-saas-with-claude-ko.md
@@ -87,4 +78,4 @@ SKIP (has id): posts/trading-bot-win-rate-lie-en.md
 SKIP (korean filename): posts/trading-bot-win-rate-lie-ko.md
 SKIP (has id): posts/writing-claude-code-book-with-claude-code-en.md
 
-Done: 0 published, 1 failed
+Done: 0 published, 0 failed
