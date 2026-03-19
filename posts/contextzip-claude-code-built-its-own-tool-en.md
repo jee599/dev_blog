@@ -2,7 +2,12 @@
 title: "Claude Code Is Wasting Your Tokens. I Fixed It in 3 Weeks Without Writing a Single Line of Code."
 published: false
 description: "1,056 tests. 102 benchmarks. 60-90% token savings. Built entirely by Claude Code agents."
-tags: ai, opensource, rust, productivity
+tags:
+  - ai
+  - opensource
+  - rust
+  - productivity
+id: 3372032
 ---
 
 I burned through my Claude Code context window three times in one session. The third time, I snapped.
