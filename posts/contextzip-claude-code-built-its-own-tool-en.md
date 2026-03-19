@@ -1,6 +1,6 @@
 ---
 title: "Claude Code Is Wasting Your Tokens. I Fixed It in 3 Weeks Without Writing a Single Line of Code."
-published: false
+published: true
 description: "1,056 tests. 102 benchmarks. 60-90% token savings. Built entirely by Claude Code agents."
 tags:
   - ai
