@@ -50,11 +50,7 @@ SKIP (korean filename): posts/context-engineering-practical-ko.md
 SKIP (has id): posts/contextzip-claude-code-built-its-own-tool-en.md
 SKIP (has id): posts/contextzip-compress-context-90-percent-en.md
 SKIP (has id): posts/contextzip-promo-19-en.md
-
-PUBLISHING: posts/contextzip-promo-20-en.md
-  title: Web Scraping for Claude Code: Strip Nav, Keep Content
-  tags: ['ai', 'webdev', 'productivity', 'claudecode']
-  DUPLICATE found on DEV.to (id=3377665) — writing id to file
+SKIP (has id): posts/contextzip-promo-20-en.md
 SKIP (has id): posts/contextzip-rtk-fork-90-percent-en.md
 SKIP (has id): posts/contextzip-rust-cli-without-writing-rust-en.md
 SKIP (has id): posts/dental-website-8-minutes-en.md
@@ -93,4 +89,4 @@ SKIP (has id): posts/trading-bot-win-rate-lie-en.md
 SKIP (korean filename): posts/trading-bot-win-rate-lie-ko.md
 SKIP (has id): posts/writing-claude-code-book-with-claude-code-en.md
 
-Done: 1 published, 0 failed
+Done: 0 published, 0 failed
