@@ -10,6 +10,8 @@ tags:
 series: "ContextZip Daily"
 canonical_url: "https://github.com/jee599/contextzip"
 hashnode_url: 'https://plzai.hashnode.dev/contextzip-promo-20'
+id: 3377665
+date: '2026-03-20T18:54:10.448Z'
 ---
 
 Claude Code can fetch web pages. But when it does, it gets the full HTML — navigation bars, footer links, cookie banners, script tags, SVG icons, meta tags.
