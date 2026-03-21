@@ -1,115 +1,76 @@
 ---
-title: "Claude Dispatch: The Constraints, the Security Model, and What Comes Next"
+title: "Claude Dispatch Has a 50% Success Rate — Here's Why I'm Still Using It"
 published: true
-description: "Dispatch is macOS-only, single-threaded, and has a ~50% task success rate. But the security model is solid, the OpenClaw tradeoffs are real, and the roadmap is clear. Here's the honest assessment."
-tags: ai, productivity, security, cowork
+description: "Half my Dispatch tasks fail. The security model is solid, but 5 constraints make it a gamble. Honest breakdown."
+tags: ai, productivity, webdev, beginners
 cover_image: https://r2.jidonglab.com/blog/2026/03/claude-dispatch-limits.jpg
 canonical_url: https://jidonglab.com/blog/claude-dispatch-ko
 hashnode_url: 'https://plzai.hashnode.dev/2026-03-21-claude-dispatch-constraints-security'
 ---
 
-In the [previous post](https://dev.to/jidonglab/claude-dispatch-cowork-setup), I covered what Dispatch is, how Cowork works, and the Q1 2026 ecosystem buildup that made it possible.
+Half the tasks I send to Dispatch fail. I'm still using it every day. Here's why — and more importantly, here's everything that goes wrong.
 
-Now for the parts that matter more: what it can't do, how the security model works, how it compares to OpenClaw, and where this is heading.
+In the [previous post](https://dev.to/jidonglab/claude-dispatch-cowork-setup), I covered what Dispatch is, how Cowork works, and the Q1 2026 ecosystem that made it possible. This time I'm going through the parts nobody wants to talk about: the constraints, the security tradeoffs, and whether OpenClaw is actually a better choice.
 
-**Source:** [Dispatch vs OpenClaw](https://www.techloy.com/claude-dispatch-vs-openclaw-which-ai-agent-tool-should-you-use/) – Techloy / [Dispatch Security & Permissions](https://www.geeky-gadgets.com/claude-dispatch-security-permissions/) – Geeky Gadgets / [What is Claude Dispatch](https://www.glbgpt.com/hub/claude-dispatch-remote-ai-guide/) – GlobalGPT
+## Why Does Half of What I Send It Fail?
 
-## The Constraints Are Real
+Dispatch is a research preview, and that label is doing **heavy lifting**. The roughly 50% success rate on non-trivial tasks is the number you need to internalize before anything else. Simple file operations work reliably. Complex multi-step workflows — "analyze this CSV, find trends, build a presentation" — hit bugs. Claude stalls mid-task, produces incomplete results, or misinterprets what I meant. I've learned to verify every output before trusting it.
 
-Dispatch is a research preview, and the label is honest. Here's what that means in practice.
+The platform constraint is equally blunt: macOS only. Windows and Linux users are locked out entirely because Claude Desktop's Cowork sandbox only runs on macOS. Given that a meaningful chunk of developers work on Windows, Anthropic is cutting its addressable audience in half before the product even launches.
 
-**macOS only.** The biggest constraint right now. Windows and Linux users cannot use Dispatch. Claude Desktop's full Cowork sandbox only works on macOS. Given that a meaningful percentage of developers and knowledge workers use Windows, this limits the addressable audience significantly.
+Your Mac also needs to stay awake, powered on, and connected to the internet the entire time Dispatch runs. Lid closed? Sleep mode? Network hiccup? Everything stops. If you want always-on availability, you're leaving a laptop open on your desk while you're on a train — dealing with power consumption, battery wear, and the general awkwardness of that setup.
 
-**Desktop must stay awake.** Your Mac needs to be powered on, awake, and connected to the internet for Dispatch to work. Lid closed? Sleep mode? Network drop? Dispatch stops. If you want always-on availability, you need your Mac running 24/7 — which means power consumption, battery wear, and the general awkwardness of leaving a laptop open on your desk while you're on a train.
+Execution is **single-threaded**. One task at a time. Send a second instruction before the first finishes and it queues. For workflows that naturally involve parallel subtasks, this bottleneck is painful. There's also no scheduled execution yet — "summarize my email every morning at 9 AM" doesn't work through Dispatch alone, even though Cowork itself recently added recurring task scheduling. And Claude can't initiate contact. No proactive notifications, no "hey, something needs your attention." You have to check in. The agent waits.
 
-**Single-threaded execution.** One task at a time. Send "analyze this file" and then "organize that folder" before the first finishes — the second queues until the first completes. For complex workflows that naturally involve parallel subtasks, this is a meaningful bottleneck.
+## Is the "Everything Local" Security Model Actually Secure?
 
-**No scheduled execution.** "Summarize my email every morning at 9 AM" doesn't work through Dispatch alone. Cowork itself recently added recurring task scheduling, but configuring scheduled tasks remotely through Dispatch isn't there yet.
+Dispatch's security thesis is straightforward: all execution happens on your machine. Files never leave your Mac. Code runs in a local sandbox. Anthropic's servers relay instructions and sync state but don't touch your data. For professionals handling sensitive documents — legal, medical, financial — this is a genuine advantage over cloud-based alternatives.
 
-**No proactive notifications.** Claude can't initiate contact. It responds to your messages but won't independently say "hey, something needs your attention." You have to check in. The agent waits for instructions.
+But "local execution" cuts both ways. Anthropic warns explicitly that instructions sent remotely trigger **real actions** on your computer. File modification, deletion, email sending — these happen. "Clean up the old rows in that spreadsheet" could delete data you need, and there's no undo button for remote AI actions. Damage can happen fast between when you send an instruction and when you realize the outcome wasn't what you expected.
 
-**Task success rate.** This needs to be said directly — early reports suggest a roughly 50% success rate on non-trivial tasks. Simple file operations work reliably. Complex multi-step workflows hit bugs: Claude stalls mid-task, produces incomplete results, or misinterprets instructions. The research preview label exists for this reason. Expect to verify outputs.
+The permission system exists, and it's your responsibility to configure it well. You define what Claude can and can't access — restrict to specific folders, limit browser usage, control plugin access. The tradeoff is direct: narrow permissions reduce risk but also reduce usefulness. Wide permissions increase capability but increase exposure. Finding the right boundary is a manual process that takes trial and error.
 
-## The Security Model: Everything Local, With Caveats
+There's also the external content problem. When Claude browses the web as part of a task, it can encounter pages designed for prompt injection. Anthropic's sandboxing mitigates this, but edge cases in a research preview aren't fully resolved. The kill switch — close the mobile app, quit Claude Desktop, or power off the Mac — means total loss of control isn't possible. But "not total loss" is a low bar.
 
-Dispatch's security thesis is "all execution is local." Your files never leave your machine. Code runs in a local sandbox on your Mac. Anthropic's servers relay instructions and sync state — they don't touch your data.
+My practical advice: start with tight permissions on non-critical tasks. Build confidence in how Claude interprets your instructions before expanding access to anything important.
 
-For professionals handling sensitive documents — legal, medical, financial — this is a genuine advantage over cloud-based alternatives. Your client files stay on your hardware.
+## Should You Use Dispatch or OpenClaw?
 
-But "local execution" is a double-edged design choice.
+The comparison gets made constantly, but these two products solve fundamentally different problems for fundamentally different people.
 
-**Irreversible actions are possible.** Anthropic warns explicitly: instructions sent remotely trigger real actions on your computer. File modification, deletion, email sending — these can happen. "Clean up the old rows in that spreadsheet" could delete data you need. There's no undo button for remote AI actions.
+OpenClaw is a developer tool for talking to an AI agent from **any** messaging platform — WhatsApp, iMessage, Slack, Signal, Telegram, Discord, Teams. It's open-source under MIT, free to use, and model-agnostic. You can connect Claude, GPT-4, local models, or any mix. Run it entirely offline with local models and API costs drop to zero. The tradeoff: security is your responsibility, initial setup requires terminal commands and API key configuration, and you're maintaining your own infrastructure.
 
-**Permission management is your responsibility.** Dispatch has a permission system — you define what Claude can and can't access. Restrict to specific folders, limit browser usage, control plugin access. But the tradeoff is direct: narrow permissions reduce risk but also reduce usefulness. Wide permissions increase capability but increase exposure. Finding the right boundary is a manual process.
+Dispatch is for non-developers who want to control a desktop AI from their phone with zero setup. Two apps, one QR code, done. But you're locked into the Claude mobile app as the only interface — no Discord, no Telegram, no Slack. You're paying $20/month for Pro or $100/month for Max. OpenClaw's core insight of meeting users in the apps they already live in is something Dispatch doesn't even attempt.
 
-**External content exposure.** When Claude browses the web as part of a task, it can encounter malicious pages designed for prompt injection. Anthropic's sandboxing mitigates this, but in a research preview, edge cases aren't fully resolved.
+On cost, the gap narrows at heavy usage. OpenClaw is free but cloud API calls add up — roughly $5/month for light use, $15-20 for heavy daily use. At that point, Dispatch's flat fee looks comparable. But OpenClaw has an escape valve: switch to local models and costs drop to zero.
 
-**Kill switch exists.** You can stop everything instantly — close the mobile app, quit Claude Desktop, or power off the Mac. Total loss of control isn't possible. But damage can happen fast between when you send an instruction and when you realize the outcome wasn't what you expected.
+Where Dispatch clearly wins is **security for organizations**. Allowlist-based plugins, sandboxed local execution, admin controls for Team/Enterprise, no data leaving the machine. OpenClaw's permissive defaults have spawned safety forks — the community recognized the risk before the project addressed it.
 
-The practical advice: start with tight permissions on non-critical tasks. Build confidence in how Claude interprets your instructions before expanding access to important files or connected services.
+They're not competing for the same users. OpenClaw gives developers maximum flexibility at the cost of self-managed security. Dispatch gives everyone else instant access at the cost of platform lock-in and a subscription fee.
 
-## Dispatch vs OpenClaw: Different Problems, Different Tools
+## What Does a Dispatch Workflow Actually Look Like?
 
-The comparison gets made constantly, but the two products are solving fundamentally different problems.
+I send "summarize today's AI news focused on agent developments" while commuting. Claude on my Mac opens a browser, crawls recent articles, extracts key points, creates a document. The finished briefing waits when I arrive. Research synthesis without touching a keyboard.
 
-**OpenClaw** is a developer tool for talking to an AI agent from any messaging platform. WhatsApp, iMessage, Slack, Signal, Telegram, Discord, Teams — nearly complete coverage. It's open-source (MIT license), free to use, and model-agnostic (connect to Claude, GPT-4, local models, or any mix). It can run entirely offline with local models, eliminating API costs. The tradeoff: security is your responsibility, initial setup is complex, and you're maintaining your own infrastructure.
+Remote document production works the same way. "Take the Q1 revenue CSV in Downloads, analyze trends, and build a presentation with charts." Claude parses the file, runs analysis, generates slides — all saved locally on my Mac. Email triage with the Gmail plugin connected is equally hands-off: "Pull my unread emails from last week, flag anything that needs a response, and draft replies for the top three."
 
-**Dispatch** is a consumer-friendly tool for non-developers to control a desktop AI from their phone. The Claude mobile app is the only interface — no third-party messaging integration. It's macOS-only and requires a Claude subscription ($20/month Pro, $100/month Max). The tradeoff: limited platform coverage and a paid subscription, but zero setup complexity and enterprise-grade security.
+The non-code use cases surprised me most. I threw a draft business plan at Claude and said "research competitor pricing from the web and strengthen the competitive analysis section." It browsed, extracted data, and edited the document. Useful for government grant applications, investor decks, or project proposals where the work is **research-heavy** but not code-heavy.
 
-### Platform Coverage
+## Where Is This Actually Heading?
 
-OpenClaw dominates. Nearly every messaging platform people use daily. Dispatch has one: the Claude mobile app. No Discord, no Telegram, no Slack, no WhatsApp. The core OpenClaw insight — "meet users in the apps they already live in" — is something Dispatch doesn't address.
+The single-threaded constraint is the most obvious improvement target, and multi-threading is almost certainly coming. Parallel task execution — "analyze these three files simultaneously and cross-reference the results" — would transform Dispatch from a sequential assistant into something closer to a team. I'd expect this within the next few quarterly updates.
 
-### Setup Complexity
+Proactive notifications would change the product's entire dynamic. Right now Dispatch is "I tell Claude what to do." With notifications, it becomes "Claude tells me what it found." A monitoring alert triggers analysis, Claude determines it's urgent, pushes a notification to my phone. That's a different product category entirely.
 
-Dispatch wins by a wide margin. Two apps, one QR code. OpenClaw requires terminal commands, API key configuration, bot setup, and ongoing maintenance of a self-hosted system. The gap maps directly to target audience: developers are comfortable with terminal-based setup; non-technical professionals need instant onboarding.
+Windows support is a matter of time, not strategy. The macOS dependency comes from Cowork's sandbox implementation in Electron-based Claude Desktop. Porting that sandbox to Windows is an engineering challenge, and when it ships, the addressable market doubles overnight. Scheduled execution integration — connecting Cowork's existing recurring task scheduling to Dispatch — means "every morning at 9 AM, summarize my email and send me a digest." Automation without code.
 
-### Cost Structure
+The bigger picture matters here. Anthropic's Labs team, led by Instagram co-founder Mike Krieger since January 2026, has an explicit mission to incubate experimental products at the frontier of Claude's capabilities. Claude Code went from research preview to billion-dollar product in **6 months**. Anthropic is betting Cowork follows the same curve. And the 1M token context window going GA for Opus 4.6 and Sonnet 4.6 at standard pricing means Dispatch tasks involving large documents, entire codebases, or multi-day conversations get better automatically. The model improvements and the product features are co-evolving.
 
-Dispatch charges flat monthly fees: $20 (Pro) or $100 (Max). OpenClaw is free, but cloud API calls add up — roughly $5/month for light use, $15-20 for heavy daily use. At heavy usage, the costs converge. But OpenClaw has an escape valve: switch to local models via Ollama or LM Studio and API costs drop to zero.
-
-### Security Model
-
-Dispatch wins for organizations. Allowlist-based plugins, sandboxed local execution, admin controls for Team/Enterprise, no data leaving the machine. OpenClaw's permissive defaults have spawned safety forks — the community recognized the risk before the project addressed it comprehensively.
-
-### The Core Difference
-
-OpenClaw gives developers maximum flexibility and platform coverage at the cost of self-managed security. Dispatch gives non-developers instant access to a remote desktop AI at the cost of platform lock-in and a subscription fee.
-
-They're not competing for the same users in the same scenarios.
-
-## What Dispatch Workflows Look Like in Practice
-
-**Research synthesis on the go.** Send "summarize today's AI news focused on agent developments" while commuting. Claude on your Mac opens a browser, crawls recent articles, extracts key points, creates a document. The finished briefing waits when you arrive.
-
-**Remote document production.** "Take the Q1 revenue CSV in Downloads, analyze trends, and build a presentation with charts." Claude parses the CSV, runs analysis, generates slides. Results saved locally on your Mac.
-
-**Email triage.** With the Gmail plugin connected: "Pull my unread emails from last week, flag anything that needs a response, and draft replies for the top three." Claude reads through your inbox, categorizes messages, and prepares draft responses you can review later.
-
-**Non-code project management.** Throw a draft business plan at Claude and say "research competitor pricing from the web and strengthen the competitive analysis section." Claude browses, extracts data, and edits the document. Useful for government grant applications, investor decks, or project proposals where the work is research-heavy but not code-heavy.
-
-## Where This Is Heading
-
-Reading Anthropic's announcements and the research preview constraints together, the roadmap is visible.
-
-**Multi-threading is coming.** The single-threaded constraint is an obvious improvement target. Parallel task execution — "analyze these three files simultaneously and cross-reference the results" — is likely in the next few quarterly updates.
-
-**Proactive notifications will arrive.** Claude initiating contact when something needs attention. A monitoring alert triggers analysis, Claude determines it's urgent, and pushes a notification to your phone. This transforms Dispatch from "I tell Claude what to do" to "Claude tells me what it found."
-
-**Windows support is a matter of time.** The macOS dependency comes from Cowork's sandbox implementation in the Electron-based Claude Desktop. Porting that sandbox to Windows is an engineering challenge, not a strategic one. The addressable market doubles overnight.
-
-**Scheduled execution integration.** Cowork already has recurring task scheduling. Connecting it to Dispatch means "every morning at 9 AM, summarize my email and send me a digest on my phone." Automation without code.
-
-**The bigger picture.** Anthropic's Labs team (led by Instagram co-founder Mike Krieger since January 2026) has an explicit mission: incubate experimental products at the frontier of Claude's capabilities. Cowork and Dispatch are the first results. Claude Code went from research preview to billion-dollar product in six months. Anthropic is betting Cowork follows the same curve.
-
-The 1M token context window going GA for Opus 4.6 and Sonnet 4.6 at standard pricing (announced in March) matters here too. Dispatch tasks that involve large documents, entire codebases, or multi-day conversation threads benefit directly from bigger context. The model improvements and the product features are co-evolving.
-
-> The chatbot era is ending. "You ask, I answer" was the first interaction model for AI. "You instruct, I execute" is the second. Dispatch — with all its current limitations — is the clearest signal that Anthropic is building for the second model. The success rate is 50%. The platform coverage is one. The constraint list is long. But the direction is unmistakable: an AI that sits at your computer and does work on your behalf, whether you're in the room or not.
+> The chatbot era is ending. "You ask, I answer" was the first model. "You instruct, I execute" is the second — and Dispatch, with all its 50% failure rate and single-platform constraints, is the clearest signal of where Anthropic is building next.
 
 ---
 - [Anthropic Launches Claude Dispatch](https://mlq.ai/news/anthropic-launches-claude-dispatch-for-remote-desktop-ai-control/) – MLQ
 - [Dispatch vs OpenClaw](https://www.techloy.com/claude-dispatch-vs-openclaw-which-ai-agent-tool-should-you-use/) – Techloy
 - [Dispatch Security & Permissions](https://www.geeky-gadgets.com/claude-dispatch-security-permissions/) – Geeky Gadgets
 - [What is Claude Dispatch](https://www.glbgpt.com/hub/claude-dispatch-remote-ai-guide/) – GlobalGPT
-- [Anthropic Dispatch: Always-On Creative Coworker](https://coey.com/resources/blog/2026/03/17/anthropic-dispatch-turns-claude-into-your-always-on-creative-coworker/) – COEY
 - [Introducing Anthropic Labs](https://www.anthropic.com/news/introducing-anthropic-labs) – Anthropic
