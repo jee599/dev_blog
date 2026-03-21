@@ -26,6 +26,7 @@ SKIP (has id): posts/2026-03-21-claude-dispatch-constraints-security-en.md
 SKIP (has id): posts/2026-03-21-claude-dispatch-cowork-setup-en.md
 SKIP (has id): posts/2026-03-21-claude-dispatch-official-guide-en.md
 SKIP (build-log): posts/2026-03-21-portfolio-site-build-log-en.md
+SKIP (build-log): posts/2026-03-22-portfolio-site-build-log-en.md
 SKIP (has id): posts/agentcrow-launch-en.md
 SKIP (has id): posts/ai-agent-i18n-tarot-compatibility-en.md
 SKIP (has id): posts/ai-content-full-automation-en.md
