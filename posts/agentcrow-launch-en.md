@@ -1,6 +1,6 @@
 ---
 title: "Claude Code Agent Teams Can Spawn Agents. It Just Doesn't Know Which Ones to Use."
-published: false
+published: true
 description: "I gave Claude Code 144 pre-built agents and auto-dispatch. One npm command. Zero config."
 tags:
   - ai
@@ -20,6 +20,8 @@ Agent Teams doesn't know *which* agents to use. It doesn't know that a game proj
 You're supposed to define them yourself. Every time. With `--agents` JSON. For every project.
 
 I built the missing piece.
+
+![AgentCrow Demo](https://raw.githubusercontent.com/jee599/agentcrow/main/assets/demo.gif)
 
 ---
 
@@ -48,12 +50,16 @@ Build a SaaS dashboard with Stripe billing, user auth, and API docs
 Claude decomposed it into 5 tasks and dispatched 5 specialized agents:
 
 ```
-🐦 AgentCrow — 5 agents dispatched:
-1. @ui_designer      → dashboard layout, component hierarchy
-2. @frontend_developer → React components, charts, responsive UI
-3. @backend_architect  → Auth system, REST API, Stripe webhooks
-4. @qa_engineer        → billing flow E2E tests, auth edge cases
-5. @technical_writer   → API reference, onboarding guide
+━━━ 🐦 AgentCrow ━━━━━━━━━━━━━━━━━━━━━
+Dispatching 5 agents:
+
+🖥️ @ui_designer       → dashboard layout, component hierarchy
+🖥️ @frontend_developer → React components, charts, responsive UI
+🏗️ @backend_architect  → Auth system, REST API, Stripe webhooks
+🧪 @qa_engineer        → billing flow E2E tests, auth edge cases
+📝 @technical_writer   → API reference, onboarding guide
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
 
 Each agent has a defined personality, communication style, and critical rules. The QA engineer, for example, has rules like "MUST cover happy path, edge cases, and error paths" and "MUST NOT skip error handling tests." These aren't suggestions — they're baked into the agent's identity.
@@ -79,28 +85,28 @@ Agent Teams is the engine. AgentCrow is the brain.
 
 ## Under the Hood
 
-The architecture is deliberately simple. When you run `npx agentcrow init`, three things happen.
-
-First, 9 builtin agents get copied into `.agr/agents/builtin/`. These are YAML files I wrote by hand. Each one defines a role, personality, MUST rules, MUST NOT rules, deliverables, and success metrics. The QA engineer agent, for example, has 5 MUST rules and 5 MUST NOT rules covering everything from test independence to mock usage.
-
-Second, 135 external agents get cloned from [agency-agents](https://github.com/msitarzewski/agency-agents) into `.agr/agents/external/`. These cover game development (Unreal, Unity, Godot specialists), marketing, sales, spatial computing — domains I wouldn't have thought to include.
-
-Third, a `.claude/CLAUDE.md` file gets generated. This is where the magic happens. CLAUDE.md is Claude Code's project-level instruction file — it reads this every session. The generated file contains the complete agent roster and dispatch rules: when to decompose, how to match agents, what format to use for subagent prompts.
-
-A SessionStart hook also gets installed. When you open `claude`, you see:
+The architecture is deliberately simple. When you run `npx agentcrow init`, here's what happens:
 
 ```
-🐦 AgentCrow active
-──────────────────────────────────────────────────
-9 builtin agents:
-  · qa_engineer
-  · korean_tech_writer
-  · security_auditor_deep
-  ...
-135 external agents (15 divisions)
-──────────────────────────────────────────────────
-Complex prompts → auto agent dispatch
+  🐦 AgentCrow v3.3.2
+
+  ▸ Builtin agents ··· 9 installed ✓
+  ▸ External agents ··· downloaded ✓
+  ▸ Agent definitions ··· 144 generated ✓
+  ▸ Agent symlink ··· 144 agents linked ✓
+  ▸ Dispatch rules ··· CLAUDE.md created ✓
+  ▸ SessionStart hook ··· installed ✓
+
+  ✓ AgentCrow ready — 144 agents, max 5 per dispatch
 ```
+
+9 builtin agents are YAML files I wrote by hand. Each one defines a role, personality, MUST rules, MUST NOT rules, deliverables, and success metrics. The QA engineer agent has 5 MUST rules and 5 MUST NOT rules covering everything from test independence to mock usage.
+
+135 external agents come from [agency-agents](https://github.com/msitarzewski/agency-agents), covering game development (Unreal, Unity, Godot specialists), marketing, sales, spatial computing — domains I wouldn't have thought to include.
+
+Agents are stored globally at `~/.agentcrow/` and symlinked into each project. Second project onward = instant, no download.
+
+A `.claude/CLAUDE.md` file gets generated with dispatch rules and a SessionStart hook ensures Claude sees `🐦 AgentCrow active` every session. Each agent gets a role emoji (🖥️ frontend, 🏗️ backend, 🧪 qa, 🛡️ security, 📝 writer...) so you can visually track what's happening.
 
 The entire system is a CLAUDE.md file and some YAML. No runtime dependencies, no background processes, no API keys. Turn it off with `agentcrow off`, turn it back on with `agentcrow on`.
 
