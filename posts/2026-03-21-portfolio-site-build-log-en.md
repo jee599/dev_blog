@@ -1,180 +1,159 @@
 ---
-title: "55 Hours, 62 Agents, 405 Tool Calls: Building a Claude Code Optimizer with Claude Code"
+title: "55 Hours Using Claude Code to Build a Tool That Makes Claude Code Better"
 published: true
-description: "Forked RTK, renamed to contextzip, shipped to NPM. 62 sub-agent calls, 405 tool calls, 55 hours. What multi-agent parallelism actually looks like in practice."
+description: "I forked RTK into contextzip using 62 subagents, 405 tool calls, and 55 hours. npm install went from 150 lines to 3. Here's the full build report."
 tags: claudecode, rust, ai, productivity
 series: "Building with Claude Code: portfolio-site"
 canonical_url: https://jidonglab.com/posts/2026-03-21-portfolio-site-en
 ---
 
-`npm install` dumps 150 lines. Docker logs scroll for 300. A Rust build error fills 80 lines. All of it goes straight into Claude's context window.
+150 lines of `npm install` output. 300 lines of Docker logs. 80 lines of Rust build errors.
 
-Then Claude forgets code from five minutes ago. Not a capability failure — a noise problem. The window fills with output garbage, and useful state gets pushed out.
+All of it filling Claude's context window — which means less room for the code that actually matters.
 
-So I built a fix: `contextzip`, a CLI that automatically compresses noisy command output before it reaches the model. The ironic part: I built it entirely with Claude Code.
+If you've ever noticed Claude "forgetting" earlier decisions in a long session, this is usually why. It's not the model getting dumber. It's the context window getting noisier. Terminal output is verbose by design. AI context windows are finite by design. These two facts combine badly.
 
-**TL;DR** — Forked [RTK](https://github.com/rtk-ai/rtk), renamed it `contextzip`, published to NPM. 62 sub-agent calls, 405 tool calls, 55 hours. `npm install`'s 150 lines collapse to 3. `cargo build` errors surface only the 5 relevant lines. Available via `npx contextzip`.
+So I built a fix: `contextzip`, a CLI that automatically compresses tool output before it reaches the model. And I built it with Claude Code. The irony is intentional.
 
-
-## A Spec File, and Then Questions Came First
-
-The source material was [RTK](https://github.com/rtk-ai/rtk) — an open-source CLI compression tool built for Claude Code. The plan: fork it, rename it to `contextzip`, ship it.
-
-I dropped the spec into Claude. Before a single line of code was written, the brainstorming skill activated. Three questions appeared.
-
-"The repo is called `tokenzip` — what should the binary name be?"
-
-"Full source fork of RTK, or use it as a dependency?"
-
-"Build everything at once, or gate it week by week?"
-
-Under normal circumstances I'd have just started building and resolved these as I hit them. Having them surface upfront forced actual decisions: unify everything as `contextzip` (repo, binary, crate), full source fork, week-by-week validation gates.
-
-Three minutes. Those three decisions shaped the entire 55 hours that followed.
-
-The skill was surfacing "what do you need to decide" rather than "how to implement it." That distinction matters. Claude can't know what I want until I've decided it — and it turns out a structured prompt gets those decisions out before they become mid-session blockers.
-
-After brainstorming came the plan. Week 1 through Week 3, 16 tasks total, each with target files, verification steps, and expected commit messages. One prompt sealed in the gates:
-
-```
-After each week, stop for validation before moving to the next.
-```
-
-That single instruction created mandatory checkpoints. Without it, 55 hours could have run off in any direction.
+**TL;DR**: Forked [RTK](https://github.com/rtk-ai/rtk) into contextzip. 62 subagent calls, 405 tool calls, 55 hours total. `npm install` output: 150 lines → 3. `cargo build` error output: 80 lines → 5 essential ones. Published to npm. The loop: Claude Code builds the tool that makes Claude Code better.
 
 
-## What Happens When 62 Agents Work While You Decide
+## Three Questions Before a Single Line of Code
 
-Once the plan existed, sub-agent driven development started. Claude began distributing tasks to parallel agents.
+The starting point was [RTK](https://github.com/rtk-ai/rtk) — an open-source CLI output compression tool built specifically for Claude Code. The plan was straightforward: fork it, rename everything to `contextzip`, publish it.
 
-Task 4 (LICENSE update), Task 6 (`install.sh`), Task 7 (GitHub Actions CI/CD) launched simultaneously. Each agent sent a completion report; Claude kicked off the next batch. Any tasks without file conflicts ran in parallel — always.
+I dropped the spec file into Claude. Instead of immediately starting, a brainstorming skill triggered. Claude asked three questions before writing any code.
 
-The full 55-hour session breakdown:
+"The repo is `tokenzip` in the spec — what should the binary name be?"
 
-| Tool | Calls | Primary use |
-|------|-------|-------------|
-| `Bash` | 176 | Builds, tests, execution verification |
-| `Agent` | 62 | Parallel sub-agent dispatches |
-| `Read` | 37 | File inspection |
-| `Edit` | 28 | File modifications |
-| **Total** | **405** | |
+"Are you forking RTK's source, or using it as a dependency?"
 
-My own direct prompts across the entire session: roughly 80. The rest was agents.
+"One continuous session, or weekly validation gates?"
 
-The rename illustrated the speed gap most clearly. Replacing every `rtk` reference with `contextzip` across the source tree — Cargo.toml, data paths, string literals, binary names — is tedious manual work. Grep, edit, rebuild, verify, repeat. An agent reported "6 files updated, committed" in 15 minutes. Doing that solo would have taken most of a morning.
+Left to myself, I would have started coding and hit these decisions mid-implementation. That's the most expensive time to make them — you're already deep in a branch of work that might need to unravel.
 
-My role shifted from implementer to decision-maker. "Does this naming make sense?" "Move to Week 2." "Give me a cold audit of everything." The agents handled execution; I handled direction.
+The answers: binary/repo/crate all named `contextzip`, full source fork, weekly validation gates.
+
+Three minutes of questions. Fifty-five hours of direction set.
+
+This is the part of the Claude Code workflow that most build logs skip. The brainstorming phase doesn't ask "how should we implement this?" It asks "what do you need to decide first?" The upstream decision quality determines everything downstream.
+
+After brainstorming came planning: Week 1 through Week 3, 16 tasks total. Each task had specific files to modify, a verification method, and an expected commit message. Not milestone labels — concrete, checkable units.
+
+One prompt built the weekly gate structure: "Validate and confirm before moving to the next week."
+
+That constraint created automatic quality checkpoints at zero overhead.
 
 
-## Four Roles Auditing at the Same Time
+## 62 Agents Working While I Made Decisions
 
-As implementation wrapped up, I needed a cold assessment — not a rubber stamp.
+With a plan in place, tasks started distributing to parallel agents.
 
-```
-Give me an honest, critical evaluation of everything — code quality,
-features, docs, product readiness. Hold it to "shippable" standards.
-```
+Here's what the actual execution looked like: Task 4 (update LICENSE with RTK attribution), Task 6 (write install.sh), and Task 7 (set up GitHub Actions CI/CD) started simultaneously. Each agent reported completion. Claude queued the next batch. Any tasks without file conflicts ran in parallel.
 
-Claude hired four agents simultaneously.
+Task 4 — updating the LICENSE file with proper RTK attribution — took the agent 15 minutes. If I'd done it manually: find the right file, read RTK's original license, decide attribution format, write it, commit. Realistically an hour.
 
-The **PM agent** audited market readiness. P0 issues: value proposition was unclear in the README. The page didn't answer "why contextzip over RTK." RTK remnants were still visible in user-facing copy.
+Full session stats: `Agent` tool invoked 62 times. `Bash` ran 176 times (builds, tests, verification — agents implement, Claude runs and checks). `Read` 37 times, `Edit` 28 times. My own prompts across the entire 55-hour session: roughly 80.
 
-The **senior engineer agent** reviewed code quality. 1,049 tests all passing — but `#[allow(dead_code)]` annotations were scattered across `build_cmd.rs`, `error_cmd.rs`, and several other files. Technical debt that needed clearing before the release.
+My role shifted from implementer to decision-maker. "Is the naming consistent everywhere?" "Move to Week 2." "Cold audit everything before release." The decisions I was making were higher-order. The volume of my work didn't go down — the character of it changed.
 
-The **UX/README agent** flagged documentation that didn't match actual behavior. Some savings percentages cited in the README differed from what the test suite actually measured. The verdict: rewrite the README from real numbers.
 
-The **QA agent** ran end-to-end tests by actually executing the binary. It caught this:
+## The Bug That Static Analysis Would Have Missed
+
+The RTK → contextzip rename seemed complete. Late in Week 3, a QA agent ran the binary directly and inspected the actual output.
 
 ```
 contextzip 0.1.0 (based on rtk 0.30.1)
 ```
 
-The binary name had been updated. The version string hadn't. `rtk` was hardcoded inside a string constant in a non-obvious location — not something a code reader naturally finds. You only find it by running the binary and reading the output.
+Binary name: updated. Version string: still `rtk`, hardcoded in the version formatting logic. Not in an obvious location — grep with the wrong query wouldn't find it.
 
-Four reports landed simultaneously. I worked through P0 issues first, feeding each fix back to agents for implementation.
+This is the core reason to have a QA agent that *executes* things, separate from review agents that *read* things. Code review would have missed this. Running the binary caught it.
 
-Reviewing alone, I'd have caught 1-2 of these angles. Four roles in parallel exposed the blind spots across code, docs, marketing, and runtime behavior at the same time.
+Two other bugs surfaced the same way. Java stack traces were producing negative savings — the compressed output was longer than the input. The regex was too aggressive, collapsing both framework boilerplate and core application lines, stripping more than it should. Rust panic parsing had a parallel issue: only the standard panic format was handled, missing variants that include thread names in the output.
 
-Performance validation happened in the same phase. An agent built 100 test cases covering each compression type, executed them, and produced aggregated results. The README now cites real numbers, not estimates.
+The prompt that surfaced all three: "What did you do here? Is everything actually working?"
 
-
-## The Bug Category That Code Review Misses
-
-The `--version` issue is worth expanding on, because it represents a whole class of problems.
-
-After the renaming felt complete — grepping for `rtk` across the codebase returned nothing obvious — the QA agent executed `contextzip --version` and read the actual output. One word: `rtk`. Still there.
-
-This is the difference between reading code and executing it. Review that only reads files misses runtime behavior. The agent ran the command, saw the output, flagged it in the same report alongside everything else.
-
-Two other execution-only bugs surfaced the same way. When compressing Java stack traces, savings percentages went negative — the compressed output was *longer* than the original. The regex was capturing framework lines too narrowly, stripping lines that contained useful signal alongside the noise. Rust panic parsing had a similar gap: the pattern only matched standard panic format, missing variations where the thread name was prefixed.
-
-The prompt that caught these: "What did you do here? Is it fully working?"
-
-That's different from "What did you implement?" The first asks about behavior. The second asks about code. Agents respond to what you ask.
+That's a different question from "what did you implement?" One asks for a feature list. The other asks for evidence that the features work. QA quality comes from which question you ask.
 
 
-## Shipping a Rust Binary via NPM
+## Four Simultaneous Audits
 
-The install goal: one command to get a Rust binary, no Rust toolchain required.
+Near the end of implementation, I wanted a hard evaluation.
 
-```bash
-npx contextzip
-```
+"Give me an objective assessment of everything. Code, features, all of it. Be brutal. Commercial-release standard."
 
-The wrapper approach: `bin/install.js` detects OS and architecture at install time, downloads the appropriate prebuilt binary from GitHub Releases. Mac ARM, Mac x86, Linux each get their own binary. Windows turned out to be non-trivial to support correctly, so it was deferred.
+Claude spawned four agents at once.
 
-GitHub Actions was built from scratch by an agent: automatic tests on every push and PR, automatic binary builds and NPM publish on release tags. Drop an NPM token into the repo secrets; CI handles `npm publish` from there.
+**PM agent** audited market readiness. Value proposition was unclear — "why contextzip over RTK?" had no answer in the README. RTK artifacts still visible in places. P0.
 
-This is the kind of work that feels like a half-day solo because of the configuration overhead — Actions syntax, platform matrix, NPM publish config. The agent wrote the YAML, committed it, and moved on.
+**Senior engineer agent** reviewed code quality. 1,049 tests passing, but `#[allow(dead_code)]` annotations scattered across `build_cmd.rs`, `error_cmd.rs`, and others. Technical debt to resolve before release.
 
+**UX/README agent** found documentation mismatches. Savings percentages in the README didn't align with actual benchmark results. Conclusion: rewrite from real numbers.
 
-## Promotion Automation and the Walls It Hit
+**QA agent** ran end-to-end tests. That's where the `--version` string issue appeared.
 
-Once the build was solid, the problem shifted: how to distribute it.
+Four reports arrived simultaneously. I prioritized P0 items first, dispatching fix agents in sequence.
 
-Claude generated platform-specific posts for Reddit (r/claudeai, r/rust), Hacker News, DEV.to, and X. Different angles, different tones, different lengths. A GitHub Actions workflow was set up to handle scheduled promotion.
-
-One attempt was blocked immediately: automatically submitting a PR to the Awesome Claude Code list. That repo's contribution guidelines explicitly state that `gh` CLI submissions are auto-closed. The agent tried, read the rules, and reported: "Manual submission required." It stopped rather than finding a workaround. That was the right call.
-
-X was also blocked. New accounts hit API rate limits for a period after creation — no workaround exists. Direct posting required.
-
-Reddit likewise: new accounts can't auto-publish. The agent prepared clean, ready-to-paste post text for each platform. Manual submission became a five-minute task instead of a thirty-minute one.
-
-The pattern Claude applies consistently: automate what's automatable, surface the blockers clearly, prepare the fallback. It doesn't try to brute-force past platform constraints.
+Solo review covers 1-2 perspectives. Four simultaneous roles expose code quality, documentation accuracy, positioning, and functional correctness in one pass. The 100-test-case performance validation also happened here — agents generated test cases, ran them, aggregated results. Real benchmarks that could actually go in the README without fabrication.
 
 
-## The First Reddit Comment Changed the README
+## Shipping a Rust Binary via npm
 
-After posting, feedback started coming in. One comment pointed out that contextzip is already used by Claude as an official hook — and asked where to see how to wire it up.
+Target UX: `npx contextzip` works immediately, no Rust toolchain required.
 
-That made clear the README was missing its most practical section: the Claude Code hook integration. The workflow where `git`, `cargo`, and `npm` outputs are automatically piped through `contextzip` before reaching the model was buried or absent.
+The approach: npm wrapper package. `bin/install.js` detects OS and architecture, then downloads the correct pre-built binary from GitHub Releases. Mac ARM, Mac x86, Linux. Windows was evaluated by the agent and deferred — the cross-compilation complexity wasn't justified for v1.
 
-An agent rewrote the README. Then rewrote it again after another round of review. Then added translations.
+GitHub Actions was written by the agent from scratch. Push/PR: run tests. Release tag (`v*`): build platform-specific binaries, upload to GitHub Releases, trigger npm publish. The npm package fetches the right binary at install time.
 
-English first, then Korean, Japanese, Chinese, German, French, Spanish, Portuguese, Russian — ordered by speaker population. Each version was written by an agent, reviewed for accuracy against the actual behavior, committed.
+I provided an npm token. The agent wrote the CI YAML and committed it. The full pipeline — git tag → build → release → publish — works end-to-end without me having written a single line of the workflow.
 
-The README ended up being the most-revised file in the entire project. It's also, in retrospect, the most important one. "Install in 5 seconds, visible effect immediately" has to be legible in those first few lines. If it isn't, the tool doesn't spread regardless of how well it works.
+Manual path for this: half a day of CI design and debugging, minimum. One agent pass.
 
 
-## What This Session Actually Taught About Multi-Agent Claude Code
+## Promotion Automation and Hard Stops
 
-55 hours distilled into observable patterns.
+With the tool ready, the problem shifted to distribution.
 
-The brainstorming skill surfaces "what to decide" before "how to implement." Three minutes of upfront clarity shapes everything downstream.
+Claude drafted Reddit posts for r/claudeai and r/rust, a Hacker News submission, a DEV.to post, and a GitHub Actions workflow for automated ongoing promotion.
 
-The plan skill creates structure that week-gate prompts enforce. "Stop after each week for validation" is a single instruction that prevents 55 hours of unchecked drift.
+The first hard wall: the Awesome Claude Code list. The agent attempted submission via `gh` CLI. Blocked immediately — the repo's CONTRIBUTING guide explicitly states "no automated submissions via gh CLI, auto-closed." The agent read the contributing rules, reported "manual submission required," and stopped.
 
-Sub-agents parallelize everything that doesn't share state. Independent files run simultaneously. This is where the speed comes from.
+That's the correct behavior. The alternative — retrying past a stated policy — would result in the PR being silently ignored. The agent made the right call without being told to.
 
-Four-role simultaneous audit exposes blind spots in code, docs, marketing, and QA at the same time. Any single-reviewer pass misses at least two of those angles.
+X (Twitter) API restrictions blocked automation for new accounts. No workaround exists — it's a time-based restriction. Reddit new-account posting restrictions had the same effect.
 
-And prompts matter more than they look. "Is it fully working?" is not the same question as "What did you implement?" One asks about behavior, one asks about code. The QA quality lives in that distinction.
+The agent prepared copy-paste ready text for each platform. Manual posting became a 5-minute task. Automate what can be automated. Report what can't. Have the fallback ready. This triage happens correctly without prompting.
 
-**Session totals:** 405 tool calls, 62 agent dispatches, ~80 user prompts. 6 new Rust modules, 1,049 tests, NPM published, README in 9 languages.
 
-Implementing this scope in Rust solo — no parallel agents — would have been two weeks minimum.
+## Iteration After Shipping
 
-> Build tools with Claude Code. Use those tools to make Claude Code better. The loop keeps getting tighter.
+After posting to Reddit, one piece of feedback was consistent: users wanted clearer explanation of how contextzip integrates with Claude Code hooks. The mechanism — how the hook intercepts CLI output before it reaches Claude — wasn't obvious from the README.
+
+The agent rewrote the README to make the hook integration explicit. That file became the most-revised artifact in the project — written, reviewed, revised, reviewed again. Language translations were added in speaker-count order: Korean, Japanese, Chinese, German, French, Spanish, Portuguese, Russian.
+
+The conclusion from this: a README is a marketing document. The single metric that matters is whether someone understands what the tool does and how to use it within 10 seconds of landing on the page. If the answer is no, the quality of the implementation is irrelevant.
+
+
+## What the 55-Hour Session Actually Looks Like
+
+A few patterns that repeated and are worth capturing:
+
+**Brainstorming before building surfaces decisions, not implementation steps.** The 3-minute session before any code was written shaped every subsequent hour. Decisions made early are cheap. Decisions made mid-implementation require unraveling work.
+
+**Weekly gates prevent session drift.** "Validate before moving forward" as an explicit constraint turns a continuous session into a series of verified checkpoints. Without it, long sessions can accumulate technical debt invisibly.
+
+**Parallel agents for non-overlapping tasks.** Any work that doesn't share files runs simultaneously. This is where the real speed multiplier comes from.
+
+**Four-role audit over self-review.** PM, engineer, UX/docs, QA simultaneously. Each angle catches different failure modes.
+
+**"Did it work?" is different from "what did you build?"** The second question produces feature lists. The first produces evidence of function.
+
+Session totals: 405 tool calls, 62 agent invocations. My direct prompts: ~80. Agents accounted for most of the work.
+
+Implementing this scope in Rust manually — 6 new modules, 1,056 tests, npm distribution pipeline, multilingual documentation — would have taken two weeks. 55 hours sounds like a lot until you look at the output list.
+
+> Claude Code builds the tool. The tool makes Claude Code better. The loop compounds.
 
 ---
 
