@@ -5,6 +5,7 @@ description: "Channels can't approve permissions remotely, only supports 3 plugi
 tags: claudecode, ai, opensource, devops
 cover_image: https://r2.jidonglab.com/blog/2026/03/claude-code-channels-vs-openclaw.jpg
 canonical_url: https://jidonglab.com/blog/claude-code-channels-ko
+hashnode_url: 'https://plzai.hashnode.dev/2026-03-21-claude-code-channels-vs-openclaw'
 ---
 
 In the [previous post](https://dev.to/jidonglab/claude-code-channels-architecture-setup), I covered how Claude Code Channels works — the push-not-pull architecture, the local MCP plugin bridge, and the five-minute Telegram/Discord setup.

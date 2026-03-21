@@ -5,6 +5,7 @@ description: "Anthropic shipped Claude Code Channels — MCP-based plugins that 
 tags: claudecode, ai, mcp, programming
 cover_image: https://r2.jidonglab.com/blog/2026/03/claude-code-channels-hero.jpg
 canonical_url: https://jidonglab.com/blog/claude-code-channels-ko
+hashnode_url: 'https://plzai.hashnode.dev/2026-03-21-claude-code-channels-architecture-setup'
 ---
 
 On March 20, 2026, Anthropic shipped Claude Code Channels as a research preview. Send a message from Telegram or Discord, and the Claude Code session running on your local machine picks it up, executes the work, and replies through the same chat app.

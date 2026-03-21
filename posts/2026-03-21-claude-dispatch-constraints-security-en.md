@@ -5,6 +5,7 @@ description: "Dispatch is macOS-only, single-threaded, and has a ~50% task succe
 tags: ai, productivity, security, cowork
 cover_image: https://r2.jidonglab.com/blog/2026/03/claude-dispatch-limits.jpg
 canonical_url: https://jidonglab.com/blog/claude-dispatch-ko
+hashnode_url: 'https://plzai.hashnode.dev/2026-03-21-claude-dispatch-constraints-security'
 ---
 
 In the [previous post](https://dev.to/jidonglab/claude-dispatch-cowork-setup), I covered what Dispatch is, how Cowork works, and the Q1 2026 ecosystem buildup that made it possible.

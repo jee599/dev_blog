@@ -5,6 +5,7 @@ description: "Anthropic shipped Dispatch inside Claude Cowork — pair your phon
 tags: ai, productivity, cowork, programming
 cover_image: https://r2.jidonglab.com/blog/2026/03/claude-dispatch-hero.jpg
 canonical_url: https://jidonglab.com/blog/claude-dispatch-ko
+hashnode_url: 'https://plzai.hashnode.dev/2026-03-21-claude-dispatch-cowork-setup'
 ---
 
 On March 17, 2026, Anthropic's Felix Rieseberg posted a tweet:
