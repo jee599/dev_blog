@@ -1,148 +1,126 @@
 ---
-title: "I Redesigned My Portfolio Projects Page 4 Times in One Day with Claude Code"
+title: "289 Tool Calls, 6 Sessions, and the Git Config Line That Blocked Vercel for 2 Hours"
 published: true
-description: "Four complete redesigns in a single day: screenshot cards → hover overlays → split panel → iframe preview. What happens when AI automation makes iteration nearly free."
-tags: claudecode, ai, webdev, portfolio
+description: "Built a 3-platform auto-publish pipeline with Claude Code. Then spent 2 hours debugging a Vercel block caused by a single git email mismatch."
+tags: claudecode, automation, vercel, devto
 series: "Building with Claude Code: portfolio-site"
 canonical_url: https://jidonglab.com/posts/2026-03-22-portfolio-site-en
 ---
 
-Four complete redesigns. One day. Same page.
+289 tool calls. 6 sessions. 5 projects running in parallel — designmaker, agentcrow, saju_global, spoonai, portfolio-site.
 
-On March 21, I rebuilt the Projects section of my portfolio from scratch four times. Browser mock screenshot cards, hover overlay reveals, a Finder-style split panel, and finally an iframe live preview. Each iteration took 20–40 minutes with Claude Code.
+That's a normal day now. What wasn't normal: I spent 2 hours debugging a Vercel deployment block that came down to one line of git config.
 
-Without it, this would've been a week of work.
+**TL;DR**: The `auto-publish` skill I built takes one piece of content and fires it to three platforms simultaneously — spoonai.me (Korean), DEV.to (English), and Naver Blog (Korean HTML). The pipeline works. But before I could test it end-to-end, every push was being rejected by Vercel with a "Git author must have access" error. Root cause: global `git config user.email` set to the wrong account.
 
-**TL;DR**: When Claude Code compresses iteration cycles to under an hour, speed stops being the constraint. Knowing when to stop and ship becomes the hard part.
+Session breakdown: Bash(127), Agent(38), Read(26), Edit(26) — 289 total.
 
-## The Starting Point: Browser Mock Screenshots Looked Great on Paper
+## Publishing 4 Backlogged Posts in Under 5 Minutes
 
-The first approach was inspired by the pattern you see on Notion's, Linear's, and Vercel's landing pages — product screenshots inside browser chrome frames, with a slow scroll-on-hover animation. When done well, it looks polished and instantly communicates "this is a real product."
+Four posts had been sitting in `src/content/build-logs/` — two on Claude Code channels architecture, two on dispatch and cowork patterns. Written. Never published.
 
-My prompt:
+I dropped the four file paths into Claude Code: "publish these to DEV.to."
+
+Claude read each file, mapped them to the correct directory structure in my `dev_blog` repo, committed, and pushed. GitHub Actions picked it up and called the DEV.to API. All four went up as drafts.
+
+Five minutes, start to finish.
+
+Then I looked at the actual posts.
+
+No SEO. No hooks. Titles were flat — no numbers, no outcomes. Descriptions explained the content instead of pulling the reader in. Bullet points everywhere (which my style rules ban). Tone was textbook, not personal.
+
+Technically correct. Completely unremarkable.
+
+I followed up: "Apply SEO, hooks, and all engagement techniques."
+
+Claude's analysis: titles with no numbers → low click-through. Descriptions that explain instead of invite → no hook. Bullet points instead of prose → against the rules. No personal voice. Section headings that are neutral when they should create curiosity.
+
+Then I dispatched 4 parallel agents — one per post — for simultaneous rewrites. The files don't share state, so there's no reason to run them sequentially. This is the multi-agent AI automation pattern at its most straightforward: independent tasks → parallel execution.
+
+## Why Brainstorming Before Building Isn't Optional
+
+The initial request was vague: "I want to drop one piece of content and have it go out to multiple platforms automatically."
+
+Before writing a line of code, Claude ran the brainstorming skill. That step isn't optional when the requirements are fuzzy — it's what separates a pipeline that works from one that gets rebuilt halfway because the assumptions were wrong.
+
+Brainstorming surfaced the questions that actually matter: What's the input interface — CLI, web, or Telegram? Which platforms, and how much of each is automatable? Where does image generation fit, and does it block the publish step?
+
+The answers locked in the architecture before implementation started:
+
+- Input: URL, keyword, or file (any of the three)
+- Output: spoonai.me (Korean markdown) + DEV.to (English markdown) + Naver Blog (Korean HTML)
+- Image generation: delegated to `dental-blog-image-pipeline`, which calls Gemini for illustrations and Playwright for capture — `auto-publish` calls this skill, doesn't duplicate it
+
+Naver is the interesting constraint. No public API exists for Naver Blog. The automation goes through Cowork — a browser controller that watches `~/blog-factory/naver-queue/` and publishes one post per day using Chrome automation. Naver publishing isn't instant; it's a scheduled queue.
+
+If I'd skipped brainstorming, this would have surfaced mid-implementation: "wait, there's no Naver API?" — and the whole structure would have needed rethinking with code already written. Instead, the Cowork approach was decided in the design phase, before a single file was touched.
+
+Once the design locked, `writing-plans` decomposed it into tasks, then `subagent-driven-development` executed them. Each agent owned one file. Parallel, no conflicts.
+
+## The Vercel Block That Was One Line Away
+
+First real test: push to spoonai.me and watch it deploy.
+
+spoonai.me showed 404. I opened the deployment logs:
 
 ```
-Active projects: browser mock + scroll animation screenshot
-Hero: centered layout + badges + stats
-In development: 3-column grid
+Deployment Blocked
+Git author jidongs45@gmail.com must have access to the team
+jee599's projects on Vercel to create deployments.
 ```
 
-Claude Code wrote 105 lines in commit `02076c1`. The result looked convincing at first glance. Then I hovered over one of the cards.
+My git commit author email was `jidongs45@gmail.com`. The Vercel project was owned by `jee599`. Vercel's deployment protection requires the git commit author to be a recognized team member — and that email wasn't one.
 
-The scroll animation was broken. `object-fit: cover` and `translateY` were fighting each other. Instead of the image scrolling smoothly inside the container, it was overflowing the bounding box and flying out of frame. Not a subtle glitch — visually jarring.
+Here's the debugging path I actually took:
 
-Two commits (`ef7d70a`, `57f5d09`) to fix the overflow behavior. And while I was debugging the CSS, a more important question surfaced.
+Push again → still blocked. Hit Redeploy in the Vercel dashboard → "This deployment can not be redeployed." Add team members through Vercel settings → still blocked. Push from a different GitHub account (`jidonggg`) → still blocked.
 
-"Why am I spending this much attention on scroll animations? Half my projects don't even have screenshots."
+Every variation I tried targeted Vercel's team configuration. None of them worked, because the problem wasn't Vercel's configuration — it was my local git config.
 
-That's the real problem with the screenshot approach. It assumes every project has a polished visual to show. In reality, some projects are CLIs. Some are open source libraries. Some are early-stage enough that there's nothing visually interesting to capture yet. The design pattern works great for SaaS landing pages; it breaks down for a portfolio that spans multiple project types.
-
-The animation was fixable. The structural mismatch wasn't.
-
-## First Pivot: The Hover Overlay Trap
-
-Dropped the screenshots entirely. Went card-based instead.
-
-The idea: default state shows the essentials — title, status indicator, and tech stack. Hover reveals the full picture — description, build log links, external links. CSS `opacity` transition at 0.25 seconds, smooth and snappy.
-
-161 lines changed in `ProjectCard.astro`. Mechanically, it worked exactly as designed.
-
-Then I sat with it for about 30 minutes.
-
-The problem wasn't the animation. It was the information architecture. Hover is fundamentally a "hint" interaction — it surfaces a little more context, a preview, a tooltip. It's not designed to carry a full project description plus links plus metadata. When you try to load that much into a hover state, reading it becomes stressful. The user has to hold the mouse still while parsing a wall of text that appears and disappears.
-
-Cards with hover reveals are great for image galleries and navigation menus. They're the wrong pattern for communicating depth about a portfolio project.
-
-Second pivot.
-
-## The Split Panel: Finally Something That Clicked
-
-This is the iteration where the design actually worked.
-
-The mental model came from apps with heavy list-and-detail UX — Finder, Linear, GitHub's file browser. Left side: a scannable list. Right side: a detailed panel that updates when you click something on the left. Sticky panel so the detail view persists as you browse.
-
-The spec I gave Claude Code:
-
-```
-Left: project list (color bar by status + name + stack + log count)
-Right: detail panel for selected project (description + stack + site/GitHub links + build log list)
-Click to switch, sticky right panel
-Mobile: stack vertically
+```bash
+git config --list | grep email
+# user.email=jidongs45@gmail.com
 ```
 
-Commit `e831e42` — `index.astro` single file, 315 lines. 178 added, 137 deleted.
+Global `user.email` was set to `jidongs45@gmail.com` — an old account I'd never cleaned up. Every commit was being authored by an email Vercel had never seen.
 
-The interaction model is familiar and clean. Click a project in the list, the right panel replaces its content. Status colors give you a quick portfolio read without any clicking — green for live and running, yellow for active development, gray for shipped and done.
+The fix:
 
-One remaining gap: the detail panel was still all text. You'd have to click an external link and open a new tab to see what any of these projects actually look like. The portfolio answered "what did you build?" but not "show me."
-
-## Adding Live iframe Preview to the Right Panel
-
-The fix was direct. Embed an `<iframe>` in the right detail panel. Click a project, see the live site inside the panel without leaving the page.
-
-```astro
-<iframe
-  src={project.siteUrl}
-  class="preview-iframe"
-  loading="lazy"
-  sandbox="allow-scripts allow-same-origin"
-/>
+```bash
+git config --global user.email "jee599-account-email@gmail.com"
 ```
 
-Started at 200px height. Too compressed — barely readable. Doubled it to 400px in commit `7587f7c`.
+One line. Two hours gone.
 
-Then added a scroll effect. On hover, the iframe content slowly pans downward using CSS `transform: translateY` with a transition. No JavaScript event listeners, no scroll syncing logic. Pure CSS.
+If you've ever wasted time debugging a Vercel deployment block, check this first. It's not in any error message; you have to know to look. I saved it to a Claude Code memory file (`feedback_vercel_deploy.md`): on any new repo connected to Vercel, verify `git config user.email` before the first push.
 
-One tooling observation worth noting: Edit dominated throughout this session. Bash appeared only for `astro build` checks. Because `index.astro` was the single file changing across all four iterations, Claude Code could make sequential edits cleanly without file conflicts.
+## What 38 Agent Calls in One Session Means
 
-Keeping all the logic in one Astro file (rather than splitting early into sub-components) made the iteration loop faster. Less indirection, fewer files to coordinate. You can refactor for structure after you've validated the direction. While you're still figuring out what the thing should be, a single file is a feature, not a problem.
+Bash at 127 calls is expected — git operations, terminal commands, file inspection. Agent at 38 is the more interesting number.
 
-## Open Source Projects Are a Different Case
+38 separate delegations to subagents: research tasks, parallel rewrites, isolated file edits. When tasks are genuinely independent, multi-agent dispatch is the right tool. Running them sequentially is just slower for no reason.
 
-agentcrow and contextzip — two of my open source CLI tools — don't have a `siteUrl`. They're GitHub repos with no deployed frontend. The iframe approach doesn't apply.
+The session stretched to 22 hours 39 minutes because the Vercel debugging, the auto-publish skill design, and a pile of unplanned fixes all ran back to back. Long sessions create a specific problem in AI-assisted workflows: context compression. When a Claude Code session runs long enough, earlier decisions get summarized or dropped from context. You end up asking "why did we structure it this way?" and the reasoning isn't there.
 
-For these, I added `demoGif` support. Added a field to the content schema in `config.ts`, then referenced it in each project's YAML:
+The mitigation: write critical decisions to memory files during the session. That day produced three — `project_auto_publish.md`, `project_spoonai_admin.md`, `feedback_vercel_deploy.md`. The next session picks up with full context instead of reconstructing from git history.
 
-```yaml
-# agentcrow.yaml
-demoGif: /demos/agentcrow.gif
-```
+The Vercel git email lesson is in memory. Next time I connect a new repo to Vercel, that's the first thing Claude will surface.
 
-The homepage open source card now renders the GIF — dark background, 16:9 container, `loading="lazy"`. Not as dynamic as a live iframe, but it communicates "here's what this thing actually does" without requiring the visitor to dig through a README.
+## The Pattern: Skills Before Code
 
-This change touched 5 files: `config.ts`, `agentcrow.yaml`, `contextzip.yaml`, `projects.ts`, and `index.astro`. Claude Code processed them sequentially, not in parallel — because the schema definition in `config.ts` has to land first before any consuming file can reference the new field correctly.
+What held everything together was a consistent sequence: use the skill stack before opening any file.
 
-This pattern comes up constantly in multi-file refactors and AI automation workflows: independent tasks can be parallelized, but dependency chains have to run in order. Getting that distinction right separates fast iteration from broken builds.
+Brainstorming before auto-publish → Naver architecture decided before implementation, not during it. No mid-build redirects.
 
-## Nav Cleanup
+`writing-plans` before subagent dispatch → tasks decomposed into parallel-executable units with clear ownership and no shared state.
 
-Removed `AI Posts` and `AI News` from the nav in commit `a6fc486`.
+`subagent-driven-development` for execution → each agent owned exactly one file. No conflicts, no coordination overhead.
 
-A portfolio's job is to communicate what you've built. Auto-generated content feeds dilute that signal. Every nav item is a claim about what the site is — fewer claims, clearer identity.
+The skill stack functions as a forcing function. It makes you define what you're building — the constraints, the approach, the non-obvious decisions — before you start building it.
 
-## The Real Takeaway: Speed Shifts What's Hard
+That's the opposite of what feels productive when you want to ship something. But skipping it means the "figuring out" happens during implementation, which costs more than figuring it out upfront.
 
-Let me be specific about the economics here, because this is the interesting part.
-
-In a pre-Claude-Code workflow, each of these four design directions would take a day minimum. You write the component, style it, test on mobile, handle edge cases, debug the animations. By the time you've invested that much, you're reluctant to throw it away — even when you suspect it's the wrong direction.
-
-That reluctance is rational. When iteration is expensive, being conservative about pivots is the right call. You're not irrationally attached to your first idea; you're correctly accounting for switching costs.
-
-Claude Code changes that calculation. Each direction took 20–40 minutes from prompt to working implementation. Fast enough to run actual experiments instead of committing based on intuition alone.
-
-The browser screenshot approach: found the structural mismatch, moved on. 30 minutes.
-
-The hover overlay: identified the interaction pattern problem, moved on. 30 minutes.
-
-The split panel: validated it works, extended it. 40 minutes.
-
-The iframe preview: added it, evaluated the result, shipped it. 20 minutes.
-
-There's a side effect worth being honest about. "I can build it fast, so let me just try it" becomes the default posture. That enabled four genuine experiments in one day. But it also means the loop doesn't have a natural stopping condition. You can keep iterating indefinitely without shipping.
-
-The constraint is no longer execution speed. It's judgment — knowing which direction is worth developing, and when "good enough to ship" has arrived.
-
-> Claude Code brings iteration cost close to zero. That makes directional judgment the scarce resource.
+> A finished pipeline means the next post isn't manual work anymore.
 
 ---
 
