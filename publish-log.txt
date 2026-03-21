@@ -1,5 +1,5 @@
 Fetching existing articles from DEV.to ...
-  Found 72 existing article(s) on DEV.to
+  Found 75 existing article(s) on DEV.to
 
 SKIP (korean filename): posts/2026-03-14-anthropic-partner-network-100m-ko.md
 SKIP (korean filename): posts/2026-03-14-gemini-750m-ads-ko.md
@@ -18,58 +18,31 @@ SKIP (build-log): posts/2026-03-20-agentochester-build-log-en.md
 SKIP (build-log): posts/2026-03-20-dev-blog-build-log-en.md
 SKIP (build-log): posts/2026-03-20-portfolio-site-build-log-en.md
 SKIP (build-log): posts/2026-03-21-agentochester-build-log-en.md
-
-PUBLISHING: posts/2026-03-21-claude-code-channels-architecture-setup-en.md
-  title: I Control Claude Code From My Phone Now — Here's the 5-Minute Telegram Setup
-  tags: []
-  draft detected (id=3379440) -> publish update
-  publish draft result: HTTP 200
-  PUBLISHED existing draft id=3379440
+SKIP (has id): posts/2026-03-21-claude-code-channels-architecture-setup-en.md
 
 PUBLISHING: posts/2026-03-21-claude-code-channels-official-guide-en.md
   title: 2 Platforms, 3 Commands: Claude Code Channels Setup Guide
   tags: ['claudecode', 'ai', 'productivity', 'tutorial']
-  step 1: creating draft ...
-  step 1 result: HTTP 201
-  draft created id=3380178
-  DRAFT saved id=3380178 (manual publish)
-
-PUBLISHING: posts/2026-03-21-claude-code-channels-vs-openclaw-en.md
-  title: 3 Plugins vs 200K Stars: Why I Still Pick Claude Code Channels Over OpenClaw
-  tags: []
-  draft detected (id=3379445) -> publish update
+  draft detected (id=3380178) -> publish update
   publish draft result: HTTP 200
-  PUBLISHED existing draft id=3379445
+  PUBLISHED existing draft id=3380178
+SKIP (has id): posts/2026-03-21-claude-code-channels-vs-openclaw-en.md
 
 PUBLISHING: posts/2026-03-21-claude-cowork-desktop-agent-en.md
   title: Claude Cowork: 5 Tasks I Delegated to My Desktop Agent
   tags: []
-  step 1: creating draft ...
-  step 1 result: HTTP 201
-  draft created id=3380180
-  DRAFT saved id=3380180 (manual publish)
-
-PUBLISHING: posts/2026-03-21-claude-dispatch-constraints-security-en.md
-  title: Claude Dispatch Has a 50% Success Rate — Here's Why I'm Still Using It
-  tags: []
-  draft detected (id=3379450) -> publish update
+  draft detected (id=3380180) -> publish update
   publish draft result: HTTP 200
-  PUBLISHED existing draft id=3379450
-
-PUBLISHING: posts/2026-03-21-claude-dispatch-cowork-setup-en.md
-  title: I Texted Claude From the Subway — Came Back to a Finished Slide Deck on My Mac
-  tags: []
-  draft detected (id=3379453) -> publish update
-  publish draft result: HTTP 200
-  PUBLISHED existing draft id=3379453
+  PUBLISHED existing draft id=3380180
+SKIP (has id): posts/2026-03-21-claude-dispatch-constraints-security-en.md
+SKIP (has id): posts/2026-03-21-claude-dispatch-cowork-setup-en.md
 
 PUBLISHING: posts/2026-03-21-claude-dispatch-official-guide-en.md
   title: Claude Dispatch in 2 Minutes: Phone-to-Desktop AI Setup
   tags: ['ai', 'claude', 'productivity', 'tutorial']
-  step 1: creating draft ...
-  step 1 result: HTTP 201
-  draft created id=3380182
-  DRAFT saved id=3380182 (manual publish)
+  draft detected (id=3380182) -> publish update
+  publish draft result: HTTP 200
+  PUBLISHED existing draft id=3380182
 SKIP (build-log): posts/2026-03-21-portfolio-site-build-log-en.md
 SKIP (has id): posts/agentcrow-launch-en.md
 SKIP (has id): posts/ai-agent-i18n-tarot-compatibility-en.md
@@ -141,4 +114,4 @@ SKIP (has id): posts/trading-bot-win-rate-lie-en.md
 SKIP (korean filename): posts/trading-bot-win-rate-lie-ko.md
 SKIP (has id): posts/writing-claude-code-book-with-claude-code-en.md
 
-Done: 7 published, 0 failed
+Done: 3 published, 0 failed
