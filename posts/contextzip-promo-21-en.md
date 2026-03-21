@@ -16,6 +16,8 @@ date: '2026-03-21T14:51:52.330Z'
 
 RTK (Reduce Toolkit) is a solid Rust CLI for reducing AI context size. I used it daily. Then I hit its limits.
 
+![ContextZip Demo](https://raw.githubusercontent.com/jee599/contextzip/main/docs/demo.gif)
+
 RTK handles ANSI stripping and basic deduplication well. But real-world CLI output has patterns RTK doesn't catch. I forked it and built ContextZip.
 
 ## What RTK Does Well
