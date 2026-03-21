@@ -5,6 +5,7 @@ description: "Claude Cowork turns Claude Desktop into an autonomous agent that r
 tags: ai, productivity, tutorial, beginners
 cover_image: https://r2.jidonglab.com/blog/2026/03/claude-cowork-desktop-agent-hero.jpg
 canonical_url: https://spoonai.me/blog/claude-cowork-desktop-agent
+hashnode_url: 'https://plzai.hashnode.dev/2026-03-21-claude-cowork-desktop-agent'
 ---
 
 Last Tuesday I described the outcome I wanted — a competitor analysis with pricing tables, sourced from three local spreadsheets and live web data — then walked away to make coffee. When I came back twelve minutes later, the finished report was sitting on my desktop. Not a skeleton. Not a draft with placeholder text. A polished document with formatted tables, citations, and a one-page executive summary.
