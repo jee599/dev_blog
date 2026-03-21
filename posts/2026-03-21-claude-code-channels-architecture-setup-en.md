@@ -6,6 +6,8 @@ tags: ai, claudecode, productivity, programming
 cover_image: https://r2.jidonglab.com/blog/2026/03/claude-code-channels-hero.jpg
 canonical_url: https://jidonglab.com/blog/claude-code-channels-ko
 hashnode_url: 'https://plzai.hashnode.dev/2026-03-21-claude-code-channels-architecture-setup'
+id: 3379440
+date: 'draft'
 ---
 
 I was on the subway when I pushed a commit to production. Not from a laptop. Not through SSH. I sent a Telegram message from my phone, and Claude Code — running on the machine sitting at my desk — picked it up, fixed the bug, and replied with the diff. No terminal access required.

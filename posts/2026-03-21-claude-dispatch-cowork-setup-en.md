@@ -6,6 +6,8 @@ tags: ai, productivity, webdev, beginners
 cover_image: https://r2.jidonglab.com/blog/2026/03/claude-dispatch-hero.jpg
 canonical_url: https://jidonglab.com/blog/claude-dispatch-ko
 hashnode_url: 'https://plzai.hashnode.dev/2026-03-21-claude-dispatch-cowork-setup'
+id: 3379453
+date: 'draft'
 ---
 
 I was standing on a crowded subway platform when I pulled out my phone, typed "take yesterday's meeting notes and turn them into a slide deck," and put my phone back in my pocket. Twenty minutes later, I walked into my office, opened my MacBook, and the slides were done. Not a draft. Not an outline. **A finished deck**, built from my local files, sitting right there on my desktop.

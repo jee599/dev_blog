@@ -1,5 +1,5 @@
 Fetching existing articles from DEV.to ...
-  Found 64 existing article(s) on DEV.to
+  Found 68 existing article(s) on DEV.to
 
 SKIP (korean filename): posts/2026-03-14-anthropic-partner-network-100m-ko.md
 SKIP (korean filename): posts/2026-03-14-gemini-750m-ads-ko.md
@@ -18,6 +18,38 @@ SKIP (build-log): posts/2026-03-20-agentochester-build-log-en.md
 SKIP (build-log): posts/2026-03-20-dev-blog-build-log-en.md
 SKIP (build-log): posts/2026-03-20-portfolio-site-build-log-en.md
 SKIP (build-log): posts/2026-03-21-agentochester-build-log-en.md
+
+PUBLISHING: posts/2026-03-21-claude-code-channels-architecture-setup-en.md
+  title: I Control Claude Code From My Phone Now — Here's the 5-Minute Telegram Setup
+  tags: []
+  step 1: creating draft ...
+  step 1 result: HTTP 201
+  draft created id=3379440
+  DRAFT saved id=3379440 (manual publish)
+
+PUBLISHING: posts/2026-03-21-claude-code-channels-vs-openclaw-en.md
+  title: 3 Plugins vs 200K Stars: Why I Still Pick Claude Code Channels Over OpenClaw
+  tags: []
+  step 1: creating draft ...
+  step 1 result: HTTP 201
+  draft created id=3379445
+  DRAFT saved id=3379445 (manual publish)
+
+PUBLISHING: posts/2026-03-21-claude-dispatch-constraints-security-en.md
+  title: Claude Dispatch Has a 50% Success Rate — Here's Why I'm Still Using It
+  tags: []
+  step 1: creating draft ...
+  step 1 result: HTTP 201
+  draft created id=3379450
+  DRAFT saved id=3379450 (manual publish)
+
+PUBLISHING: posts/2026-03-21-claude-dispatch-cowork-setup-en.md
+  title: I Texted Claude From the Subway — Came Back to a Finished Slide Deck on My Mac
+  tags: []
+  step 1: creating draft ...
+  step 1 result: HTTP 201
+  draft created id=3379453
+  DRAFT saved id=3379453 (manual publish)
 SKIP (build-log): posts/2026-03-21-portfolio-site-build-log-en.md
 SKIP (has id): posts/agentcrow-launch-en.md
 SKIP (has id): posts/ai-agent-i18n-tarot-compatibility-en.md
@@ -89,4 +121,4 @@ SKIP (has id): posts/trading-bot-win-rate-lie-en.md
 SKIP (korean filename): posts/trading-bot-win-rate-lie-ko.md
 SKIP (has id): posts/writing-claude-code-book-with-claude-code-en.md
 
-Done: 0 published, 0 failed
+Done: 4 published, 0 failed
