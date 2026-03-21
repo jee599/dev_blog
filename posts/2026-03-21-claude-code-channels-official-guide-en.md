@@ -7,7 +7,7 @@ tags:
   - ai
   - productivity
   - tutorial
-cover_image: https://r2.jidonglab.com/blog/2026/03/claude-code-channels-official-guide.jpg
+cover_image: https://spoonai.me/images/posts/2026-03-21/channels-docs-01.png
 canonical_url: https://spoonai.me/blog/claude-code-channels-official-guide
 hashnode_url: 'https://plzai.hashnode.dev/2026-03-21-claude-code-channels-official-guide'
 id: 3380178
@@ -41,6 +41,9 @@ Anthropic ships five distinct ways to interact with Claude Code, and the [offici
 The critical distinction is the word **push**. MCP tools sit idle until Claude decides to call them. Channels invert this — external events arrive into the session whether Claude expected them or not. Your Telegram message, a CI failure webhook, a monitoring alert. Claude reads the event and replies back through the same channel. Two-way communication, one persistent session.
 
 One constraint the docs state clearly but that trips up every first-time user: events only arrive while the session is open. Close the terminal, and messages sent during the downtime vanish. The docs recommend running Claude Code inside tmux or screen for always-on operation, and after losing three messages on my first day, I can confirm this is not optional advice.
+
+![Claude Code Channels official documentation](https://spoonai.me/images/posts/2026-03-21/channels-docs-01.png)
+*Source: Anthropic*
 
 ## Prerequisites You Need Before Touching a Single Command
 
@@ -94,6 +97,9 @@ claude --channels plugin:fakechat@claude-plugins-official
 A browser-based chat UI opens at `http://localhost:8787`. Type a message, it arrives in the Claude Code session as a channel event. Claude processes it and replies back to the browser. No authentication, no pairing code, no external dependency. If this works, you know the channel architecture on your machine is functioning correctly before you introduce Telegram or Discord variables.
 
 I used Fakechat to validate that my tmux setup was keeping the session alive properly. Sent a message, walked away for twenty minutes, came back and sent another. Both processed correctly. That gave me confidence before connecting a real platform.
+
+![claude-plugins-official GitHub repository](https://spoonai.me/images/posts/2026-03-21/channels-github-01.png)
+*Source: Anthropic*
 
 ## The Security Model: Allowlists, Pairing Codes, and What Gets Blocked
 

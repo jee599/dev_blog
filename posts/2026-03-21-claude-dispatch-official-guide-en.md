@@ -7,7 +7,7 @@ tags:
   - claude
   - productivity
   - tutorial
-cover_image: https://r2.jidonglab.com/blog/2026/03/claude-dispatch-official-guide.jpg
+cover_image: https://spoonai.me/images/posts/2026-03-21/dispatch-docs-01.png
 canonical_url: https://spoonai.me/blog/claude-dispatch-official-guide
 hashnode_url: 'https://plzai.hashnode.dev/2026-03-21-claude-dispatch-official-guide'
 id: 3380182
@@ -33,6 +33,9 @@ I want to be precise about the setup because the docs make it sound simple, and 
 **The actual setup flow goes like this.** Open Claude Desktop on your computer and navigate to Cowork. Tap "Dispatch" in the interface, then hit "Get started." The app walks you through a permissions screen — you're granting Dispatch access to the connectors and plugins already configured in your desktop environment. Review what you're enabling, confirm, and tap "Finish." That's it. The entire flow took me one minute and forty-seven seconds, and thirty seconds of that was reading the permissions screen.
 
 Once setup completes, open the Claude mobile app. You'll see the Dispatch thread waiting for you. Type a task. Watch your desktop pick it up. The first time I saw my desktop's cursor start moving on its own while I was holding my phone across the room, it felt like a magic trick — the kind that loses its novelty in about ten minutes and becomes pure utility after that.
+
+![Claude Dispatch documentation](https://spoonai.me/images/posts/2026-03-21/dispatch-docs-01.png)
+*Source: Anthropic*
 
 ## What Dispatch Actually Does Well
 
@@ -71,6 +74,9 @@ Anthropic shipped Dispatch and [Claude Code Channels](https://code.claude.com/do
 The comparison crystallizes around three dimensions. Dispatch runs on macOS and Windows through Claude Desktop. Channels runs wherever Claude Code runs, including Linux servers, remote VMs, and containers. Dispatch syncs phone-to-desktop with persistent context. Channels pushes events from Telegram, Discord, or custom sources into a terminal session. Dispatch setup takes two minutes in a GUI. Channels setup takes terminal commands and bot creation that varies by platform.
 
 If you're a developer who lives in the terminal and wants Claude to respond to external events in a coding context, Channels is your tool. I wrote a [full setup guide for Channels](https://dev.to/jee599/2-platforms-3-commands-claude-code-channels-setup-guide) earlier this week. If you're anyone else — a product manager, a marketer, a founder who wants to delegate research tasks while commuting — Dispatch is what you want.
+
+![Claude Desktop download page](https://spoonai.me/images/posts/2026-03-21/claude-desktop-01.png)
+*Source: Anthropic*
 
 ## The Honest Verdict After a Week of Daily Use
 

@@ -3,7 +3,7 @@ title: "Claude Cowork: 5 Tasks I Delegated to My Desktop Agent"
 published: true
 description: "Claude Cowork turns Claude Desktop into an autonomous agent that reads your files, runs subtasks in parallel, and delivers finished work."
 tags: ai, productivity, tutorial, beginners
-cover_image: https://r2.jidonglab.com/blog/2026/03/claude-cowork-desktop-agent-hero.jpg
+cover_image: https://spoonai.me/images/posts/2026-03-21/cowork-blog-01.png
 canonical_url: https://spoonai.me/blog/claude-cowork-desktop-agent
 hashnode_url: 'https://plzai.hashnode.dev/2026-03-21-claude-cowork-desktop-agent'
 id: 3380180
@@ -23,6 +23,9 @@ The shift from standard Claude chat to Cowork isn't cosmetic. It's architectural
 I've been using Claude's chat interface since its earliest days. The mental model was always conversational — ask a question, get an answer, refine. Cowork breaks that pattern deliberately. The mental model is delegation. You're handing off a project to a capable assistant who has access to your files, your calendar, your email, and enough autonomy to figure out the intermediate steps without asking you to approve each one.
 
 The practical difference shows up in task duration. Standard chat sessions are measured in seconds. Cowork sessions can run for hours. I've kicked off a task before lunch and found the output waiting when I got back, because Claude Desktop stayed open and Cowork kept working through the subtasks in the background. The desktop app does need to stay open — close it and the agent pauses — but that's the only constraint.
+
+![Claude Cowork official blog](https://spoonai.me/images/posts/2026-03-21/cowork-blog-01.png)
+*Source: Anthropic*
 
 ## The 5 Tasks That Convinced Me
 
@@ -45,6 +48,9 @@ Understanding Cowork's execution model explains why these tasks feel different f
 Sub-agent coordination is the mechanism behind this parallelism. Cowork's primary agent acts as an orchestrator, delegating work to specialized sub-agents that handle specific capabilities — file reading, web browsing, plugin interaction, script execution. These sub-agents operate independently and report back to the orchestrator, which synthesizes their outputs into the final deliverable. This is why Cowork can handle tasks that involve multiple tools simultaneously without getting confused or losing context.
 
 The memory model matters too. Within a Project — Cowork's organizational unit — memory persists across sessions. I set up a "Q1 Analysis" project, gave it context through folder-level instructions, and every task within that project inherits that context automatically. Global instructions work the same way: preferences you set once apply everywhere. But memory doesn't carry across standalone sessions outside of projects, which is worth knowing if you're expecting continuity without the project wrapper.
+
+![Claude Cowork help center](https://spoonai.me/images/posts/2026-03-21/cowork-docs-01.png)
+*Source: Anthropic*
 
 ## Who Is This Actually For?
 
