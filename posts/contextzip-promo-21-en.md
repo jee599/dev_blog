@@ -9,6 +9,7 @@ tags:
   - productivity
 series: "ContextZip Daily"
 canonical_url: "https://github.com/jee599/contextzip"
+hashnode_url: 'https://plzai.hashnode.dev/contextzip-promo-21'
 ---
 
 RTK (Reduce Toolkit) is a solid Rust CLI for reducing AI context size. I used it daily. Then I hit its limits.
