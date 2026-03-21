@@ -1,5 +1,5 @@
 Fetching existing articles from DEV.to ...
-  Found 75 existing article(s) on DEV.to
+  Found 76 existing article(s) on DEV.to
 
 SKIP (korean filename): posts/2026-03-14-anthropic-partner-network-100m-ko.md
 SKIP (korean filename): posts/2026-03-14-gemini-750m-ads-ko.md
@@ -19,30 +19,12 @@ SKIP (build-log): posts/2026-03-20-dev-blog-build-log-en.md
 SKIP (build-log): posts/2026-03-20-portfolio-site-build-log-en.md
 SKIP (build-log): posts/2026-03-21-agentochester-build-log-en.md
 SKIP (has id): posts/2026-03-21-claude-code-channels-architecture-setup-en.md
-
-PUBLISHING: posts/2026-03-21-claude-code-channels-official-guide-en.md
-  title: 2 Platforms, 3 Commands: Claude Code Channels Setup Guide
-  tags: ['claudecode', 'ai', 'productivity', 'tutorial']
-  draft detected (id=3380178) -> publish update
-  publish draft result: HTTP 200
-  PUBLISHED existing draft id=3380178
+SKIP (has id): posts/2026-03-21-claude-code-channels-official-guide-en.md
 SKIP (has id): posts/2026-03-21-claude-code-channels-vs-openclaw-en.md
-
-PUBLISHING: posts/2026-03-21-claude-cowork-desktop-agent-en.md
-  title: Claude Cowork: 5 Tasks I Delegated to My Desktop Agent
-  tags: []
-  draft detected (id=3380180) -> publish update
-  publish draft result: HTTP 200
-  PUBLISHED existing draft id=3380180
+SKIP (has id): posts/2026-03-21-claude-cowork-desktop-agent-en.md
 SKIP (has id): posts/2026-03-21-claude-dispatch-constraints-security-en.md
 SKIP (has id): posts/2026-03-21-claude-dispatch-cowork-setup-en.md
-
-PUBLISHING: posts/2026-03-21-claude-dispatch-official-guide-en.md
-  title: Claude Dispatch in 2 Minutes: Phone-to-Desktop AI Setup
-  tags: ['ai', 'claude', 'productivity', 'tutorial']
-  draft detected (id=3380182) -> publish update
-  publish draft result: HTTP 200
-  PUBLISHED existing draft id=3380182
+SKIP (has id): posts/2026-03-21-claude-dispatch-official-guide-en.md
 SKIP (build-log): posts/2026-03-21-portfolio-site-build-log-en.md
 SKIP (has id): posts/agentcrow-launch-en.md
 SKIP (has id): posts/ai-agent-i18n-tarot-compatibility-en.md
@@ -76,6 +58,11 @@ SKIP (has id): posts/contextzip-claude-code-built-its-own-tool-en.md
 SKIP (has id): posts/contextzip-compress-context-90-percent-en.md
 SKIP (has id): posts/contextzip-promo-19-en.md
 SKIP (has id): posts/contextzip-promo-20-en.md
+
+PUBLISHING: posts/contextzip-promo-21-en.md
+  title: Why RTK Wasn't Enough (And What I Added)
+  tags: ['rust', 'opensource', 'ai', 'productivity']
+  DUPLICATE found on DEV.to (id=3380632) — writing id to file
 SKIP (has id): posts/contextzip-rtk-fork-90-percent-en.md
 SKIP (has id): posts/contextzip-rust-cli-without-writing-rust-en.md
 SKIP (has id): posts/dental-website-8-minutes-en.md
@@ -114,4 +101,4 @@ SKIP (has id): posts/trading-bot-win-rate-lie-en.md
 SKIP (korean filename): posts/trading-bot-win-rate-lie-ko.md
 SKIP (has id): posts/writing-claude-code-book-with-claude-code-en.md
 
-Done: 3 published, 0 failed
+Done: 1 published, 0 failed
