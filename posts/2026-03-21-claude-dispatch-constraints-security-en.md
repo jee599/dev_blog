@@ -7,7 +7,7 @@ cover_image: https://r2.jidonglab.com/blog/2026/03/claude-dispatch-limits.jpg
 canonical_url: https://jidonglab.com/blog/claude-dispatch-ko
 hashnode_url: 'https://plzai.hashnode.dev/2026-03-21-claude-dispatch-constraints-security'
 id: 3379450
-date: 'draft'
+date: '2026-03-21T08:12:31Z'
 ---
 
 Half the tasks I send to Dispatch fail. I'm still using it every day. Here's why — and more importantly, here's everything that goes wrong.

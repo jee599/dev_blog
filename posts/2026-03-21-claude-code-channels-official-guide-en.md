@@ -10,6 +10,8 @@ tags:
 cover_image: https://r2.jidonglab.com/blog/2026/03/claude-code-channels-official-guide.jpg
 canonical_url: https://spoonai.me/blog/claude-code-channels-official-guide
 hashnode_url: 'https://plzai.hashnode.dev/2026-03-21-claude-code-channels-official-guide'
+id: 3380178
+date: 'draft'
 ---
 
 **Claude Code Channels** is an MCP server that pushes events from external messaging platforms into a running Claude Code session — unlike traditional MCP tools that wait to be called, a channel delivers messages the moment they arrive.

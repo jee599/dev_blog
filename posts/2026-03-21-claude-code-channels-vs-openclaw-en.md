@@ -7,7 +7,7 @@ cover_image: https://r2.jidonglab.com/blog/2026/03/claude-code-channels-vs-openc
 canonical_url: https://jidonglab.com/blog/claude-code-channels-ko
 hashnode_url: 'https://plzai.hashnode.dev/2026-03-21-claude-code-channels-vs-openclaw'
 id: 3379445
-date: 'draft'
+date: '2026-03-21T08:12:23Z'
 ---
 
 OpenClaw has 200,000 GitHub stars, supports every messaging platform you can name, and costs nothing. Claude Code Channels has three plugins, requires a paid subscription, and can't even handle permission prompts remotely. I still chose Channels for my production workflow.

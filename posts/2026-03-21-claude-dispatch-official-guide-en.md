@@ -10,6 +10,8 @@ tags:
 cover_image: https://r2.jidonglab.com/blog/2026/03/claude-dispatch-official-guide.jpg
 canonical_url: https://spoonai.me/blog/claude-dispatch-official-guide
 hashnode_url: 'https://plzai.hashnode.dev/2026-03-21-claude-dispatch-official-guide'
+id: 3380182
+date: 'draft'
 ---
 
 I gave Claude a task from my phone while walking to a coffee shop, and by the time I sat down with an Americano, the work was done on my desktop at home. No SSH tunneling. No terminal commands. No bot tokens. Just a feature called **Dispatch** buried inside Anthropic's [Cowork interface](https://support.claude.com/en/articles/13947068-assign-tasks-to-claude-from-anywhere-in-cowork) that took me exactly two minutes to set up.
