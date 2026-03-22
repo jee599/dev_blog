@@ -6,6 +6,7 @@ tags: [ai, webdev, productivity, tutorial]
 cover_image: https://r2.jidonglab.com/blog/2026/03/claude-code-mcp-setup-guide-hero.jpg
 canonical_url: https://spoonai.me/posts/claude-code-mcp
 series: "Claude Code Power User Guide"
+hashnode_url: 'https://plzai.hashnode.dev/2026-03-23-claude-code-mcp-setup-guide'
 ---
 
 Forty-two copy-paste operations per day. That is how many times I was manually ferrying context between Claude Code and my browser before I discovered MCP. I timed it over a full work week. The average operation took 45 seconds — open a tab, find the information Claude Code needed, copy it, switch back, paste it in. Over 30 minutes of pure overhead every day, doing nothing but being a slow, unreliable middleware layer between an AI agent and the tools it needed.
