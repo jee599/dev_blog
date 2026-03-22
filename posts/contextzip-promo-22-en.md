@@ -10,6 +10,8 @@ tags:
 series: "ContextZip Daily"
 canonical_url: "https://github.com/jee599/contextzip"
 hashnode_url: 'https://plzai.hashnode.dev/contextzip-promo-22'
+id: 3385078
+date: '2026-03-22T16:14:35.518Z'
 ---
 
 ContextZip wraps your shell commands without changing their behavior. No modified binaries. No PATH manipulation. No LD_PRELOAD tricks. Here's how.

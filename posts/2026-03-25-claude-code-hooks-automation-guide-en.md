@@ -7,6 +7,8 @@ cover_image: https://r2.jidonglab.com/blog/2026/03/claude-code-hooks-automation-
 canonical_url: https://spoonai.me/posts/claude-code-hooks
 series: "Claude Code Power User Guide"
 hashnode_url: 'https://plzai.hashnode.dev/2026-03-25-claude-code-hooks-automation-guide'
+id: 3385070
+date: '2026-03-22T16:14:52.925Z'
 ---
 
 I added one PostToolUse hook to my Claude Code configuration last Tuesday. It auto-runs Prettier every time Claude edits a file. The setup took 3 minutes. I haven't manually formatted a single file since — that's roughly 20 manual `npx prettier --write` runs per day that just disappeared.

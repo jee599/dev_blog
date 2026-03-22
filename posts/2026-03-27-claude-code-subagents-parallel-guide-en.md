@@ -7,6 +7,8 @@ cover_image: https://r2.jidonglab.com/blog/2026/03/claude-code-subagents-paralle
 canonical_url: https://spoonai.me/posts/claude-code-agent
 series: "Claude Code Power User Guide"
 hashnode_url: 'https://plzai.hashnode.dev/2026-03-27-claude-code-subagents-parallel-guide'
+id: 3385074
+date: '2026-03-22T16:14:41.828Z'
 ---
 
 Three research agents running in parallel. Codebase analysis dropped from 10 minutes to 3. I'm a solo developer, but for the first time it felt like I had a team.
