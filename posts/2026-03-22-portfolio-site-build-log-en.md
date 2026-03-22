@@ -1,67 +1,71 @@
 ---
-title: "289 Tool Calls, 6 Sessions, and the Git Config Line That Blocked Vercel for 2 Hours"
+title: "I Built a 3-Platform Blog Pipeline with Claude Code — Then Lost 2 Hours to One Git Email"
 published: true
-description: "Built a 3-platform auto-publish pipeline with Claude Code. Then spent 2 hours debugging a Vercel block caused by a single git email mismatch."
+description: "Built an auto-publish pipeline for spoonai, DEV.to, and Naver using Claude Code multi-agent dispatch. Then a single mismatched git email blocked Vercel for two hours."
 tags: claudecode, automation, vercel, devto
 series: "Building with Claude Code: portfolio-site"
 canonical_url: https://jidonglab.com/posts/2026-03-22-portfolio-site-en
 ---
 
-289 tool calls. 6 sessions. 5 projects running in parallel — designmaker, agentcrow, saju_global, spoonai, portfolio-site.
+289 tool calls. 6 sessions. 5 projects running simultaneously — designmaker, agentcrow, saju_global, spoonai, portfolio-site.
 
-That's a normal day now. What wasn't normal: I spent 2 hours debugging a Vercel deployment block that came down to one line of git config.
+That's become a normal day. What wasn't normal: I spent two hours debugging a Vercel deployment block that came down to a single line in `~/.gitconfig`.
 
-**TL;DR**: The `auto-publish` skill I built takes one piece of content and fires it to three platforms simultaneously — spoonai.me (Korean), DEV.to (English), and Naver Blog (Korean HTML). The pipeline works. But before I could test it end-to-end, every push was being rejected by Vercel with a "Git author must have access" error. Root cause: global `git config user.email` set to the wrong account.
+**TL;DR** The `auto-publish` skill takes one piece of content — a URL, keyword, or file — and publishes to spoonai.me (Korean), DEV.to (English), and Naver Blog (Korean HTML) simultaneously. The pipeline works. Getting there involved 289 tool calls and a Vercel incident that had nothing to do with Vercel. Session breakdown: Bash(127), Agent(38), Read(26), Edit(26).
 
-Session breakdown: Bash(127), Agent(38), Read(26), Edit(26) — 289 total.
+## Publishing 4 Backlogged Articles Without Touching a Dashboard
 
-## Publishing 4 Backlogged Posts in Under 5 Minutes
+Four articles had been sitting in `src/content/build-logs/` — two on Claude Code channels architecture, two on dispatch and cowork patterns. Written, reviewed, never published.
 
-Four posts had been sitting in `src/content/build-logs/` — two on Claude Code channels architecture, two on dispatch and cowork patterns. Written. Never published.
+I dropped four file paths into Claude Code: "publish these to DEV.to."
 
-I dropped the four file paths into Claude Code: "publish these to DEV.to."
+Claude's execution was sequential and predictable: read each file → map to the `dev_blog` repo structure → place the markdown files → `git push`. GitHub Actions picked it up and called the DEV.to API. All four went up as drafts in under five minutes.
 
-Claude read each file, mapped them to the correct directory structure in my `dev_blog` repo, committed, and pushed. GitHub Actions picked it up and called the DEV.to API. All four went up as drafts.
+Then I actually read what had been published.
 
-Five minutes, start to finish.
+No SEO. The articles were written outside the blog skill workflow, so none of the hooking logic had been applied. I followed up: "Apply SEO, hooks, and everything that improves engagement."
 
-Then I looked at the actual posts.
+Claude ran a gap analysis before touching anything:
 
-No SEO. No hooks. Titles were flat — no numbers, no outcomes. Descriptions explained the content instead of pulling the reader in. Bullet points everywhere (which my style rules ban). Tone was textbook, not personal.
+- Titles had no numbers or outcomes — low click-through rate
+- Descriptions were explanatory, not curiosity-driving
+- Bullet points everywhere — explicitly against the writing style rules
+- No personal voice; reads like documentation
+- Section headings were neutral when they should provoke curiosity
 
-Technically correct. Completely unremarkable.
-
-I followed up: "Apply SEO, hooks, and all engagement techniques."
-
-Claude's analysis: titles with no numbers → low click-through. Descriptions that explain instead of invite → no hook. Bullet points instead of prose → against the rules. No personal voice. Section headings that are neutral when they should create curiosity.
-
-Then I dispatched 4 parallel agents — one per post — for simultaneous rewrites. The files don't share state, so there's no reason to run them sequentially. This is the multi-agent AI automation pattern at its most straightforward: independent tasks → parallel execution.
+Four parallel agents, one per article, rewrote them simultaneously. No shared state between articles means no reason to run them sequentially. The rewrites took about fifteen minutes. Doing it manually would have taken most of a workday.
 
 ## Why Brainstorming Before Building Isn't Optional
 
-The initial request was vague: "I want to drop one piece of content and have it go out to multiple platforms automatically."
+The initial ask was vague: "I want to drop one piece of content and have it go out to multiple platforms automatically."
 
-Before writing a line of code, Claude ran the brainstorming skill. That step isn't optional when the requirements are fuzzy — it's what separates a pipeline that works from one that gets rebuilt halfway because the assumptions were wrong.
+Before writing anything, Claude ran the brainstorming skill. That step isn't a formality — it's what separates a pipeline that gets built once from one that gets rebuilt halfway because the design assumptions were wrong.
 
-Brainstorming surfaced the questions that actually matter: What's the input interface — CLI, web, or Telegram? Which platforms, and how much of each is automatable? Where does image generation fit, and does it block the publish step?
+Brainstorming surfaces the questions that matter: What's the input interface — CLI, web, or Telegram? Which platforms, and how much of each is actually automatable? Where does image generation fit — does it block publishing or run in parallel?
 
-The answers locked in the architecture before implementation started:
+The answers defined the architecture before implementation started:
 
-- Input: URL, keyword, or file (any of the three)
-- Output: spoonai.me (Korean markdown) + DEV.to (English markdown) + Naver Blog (Korean HTML)
-- Image generation: delegated to `dental-blog-image-pipeline`, which calls Gemini for illustrations and Playwright for capture — `auto-publish` calls this skill, doesn't duplicate it
+- **Input**: URL, keyword, or file — any of the three
+- **Output**: three simultaneous publications
+  - spoonai.me — Korean markdown, git-based deployment
+  - DEV.to — English markdown, git push → GitHub Actions → DEV.to API
+  - Naver Blog — Korean HTML, Cowork + Chrome automation, processes `~/blog-factory/naver-queue/` one post per day
 
-Naver is the interesting constraint. No public API exists for Naver Blog. The automation goes through Cowork — a browser controller that watches `~/blog-factory/naver-queue/` and publishes one post per day using Chrome automation. Naver publishing isn't instant; it's a scheduled queue.
+Image generation is its own skill. The `dental-blog-image-pipeline` skill calls Gemini for illustrations and Playwright for capture. `auto-publish` calls that skill as a dependency — it doesn't duplicate the logic.
 
-If I'd skipped brainstorming, this would have surfaced mid-implementation: "wait, there's no Naver API?" — and the whole structure would have needed rethinking with code already written. Instead, the Cowork approach was decided in the design phase, before a single file was touched.
+Naver is the interesting constraint. There's no public API for Naver Blog. The automation runs through Cowork, a browser controller that watches the queue folder and publishes via Chrome automation. Naver publishing isn't instant; it's a scheduled queue.
 
-Once the design locked, `writing-plans` decomposed it into tasks, then `subagent-driven-development` executed them. Each agent owned one file. Parallel, no conflicts.
+The critical decision — "Naver goes through Cowork" — came out of brainstorming, before any file was touched. If that decision had surfaced mid-implementation, the entire structure would have needed rethinking with code already written.
 
-## The Vercel Block That Was One Line Away
+Once the architecture locked, `writing-plans` decomposed the work into tasks. `subagent-driven-development` executed them — one agent per file, running in parallel.
+
+> Design first. Implementation is just execution.
+
+## The Vercel Block That Was One Git Config Line Away
 
 First real test: push to spoonai.me and watch it deploy.
 
-spoonai.me showed 404. I opened the deployment logs:
+spoonai.me returned 404. I opened the deployment logs:
 
 ```
 Deployment Blocked
@@ -69,20 +73,20 @@ Git author jidongs45@gmail.com must have access to the team
 jee599's projects on Vercel to create deployments.
 ```
 
-My git commit author email was `jidongs45@gmail.com`. The Vercel project was owned by `jee599`. Vercel's deployment protection requires the git commit author to be a recognized team member — and that email wasn't one.
+My git commit author email was `jidongs45@gmail.com`. The Vercel project owner was `jee599`. Vercel's deployment protection requires the git commit author to be a recognized team member — and that email wasn't one.
 
-Here's the debugging path I actually took:
+My debugging path, in full:
 
-Push again → still blocked. Hit Redeploy in the Vercel dashboard → "This deployment can not be redeployed." Add team members through Vercel settings → still blocked. Push from a different GitHub account (`jidonggg`) → still blocked.
+Push again → still blocked. Hit Redeploy in the Vercel dashboard → "This deployment can not be redeployed." Added team members through Vercel settings → still blocked. Pushed from a different GitHub account (`jidonggg`) → still blocked.
 
-Every variation I tried targeted Vercel's team configuration. None of them worked, because the problem wasn't Vercel's configuration — it was my local git config.
+Every attempt targeted Vercel's configuration. None worked, because the problem wasn't Vercel's configuration.
 
 ```bash
 git config --list | grep email
 # user.email=jidongs45@gmail.com
 ```
 
-Global `user.email` was set to `jidongs45@gmail.com` — an old account I'd never cleaned up. Every commit was being authored by an email Vercel had never seen.
+My global `user.email` was set to `jidongs45@gmail.com` — an old account never cleaned up. Every commit I made, regardless of which GitHub account I pushed from, was authored by an email Vercel had never seen.
 
 The fix:
 
@@ -92,33 +96,33 @@ git config --global user.email "jee599-account-email@gmail.com"
 
 One line. Two hours gone.
 
-If you've ever wasted time debugging a Vercel deployment block, check this first. It's not in any error message; you have to know to look. I saved it to a Claude Code memory file (`feedback_vercel_deploy.md`): on any new repo connected to Vercel, verify `git config user.email` before the first push.
+If you've hit this error before: Vercel checks the **git commit author email**, not the push origin account. These are independent. `git config --list | grep email` before your first push to any new Vercel-connected repo.
 
-## What 38 Agent Calls in One Session Means
+I wrote this to a Claude Code memory file (`feedback_vercel_deploy.md`). Next time I connect a repo to Vercel, that's the first thing that surfaces.
 
-Bash at 127 calls is expected — git operations, terminal commands, file inspection. Agent at 38 is the more interesting number.
+## What 38 Agent Calls in One Session Actually Means
 
-38 separate delegations to subagents: research tasks, parallel rewrites, isolated file edits. When tasks are genuinely independent, multi-agent dispatch is the right tool. Running them sequentially is just slower for no reason.
+Bash at 127 calls is expected — git operations, terminal commands, file reads. Agent at 38 is the more telling number.
 
-The session stretched to 22 hours 39 minutes because the Vercel debugging, the auto-publish skill design, and a pile of unplanned fixes all ran back to back. Long sessions create a specific problem in AI-assisted workflows: context compression. When a Claude Code session runs long enough, earlier decisions get summarized or dropped from context. You end up asking "why did we structure it this way?" and the reasoning isn't there.
+38 separate agent delegations across the day: research tasks, parallel rewrites, isolated file edits. When tasks are independent, multi-agent dispatch is the correct tool. Running them sequentially is slower for no reason. This is the multi-agent AI automation pattern at its most direct: identify independent tasks, dispatch in parallel, merge results.
 
-The mitigation: write critical decisions to memory files during the session. That day produced three — `project_auto_publish.md`, `project_spoonai_admin.md`, `feedback_vercel_deploy.md`. The next session picks up with full context instead of reconstructing from git history.
+The session ran to 22 hours 39 minutes — the Vercel incident, the `auto-publish` skill design, and a pile of unplanned fixes stacked together without a session break. Long sessions create a specific problem in AI-assisted development: context compression. When a Claude Code session runs long enough, earlier decisions get summarized out of active context. Later in the session, you're asking "why did we structure it this way?" and the reasoning isn't there.
 
-The Vercel git email lesson is in memory. Next time I connect a new repo to Vercel, that's the first thing Claude will surface.
+The mitigation is memory files. Three were created that day: `project_auto_publish.md`, `project_spoonai_admin.md`, `feedback_vercel_deploy.md`. Critical decisions get written to disk so the next session starts with full context instead of reconstructing from git history.
 
 ## The Pattern: Skills Before Code
 
-What held everything together was a consistent sequence: use the skill stack before opening any file.
+What held the day together was consistent: invoke the relevant skill before opening any file.
 
-Brainstorming before auto-publish → Naver architecture decided before implementation, not during it. No mid-build redirects.
+Brainstorming before `auto-publish` → the Naver architecture was decided in the design phase, not discovered mid-implementation.
 
-`writing-plans` before subagent dispatch → tasks decomposed into parallel-executable units with clear ownership and no shared state.
+`writing-plans` before subagent dispatch → work decomposed into parallel-executable units with clear ownership and no shared state conflicts.
 
-`subagent-driven-development` for execution → each agent owned exactly one file. No conflicts, no coordination overhead.
+`subagent-driven-development` for execution → each agent owned exactly one file. No coordination overhead, no conflicts.
 
-The skill stack functions as a forcing function. It makes you define what you're building — the constraints, the approach, the non-obvious decisions — before you start building it.
+The skill stack acts as a forcing function. It makes you define the design — constraints, approach, non-obvious decisions — before writing any code. That feels unproductive when you want to ship fast. But skipping it means the figuring-out happens during implementation, which costs more than doing it upfront.
 
-That's the opposite of what feels productive when you want to ship something. But skipping it means the "figuring out" happens during implementation, which costs more than figuring it out upfront.
+The Vercel incident is the counterexample. No amount of upfront design helps when the root cause is a config value you don't know is wrong. That's where systematic debugging matters — start from the error message, eliminate one variable at a time. I added variables instead of eliminating them, which is why two hours went by. The lesson is in the memory file.
 
 > A finished pipeline means the next post isn't manual work anymore.
 
