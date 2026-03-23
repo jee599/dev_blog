@@ -10,6 +10,8 @@ tags:
 series: "ContextZip Daily"
 canonical_url: "https://github.com/jee599/contextzip"
 hashnode_url: 'https://plzai.hashnode.dev/contextzip-promo-23'
+id: 3391283
+date: 'draft'
 ---
 
 After every command, ContextZip appends one line:
