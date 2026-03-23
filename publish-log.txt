@@ -28,21 +28,9 @@ SKIP (has id): posts/2026-03-21-claude-dispatch-official-guide-en.md
 SKIP (build-log): posts/2026-03-21-portfolio-site-build-log-en.md
 SKIP (build-log): posts/2026-03-22-portfolio-site-build-log-en.md
 SKIP (build-log): posts/2026-03-22-saju-global-build-log-en.md
-
-PUBLISHING: posts/2026-03-23-claude-code-mcp-setup-guide-en.md
-  title: How I Connected 20 Tools to Claude Code in 5 Minutes
-  tags: []
-  DUPLICATE found on DEV.to (id=3385069) — writing id to file
-
-PUBLISHING: posts/2026-03-25-claude-code-hooks-automation-guide-en.md
-  title: How I Automated My Entire Claude Code Workflow with Hooks
-  tags: []
-  DUPLICATE found on DEV.to (id=3385070) — writing id to file
-
-PUBLISHING: posts/2026-03-27-claude-code-subagents-parallel-guide-en.md
-  title: How I Run 10 AI Agents in Parallel with Claude Code
-  tags: []
-  DUPLICATE found on DEV.to (id=3385074) — writing id to file
+SKIP (has id): posts/2026-03-23-claude-code-mcp-setup-guide-en.md
+SKIP (has id): posts/2026-03-25-claude-code-hooks-automation-guide-en.md
+SKIP (has id): posts/2026-03-27-claude-code-subagents-parallel-guide-en.md
 SKIP (has id): posts/agentcrow-launch-en.md
 SKIP (has id): posts/ai-agent-i18n-tarot-compatibility-en.md
 SKIP (has id): posts/ai-content-full-automation-en.md
@@ -76,11 +64,7 @@ SKIP (has id): posts/contextzip-compress-context-90-percent-en.md
 SKIP (has id): posts/contextzip-promo-19-en.md
 SKIP (has id): posts/contextzip-promo-20-en.md
 SKIP (has id): posts/contextzip-promo-21-en.md
-
-PUBLISHING: posts/contextzip-promo-22-en.md
-  title: The Architecture of a Transparent CLI Proxy
-  tags: ['rust', 'programming', 'opensource', 'ai']
-  DUPLICATE found on DEV.to (id=3385078) — writing id to file
+SKIP (has id): posts/contextzip-promo-22-en.md
 SKIP (has id): posts/contextzip-rtk-fork-90-percent-en.md
 SKIP (has id): posts/contextzip-rust-cli-without-writing-rust-en.md
 SKIP (has id): posts/dental-website-8-minutes-en.md
@@ -119,4 +103,4 @@ SKIP (has id): posts/trading-bot-win-rate-lie-en.md
 SKIP (korean filename): posts/trading-bot-win-rate-lie-ko.md
 SKIP (has id): posts/writing-claude-code-book-with-claude-code-en.md
 
-Done: 4 published, 0 failed
+Done: 0 published, 0 failed
