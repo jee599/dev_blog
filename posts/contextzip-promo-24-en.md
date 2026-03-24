@@ -9,6 +9,7 @@ tags:
   - devops
 series: "ContextZip Daily"
 canonical_url: "https://github.com/jee599/contextzip"
+hashnode_url: 'https://plzai.hashnode.dev/contextzip-promo-24'
 ---
 
 Not all warnings are noise. `npm audit` security warnings matter. `npm warn deprecated` warnings don't. ContextZip knows the difference.

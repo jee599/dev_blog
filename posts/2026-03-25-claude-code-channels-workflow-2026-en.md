@@ -5,6 +5,7 @@ description: "Claude Code Channels lets you control coding sessions from Telegra
 tags: [ai, productivity, webdev, programming]
 cover_image: https://r2.jidonglab.com/blog/2026/03/claude-code-channels-workflow-2026-hero.jpg
 canonical_url: https://jidonglab.com/blog/claude-code-channels-workflow-2026
+hashnode_url: 'https://plzai.hashnode.dev/2026-03-25-claude-code-channels-workflow-2026'
 ---
 
 Yesterday morning I fixed a production bug from the subway. I typed a single message in Telegram, and Claude Code patched the file, ran the tests, and committed the fix. My laptop stayed in my bag the entire time.

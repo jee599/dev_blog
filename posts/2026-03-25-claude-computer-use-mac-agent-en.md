@@ -5,6 +5,7 @@ description: "Anthropic's Computer Use turns Claude into a remote desktop agent.
 tags: [ai, productivity, webdev, programming]
 cover_image: https://r2.jidonglab.com/blog/2026/03/claude-computer-use-mac-agent-hero.jpg
 canonical_url: https://jidonglab.com/blog/claude-computer-use-mac-agent
+hashnode_url: 'https://plzai.hashnode.dev/2026-03-25-claude-computer-use-mac-agent'
 ---
 
 I sent a single message from my iPhone while waiting for a subway, and 90 seconds later my MacBook Pro — sitting on my desk at home with the lid open — had launched Numbers, populated 30 cells with formatted revenue data, applied conditional formatting, and saved the file to iCloud. Nobody touched the keyboard. Nobody was in the room. That's Claude Computer Use, and it shipped on March 24, 2026.

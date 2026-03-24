@@ -5,6 +5,7 @@ description: "Claude Code shipped 17 releases in March 2026 alone — voice mode
 tags: [ai, webdev, productivity, programming]
 cover_image: https://r2.jidonglab.com/blog/2026/03/claude-code-march-2026-updates-hero.jpg
 canonical_url: https://jidonglab.com/blog/claude-code-march-2026-updates
+hashnode_url: 'https://plzai.hashnode.dev/2026-03-25-claude-code-march-2026-updates'
 ---
 
 Seventeen releases in thirty days. One update every 1.76 days. Claude Code went from v2.1.63 to v2.1.80 in March 2026, and the terminal-based AI coding tool that many of us adopted as an experiment quietly became something we can't work without.
