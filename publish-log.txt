@@ -1,5 +1,5 @@
 Fetching existing articles from DEV.to ...
-  Found 81 existing article(s) on DEV.to
+  Found 85 existing article(s) on DEV.to
 
 SKIP (korean filename): posts/2026-03-14-anthropic-partner-network-100m-ko.md
 SKIP (korean filename): posts/2026-03-14-gemini-750m-ads-ko.md
@@ -29,7 +29,26 @@ SKIP (build-log): posts/2026-03-21-portfolio-site-build-log-en.md
 SKIP (build-log): posts/2026-03-22-portfolio-site-build-log-en.md
 SKIP (build-log): posts/2026-03-22-saju-global-build-log-en.md
 SKIP (has id): posts/2026-03-23-claude-code-mcp-setup-guide-en.md
+SKIP (build-log): posts/2026-03-23-portfolio-site-build-log-en.md
+SKIP (build-log): posts/2026-03-23-saju-global-build-log-en.md
+SKIP (build-log): posts/2026-03-24-portfolio-site-build-log-en.md
+
+PUBLISHING: posts/2026-03-25-claude-code-channels-workflow-2026-en.md
+  title: I Replaced My IDE Tab with a Telegram Chat
+  tags: []
+  DUPLICATE found on DEV.to (id=3395721) — writing id to file
 SKIP (has id): posts/2026-03-25-claude-code-hooks-automation-guide-en.md
+
+PUBLISHING: posts/2026-03-25-claude-code-march-2026-updates-en.md
+  title: 17 Claude Code Releases in 30 Days: Everything That Changed
+  tags: []
+  DUPLICATE found on DEV.to (id=3395723) — writing id to file
+
+PUBLISHING: posts/2026-03-25-claude-computer-use-mac-agent-en.md
+  title: Claude Can Now Control Your Mac While You Sleep
+  tags: []
+  DUPLICATE found on DEV.to (id=3395725) — writing id to file
+SKIP (build-log): posts/2026-03-25-portfolio-site-build-log-en.md
 SKIP (has id): posts/2026-03-27-claude-code-subagents-parallel-guide-en.md
 SKIP (has id): posts/agentcrow-launch-en.md
 SKIP (has id): posts/ai-agent-i18n-tarot-compatibility-en.md
@@ -66,6 +85,11 @@ SKIP (has id): posts/contextzip-promo-20-en.md
 SKIP (has id): posts/contextzip-promo-21-en.md
 SKIP (has id): posts/contextzip-promo-22-en.md
 SKIP (has id): posts/contextzip-promo-23-en.md
+
+PUBLISHING: posts/contextzip-promo-24-en.md
+  title: Security Warnings Preserved, Deprecated Noise Deleted
+  tags: ['ai', 'productivity', 'opensource', 'devops']
+  DUPLICATE found on DEV.to (id=3395728) — writing id to file
 SKIP (has id): posts/contextzip-rtk-fork-90-percent-en.md
 SKIP (has id): posts/contextzip-rust-cli-without-writing-rust-en.md
 SKIP (has id): posts/dental-website-8-minutes-en.md
@@ -104,4 +128,4 @@ SKIP (has id): posts/trading-bot-win-rate-lie-en.md
 SKIP (korean filename): posts/trading-bot-win-rate-lie-ko.md
 SKIP (has id): posts/writing-claude-code-book-with-claude-code-en.md
 
-Done: 0 published, 0 failed
+Done: 4 published, 0 failed
