@@ -1,50 +1,46 @@
 ---
-title: "HTTP 200 OK, Email Not Delivered — Hunting a 7-Day Silent Pipeline Failure with Claude Code"
+title: "HTTP 200, No Email — Claude Code Found a 7-Day Silent Bug and Delivered to 11 Subscribers"
 published: true
-description: "A Claude CLI logout silently killed my news pipeline for 7 days. 8 sessions, 153 tool calls to diagnose, recover, and send to 11 subscribers."
-tags: claudecode, ai, devops, productivity
+description: "A Claude CLI logout silently killed the news pipeline for 7 days. 8 sessions, 153 tool calls: diagnosis, recovery, redesign, full send."
+tags: claudecode, ai, automation, debugging
 series: "Building with Claude Code: portfolio-site"
 canonical_url: https://jidonglab.com/posts/2026-03-24-portfolio-site-en
 ---
 
-Eight sessions. 153 tool calls. Almost no code written.
+For seven days, the pipeline was dead. Every morning at 09:03 KST, the cron job fired, the script ran, and nothing happened. No errors surfaced. No alerts fired. From the outside, it just looked like "no email today."
 
-That was today — tracking down a silent pipeline failure, recovering it, and finally sending a newsletter to 11 subscribers. The root cause turned out to be a Claude CLI logout that had been quietly killing my daily news pipeline since March 17.
+Today I found it. 8 sessions, 153 tool calls. Zero new features written.
 
-**TL;DR** — A logged-out Claude CLI caused 7 consecutive days of crawl failures. I used AgentCrow to orchestrate a 3-agent recovery in two phases, got HTTP 200 from Resend but still no email in my inbox (sent it twice), fixed 4 design issues in 48 tool calls, and shipped to all 11 subscribers: 11 successes, 0 failures.
-
----
+**TL;DR** A Claude CLI logout silently killed the AI news crawl from March 17. AgentCrow dispatched 3 agents across 2 phases to recover it. Got HTTP 200 on a test send, still no email — turned out to be spam. Fixed the email design. Sent to all 11 subscribers. Then removed the feedback section entirely before the next run.
 
 ## The Bug That Hid for 7 Days
 
-The first session started with: "Why didn't the email come today. Again."
+First session: 1 minute, 21 tool calls. Started with "why no email again today."
 
-I pointed Claude at `~/spoonai/` and let it dig through the logs. The cron job fires at 09:03 KST every day, calling `generate-ai-news.sh`, which internally invokes the Claude CLI. Exit code 1. Reason:
+Scanned `~/spoonai/`. The cron log showed `generate-ai-news.sh` firing daily at 09:03 — but exiting with code 1 every time. The error was buried in the subprocess output:
 
 ```
 Not logged in · Please run /login
 ```
 
-That error isn't unusual. What was unusual was the timestamp. The same error, every single day, **from March 17 to March 24 — 7 days straight**.
+Familiar error. The problem was the timestamp. The logs went back to **March 17 — seven consecutive days** of the same failure.
 
-The failure chain was clean once you saw it: Claude CLI logout → 0 articles generated → empty crawl JSON → email HTML can't be built → 0 emails sent. The first stage of the pipeline had been dead for a week. From the outside, it just looked like "no email again today."
+The cascade was clean once you saw it: Claude CLI logout → zero news generated → empty crawl JSON → email HTML can't render → 0 sends. The first step of the pipeline had been silently failing for a week while the symptom was just "no email."
 
-No alert. No dashboard. No notification. Just silence — and a user wondering why the email stopped coming.
+Diagnosis took 21 tool calls: 15 Bash runs to read through logs, 3 Glob calls to check whether crawl JSONs existed.
 
-Diagnosis took 21 tool calls: 15 Bash calls to dig through log files, 3 Glob calls to confirm whether crawl JSONs existed.
+## AgentCrow: 2-Phase Pipeline Recovery
 
-## 2-Phase Multi-Agent Recovery with AgentCrow
+After logging back in, the recovery session ran for 14 minutes across 13 tool calls.
 
-After logging back in, I started a manual recovery session (14 min, 13 tool calls).
-
-The pipeline has a hard dependency: crawling must complete before site publishing and email generation can begin. So I structured the AgentCrow dispatch as sequential phases with parallel execution inside Phase 2.
+The pipeline has a strict dependency order — crawling has to finish before article generation or email rendering can start. So I set up a sequential-then-parallel structure:
 
 ```
 ━━━ 🐦 AgentCrow ━━━━━━━━━━━━━━━━━━━━━
 Dispatching 3 agents (2-phase sequential):
 
 Phase 1:
-🔄 @data_pipeline_engineer → crawl articles → ~/spoonai/crawl/2026-03-24.json
+🔄 @data_pipeline_engineer → crawl → ~/spoonai/crawl/2026-03-24.json
 
 Phase 2 (parallel, after Phase 1):
 🖥️ @senior_developer → generate article MDs + download images + git push
@@ -52,89 +48,69 @@ Phase 2 (parallel, after Phase 1):
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
 
-AgentCrow is a multi-agent dispatch system I've configured in `CLAUDE.md`. For complex requests involving dependent tasks, it automatically structures work into phases — sequential where there are dependencies, parallel everywhere else.
+Phase 1 collected 52 items, filtered down to 28 (TOP5, BUZZ3, PAPER1, QUICK17, GITHUB3). That JSON fed Phase 2.
 
-Phase 1 returned 52 articles, filtered to 28 (TOP5, BUZZ3, PAPER1, QUICK17, GITHUB3). That JSON fed Phase 2.
+Output: 6 article MDs (NVIDIA GTC, Anthropic Marketplace, Meta Llama 4 — both ko and en). 3 OG images failed to fetch, swapped to Wikimedia CC alternatives. Site deployed.
 
-Result: 6 article MDs published (NVIDIA GTC, Anthropic Marketplace, Meta Llama 4 — both Korean and English), 3 failed OG image downloads replaced with Wikimedia CC images, site deployed.
+## HTTP 200, No Email
 
-## HTTP 200 OK, Email Not Delivered
+Test send session: 2 minutes, 9 tool calls. Sent to `jidongs45@gmail.com` via `send-email.js`. Resend API responded 200, message ID `ebf3a2a5-...`.
 
-Test send session: 2 min, 9 tool calls. `send-email.js` to `jidongs45@gmail.com`. Resend API responded 200, ID `ebf3a2a5-...`.
+"Still not here."
 
-"It didn't arrive."
+Second send session kicked off (2 minutes, 8 tool calls). Re-confirmed file paths, checked an alternate output directory (`~/spoonai-site/data/output/`), explicitly specified the HTML file and script this time. Another send. ID `ad836686-...`, another 200.
 
-Second send session: 2 min, 8 tool calls. Re-confirmed file paths, checked an alternate output directory (`~/spoonai-site/data/output/`), explicitly specified the HTML file and script. Sent again. ID `ad836686-...`. Response 200.
+Then: "Check the spam folder."
 
-Two test emails went out today because I fired the second before checking whether the first actually landed. The lesson is obvious in hindsight:
+It was there. Both of them. The first send had worked fine — Resend had processed it successfully. I should have checked the delivery status dashboard before resending. Instead, I fired a second send immediately. Two test emails went out today.
 
-> HTTP 200 means the API accepted the request — not that the email was delivered. Check the delivery dashboard before resending.
+## Email Redesign: 48 Tool Calls
 
-Resend has a delivery status view. I should have opened that first. Instead I assumed failure and sent again. Spam folder check would also have been a good step before resending.
+Once delivery was confirmed, feedback came in: "The design changes I asked for earlier aren't applied."
 
-## Email Design Fixes: 48 Tool Calls
+Session 5: 9 minutes, 48 tool calls. Four things to fix: smaller keyword tags with more vivid colors, smaller link buttons, improved feedback section design, full TLDR style guide applied throughout.
 
-Once the email arrived and was confirmed, feedback came in: "The design changes I requested before aren't applied."
+Used `email-2026-03-21-ko.html` as a reference and diffed the CSS patterns. 14 Edit calls applied the changes to both ko and en HTML files. 7 TodoWrite calls tracked each of the four fix items.
 
-Session 5: 9 min, 48 tool calls.
+After the fixes, generated two new base template files: `email-template-ko.html` and `email-template-en.html`. Next time, the structure doesn't need to be rebuilt from scratch.
 
-Four changes: keyword tags smaller with bolder colors, link buttons reduced in size, feedback section redesigned, the finalized TLDR style guide applied throughout.
+## 11 Subscribers, 11 Sent, 0 Failed
 
-I had Claude read `email-2026-03-21-ko.html` as a reference and diff the CSS patterns between the reference and the current file. Edit ran 14 times to apply changes to both the Korean and English HTML files. TodoWrite ran 7 times to track all four items across both files without losing state.
+One message after design review: "Send the full list."
 
-After fixes were confirmed, I generated two reusable template files: `email-template-ko.html` and `email-template-en.html`. Next time, the base structure doesn't need to be rebuilt — just populate the content slots.
+Session: 4 minutes, 18 tool calls. `subscribers.txt` format is `ko,email@example.com`. Subscriber count: **ko 10, en 1**. Individual API calls per recipient.
 
-## Sending to All 11 Subscribers: 11/11
-
-One message: "Ship it to everyone."
-
-Full-send session: 4 min, 18 tool calls.
-
-`subscribers.txt` uses the format `ko,email@example.com`. Subscriber count: **10 Korean, 1 English**. One Resend API call per recipient.
-
-| Language | Subject | Recipients |
-|----------|---------|------------|
+| Lang | Subject | Recipients |
+|------|---------|------------|
 | ko | `[spoonai] 3/24 Mon — 젠슨 황이 터뜨린 1조 달러 AI 수주` | 10 |
 | en | `[spoonai] 3/24 Mon — Jensen Huang's $1T AI Order Bombshell` | 1 |
 
-Success: 11. Failure: 0. Bash ran 9 times to write and execute the send script.
+Success: 11. Failed: 0. Bash ran 9 times to write and execute the send script.
 
-## Removing a Feature — and Doing It Twice
+## Remove the Feedback Section — Same Day
 
-Right after sending, the next request arrived: "Starting tomorrow, drop the 'how was this briefing' section. Update the skill too."
+Right after the send completed: "Starting tomorrow, remove the 'how was this briefing' section. Update the skill too."
 
-This took two separate sessions (session 7: 9 min, 26 tool calls; session 8: 0 min, 10 tool calls).
+This took two sessions (session 7: 9 minutes, 26 tool calls; session 8: 0 minutes, 10 tool calls). Session 7 edited 2 SKILL.md files and both HTML templates. Session 8 ran `grep` to find leftover CSS class references and cleaned them out.
 
-Session 7 modified 2 SKILL.md files and 2 HTML templates. Session 8 used `grep` to find and remove leftover CSS class references that session 7 had missed.
+Two sessions for one task because session 7 wasn't complete. CSS class descriptions were still inlined in SKILL.md — missed on the first pass. Four Grep calls covered `feedback`, `피드백`, `어땠어`, and `survey` across the codebase.
 
-The reason it took two passes: session 7 left inline CSS class descriptions inside the SKILL.md files. Grep ran 4 times across keywords — `feedback`, `survey` — to catch everything.
-
-> Skill files are instructions Claude reads at the start of each session. Stale content in a skill file means Claude will regenerate the feature you just removed in the next session. Treat skill files like code — incomplete removals cause regressions.
+> Skill files are instructions to Claude, not code. Stale content in a skill file means Claude will regenerate removed features in the next session.
 
 ## Tool Usage Breakdown
 
-8 sessions, 153 total tool calls:
+8 sessions. 153 total tool calls.
 
 | Tool | Count | Purpose |
 |------|-------|---------|
-| Bash | 51 | Log inspection, send script execution |
-| Read | 34 | Understanding file contents |
-| Edit | 28 | CSS/HTML/skill file updates |
-| Glob | 10 | Locating files |
-| TodoWrite | 7 | Tracking fix items |
+| Bash | 51 | Log inspection, send scripts |
+| Read | 34 | File content review |
+| Edit | 28 | CSS, HTML, skill file edits |
+| Glob | 10 | File location checks |
+| TodoWrite | 7 | Fix item tracking |
 | Grep | 6 | Keyword search |
 
-2 files created (`email-template-ko.html`, `email-template-en.html`), 6 files modified. Zero lines of original code written. Pipeline recovered, design fixed, 11 subscribers reached.
-
-## What This Day Actually Was
-
-No new features. No architecture decisions. Just finding a broken thing, fixing it, and getting it out the door.
-
-The 7-day gap between failure and discovery is the real story. The pipeline was designed to run unattended — and it did, just not in the way it was supposed to. The failure was silent: no crash, no alert, just an exit code 1 in a log file that nobody was watching.
-
-The only signal was a user noticing the email wasn't showing up. That's a bad monitoring setup, and it's worth fixing — but that's tomorrow's problem.
-
-Today's output: 11 emails delivered, 0 failures, 1 bug documented, 2 template files that didn't exist this morning.
+2 files created (`email-template-ko.html`, `email-template-en.html`), 6 files modified. No feature code written. Pipeline recovered, design fixed, 11 emails delivered.
 
 ---
 
