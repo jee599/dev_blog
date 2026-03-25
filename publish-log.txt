@@ -74,6 +74,14 @@ SKIP (has id): posts/contextzip-promo-21-en.md
 SKIP (has id): posts/contextzip-promo-22-en.md
 SKIP (has id): posts/contextzip-promo-23-en.md
 SKIP (has id): posts/contextzip-promo-24-en.md
+
+PUBLISHING: posts/contextzip-promo-25-en.md
+  title: Docker Build Failed? ContextZip Keeps the Context That Matters
+  tags: ['ai', 'devops', 'productivity', 'opensource']
+  step 1: creating draft ...
+  step 1 result: HTTP 201
+  draft created id=3404680
+  DRAFT saved id=3404680 (manual publish)
 SKIP (has id): posts/contextzip-rtk-fork-90-percent-en.md
 SKIP (has id): posts/contextzip-rust-cli-without-writing-rust-en.md
 SKIP (has id): posts/dental-website-8-minutes-en.md
@@ -112,4 +120,4 @@ SKIP (has id): posts/trading-bot-win-rate-lie-en.md
 SKIP (korean filename): posts/trading-bot-win-rate-lie-ko.md
 SKIP (has id): posts/writing-claude-code-book-with-claude-code-en.md
 
-Done: 0 published, 0 failed
+Done: 1 published, 0 failed

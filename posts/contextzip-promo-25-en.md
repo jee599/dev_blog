@@ -9,6 +9,8 @@ tags:
   - opensource
 series: "ContextZip Daily"
 canonical_url: "https://github.com/jee599/contextzip"
+id: 3404680
+date: 'draft'
 ---
 
 Docker build failed. The error is on line 47 of 120. Lines 1-46 are cached layer confirmations. Lines 48-120 are cleanup output. Your AI reads all 120 lines to find the one error.
