@@ -9,6 +9,7 @@ tags:
   - opensource
 series: "ContextZip Daily"
 canonical_url: "https://github.com/jee599/contextzip"
+hashnode_url: 'https://plzai.hashnode.dev/contextzip-promo-26'
 ---
 
 Abstract percentages are easy to doubt. Here are concrete numbers from real projects.
