@@ -10,7 +10,7 @@ tags:
 series: "ContextZip Daily"
 canonical_url: "https://github.com/jee599/contextzip"
 id: 3404680
-date: 'draft'
+date: '2026-03-26T00:25:24Z'
 hashnode_url: 'https://plzai.hashnode.dev/contextzip-promo-25'
 ---
 

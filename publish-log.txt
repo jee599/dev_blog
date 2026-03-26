@@ -1,5 +1,5 @@
 Fetching existing articles from DEV.to ...
-  Found 85 existing article(s) on DEV.to
+  Found 86 existing article(s) on DEV.to
 
 SKIP (korean filename): posts/2026-03-14-anthropic-partner-network-100m-ko.md
 SKIP (korean filename): posts/2026-03-14-gemini-750m-ads-ko.md
@@ -78,10 +78,9 @@ SKIP (has id): posts/contextzip-promo-24-en.md
 PUBLISHING: posts/contextzip-promo-25-en.md
   title: Docker Build Failed? ContextZip Keeps the Context That Matters
   tags: ['ai', 'devops', 'productivity', 'opensource']
-  step 1: creating draft ...
-  step 1 result: HTTP 201
-  draft created id=3404680
-  DRAFT saved id=3404680 (manual publish)
+  draft detected (id=3404680) -> publish update
+  publish draft result: HTTP 200
+  PUBLISHED existing draft id=3404680
 SKIP (has id): posts/contextzip-rtk-fork-90-percent-en.md
 SKIP (has id): posts/contextzip-rust-cli-without-writing-rust-en.md
 SKIP (has id): posts/dental-website-8-minutes-en.md
