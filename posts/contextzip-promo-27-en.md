@@ -9,6 +9,7 @@ tags:
   - programming
 series: "ContextZip Daily"
 canonical_url: "https://github.com/jee599/contextzip"
+hashnode_url: 'https://plzai.hashnode.dev/contextzip-promo-27'
 ---
 
 ContextZip is open source, MIT-licensed, and actively looking for contributors. If you've been wanting to contribute to a Rust project, here are concrete ways to start.
