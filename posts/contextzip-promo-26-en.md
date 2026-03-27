@@ -11,7 +11,7 @@ series: "ContextZip Daily"
 canonical_url: "https://github.com/jee599/contextzip"
 hashnode_url: 'https://plzai.hashnode.dev/contextzip-promo-26'
 id: 3410642
-date: 'draft'
+date: '2026-03-27T00:59:37Z'
 ---
 
 Abstract percentages are easy to doubt. Here are concrete numbers from real projects.
