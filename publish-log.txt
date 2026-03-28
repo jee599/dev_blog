@@ -1,5 +1,5 @@
 Fetching existing articles from DEV.to ...
-  Found 87 existing article(s) on DEV.to
+  Found 88 existing article(s) on DEV.to
 
 SKIP (korean filename): posts/2026-03-14-anthropic-partner-network-100m-ko.md
 SKIP (korean filename): posts/2026-03-14-gemini-750m-ads-ko.md
@@ -80,10 +80,9 @@ SKIP (has id): posts/contextzip-promo-26-en.md
 PUBLISHING: posts/contextzip-promo-27-en.md
   title: Contributing to ContextZip: Good First Issues for Beginners
   tags: ['opensource', 'beginners', 'rust', 'programming']
-  step 1: creating draft ...
-  step 1 result: HTTP 201
-  draft created id=3416671
-  DRAFT saved id=3416671 (manual publish)
+  draft detected (id=3416671) -> publish update
+  publish draft result: HTTP 200
+  PUBLISHED existing draft id=3416671
 SKIP (has id): posts/contextzip-rtk-fork-90-percent-en.md
 SKIP (has id): posts/contextzip-rust-cli-without-writing-rust-en.md
 SKIP (has id): posts/dental-website-8-minutes-en.md
