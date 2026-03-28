@@ -9,6 +9,7 @@ tags:
   - claudecode
 series: "ContextZip Daily"
 canonical_url: "https://github.com/jee599/contextzip"
+hashnode_url: 'https://plzai.hashnode.dev/contextzip-promo-28'
 ---
 
 Watch your terminal during `npm install`. See that spinning dot? That progress bar crawling across the screen? Those are ANSI animations — cursor movements that redraw the same line hundreds of times.
