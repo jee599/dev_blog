@@ -1,119 +1,95 @@
 ---
-title: "AgentCrow v5: I Benchmarked 3 Claude Code Agent Modes — 41s vs 89s vs 197s"
+title: "One Grep Command Found 4 i18n Gaps in 5 Minutes — Claude Code Debugging Pattern"
 published: true
-description: "Direct: 41s. Parallel agents: 89s. Teams: 197s. Real benchmarks on Claude Code multi-agent routing and when each mode actually makes sense."
-tags: claudecode, ai, multiagent, automation
+description: "Found 4 components ignoring useLocale with a single grep. Trimmed 11 design skills to 5. Replaced CSS shapes with Gemini 8K images."
+tags: claudecode, ai, debugging, webdev
 series: "Building with Claude Code: portfolio-site"
 canonical_url: https://jidonglab.com/posts/2026-03-29-portfolio-site-en
 ---
 
-More agents should mean faster results. In my benchmarks, using Claude Code Teams on a simple task was **4.8x slower** than just handling it directly.
+Four components were silently ignoring the locale toggle. Users switching to English got Korean text back anyway. The bug had no error message — just wrong output. One Grep command surfaced all four culprits in under five minutes.
 
-**TL;DR** AgentCrow v5 routes requests across three execution modes — direct, parallel agents, and Teams — based on task structure. Benchmarks: direct 41s · parallel 89s · Teams 197s. The entire game is picking the right mode for the job.
+**TL;DR** Running `grep -r "useLocale"` against the component directory and diffing against the full component list revealed 4 missing hook calls. Same day: trimmed 11 design skills down to 5, and replaced CSS placeholder shapes in refmade with Gemini Imagen 8K images.
 
-## The Question That Started This
+## The Bug That Left No Trace
 
-The conversation was short:
+i18n was already implemented — `lib/i18n.ts` had 50+ translation keys, a header toggle, localStorage persistence. The code existed. The UI wasn't changing. That combination points to one thing: components that never call the translation hook.
 
-```
-Me: is agentcrow working?
-Me: when agents are created, does it automatically hand off to agent teams?
-Claude: Currently spawning sub-agents directly without Teams
-Me: I want it to use teams
-Me: I'm thinking of it as a router between prompts and teams
+The search strategy was simple: find which components *do* call `useLocale`, then figure out which ones *don't*.
+
+```bash
+grep -r "useLocale" src/components/ --include="*.tsx" -l
 ```
 
-AgentCrow already had 144 agent personas — a router in concept. But in practice it was calling the `Agent` tool directly, skipping Teams' `SendMessage` handoff entirely. The natural follow-up: how much does that actually matter? Time to measure.
+Result: `Header.tsx`, `PostContent.tsx`, `SubscribeForm.tsx`, `BlogList.tsx` — just four files. Everything else was hardcoding Korean strings directly.
 
-## Benchmark Setup
+The gap list:
 
-Three modes, same task: implement `slugify`, `deepClone`, and `retry` utilities with tests. Three independent modules, six total files — clean and comparable.
+- `DailyBriefing.tsx` — `아카이브`, `이전`, `다음`, `전체 보기` hardcoded
+- `ArchiveList.tsx` — `Article` label hardcoded
+- `ArticleCard.tsx` — no `useLocale` import at all
+- `PostContent.tsx` — *had* `useLocale`, but still broken
 
-**Mode 1: Direct** — write all six files sequentially, no agents.
+That last one was the most interesting case. `PostContent.tsx` was already calling the hook. The bug was in `formatDateKo` — a utility function that always returned Korean-formatted dates regardless of locale. The function name had the answer in it the whole time. Replacing it with a `formatDate(locale)` pattern fixed it.
 
-**Mode 2: Parallel agents** — spawn three `Agent` tool calls simultaneously, each handling two files.
+Total session: 25 minutes, 55 tool calls — Read 23, Bash 14, Edit 5. Five components updated, one utility function replaced.
 
-**Mode 3: Teams** — full `TeamCreate` → `TaskCreate` → `Agent(team_name)` → `SendMessage` handoff chain.
+The pattern that worked: confirm *where* the implementation exists first, then grep for *where it's missing*. No error messages required. Bugs without stack traces are still findable — they just require a different kind of search.
 
-I also ran a dependency scenario separately: `types` → `validator` → `formatter`, each importing the previous one.
+## 11 Skills, 0 Conflicts — Then 5 Skills
 
-## The Numbers
+Before redesigning coffeechat from scratch, I audited the design-related skills and agents already installed: 11 skills, 6 agents.
 
-| Mode | Time | Tool Calls |
-|------|------|------------|
-| Direct | **41s** | 12 |
-| Parallel agents | **89s** | ~45 |
-| Teams | **197s** | ~80 |
+"Does having 11 skills cause conflicts?" — reasonable question.
 
-Teams was 4.8x slower than direct. Every part of the Teams machinery adds latency: spawn overhead, `TeamCreate`, `TaskCreate`, and `SendMessage` round-trips all stack up.
+It doesn't. Skills only activate when explicitly invoked via the `Skill` tool. They don't intercept requests automatically. Agents work the same way. Having 10 wrenches in a toolbox doesn't cause problems — you still have to pick one up.
 
-This doesn't mean Teams is bad. On the dependency scenario, the calculus changed.
+The actual problem was redundancy. `ui-ux-pro-max` already covered what six other skills were doing:
 
-## When to Use Each Mode
+- 161 color palettes → replaces `colorize`
+- 57 font pairings → replaces `typeset`
+- Layout guidelines → replaces `arrange`
+- `audit` and `critique` overlapped — kept the broader one
 
-**Go direct** when you have 1–5 files, clear specs, and a single domain. The agent spawn overhead exceeds the work itself on small tasks — you're paying a fixed cost for zero benefit.
+What survived the cut: `ui-ux-pro-max`, `frontend-design`, `critique`, `animate`, `overdrive`.
 
-**Parallel agents** fit when you have 2+ distinct domains, no file conflicts, and you can write the full spec upfront. Even with dependencies, if you can describe the interface in text, parallel is enough. In the `formatter` → `types` dependency case, I just included the `types` interface in the formatter agent's prompt. No Teams required.
+The decision rule: when was the last time I actually invoked it? Skills that haven't been called in weeks are clutter. More options slow down the start of a session, not because of technical overhead but because of decision overhead.
 
-**Teams** earns its overhead when agent A's *runtime output* is the input for agent B. Schema analysis → migration generation. Build error collection → fix implementation. Codebase exploration → targeted implementation. The key phrase: "dynamic information that can't be written into the prompt in advance."
+The more interesting discovery came during coffeechat reference research. While running WebSearch on external GitHub projects, I found that the `interface-design` skill (~4.2k stars) includes a feature for persisting design decisions across sessions. Instead of re-explaining the design system at the start of every session, the skill carries that context forward. Session stats: 39 tool calls, Bash 22, WebSearch 11.
 
-## The AgentCrow v5 Decision Flow
+## Replacing Blue Rectangles with 8K Photos
 
-This went straight into `CLAUDE.md`:
+refmade is a project that recreates SaaS landing pages — Stripe, Vercel, Linear, Notion — as static HTML. A multi-agent loop processes 83 references in parallel. The problem: wherever a reference required a real image, the implementation was substituting CSS shapes.
 
-```
-Q1. ≤5 files, clear spec?
-  YES → Direct
-  NO  ↓
+The original Revolut page has a photo of a woman with auburn hair. The implementation had a blue rectangle. "Completely unacceptable quality" was accurate feedback.
 
-Q2. Can you write everything each agent needs in the prompt upfront?
-  YES → Parallel agents (Agent tool, no Teams)
-  NO  ↓
-
-Q3. Does agent B need agent A's runtime result?
-  YES → Teams (TeamCreate + SendMessage handoff)
-```
-
-The previous v4 collapsed this to: "complex request → use agents." Measuring revealed that rule fails in both directions — Teams on independent tasks wastes 4x+ time, while direct handling on small tasks is consistently fastest.
-
-## Parallel Agents at Scale: 83 References
-
-During the same period, I used parallel agents heavily on the `refmade` project — recreating 83 real SaaS landing pages (Stripe, Vercel, Linear, Notion, Supabase, Clerk) as HTML from screenshots.
-
-The prompt was minimal:
+After getting a Gemini Imagen API key, Claude wrote reference-specific prompts and generated the images directly. Each prompt was tuned to match what the original page actually showed:
 
 ```
-continue the refmade reference implementation→evaluation loop. start from 007 re-evaluation
+056-app-store:
+"professional woman, auburn hair, cream blazer, holding smartphone,
+fintech app, white background, 8K hyperrealism"
+
+064-neon-cinema:
+"live concert stage, pyrotechnics explosion, crowd audience,
+dramatic stage lighting, dark atmosphere, 8K hyperrealism"
+
+073-poppr:
+"person in VR/AR exhibition space, amber warm lighting,
+immersive environment, modern gallery, 8K hyperrealism"
 ```
 
-The pattern: batch 4–5 references, spawn agents in parallel, each compares its implementation against the original screenshot, score ≥9/10 means PASS. Repeat. A 42-hour session, 302 tool calls.
+Five references updated in parallel. Each agent handled prompt writing → API call → HTML injection as a single unit. The visual similarity to the originals improved noticeably the moment real photos replaced the shapes.
 
-Rate limits hit multiple times mid-batch. When an agent returns `"You've hit your limit · resets 11pm (Asia/Seoul)"`, only that agent pauses — the rest keep running. Three "continue" prompts total across the session.
-
-Image quality was a recurring friction point. CSS placeholder shapes dragged scores down. The fix: Gemini Imagen API. Claude writes a specific image prompt per reference, calls the API, and patches the HTML inline.
-
-- `056-app-store`: auburn hair, cream blazer professional
-- `064-neon-cinema`: actual concert stage photograph
-- `073-poppr`: VR exhibition space
-
-No comparison to colored rectangles.
+One thing worth noting: the API key was pasted into the prompt directly. Claude didn't hardcode it into source files — it handled it as a secret without being told to. That kind of default judgment matters when you're moving fast across multiple sessions.
 
 ## Session Stats
 
-- Total sessions: 5
-- Total tool calls: 466
-- By tool: Read 196, Bash 108, Agent 75, Write 19
-- Files created: 17, files modified: 5
+Four sessions total: spoonai (i18n fix), coffeechat (design audit), refmade (image replacement), agentcrow (benchmark). 625+ tool calls across all sessions. Breakdown by tool: Read 187, Bash 124, Agent 59. Files modified: `HomeContent.tsx`, `PostContent.tsx`, `GalleryClient.tsx`, `next.config.ts`, `middleware.ts`.
 
-## What I Actually Learned
+Mid-session, a password change request came in while the translation bug was still open. The i18n fix went first — "English toggle isn't working" is a more urgent user-facing breakage than an internal account change. Claude made that call without being asked to prioritize. When sequence matters, explicit is still better than implicit — but it's useful to know where the default judgment lands.
 
-Before running these benchmarks, "more agents = better" felt intuitively true. Measuring gave me a concrete decision framework instead.
-
-Teams is the right answer less often than you'd expect. Independent tasks run faster with parallel agents, and even dependency chains don't require Teams as long as you can describe the interface in the initial prompt.
-
-In multi-agent orchestration, the question isn't "how many agents?" It's "what execution mode fits this task's dependency structure?"
-
-The decision tree above is now in `CLAUDE.md`. Every session starts with it.
+The i18n session pattern is worth reusing: grep for the hook, diff against the full file list, fix the gaps. It works for any cross-cutting concern — analytics calls, error boundaries, auth guards. The search takes a minute. The fix list writes itself.
 
 ---
 
