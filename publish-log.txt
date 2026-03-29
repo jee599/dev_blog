@@ -41,56 +41,16 @@ SKIP (has id): posts/2026-03-27-claude-code-subagents-parallel-guide-en.md
 SKIP (build-log): posts/2026-03-27-portfolio-site-build-log-en.md
 SKIP (build-log): posts/2026-03-28-portfolio-site-build-log-en.md
 SKIP (build-log): posts/2026-03-28-saju-global-build-log-en.md
-
-PUBLISHING: posts/2026-03-29-ai-developer-job-anxiety-2026-en.md
-  title: 30% of Developers Think AI Will Replace Them
-  tags: []
-  DUPLICATE found on DEV.to (id=3424144) — writing id to file
-
-PUBLISHING: posts/2026-03-29-anthropic-institute-2026-en.md
-  title: Anthropic Just Launched Its Own Think Tank
-  tags: []
-  DUPLICATE found on DEV.to (id=3424151) — writing id to file
-
-PUBLISHING: posts/2026-03-29-anthropic-ipo-2026-en.md
-  title: Anthropic's $60B IPO Bet: What October Means for AI
-  tags: []
-  DUPLICATE found on DEV.to (id=3424153) — writing id to file
-
-PUBLISHING: posts/2026-03-29-anthropic-pentagon-lawsuit-2026-en.md
-  title: Anthropic Beat the Pentagon in Court — Here's Why It Matters
-  tags: []
-  DUPLICATE found on DEV.to (id=3424158) — writing id to file
-
-PUBLISHING: posts/2026-03-29-bernie-sanders-claude-viral-2026-en.md
-  title: Bernie Sanders Interviewed Claude AI — Reddit Roasted It
-  tags: []
-  DUPLICATE found on DEV.to (id=3424162) — writing id to file
-
-PUBLISHING: posts/2026-03-29-claude-code-auto-mode-2026-en.md
-  title: Claude Code Auto Mode: No More Pressing Y
-  tags: []
-  DUPLICATE found on DEV.to (id=3424165) — writing id to file
-
-PUBLISHING: posts/2026-03-29-claude-computer-use-cowork-auto-2026-en.md
-  title: Claude Now Controls Your Mac From Your iPhone
-  tags: []
-  DUPLICATE found on DEV.to (id=3424171) — writing id to file
-
-PUBLISHING: posts/2026-03-29-claude-medical-diagnosis-viral-2026-en.md
-  title: Claude AI Caught a 25-Year Undiagnosed Sleep Apnea Case
-  tags: []
-  DUPLICATE found on DEV.to (id=3424177) — writing id to file
-
-PUBLISHING: posts/2026-03-29-claude-mythos-leak-2026-en.md
-  title: Anthropic's Claude Mythos Leak Crashed CrowdStrike 7%
-  tags: []
-  DUPLICATE found on DEV.to (id=3424182) — writing id to file
-
-PUBLISHING: posts/2026-03-29-claude-subscriber-surge-2026-en.md
-  title: Claude's Paid Subscribers Are Skyrocketing
-  tags: []
-  DUPLICATE found on DEV.to (id=3424188) — writing id to file
+SKIP (has id): posts/2026-03-29-ai-developer-job-anxiety-2026-en.md
+SKIP (has id): posts/2026-03-29-anthropic-institute-2026-en.md
+SKIP (has id): posts/2026-03-29-anthropic-ipo-2026-en.md
+SKIP (has id): posts/2026-03-29-anthropic-pentagon-lawsuit-2026-en.md
+SKIP (has id): posts/2026-03-29-bernie-sanders-claude-viral-2026-en.md
+SKIP (has id): posts/2026-03-29-claude-code-auto-mode-2026-en.md
+SKIP (has id): posts/2026-03-29-claude-computer-use-cowork-auto-2026-en.md
+SKIP (has id): posts/2026-03-29-claude-medical-diagnosis-viral-2026-en.md
+SKIP (has id): posts/2026-03-29-claude-mythos-leak-2026-en.md
+SKIP (has id): posts/2026-03-29-claude-subscriber-surge-2026-en.md
 SKIP (build-log): posts/2026-03-29-portfolio-site-build-log-en.md
 SKIP (has id): posts/agentcrow-launch-en.md
 SKIP (has id): posts/ai-agent-i18n-tarot-compatibility-en.md
@@ -132,6 +92,14 @@ SKIP (has id): posts/contextzip-promo-25-en.md
 SKIP (has id): posts/contextzip-promo-26-en.md
 SKIP (has id): posts/contextzip-promo-27-en.md
 SKIP (has id): posts/contextzip-promo-28-en.md
+
+PUBLISHING: posts/contextzip-promo-29-en.md
+  title: contextzip gain --graph: Watch Your Daily Savings Grow
+  tags: ['ai', 'productivity', 'opensource', 'claudecode']
+  step 1: creating draft ...
+  step 1 result: HTTP 201
+  draft created id=3426754
+  DRAFT saved id=3426754 (manual publish)
 SKIP (has id): posts/contextzip-rtk-fork-90-percent-en.md
 SKIP (has id): posts/contextzip-rust-cli-without-writing-rust-en.md
 SKIP (has id): posts/dental-website-8-minutes-en.md
@@ -170,4 +138,4 @@ SKIP (has id): posts/trading-bot-win-rate-lie-en.md
 SKIP (korean filename): posts/trading-bot-win-rate-lie-ko.md
 SKIP (has id): posts/writing-claude-code-book-with-claude-code-en.md
 
-Done: 10 published, 0 failed
+Done: 1 published, 0 failed

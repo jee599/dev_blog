@@ -10,6 +10,8 @@ tags:
 series: "ContextZip Daily"
 canonical_url: "https://github.com/jee599/contextzip"
 hashnode_url: 'https://plzai.hashnode.dev/contextzip-promo-29'
+id: 3426754
+date: 'draft'
 ---
 
 After a week of using ContextZip, run:
