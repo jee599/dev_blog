@@ -5,6 +5,7 @@ description: "A federal judge blocked the Pentagon's blacklisting of Anthropic a
 tags: [ai, programming, webdev, productivity]
 cover_image: https://r2.jidonglab.com/blog/2026/03/anthropic-pentagon-lawsuit-2026-hero.jpg
 canonical_url: https://jidonglab.com/blog/anthropic-pentagon-lawsuit-2026
+hashnode_url: 'https://plzai.hashnode.dev/2026-03-29-anthropic-pentagon-lawsuit-2026'
 ---
 
 $200 million. That's the size of the contract [Anthropic](https://www.anthropic.com/) signed with the Pentagon in July 2025. Seven months later, the same government that hired them branded them a national security threat. Two months after that, a federal judge called the whole thing unconstitutional in a 43-page ruling that reads like a civics lesson for the AI age.

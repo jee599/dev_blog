@@ -5,6 +5,7 @@ description: "An internal blog draft exposed Claude Mythos, a Capybara-tier mode
 tags: [ai, cybersecurity, programming, productivity]
 cover_image: https://r2.jidonglab.com/blog/2026/03/claude-mythos-leak-2026-hero.jpg
 canonical_url: https://jidonglab.com/blog/claude-mythos-leak-2026
+hashnode_url: 'https://plzai.hashnode.dev/2026-03-29-claude-mythos-leak-2026'
 ---
 
 Three thousand internal documents. One misconfigured CMS. And now the entire cybersecurity industry is recalculating its threat models. That's the story of how [Anthropic](https://www.anthropic.com/)'s next-generation AI model, Claude Mythos, went from closely guarded secret to front-page news in a single afternoon.

@@ -5,6 +5,7 @@ description: "Anthropic is in talks with Goldman Sachs and JPMorgan for an Octob
 tags: [ai, programming, productivity, startup]
 cover_image: https://r2.jidonglab.com/blog/2026/03/anthropic-ipo-2026-hero.jpg
 canonical_url: https://jidonglab.com/blog/anthropic-ipo-2026
+hashnode_url: 'https://plzai.hashnode.dev/2026-03-29-anthropic-ipo-2026'
 ---
 
 $1 billion to $19 billion in annualized revenue. Fourteen months. That is the growth curve Anthropic is now trying to price on the public market.

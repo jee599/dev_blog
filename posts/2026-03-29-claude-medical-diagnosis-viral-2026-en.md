@@ -5,6 +5,7 @@ description: "A Reddit user claims Claude identified sleep apnea that 4 speciali
 tags: [ai, health, programming, beginners]
 cover_image: https://r2.jidonglab.com/blog/2026/03/claude-medical-diagnosis-viral-2026-hero.jpg
 canonical_url: https://jidonglab.com/blog/claude-medical-diagnosis-viral-2026
+hashnode_url: 'https://plzai.hashnode.dev/2026-03-29-claude-medical-diagnosis-viral-2026'
 ---
 
 A 62-year-old man in India spent 25 years visiting nephrologists, neurologists, pulmonologists, and ENT specialists. He was on dialysis for kidney failure, managing diabetes and hypertension, and had survived a stroke six years earlier. Through all of it, one symptom stayed unexplained — severe headaches that got worse when he lay down. His family typed his symptoms into [Anthropic](https://www.anthropic.com)'s Claude. The suggestion came back in minutes: sleep apnea.

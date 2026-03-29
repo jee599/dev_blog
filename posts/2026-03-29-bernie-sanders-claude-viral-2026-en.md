@@ -5,6 +5,7 @@ description: "Senator Sanders' 2.6M-view Claude AI video was meant to expose pri
 tags: [ai, politics, programming, beginners]
 cover_image: https://r2.jidonglab.com/blog/2026/03/bernie-sanders-claude-viral-2026-hero.jpg
 canonical_url: https://jidonglab.com/blog/bernie-sanders-claude-viral-2026
+hashnode_url: 'https://plzai.hashnode.dev/2026-03-29-bernie-sanders-claude-viral-2026'
 ---
 
 A sitting U.S. senator sat down with an AI chatbot, hit record, and posted the 9-minute conversation to YouTube. It got 2.6 million views. Senator Bernie Sanders called it an interview with [Anthropic](https://www.anthropic.com)'s "AI agent Claude." Reddit called it the worst possible way to use AI.
