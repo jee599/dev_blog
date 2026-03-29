@@ -1,5 +1,5 @@
 Fetching existing articles from DEV.to ...
-  Found 88 existing article(s) on DEV.to
+  Found 89 existing article(s) on DEV.to
 
 SKIP (korean filename): posts/2026-03-14-anthropic-partner-network-100m-ko.md
 SKIP (korean filename): posts/2026-03-14-gemini-750m-ads-ko.md
@@ -77,13 +77,7 @@ SKIP (has id): posts/contextzip-promo-24-en.md
 SKIP (has id): posts/contextzip-promo-25-en.md
 SKIP (has id): posts/contextzip-promo-26-en.md
 SKIP (has id): posts/contextzip-promo-27-en.md
-
-PUBLISHING: posts/contextzip-promo-28-en.md
-  title: ANSI Spinners, Progress Bars, Decorations — All Gone
-  tags: ['ai', 'productivity', 'programming', 'claudecode']
-  draft detected (id=3421962) -> publish update
-  publish draft result: HTTP 200
-  PUBLISHED existing draft id=3421962
+SKIP (has id): posts/contextzip-promo-28-en.md
 SKIP (has id): posts/contextzip-rtk-fork-90-percent-en.md
 SKIP (has id): posts/contextzip-rust-cli-without-writing-rust-en.md
 SKIP (has id): posts/dental-website-8-minutes-en.md
@@ -122,4 +116,4 @@ SKIP (has id): posts/trading-bot-win-rate-lie-en.md
 SKIP (korean filename): posts/trading-bot-win-rate-lie-ko.md
 SKIP (has id): posts/writing-claude-code-book-with-claude-code-en.md
 
-Done: 1 published, 0 failed
+Done: 0 published, 0 failed
