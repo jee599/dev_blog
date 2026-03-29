@@ -6,6 +6,8 @@ tags: [ai, programming, career, productivity]
 cover_image: https://r2.jidonglab.com/blog/2026/03/anthropic-institute-2026-hero.jpg
 canonical_url: https://jidonglab.com/blog/anthropic-institute-2026
 hashnode_url: 'https://plzai.hashnode.dev/2026-03-29-anthropic-institute-2026'
+id: 3424151
+date: '2026-03-29T08:46:09.406Z'
 ---
 
 On March 11, 2026, [Anthropic](https://www.anthropic.com/) launched the [Anthropic Institute](https://www.anthropic.com/news/the-anthropic-institute), a research organization designed to study the societal impacts of powerful AI. Co-founder Jack Clark took a new title, Head of Public Benefit, to lead it. That title alone is worth pausing on. A co-founder of a $60 billion AI company stepping into a role explicitly named around public benefit during an IPO push is either deeply principled or deeply strategic. Probably both.

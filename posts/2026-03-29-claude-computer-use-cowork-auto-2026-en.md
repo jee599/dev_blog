@@ -6,6 +6,8 @@ tags: [ai, productivity, webdev, programming]
 cover_image: https://r2.jidonglab.com/blog/2026/03/claude-computer-use-cowork-auto-2026-hero.jpg
 canonical_url: https://jidonglab.com/blog/claude-computer-use-cowork-auto-2026
 hashnode_url: 'https://plzai.hashnode.dev/2026-03-29-claude-computer-use-cowork-auto-2026'
+id: 3424171
+date: '2026-03-29T08:44:39.875Z'
 ---
 
 I sent "review the latest PR and leave comments" from my iPhone while waiting for coffee. By the time I sat down at my desk, Claude had already run `git diff`, analyzed 340 lines of changes across 6 files, and posted three review comments on GitHub. My Mac did the work. I did not touch it.

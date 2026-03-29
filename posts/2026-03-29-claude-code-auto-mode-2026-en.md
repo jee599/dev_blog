@@ -6,6 +6,8 @@ tags: [ai, claudecode, productivity, webdev]
 cover_image: https://r2.jidonglab.com/blog/2026/03/claude-code-auto-mode-2026-hero.jpg
 canonical_url: https://jidonglab.com/blog/claude-code-auto-mode-2026
 hashnode_url: 'https://plzai.hashnode.dev/2026-03-29-claude-code-auto-mode-2026'
+id: 3424165
+date: '2026-03-29T08:44:49.302Z'
 ---
 
 I counted once. During a 45-minute refactoring session with Claude Code, I pressed "y" to approve permissions 87 times. That's roughly once every 30 seconds. I wasn't coding. I was babysitting a permission dialog.

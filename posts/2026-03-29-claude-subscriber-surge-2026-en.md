@@ -6,6 +6,8 @@ tags: [ai, productivity, webdev, programming]
 cover_image: https://r2.jidonglab.com/blog/2026/03/claude-subscriber-surge-2026-hero.jpg
 canonical_url: https://jidonglab.com/blog/claude-subscriber-surge-2026
 hashnode_url: 'https://plzai.hashnode.dev/2026-03-29-claude-subscriber-surge-2026'
+id: 3424188
+date: '2026-03-29T08:44:04.703Z'
 ---
 
 Here's a number that stopped me cold: [Anthropic](https://www.anthropic.com/)'s annualized revenue hit $19 billion. That's 1,167% year-over-year growth. For context, the company earned its first dollar in revenue roughly three years ago. It has since grown over 10x every single year.

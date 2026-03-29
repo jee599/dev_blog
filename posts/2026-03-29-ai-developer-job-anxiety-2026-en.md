@@ -6,6 +6,8 @@ tags: [ai, programming, career, webdev]
 cover_image: https://r2.jidonglab.com/blog/2026/03/ai-developer-job-anxiety-2026-hero.jpg
 canonical_url: https://jidonglab.com/blog/ai-developer-job-anxiety-2026
 hashnode_url: 'https://plzai.hashnode.dev/2026-03-29-ai-developer-job-anxiety-2026'
+id: 3424144
+date: '2026-03-29T08:46:20.904Z'
 ---
 
 A web developer with five years of experience posted one line on Reddit after trying the latest [Claude Max](https://www.anthropic.com/claude): "I feel increasingly irrelevant." The thread exploded. Thousands of comments. Heated arguments about whether the profession is dying or just changing shape. Someone mentioned that a task estimated at five days was completed by Claude in a single attempt. That one anecdote became a lightning rod for every anxiety developers have been quietly holding.
