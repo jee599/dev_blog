@@ -81,10 +81,9 @@ SKIP (has id): posts/contextzip-promo-27-en.md
 PUBLISHING: posts/contextzip-promo-28-en.md
   title: ANSI Spinners, Progress Bars, Decorations — All Gone
   tags: ['ai', 'productivity', 'programming', 'claudecode']
-  step 1: creating draft ...
-  step 1 result: HTTP 201
-  draft created id=3421962
-  DRAFT saved id=3421962 (manual publish)
+  draft detected (id=3421962) -> publish update
+  publish draft result: HTTP 200
+  PUBLISHED existing draft id=3421962
 SKIP (has id): posts/contextzip-rtk-fork-90-percent-en.md
 SKIP (has id): posts/contextzip-rust-cli-without-writing-rust-en.md
 SKIP (has id): posts/dental-website-8-minutes-en.md
