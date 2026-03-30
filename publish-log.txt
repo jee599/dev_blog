@@ -1,5 +1,5 @@
 Fetching existing articles from DEV.to ...
-  Found 99 existing article(s) on DEV.to
+  Found 100 existing article(s) on DEV.to
 
 SKIP (korean filename): posts/2026-03-14-anthropic-partner-network-100m-ko.md
 SKIP (korean filename): posts/2026-03-14-gemini-750m-ads-ko.md
@@ -96,10 +96,9 @@ SKIP (has id): posts/contextzip-promo-28-en.md
 PUBLISHING: posts/contextzip-promo-29-en.md
   title: contextzip gain --graph: Watch Your Daily Savings Grow
   tags: ['ai', 'productivity', 'opensource', 'claudecode']
-  step 1: creating draft ...
-  step 1 result: HTTP 201
-  draft created id=3426754
-  DRAFT saved id=3426754 (manual publish)
+  draft detected (id=3426754) -> publish update
+  publish draft result: HTTP 200
+  PUBLISHED existing draft id=3426754
 SKIP (has id): posts/contextzip-rtk-fork-90-percent-en.md
 SKIP (has id): posts/contextzip-rust-cli-without-writing-rust-en.md
 SKIP (has id): posts/dental-website-8-minutes-en.md
