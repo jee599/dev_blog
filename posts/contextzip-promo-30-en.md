@@ -9,6 +9,7 @@ tags:
   - programming
 series: "ContextZip Daily"
 canonical_url: "https://github.com/jee599/contextzip"
+hashnode_url: 'https://plzai.hashnode.dev/contextzip-promo-30'
 ---
 
 ContextZip exists because I kept running out of context window in Claude Code. Not because my code was too long, but because `npm install` output was eating 40% of it.
