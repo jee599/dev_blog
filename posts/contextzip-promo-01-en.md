@@ -10,6 +10,8 @@ tags:
 series: "ContextZip Daily"
 canonical_url: "https://github.com/jee599/contextzip"
 hashnode_url: 'https://plzai.hashnode.dev/contextzip-promo-01'
+id: 3437690
+date: 'draft'
 ---
 
 You just ran `npm install` inside Claude Code. 847 lines of output. Deprecation warnings, progress bars, ANSI color codes, duplicate messages.

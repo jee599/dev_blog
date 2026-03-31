@@ -1,5 +1,5 @@
 Fetching existing articles from DEV.to ...
-  Found 104 existing article(s) on DEV.to
+  Found 106 existing article(s) on DEV.to
 
 SKIP (korean filename): posts/2026-03-14-anthropic-partner-network-100m-ko.md
 SKIP (korean filename): posts/2026-03-14-gemini-750m-ads-ko.md
@@ -82,6 +82,14 @@ SKIP (has id): posts/context-engineering-practical-en.md
 SKIP (korean filename): posts/context-engineering-practical-ko.md
 SKIP (has id): posts/contextzip-claude-code-built-its-own-tool-en.md
 SKIP (has id): posts/contextzip-compress-context-90-percent-en.md
+
+PUBLISHING: posts/contextzip-promo-01-en.md
+  title: One Command to Save 90% of Your Claude Code Tokens
+  tags: ['ai', 'claudecode', 'productivity', 'opensource']
+  step 1: creating draft ...
+  step 1 result: HTTP 201
+  draft created id=3437690
+  DRAFT saved id=3437690 (manual publish)
 SKIP (has id): posts/contextzip-promo-19-en.md
 SKIP (has id): posts/contextzip-promo-20-en.md
 SKIP (has id): posts/contextzip-promo-21-en.md
@@ -132,4 +140,4 @@ SKIP (has id): posts/trading-bot-win-rate-lie-en.md
 SKIP (korean filename): posts/trading-bot-win-rate-lie-ko.md
 SKIP (has id): posts/writing-claude-code-book-with-claude-code-en.md
 
-Done: 0 published, 0 failed
+Done: 1 published, 0 failed
