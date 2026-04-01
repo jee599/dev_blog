@@ -86,10 +86,9 @@ SKIP (has id): posts/contextzip-compress-context-90-percent-en.md
 PUBLISHING: posts/contextzip-promo-01-en.md
   title: One Command to Save 90% of Your Claude Code Tokens
   tags: ['ai', 'claudecode', 'productivity', 'opensource']
-  step 1: creating draft ...
-  step 1 result: HTTP 201
-  draft created id=3437690
-  DRAFT saved id=3437690 (manual publish)
+  draft detected (id=3437690) -> publish update
+  publish draft result: HTTP 200
+  PUBLISHED existing draft id=3437690
 SKIP (has id): posts/contextzip-promo-19-en.md
 SKIP (has id): posts/contextzip-promo-20-en.md
 SKIP (has id): posts/contextzip-promo-21-en.md
