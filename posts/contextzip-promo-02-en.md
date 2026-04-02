@@ -11,7 +11,7 @@ series: "ContextZip Daily"
 canonical_url: "https://github.com/jee599/contextzip"
 hashnode_url: 'https://plzai.hashnode.dev/contextzip-promo-02'
 id: 3442025
-date: 'draft'
+date: '2026-04-02T00:47:03Z'
 ---
 
 Run `npm install` in a medium-sized project. Count the deprecation warnings.

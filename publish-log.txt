@@ -1,5 +1,5 @@
 Fetching existing articles from DEV.to ...
-  Found 107 existing article(s) on DEV.to
+  Found 111 existing article(s) on DEV.to
 
 SKIP (korean filename): posts/2026-03-14-anthropic-partner-network-100m-ko.md
 SKIP (korean filename): posts/2026-03-14-gemini-750m-ads-ko.md
@@ -52,6 +52,35 @@ SKIP (has id): posts/2026-03-29-claude-medical-diagnosis-viral-2026-en.md
 SKIP (has id): posts/2026-03-29-claude-mythos-leak-2026-en.md
 SKIP (has id): posts/2026-03-29-claude-subscriber-surge-2026-en.md
 SKIP (build-log): posts/2026-03-29-portfolio-site-build-log-en.md
+SKIP (build-log): posts/2026-03-30-portfolio-site-build-log-en.md
+SKIP (build-log): posts/2026-03-31-portfolio-site-build-log-en.md
+SKIP (build-log): posts/2026-04-01-portfolio-site-build-log-en.md
+
+PUBLISHING: posts/2026-04-02-claude-code-source-leak-analysis-en.md
+  title: 512,000 Lines of Claude Code Leaked Through a Single .npmignore Mistake
+  tags: []
+  DUPLICATE found on DEV.to (id=3442652) — writing id to file
+
+PUBLISHING: posts/2026-04-02-claude-code-source-practical-guide-en.md
+  title: What 512,000 Lines of Leaked Code Taught Me About Using Claude Code
+  tags: []
+  DUPLICATE found on DEV.to (id=3442669) — writing id to file
+
+PUBLISHING: posts/2026-04-02-openai-codex-open-source-analysis-en.md
+  title: 71,700 Stars and 60 Rust Crates: Inside OpenAI's Codex CLI Source
+  tags: []
+  step 1: creating draft ...
+    attempt 1: HTTP 422
+    response body: {"error":"The article you're looking for does not exist: gpt5-codex-5800-line-bootstrap-en","status":422}
+    rate-limit-remaining=?  reset=?  retry-after=?
+  step 1 result: HTTP 422
+  FAILED to create draft: {"error":"The article you're looking for does not exist: gpt5-codex-5800-line-bootstrap-en","status":422}
+
+PUBLISHING: posts/2026-04-02-openai-codex-practical-guide-en.md
+  title: I Read OpenAI Codex's Source and Built My Workflow Around It
+  tags: []
+  DUPLICATE found on DEV.to (id=3442672) — writing id to file
+SKIP (build-log): posts/2026-04-02-portfolio-site-build-log-en.md
 SKIP (has id): posts/agentcrow-launch-en.md
 SKIP (has id): posts/ai-agent-i18n-tarot-compatibility-en.md
 SKIP (has id): posts/ai-content-full-automation-en.md
@@ -87,10 +116,9 @@ SKIP (has id): posts/contextzip-promo-01-en.md
 PUBLISHING: posts/contextzip-promo-02-en.md
   title: Stop Wasting Tokens on npm Install Noise
   tags: ['ai', 'productivity', 'webdev', 'opensource']
-  step 1: creating draft ...
-  step 1 result: HTTP 201
-  draft created id=3442025
-  DRAFT saved id=3442025 (manual publish)
+  draft detected (id=3442025) -> publish update
+  publish draft result: HTTP 200
+  PUBLISHED existing draft id=3442025
 SKIP (has id): posts/contextzip-promo-19-en.md
 SKIP (has id): posts/contextzip-promo-20-en.md
 SKIP (has id): posts/contextzip-promo-21-en.md
@@ -141,4 +169,4 @@ SKIP (has id): posts/trading-bot-win-rate-lie-en.md
 SKIP (korean filename): posts/trading-bot-win-rate-lie-ko.md
 SKIP (has id): posts/writing-claude-code-book-with-claude-code-en.md
 
-Done: 1 published, 0 failed
+Done: 4 published, 1 failed

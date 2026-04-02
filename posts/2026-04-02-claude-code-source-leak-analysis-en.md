@@ -6,6 +6,8 @@ tags: ai, opensource, programming, security
 cover_image: https://r2.jidonglab.com/blog/2026/04/claude-code-source-leak-analysis-hero.jpg
 canonical_url: https://jidonglab.com/blog/claude-code-source-leak-analysis
 hashnode_url: 'https://plzai.hashnode.dev/2026-04-02-claude-code-source-leak-analysis'
+id: 3442652
+date: '2026-04-02T00:48:13.148Z'
 ---
 
 On March 31, 2026, [Anthropic](https://www.anthropic.com/) published version 2.1.88 of their [@anthropic-ai/claude-code](https://www.npmjs.com/package/@anthropic-ai/claude-code) package to the npm registry. Within hours, developers noticed something unusual: the package had ballooned to 59.8MB, roughly six times its normal size. The reason was a source map file — a `.map` file that contained the complete, unminified [TypeScript](https://www.typescriptlang.org/) source code for the entire Claude Code CLI. All 1,900 files. All 512,000 lines. Every internal function name, every comment, every feature flag.
