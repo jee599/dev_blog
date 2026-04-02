@@ -5,6 +5,7 @@ description: "I read through Anthropic's leaked source and the official docs to 
 tags: ai, programming, productivity, opensource
 cover_image: https://r2.jidonglab.com/blog/2026/04/claude-code-source-practical-guide-hero.jpg
 canonical_url: https://jidonglab.com/blog/claude-code-source-practical-guide
+hashnode_url: 'https://plzai.hashnode.dev/2026-04-02-claude-code-source-practical-guide'
 ---
 
 When the Claude Code source leaked through that npm source map incident last week, I wrote about what was found inside — KAIROS, anti-distillation, the Undercover mode. That article was about what Anthropic was hiding. This one is about what they were giving away for free, if you knew where to look.

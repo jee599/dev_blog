@@ -6,6 +6,7 @@ tags: [ai, opensource, rust, productivity]
 cover_image: https://r2.jidonglab.com/blog/2026/04/openai-codex-practical-guide-hero.jpg
 canonical_url: https://jidonglab.com/blog/openai-codex-practical-guide
 series: "AI Coding Agent Deep Dives"
+hashnode_url: 'https://plzai.hashnode.dev/2026-04-02-openai-codex-practical-guide'
 ---
 
 I cloned the Codex repo and started reading. Not the README. Not the blog post. The actual Rust source under `codex-rs/core/`. After [dissecting the architecture](https://dev.to/jee599/71700-stars-and-60-rust-crates-inside-openais-codex-cli-source) in my previous post, I wanted to answer a different question: how do you actually build a workflow around this thing?
