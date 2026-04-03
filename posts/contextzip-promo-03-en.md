@@ -11,7 +11,7 @@ series: "ContextZip Daily"
 canonical_url: "https://github.com/jee599/contextzip"
 hashnode_url: 'https://plzai.hashnode.dev/contextzip-promo-03'
 id: 3447267
-date: 'draft'
+date: '2026-04-03T07:21:10Z'
 ---
 
 A typical Node.js error stack trace is 30-50 lines. Your code caused maybe 3 of those lines. The other 27-47 are `node:internal/modules/cjs/loader`, `node:internal/modules/run_main`, and friends.
