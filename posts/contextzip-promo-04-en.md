@@ -10,6 +10,8 @@ tags:
 series: "ContextZip Daily"
 canonical_url: "https://github.com/jee599/contextzip"
 hashnode_url: 'https://plzai.hashnode.dev/contextzip-promo-04'
+id: 3451037
+date: 'draft'
 ---
 
 Docker builds are verbose by design. Layer IDs, download progress bars, sha256 hashes, cache status for every step. When you run `docker build` inside Claude Code, all of that goes into the context window.
