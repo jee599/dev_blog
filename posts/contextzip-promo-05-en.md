@@ -9,6 +9,7 @@ tags:
   - opensource
 series: "ContextZip Daily"
 canonical_url: "https://github.com/jee599/contextzip"
+hashnode_url: 'https://plzai.hashnode.dev/contextzip-promo-05'
 ---
 
 I ran 102 common CLI commands through ContextZip and measured the before/after output size. The results were worse than I expected.
