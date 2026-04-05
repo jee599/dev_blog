@@ -1,124 +1,114 @@
 ---
-title: "From a .docx Spec to iOS App Skeleton in 6 Hours: Claude Code Parallel Subagent Pattern"
+title: "32 Parallel Agents, 3 Blog Posts, 18 3D Images: Claude Code at Full Throttle"
 published: true
-description: "316 tool calls, 33 agent dispatches, 6 hours: how a single .docx spec became a SwiftUI+TCA iOS skeleton using parallel subagents."
-tags: claudecode, ai, ios, multiagent
+description: "227 tool calls, 32 agent invocations, 3 dental blog posts, 18 Gemini-generated 3D illustrations — one Claude Code session, fully automated."
+tags: claudecode, ai, multiagent, automation
 series: "Building with Claude Code: portfolio-site"
 canonical_url: https://jidonglab.com/posts/2026-04-05-portfolio-site-en
 ---
 
-316 tool calls. 33 agent dispatches. One `.docx` file. Six hours later, a full SwiftUI + TCA iOS project skeleton was ready with 7 features committed — Splash, HealthKit step tracking, SpriteKit field, clover picking, reveal, garden, and profile.
+227 tool calls. 32 agent invocations. The output: 3 dental blog posts, 18 3D illustrations, and mobile fixes across 11 files — all from a single Claude Code session.
 
-**TL;DR**: The more detailed the spec, the shorter the first prompt. Splitting features into independent subagents enables true parallel execution. Xcode quirks are yours to solve outside the session.
+**TL;DR** I built a content pipeline for the uddental project using Claude Code parallel agents. Not just writing — the whole thing: SEO validation, medical advertising compliance checks, and design scoring, all running in parallel.
 
-## The First Prompt Was a File Path
+## Starting Where It Hurts: Mobile
 
-```
-/Users/jidong/Downloads/cloverfield-proposal-v3.docx
-```
-
-That was the entire first message. Claude read it. GPS-based four-leaf clover collection healing app. iOS native (SwiftUI 17+) + TCA + SpriteKit + SwiftData. Backend on Cloudflare Workers + D1 + R2. MVP cost: $134. Monthly: $10–15. Screen-level motion specs included haptic timing.
-
-Next prompt: "Implement phase by phase — confirm before each step."
-
-Claude invoked the brainstorming skill. Because the spec was already dense, the conversation was short. Two things to confirm: project path (`/Users/jidong/Projects/Cloverfield/`) and week-based scope separation. Then writing-plans skill generated three implementation plan files covering Week 1–2, 3–4, and 5–6.
-
-## How Parallel Subagent Dispatch Actually Works
-
-With the plan ready, subagent-driven-development skill kicked in. One agent per feature. Independent tasks run in parallel; tasks with dependencies run sequentially.
-
-For Week 1–2, two research agents ran in parallel first:
-
-- `Research TCA latest API` — confirmed `@ObservableState` pattern in TCA 1.7+
-- `Research XcodeGen setup` — `project.yml` structure and build settings
-
-Research results fed back into the plan, then implementation agents dispatched by task:
+The session opened with a single prompt:
 
 ```
-Task 4: SplashView       →  commit 7bc8285
-Task 5: HealthKitClient  →  commit e8d5c24
-Task 6: MotionClient     →  commit feat: MotionClient...
+Check everything on mobile and make sure it works
 ```
 
-Each agent created files, committed, and returned a task notification. The main context only received summaries. Key rule: agent scopes cannot overlap. Feature directory boundaries are the unit of isolation — two agents touching the same file means a merge conflict.
+The site is Next.js 15 + Tailwind. Looked simple. Wasn't. Reading through the code surfaced 24 mobile issues. `layout.tsx` was importing a `FloatingSchedule` component that didn't exist — a build-breaking import with no runtime warning. Individual pages were hardcoded with desktop-only values: `gap-12`, `px-10`, no responsive breakpoints anywhere.
 
-Week 3–4 dispatched CloverEngine, LocationClient, SpriteKit FieldScene, PickingFeature, and PocketFeature simultaneously. Five agents, five commits.
+11 files fixed in one pass. `doctors/page.tsx` had a subtle browser compatibility bug: hex opacity shorthand like `${doc.accent}0a` that some browsers don't parse correctly. Converted to `rgba()` and moved on.
 
-## The Xcode Time Tax
+What made the fix efficient wasn't just the edits — it was the sequence. Claude read the full codebase first, produced a complete issue list, then started fixing. The tool call ratio tells the story: Read 63, Edit 34. More reads than writes. That's the right ratio for surgical fixes.
 
-The first build failed for three reasons:
+## What "S-Tier" Means for Korean Dental SEO
 
-1. `WithViewStore` deprecated — TCA 1.7 requires migration to `@ObservableState`
-2. Missing `AppIcon` asset — no `Contents.json`, build fails
-3. No signing team — `Signing for "Cloverfield" requires a development team`
-
-Claude fixed 1 and 2. Number 3 required clicking through Xcode GUI manually. The iOS Simulator download failed with exit code 70 — downloaded iOS 17.0 simulator manually and connected it.
-
-HealthKit entitlement error also surfaced:
+After mobile, the real work started:
 
 ```
-NSError(
-  domain: "com.apple.healthkit",
-  code: 4,
-  userInfo: ["NSLocalizedDescription": "Missing com.apple.developer.healthkit entitlement."]
-)
+Let's write blog posts. Check the skill and the reference docs I've collected.
 ```
 
-Claude read the error and explained how to fix it. Actually enabling the HealthKit capability in Xcode settings was a manual step. These three things — Xcode config, simulator setup, entitlement activation — cost about 30 minutes outside the session. Claude can't do GUI interactions.
+The `naver-dental-blog` skill defines the target format for Naver (Korea's dominant search engine). I pulled up the S-tier reference analysis and settled on three topics:
 
-Build success confirmed 6 hours after session start.
+- **001**: Dental implants with bone grafting
+- **002**: Bleeding gums and periodontal disease
+- **003**: First pediatric dentistry visit
 
-## Design Iteration: "Too Stiff"
+Each post spec: 5,000–6,000 characters, 7–8 H2 sections, 22–25 IMAGE tags, formal Korean register, Korean Medical Advertising Act compliant.
 
-First look at the simulator. User feedback: "Where are the images? And the UI needs more polish." "Can you make the font and design more Apple-like and healing? It feels too stiff."
+Three agents, three posts, running in parallel. Each agent owned one post end-to-end. Results came in via task notifications as they completed.
 
-Design iteration also went through agents:
+Cross-validation ran immediately after — also parallel. Three agents scoring from three angles simultaneously:
 
-- `Polish FieldView warm healing design`
-- `Polish PocketView warm healing`
-- `Polish SplashView warm healing`
+- Naver SEO/algorithm compliance
+- Korean Medical Advertising Act
+- S-tier design criteria
 
-Cream beige backgrounds, warm greens, SF Rounded font. Color tokens consolidated into `DesignSystem.swift` so every view shares the same palette.
+First round: posts 002 and 003 had insufficient IMAGE tags and keyword density below target. Fix → re-validate. Repeated 3 times until scores cleared the bar. Single-agent sequential review would have taken three times as long and missed the cross-domain blind spots.
 
-Next feedback: "Mix in some four-leaf clovers among the three-leaf ones, randomly placed, one or two per screen." Added random seed logic to `CloverNode` in SpriteKit to determine whether the fourth leaf generates.
+## When the Skill Doesn't Work, Fix the Skill
 
-## Parallel Dental Blog Writing: 3 Posts at Once
-
-Same day, session 3 covered mobile responsive fixes for the uddental site. 47 Read calls to scan all components, 24 issues found. Critical ones: missing `FloatingSchedule` import (build error), `gap-12` → `gap-6` on mobile, CTA button padding.
-
-After the build was clean, three Naver dental blog posts ran in parallel:
+Mid-session, the validation agents kept returning incomplete scores:
 
 ```
-Agent "Write blog 001 implant bone graft"
-Agent "Write blog 002 gum disease"
-Agent "Write blog 003 pediatric dentistry"
+Did you update the skill in the last session? Why isn't the evaluation coming through?
 ```
 
-Each post: 5,000–6,000 characters, meeting Naver algorithm specs — 7–8 H2 headings, keyword density targets, 22–25 image alt tags.
+Root cause: `naver-dental-blog/SKILL.md` had no scoring criteria. Agents follow what's in the skill file. No criteria, no scores.
 
-After writing, cross-validation ran with 3 agents: medical compliance, design quality, Naver SEO algorithm. Feedback applied, then re-validated against an 18-item checklist. Post 003 passed 18/18. Posts 001 and 002 needed 1–2 additional fixes.
+Added 7 sections: S-tier benchmark enforcement rules, medical law compliance checklist, keyword density thresholds, IMAGE tag minimums, content quality rubrics. Updated `dental-blog-image-pipeline/SKILL.md` at the same time.
 
-Finally, Gemini API generated 3D medical illustrations — 3 agents, 6 images per post, 18 total in parallel. Topics: bone graft cross-section anatomy, gum bleeding causes, primary tooth eruption sequence — all in medical 3D illustration style.
+The loop: use the skill → find the gap → improve the skill → re-run. One-time debugging that pays forward every future session.
+
+Post-upgrade scores on the 18-point checklist:
+
+| Post | Score |
+|------|-------|
+| 001 — Bone Grafting | 17/18 |
+| 002 — Gum Disease | 16/18 |
+| 003 — Pediatric Dentistry | 18/18 |
+
+## 18 3D Illustrations via Gemini
+
+Text alone wasn't enough. Added image generation:
+
+```
+Generate actual 3D illustrations using Gemini. Use 3 agents and compare.
+```
+
+Model: `gemini-2.0-flash-image`. 6 images per post, 18 total. Three agents in parallel. No retries — all 18 succeeded on the first attempt.
+
+`dental-blog-image-pipeline/scripts/pipeline.py` parses IMAGE tags from each post, calls the Gemini API with the alt text as the prompt, and saves the output. Success condition: file size ≥ 5KB. Simple heuristic, zero false positives.
+
+Final quality score: **9.0/10**. Agent comment: "Top 10% for local dental clinic blogs in the Yongin/Dongbaek area."
 
 ## The Numbers
 
-| Session | Duration | Tool Calls | Key Tools |
-|---------|----------|-----------|-----------|
-| Skills Q&A | 3 min | 5 | Glob, Read |
-| Cloverfield iOS App | 6 hrs 4 min | 316 | Bash(95), Read(56), Agent(33) |
-| uddental + Blog | 20 hrs 35 min | 170 | Read(47), Edit(29), Agent(25) |
+| Metric | Count |
+|--------|-------|
+| Total tool calls | 227 |
+| Agent invocations | 32 |
+| Files modified | 11 |
+| Blog posts written | 3 |
+| Images generated | 18 |
+| Validation rounds | 3 |
 
-Agent tool called 58 times total. Separating research, implementation, and validation into agents keeps the main context clean — the main thread only orchestrates. A clean context means more accurate decisions on what to do next.
+Tool call breakdown: Read 63, Edit 34, Agent 32, Bash 31, TaskUpdate 24.
 
-72 TaskUpdate calls tracked subagent state. When agents run in parallel, you have no idea when they'll finish — notification-based task tracking is mandatory.
+Read is the highest count. That's not a coincidence. You can't write accurate fixes — or accurate content — without reading enough context first.
 
-## What Spec Quality Actually Controls
+## What Actually Makes Parallelism Work
 
-The brainstorming phase was short in the Cloverfield session because the spec already included motion specs, haptic timing, and budget projections. Spec density determines first-prompt length.
+Parallel agents only pay off when tasks are truly independent. Three blog posts worked because each had zero shared state — no shared files, no coordination needed. Cross-validation worked because SEO, medical law, and design are genuinely orthogonal dimensions.
 
-The inverse is also true: the three things Claude cannot do for you are GUI interactions, developer account configuration, and entitlement activation. Plan for 30 minutes outside the session for these.
+When file scopes overlap, define agent boundaries explicitly upfront. Two agents touching the same file means a merge conflict. The rule: scope each agent to a directory boundary and state it in the prompt. That's the baseline for safe parallelism.
 
-The subagent pattern requires independence as a precondition. Two agents modifying the same file causes conflicts. Scope agents by feature directory, and explicitly state "scope: this directory only" in each agent prompt. That's the baseline.
+The content pipeline pattern is now reusable: write → cross-validate → fix → re-validate → generate images. Each step independently parallel, each step feeding the next. Skills encode the quality bar. The loop improves the skills.
 
 ---
 
