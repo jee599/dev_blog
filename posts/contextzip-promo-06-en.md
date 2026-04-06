@@ -11,7 +11,7 @@ series: "ContextZip Daily"
 canonical_url: "https://github.com/jee599/contextzip"
 hashnode_url: 'https://plzai.hashnode.dev/contextzip-promo-06'
 id: 3457611
-date: 'draft'
+date: '2026-04-06T03:27:55Z'
 ---
 
 A Django traceback for a simple `TemplateDoesNotExist` error is 40+ lines. 35 of those lines are Django internals — `django/template/loader.py`, `django/core/handlers/base.py`, `django/middleware/common.py`.
