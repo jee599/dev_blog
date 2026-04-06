@@ -1,5 +1,5 @@
 Fetching existing articles from DEV.to ...
-  Found 114 existing article(s) on DEV.to
+  Found 115 existing article(s) on DEV.to
 
 SKIP (korean filename): posts/2026-03-14-anthropic-partner-network-100m-ko.md
 SKIP (korean filename): posts/2026-03-14-gemini-750m-ads-ko.md
@@ -104,13 +104,7 @@ SKIP (has id): posts/contextzip-promo-02-en.md
 SKIP (has id): posts/contextzip-promo-03-en.md
 SKIP (has id): posts/contextzip-promo-04-en.md
 SKIP (has id): posts/contextzip-promo-05-en.md
-
-PUBLISHING: posts/contextzip-promo-06-en.md
-  title: Python Tracebacks in Claude Code? Hide the Framework Frames
-  tags: ['ai', 'claudecode', 'productivity', 'programming']
-  draft detected (id=3457611) -> publish update
-  publish draft result: HTTP 200
-  PUBLISHED existing draft id=3457611
+SKIP (has id): posts/contextzip-promo-06-en.md
 SKIP (has id): posts/contextzip-promo-19-en.md
 SKIP (has id): posts/contextzip-promo-20-en.md
 SKIP (has id): posts/contextzip-promo-21-en.md
@@ -161,4 +155,4 @@ SKIP (has id): posts/trading-bot-win-rate-lie-en.md
 SKIP (korean filename): posts/trading-bot-win-rate-lie-ko.md
 SKIP (has id): posts/writing-claude-code-book-with-claude-code-en.md
 
-Done: 1 published, 1 failed
+Done: 0 published, 1 failed
