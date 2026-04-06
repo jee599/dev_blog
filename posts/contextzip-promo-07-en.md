@@ -9,6 +9,7 @@ tags:
   - claudecode
 series: "ContextZip Daily"
 canonical_url: "https://github.com/jee599/contextzip"
+hashnode_url: 'https://plzai.hashnode.dev/contextzip-promo-07'
 ---
 
 Open your terminal. Run `ls --color`. The filenames look normal to you — colored by type.
