@@ -11,7 +11,7 @@ series: "ContextZip Daily"
 canonical_url: "https://github.com/jee599/contextzip"
 hashnode_url: 'https://plzai.hashnode.dev/contextzip-promo-07'
 id: 3462092
-date: 'draft'
+date: '2026-04-07T03:18:14Z'
 ---
 
 Open your terminal. Run `ls --color`. The filenames look normal to you — colored by type.

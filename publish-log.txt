@@ -109,10 +109,9 @@ SKIP (has id): posts/contextzip-promo-06-en.md
 PUBLISHING: posts/contextzip-promo-07-en.md
   title: The Hidden Cost of ANSI Color Codes in AI Context
   tags: ['ai', 'programming', 'productivity', 'claudecode']
-  step 1: creating draft ...
-  step 1 result: HTTP 201
-  draft created id=3462092
-  DRAFT saved id=3462092 (manual publish)
+  draft detected (id=3462092) -> publish update
+  publish draft result: HTTP 200
+  PUBLISHED existing draft id=3462092
 SKIP (has id): posts/contextzip-promo-19-en.md
 SKIP (has id): posts/contextzip-promo-20-en.md
 SKIP (has id): posts/contextzip-promo-21-en.md
