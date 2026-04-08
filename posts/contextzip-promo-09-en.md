@@ -9,6 +9,7 @@ tags:
   - programming
 series: "ContextZip Daily"
 canonical_url: "https://github.com/jee599/contextzip"
+hashnode_url: 'https://plzai.hashnode.dev/contextzip-promo-09'
 ---
 
 You've been working with Claude Code for 20 minutes. It was tracking your architecture perfectly. Then you ran a build command. Suddenly it's asking about files it already read. It "forgot" your code.
