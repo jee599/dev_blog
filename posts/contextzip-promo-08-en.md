@@ -11,7 +11,7 @@ series: "ContextZip Daily"
 canonical_url: "https://github.com/jee599/contextzip"
 hashnode_url: 'https://plzai.hashnode.dev/contextzip-promo-08'
 id: 3467614
-date: 'draft'
+date: '2026-04-08T03:20:13Z'
 ---
 
 You renamed an interface property. TypeScript reports the error in every file that uses it. 40 files, 40 identical error messages:
