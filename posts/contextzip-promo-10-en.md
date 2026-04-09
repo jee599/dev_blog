@@ -10,6 +10,8 @@ tags:
 series: "ContextZip Daily"
 canonical_url: "https://github.com/jee599/contextzip"
 hashnode_url: 'https://plzai.hashnode.dev/contextzip-promo-10'
+id: 3477961
+date: 'draft'
 ---
 
 A simple Rust panic — `unwrap()` on a `None` — produces a backtrace with 20-30 frames. Most are `std::rt::lang_start`, `std::panicking::*`, and `core::result::*` internals. Your bug is in 2-3 frames.
