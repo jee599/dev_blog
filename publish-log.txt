@@ -111,10 +111,9 @@ SKIP (has id): posts/contextzip-promo-08-en.md
 PUBLISHING: posts/contextzip-promo-09-en.md
   title: Claude Code Forgot My Code. Here's Why.
   tags: ['ai', 'claudecode', 'productivity', 'programming']
-  step 1: creating draft ...
-  step 1 result: HTTP 201
-  draft created id=3472919
-  DRAFT saved id=3472919 (manual publish)
+  draft detected (id=3472919) -> publish update
+  publish draft result: HTTP 200
+  PUBLISHED existing draft id=3472919
 SKIP (has id): posts/contextzip-promo-19-en.md
 SKIP (has id): posts/contextzip-promo-20-en.md
 SKIP (has id): posts/contextzip-promo-21-en.md
