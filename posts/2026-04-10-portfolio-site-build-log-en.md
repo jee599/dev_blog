@@ -1,145 +1,113 @@
 ---
-title: "I Fixed the Same Mobile Bug 5 Times — What Claude Code's Systematic Debugging Skill Finally Revealed"
+title: "Claude Code Planned 288 SEO Pages in 10 Minutes — Before Writing a Single Line"
 published: true
-description: "Fixed a mobile horizontal scroll bug 5 times before a structured skill forced evidence-first debugging. 17 sessions, 892 tool calls, one redesign."
-tags: claudecode, debugging, ai, webdev
+description: "23 tool calls, 13 reads, 3 parallel agents — and zero files modified. How the writing-plans skill turns Claude Code into a planner before a coder."
+tags: claudecode, ai, webdev, productivity
 series: "Building with Claude Code: portfolio-site"
 canonical_url: https://jidonglab.com/posts/2026-04-10-portfolio-site-en
 ---
 
-Five times. I pushed a fix for the same mobile horizontal scroll bug five times across eleven sessions. Each time, I thought it was done. Each time, the next report came in within days.
+23 tool calls. 10 minutes. Zero files modified. That's what it took Claude Code to produce a complete, executable implementation plan for 288 SEO landing pages.
 
-**TL;DR** Patching symptoms hides root causes. The Claude Code Systematic Debugging skill forced evidence-first investigation — and only then did the actual cause surface. In the same stretch, the `ui-ux-pro-max` and `frontend-design` skills drove a full site redesign. 17 sessions, 892 tool calls total.
+**TL;DR** The `writing-plans` skill forces Claude Code to understand your codebase before touching anything. 13 Read calls, 4 Glob calls, 3 parallel sub-agents — all just to produce a single plan file. That upfront investment is what makes the actual implementation session fast and clean.
 
-## Five Fixes, Same Bug
+## 288 Pages and a Spec Doc That Won't Tell You Where to Start
 
-Session 1: added `html, body { overflow-x: clip }`. Deployed. Bug report came back the next day.
+The `saju_global` project needed compatibility SEO landing pages. The math: 12 zodiac signs × 12 zodiac signs = 144 pairs, doubled for directionality = 288 pages. A spec document existed, but it didn't say which files to touch, how to wire up routing, or how the new pages should fit with existing patterns.
 
-Session 2: switched to `overflow-x: hidden`, added global `img { max-width: 100% }`. Deployed again.
-
-Sessions 6, 8, 11 — three more rounds of the same thing. Every time I thought I'd found a new problem. In reality, I was creating new symptoms while the original cause stayed untouched.
-
-There were two root causes, and neither was obvious from looking at a single component.
-
-**Root cause 1: `overflow-x: clip` and iOS Safari compatibility.** The `clip` value isn't supported in Safari versions before 16 — it silently falls back to `visible`, which means no overflow clipping at all on iOS 15 and below. Switching to `hidden` seemed like the answer, but `hidden` on the `html` element itself turns the element into a scroll container on mobile, which breaks scroll behavior in a different way.
-
-**Root cause 2: negative margins inside components.** `HomeContent.tsx` used a `-mx-5 px-5` pattern on the category tabs — the intent was to extend the tab background past the parent's padding. On mobile, this created a 16px overflow past the viewport edge. `BlogList.tsx` had a `-mx-4` negative margin causing the same problem independently.
-
-Session 11 is when the Systematic Debugging skill was applied. Phase 1 — collect evidence before touching code. A grep across the codebase for the patterns that cause horizontal overflow:
-
-```bash
-grep -r "\-mx-\|w-screen\|100vw\|overflow-x" components/ app/ --include="*.tsx"
-```
-
-Two locations came back. Those were the real causes. That was it.
-
-> Fixing symptoms moves the bug to a different location. The Systematic Debugging principle is simple: don't touch code until you can explain why the bug happens.
-
-## What the Debugging Skill Actually Changed
-
-Without the skill, Claude's default mode is to jump to "here's what I'd try" almost immediately. With the Systematic Debugging skill applied, Phase 1 is enforced: collect all evidence from the codebase, evaluate each hypothesis as confirm or reject, write the fix last.
-
-**Session 1 (no skill):** 54 tool calls, `overflow-x: clip` added, deployed, bug returned in 3 days.
-
-**Session 11 (skill applied):** 33 tool calls, grep identified two locations, negative margins removed, deployed, no recurrence.
-
-Fewer tool calls. More precise fix. The discipline of narrowing scope first made the session faster and the result permanent.
-
-The structured approach changes what questions get asked before code is written:
-- Where exactly does the overflow originate? (not: "let's add overflow hidden")
-- Which CSS values have cross-browser caveats on the affected viewport sizes?
-- Are there multiple independent sources, or is this one root cause?
-
-Without a skill enforcing this sequence, Claude (and honestly, most developers) skip straight to the fix.
-
-## Bringing In Design Skills
-
-The same period included a full redesign of the site. Two skills were installed:
-- `ui-ux-pro-max`: community's top-ranked design skill, 55.8k stars
-- `frontend-design`: Anthropic's official skill, 277k+ installs
-
-```bash
-npx skills add anthropics/claude-code --skill frontend-design
-```
-
-Both were installed to `.claude/skills/` (project-local) and `~/.claude/skills/` (global) so they work across sessions.
-
-The difference isn't that the skill runs automatically — it doesn't. The difference is what happens when the prompt explicitly loads it. Without a skill, "improve the design" produces safe, generic output. With a skill loaded, Claude reads 658 lines of guidelines covering color tokens, typography scale, 44px touch targets, and anti-AI-slop principles before writing a single line of code.
-
-Session 12 implemented dark mode, Cmd+K search, and a full color shift to indigo — all in one session. 148 tool calls, 7 hours 33 minutes, Opus 4.6. The breakdown: Edit 43, Bash 34, Read 30, Write 15.
-
-The prompt structure that made this work:
+The prompt was deliberately simple:
 
 ```
-Implement the full redesign based on the design analysis.
-## Required: read skills first
-1. Read .claude/skills/ui-ux-pro-max/SKILL.md in full
-2. Read .claude/skills/frontend-design/SKILL.md in full
+Implement 288 SEO compatibility landing pages for the saju_global project.
+Spec: docs/superpowers/specs/2026-04-09-seo-compatibility-pages-design.md
 ```
 
-**The explicit "read this first" instruction is the critical part.** Installed skills don't self-activate. If the prompt doesn't say to read them, they don't get applied. This is a common misconception — installing a skill doesn't change anything by itself.
+If Claude Code had jumped straight to implementation here, this would have gone sideways. It didn't. It loaded the `writing-plans` skill instead.
 
-## Opus vs. Sonnet: A Practical Distinction
+## What writing-plans Does Under the Hood
 
-Across 17 sessions, Opus 4.6 was used in sessions 3, 8, 9, 11, 12, and 14. The pattern is consistent: all design work, all sessions touching multiple files simultaneously, all sessions where skill guidelines needed to be applied.
+The moment the skill loads, Claude Code shifts into research mode. Before a single implementation file is touched, it collects the full context it needs to write a plan that can stand on its own.
 
-Simple bug fixes — sessions 4, 5, 6, 13 — ran on Sonnet 4.6. Adding one line of CSS or fixing a single import doesn't need Opus.
+In this session, 23 total tool calls broke down like this:
 
-A working heuristic:
+| Tool  | Count | Purpose                              |
+|-------|-------|--------------------------------------|
+| Read  | 13    | Existing routes, components, schemas |
+| Glob  | 4     | File discovery and pattern matching  |
+| Agent | 3     | Parallel codebase exploration        |
+| Skill | 1     | Loading writing-plans                |
+| Bash  | 1     | Verification                         |
+| Write | 1     | Producing the plan file              |
 
-| Task | Model |
-|---|---|
-| 3+ files modified in one session | Opus |
-| Reading a skill and applying its guidelines | Opus |
-| Single-file bug fix | Sonnet |
-| Grep + targeted one-location change | Sonnet |
+More than half the session was spent just reading. The 3 parallel agents each tackled a different domain simultaneously — routing patterns, existing SEO component architecture, and content collection schema. Instead of doing those explorations sequentially, they ran concurrently and merged their findings.
 
-The cost difference is real. Using Opus for everything during a long debugging session adds up. Using Sonnet for everything means losing quality on complex multi-file changes. The right split is task-dependent.
+What the resulting plan contains:
 
-## Parallel Agents for Independent Components
+- Every file to create or modify, with the reason why
+- Step-by-step execution order designed around DRY and YAGNI
+- Testing approach for each phase
+- Commit granularity — how to split the work into atomic, reviewable chunks
 
-Session 14 required applying feedback from three separate design reviewers across multiple components. `HomeContent.tsx`, `PostContent.tsx`, `DailyBriefing.tsx`, and `Footer.tsx` each needed independent changes with no shared state.
+The key design constraint of the `writing-plans` skill is "zero context assumed." The plan has to be self-contained enough that a fresh agent in a new session — with no memory of this conversation — can execute it without guidance from you.
 
-The AgentCrow pattern dispatches agents with non-overlapping file scopes:
+## When Claude Code Can't Find the Spec File
+
+The first attempt hit a dead end: the spec file wasn't at the path I'd given. Wrong path.
+
+Claude Code didn't stop and ask. It globbed `docs/superpowers/specs/` directly, found the actual file, and kept going.
+
+This kind of autonomous recovery happens because `CLAUDE.md` contains: "Do not ask questions. Make decisions and proceed." When the agent hits an obstacle, the default is self-rescue — interrupt the user only if truly blocked. A simple directory scan recovers from most path errors without any human intervention.
+
+It's a small thing but it changes the interaction significantly. You don't get pulled into the agent's confusion; it handles its own environment.
+
+## The Output: 1 File Created, 0 Files Modified
+
+After 10 minutes and 23 tool calls, the session produced exactly one artifact:
 
 ```
-🐦 AgentCrow — dispatching 3 agents:
-1. @frontend_developer → HomeContent.tsx + ArticleCard.tsx (hero section, brand color, TOP badge)
-2. @frontend_developer → PostContent.tsx (social sharing, TOC, source link styles)
-3. @frontend_developer → DailyBriefing.tsx + Footer.tsx (dark mode, responsive)
+docs/superpowers/plans/2026-04-10-seo-compatibility-pages.md
 ```
 
-No file scope overlap means no merge conflicts. The main thread handles planning and coordination; implementation is fully delegated. Result: 26 tool calls, 10+ feature changes completed in a single session.
+One file created. Zero source files touched.
 
-The key constraint when using multi-agent patterns: **each agent needs a clearly bounded file scope**. If agents share files, you get conflicts or one agent overwrites the other's changes. Scope definition is the orchestrator's job, not something the agents figure out themselves.
+This looks underwhelming until you consider what that file enables. The plan documents every decision: which dynamic route file to create, how to generate 288 static paths at build time, which SEO component to extend vs. build from scratch, what the content collection schema needs, how to split the work into reviewable commits.
 
-## Vercel CANCELED: The Rapid-Push Problem
+Without this plan, an implementation session for 288 pages would involve Claude Code making assumptions about patterns you haven't confirmed, mid-session pivots when those assumptions turn out wrong, and accumulated drift that makes the codebase harder to reason about by the end. The plan prevents that failure mode entirely.
 
-Vercel's CANCELED deployment status appeared repeatedly throughout these sessions. The cause is straightforward: Vercel automatically cancels in-progress builds when a new push comes in. During active debugging where commits were being pushed in quick succession, each new push canceled the previous build.
+The session ended with a question from Claude Code: "Subagent-Driven or Inline Execution for the implementation phase?" The plan is done. All that's left is deciding how to run it.
 
-There's also a worktree behavior worth knowing: pushing from a worktree branch doesn't trigger Vercel's production deployment — it's not a push to `main`. The final merged result needs either a `main` push or a direct CLI deploy:
+## Why Separating Planning from Implementation Sessions Actually Matters
 
-```bash
-PATH="/opt/homebrew/opt/node@22/bin:$PATH" /opt/homebrew/bin/vercel --prod
-```
+There's a predictable failure mode in AI-assisted coding: the agent receives a request, starts modifying files immediately, hits an unexpected design constraint halfway through, and either rolls back or continues down a path that made sense locally but is wrong globally. In long sessions, this gets worse — the agent has committed to early choices that are hard to undo, and the context window is increasingly occupied by work that may need to be thrown away.
 
-The path prefix is necessary when the Node version isn't on the default PATH. This goes in Claude's memory so future sessions don't have to rediscover it.
+The `writing-plans` → `executing-plans` separation is a direct fix for this. Each session gets a single responsibility:
 
-## What 892 Tool Calls Looks Like
+- **Planning session**: read, explore, produce a plan. No file modifications.
+- **Execution session**: follow the plan. No exploration, no architectural decisions mid-flight.
 
-Bash led the breakdown at roughly 280 calls — git status, build runs, image compression, grep searches. Edit came in at around 130, Read at 120. The terminal-heavy nature of debugging and deployment dominates the numbers.
+If the plan is wrong, you fix the plan — a text file, not a tangled implementation. If a step turns out to be invalid, the execution session surfaces it cleanly rather than having it corrupt downstream steps.
 
-The ratio also reflects the Systematic Debugging shift. Early sessions had high Edit counts relative to Read. Later sessions flipped that — more reading and investigation, fewer (but more accurate) edits.
+The multi-agent planning approach also compresses the exploration time. Three parallel agents scanning independent parts of the codebase is roughly 3× faster than one agent doing it serially — and all that parallelism stays contained in the planning session, not bleeding into execution context.
 
-This is the concrete difference a structured debugging approach makes: not just "the bug gets fixed" but "the session itself uses fewer operations and produces more durable results."
+This isn't a new principle in software engineering. It's just "design before code" applied to AI coding agents. The interesting part is that the `writing-plans` skill enforces it as a hard constraint — Claude Code *cannot* start modifying files until the plan is written, because that's what the skill instructs it to do. The discipline is baked in, not left to willpower.
 
-## The Rule
+## The Numbers
 
-The rule distilled from fixing the same bug five times: **if you can't explain why the bug occurs before touching the code, the fix is a symptom patch.**
+Tool call breakdown for the session:
 
-Symptom patches don't fail immediately. They fail in the next session, or the one after, when the root cause surfaces in a slightly different place. Five rounds of this is what it takes to internalize the lesson.
+- **Read**: 13 (routing files, component structures, schema definitions, existing SEO patterns)
+- **Glob**: 4 (file discovery, directory scanning, pattern matching)
+- **Agent**: 3 (parallel codebase exploration across three domains)
+- **Skill**: 1 (loading writing-plans)
+- **Bash**: 1 (verification)
+- **Write**: 1 (the plan file itself)
+- **Total**: 23 tool calls
 
-> Skills change how Claude works — not just what it produces. Without a skill, outputs are competent. With a skill loaded and applied, outputs follow actual principles.
+Time elapsed: ~10 minutes.
+
+Files created: 1. Files modified: 0.
+
+The ratio that matters here is Read-to-Write: 13 reads before the single write. That's what good planning looks like — far more investment in understanding than in producing output.
 
 ---
 
