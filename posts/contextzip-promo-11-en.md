@@ -9,6 +9,7 @@ tags:
   - opensource
 series: "ContextZip Daily"
 canonical_url: "https://github.com/jee599/contextzip"
+hashnode_url: 'https://plzai.hashnode.dev/contextzip-promo-11'
 ---
 
 `pip install -r requirements.txt` on a ML project. 200+ lines of output. Download progress for numpy, scipy, torch. Wheel-building logs for packages with C extensions. Dependency resolution warnings.
