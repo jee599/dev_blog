@@ -11,7 +11,7 @@ series: "ContextZip Daily"
 canonical_url: "https://github.com/jee599/contextzip"
 hashnode_url: 'https://plzai.hashnode.dev/contextzip-promo-11'
 id: 3483353
-date: 'draft'
+date: '2026-04-11T02:52:29Z'
 ---
 
 `pip install -r requirements.txt` on a ML project. 200+ lines of output. Download progress for numpy, scipy, torch. Wheel-building logs for packages with C extensions. Dependency resolution warnings.
