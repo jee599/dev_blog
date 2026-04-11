@@ -9,6 +9,7 @@ tags:
   - tutorial
 series: "ContextZip Daily"
 canonical_url: "https://github.com/jee599/contextzip"
+hashnode_url: 'https://plzai.hashnode.dev/contextzip-promo-12'
 ---
 
 You see a colorful terminal. Your AI sees raw text peppered with escape codes, duplicate warnings, and framework internals. Here's what that gap looks like across real commands.
