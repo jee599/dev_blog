@@ -11,7 +11,7 @@ series: "ContextZip Daily"
 canonical_url: "https://github.com/jee599/contextzip"
 hashnode_url: 'https://plzai.hashnode.dev/contextzip-promo-12'
 id: 3488206
-date: 'draft'
+date: '2026-04-12T03:32:23Z'
 ---
 
 You see a colorful terminal. Your AI sees raw text peppered with escape codes, duplicate warnings, and framework internals. Here's what that gap looks like across real commands.

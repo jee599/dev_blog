@@ -114,10 +114,9 @@ SKIP (has id): posts/contextzip-promo-11-en.md
 PUBLISHING: posts/contextzip-promo-12-en.md
   title: Before/After: What Claude Code Actually Sees
   tags: ['ai', 'claudecode', 'productivity', 'tutorial']
-  step 1: creating draft ...
-  step 1 result: HTTP 201
-  draft created id=3488206
-  DRAFT saved id=3488206 (manual publish)
+  draft detected (id=3488206) -> publish update
+  publish draft result: HTTP 200
+  PUBLISHED existing draft id=3488206
 SKIP (has id): posts/contextzip-promo-19-en.md
 SKIP (has id): posts/contextzip-promo-20-en.md
 SKIP (has id): posts/contextzip-promo-21-en.md
