@@ -9,6 +9,7 @@ tags:
   - programming
 series: "ContextZip Daily"
 canonical_url: "https://github.com/jee599/contextzip"
+hashnode_url: 'https://plzai.hashnode.dev/contextzip-promo-13'
 ---
 
 Most developer tools need config files. `.eslintrc`, `tsconfig.json`, `prettier.config.js`. ContextZip needs nothing.
