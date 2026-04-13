@@ -10,6 +10,8 @@ tags:
 series: "ContextZip Daily"
 canonical_url: "https://github.com/jee599/contextzip"
 hashnode_url: 'https://plzai.hashnode.dev/contextzip-promo-14'
+id: 3496060
+date: 'draft'
 ---
 
 How much context are you actually saving? ContextZip tracks it.
