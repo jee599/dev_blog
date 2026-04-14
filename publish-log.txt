@@ -116,10 +116,9 @@ SKIP (has id): posts/contextzip-promo-13-en.md
 PUBLISHING: posts/contextzip-promo-14-en.md
   title: Track Every Token You Save With contextzip gain
   tags: ['ai', 'productivity', 'claudecode', 'opensource']
-  step 1: creating draft ...
-  step 1 result: HTTP 201
-  draft created id=3496060
-  DRAFT saved id=3496060 (manual publish)
+  draft detected (id=3496060) -> publish update
+  publish draft result: HTTP 200
+  PUBLISHED existing draft id=3496060
 SKIP (has id): posts/contextzip-promo-19-en.md
 SKIP (has id): posts/contextzip-promo-20-en.md
 SKIP (has id): posts/contextzip-promo-21-en.md
