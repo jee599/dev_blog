@@ -9,6 +9,7 @@ tags:
   - claudecode
 series: "ContextZip Daily"
 canonical_url: "https://github.com/jee599/contextzip"
+hashnode_url: 'https://plzai.hashnode.dev/contextzip-promo-16'
 ---
 
 `npm warn deprecated inflight@1.0.6: This module is not supported and is being kept for compatibility purposes.`
