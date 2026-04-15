@@ -11,7 +11,7 @@ series: "ContextZip Daily"
 canonical_url: "https://github.com/jee599/contextzip"
 hashnode_url: 'https://plzai.hashnode.dev/contextzip-promo-15'
 id: 3501605
-date: 'draft'
+date: '2026-04-15T03:27:02Z'
 ---
 
 Here's the entire ContextZip setup:
