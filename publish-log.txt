@@ -1,5 +1,5 @@
 Fetching existing articles from DEV.to ...
-  Found 126 existing article(s) on DEV.to
+  Found 127 existing article(s) on DEV.to
 
 SKIP (korean filename): posts/2026-03-14-anthropic-partner-network-100m-ko.md
 SKIP (korean filename): posts/2026-03-14-gemini-750m-ads-ko.md
@@ -113,13 +113,7 @@ SKIP (has id): posts/contextzip-promo-11-en.md
 SKIP (has id): posts/contextzip-promo-12-en.md
 SKIP (has id): posts/contextzip-promo-13-en.md
 SKIP (has id): posts/contextzip-promo-14-en.md
-
-PUBLISHING: posts/contextzip-promo-15-en.md
-  title: 5 Seconds to Install. 60-90% Less Noise. Forever.
-  tags: ['ai', 'productivity', 'opensource', 'beginners']
-  draft detected (id=3501605) -> publish update
-  publish draft result: HTTP 200
-  PUBLISHED existing draft id=3501605
+SKIP (has id): posts/contextzip-promo-15-en.md
 SKIP (has id): posts/contextzip-promo-19-en.md
 SKIP (has id): posts/contextzip-promo-20-en.md
 SKIP (has id): posts/contextzip-promo-21-en.md
@@ -170,4 +164,4 @@ SKIP (has id): posts/trading-bot-win-rate-lie-en.md
 SKIP (korean filename): posts/trading-bot-win-rate-lie-ko.md
 SKIP (has id): posts/writing-claude-code-book-with-claude-code-en.md
 
-Done: 1 published, 1 failed
+Done: 0 published, 1 failed
