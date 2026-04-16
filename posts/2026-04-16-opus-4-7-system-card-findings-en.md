@@ -11,7 +11,7 @@ cover_image: https://r2.jidonglab.com/blog/2026/04/opus-4-7-system-card-findings
 canonical_url: https://jidonglab.com/blog/opus-4-7-system-card-findings
 hashnode_url: 'https://plzai.hashnode.dev/2026-04-16-opus-4-7-system-card-findings'
 id: 3511152
-date: 'draft'
+date: '2026-04-16T15:21:50Z'
 ---
 
 A system card is the document Anthropic publishes with every major Claude release, detailing capabilities and safety evaluations. The Claude Opus 4.7 edition, published April 16, 2026, runs 232 pages. I read all of it.

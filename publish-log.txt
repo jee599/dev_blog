@@ -1,5 +1,5 @@
 Fetching existing articles from DEV.to ...
-  Found 136 existing article(s) on DEV.to
+  Found 139 existing article(s) on DEV.to
 
 SKIP (korean filename): posts/2026-03-14-anthropic-partner-network-100m-ko.md
 SKIP (korean filename): posts/2026-03-14-gemini-750m-ads-ko.md
@@ -87,19 +87,24 @@ SKIP (build-log): posts/2026-04-15-portfolio-site-build-log-en.md
 
 PUBLISHING: posts/2026-04-16-openai-duct-tape-gpt-image-2-en.md
   title: OpenAI's 'duct-tape' model appeared on Arena — then vanished
-  tags: []
-  step 1: creating draft ...
-  step 1 result: HTTP 201
-  draft created id=3511086
-  DRAFT saved id=3511086 (manual publish)
+  tags: ['ai', 'openai', 'webdev', 'imagegen']
+  draft detected (id=3511086) -> publish update
+  publish draft result: HTTP 200
+  PUBLISHED existing draft id=3511086
 
 PUBLISHING: posts/2026-04-16-opus-4-7-killed-budget-tokens-en.md
   title: Opus 4.7 killed budget_tokens: what changed and how to migrate
-  tags: []
-  step 1: creating draft ...
-  step 1 result: HTTP 201
-  draft created id=3511087
-  DRAFT saved id=3511087 (manual publish)
+  tags: ['ai', 'claude', 'anthropic', 'webdev']
+  draft detected (id=3511087) -> publish update
+  publish draft result: HTTP 200
+  PUBLISHED existing draft id=3511087
+
+PUBLISHING: posts/2026-04-16-opus-4-7-system-card-findings-en.md
+  title: I read all 232 pages of the Opus 4.7 system card
+  tags: ['ai', 'claude', 'anthropic', 'machinelearning']
+  draft detected (id=3511152) -> publish update
+  publish draft result: HTTP 200
+  PUBLISHED existing draft id=3511152
 SKIP (build-log): posts/2026-04-16-portfolio-site-build-log-en.md
 SKIP (has id): posts/agentcrow-launch-en.md
 SKIP (has id): posts/ai-agent-i18n-tarot-compatibility-en.md
@@ -147,6 +152,14 @@ SKIP (has id): posts/contextzip-promo-13-en.md
 SKIP (has id): posts/contextzip-promo-14-en.md
 SKIP (has id): posts/contextzip-promo-15-en.md
 SKIP (has id): posts/contextzip-promo-16-en.md
+
+PUBLISHING: posts/contextzip-promo-17-en.md
+  title: How I Built a 1,056-Test Rust CLI in 3 Weeks
+  tags: ['rust', 'opensource', 'programming', 'ai']
+  step 1: creating draft ...
+  step 1 result: HTTP 201
+  draft created id=3512014
+  DRAFT saved id=3512014 (manual publish)
 SKIP (has id): posts/contextzip-promo-19-en.md
 SKIP (has id): posts/contextzip-promo-20-en.md
 SKIP (has id): posts/contextzip-promo-21-en.md
@@ -197,4 +210,4 @@ SKIP (has id): posts/trading-bot-win-rate-lie-en.md
 SKIP (korean filename): posts/trading-bot-win-rate-lie-ko.md
 SKIP (has id): posts/writing-claude-code-book-with-claude-code-en.md
 
-Done: 2 published, 1 failed
+Done: 4 published, 1 failed
