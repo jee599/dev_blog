@@ -1,5 +1,5 @@
 Fetching existing articles from DEV.to ...
-  Found 131 existing article(s) on DEV.to
+  Found 135 existing article(s) on DEV.to
 
 SKIP (korean filename): posts/2026-03-14-anthropic-partner-network-100m-ko.md
 SKIP (korean filename): posts/2026-03-14-gemini-750m-ads-ko.md
@@ -118,10 +118,9 @@ SKIP (has id): posts/contextzip-promo-15-en.md
 PUBLISHING: posts/contextzip-promo-16-en.md
   title: The npm Deprecated Warning Nobody Reads (But Claude Does)
   tags: ['ai', 'webdev', 'productivity', 'claudecode']
-  step 1: creating draft ...
-  step 1 result: HTTP 201
-  draft created id=3506824
-  DRAFT saved id=3506824 (manual publish)
+  draft detected (id=3506824) -> publish update
+  publish draft result: HTTP 200
+  PUBLISHED existing draft id=3506824
 SKIP (has id): posts/contextzip-promo-19-en.md
 SKIP (has id): posts/contextzip-promo-20-en.md
 SKIP (has id): posts/contextzip-promo-21-en.md

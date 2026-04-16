@@ -11,7 +11,7 @@ series: "ContextZip Daily"
 canonical_url: "https://github.com/jee599/contextzip"
 hashnode_url: 'https://plzai.hashnode.dev/contextzip-promo-16'
 id: 3506824
-date: 'draft'
+date: '2026-04-16T03:34:21Z'
 ---
 
 `npm warn deprecated inflight@1.0.6: This module is not supported and is being kept for compatibility purposes.`
