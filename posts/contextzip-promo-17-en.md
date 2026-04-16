@@ -9,6 +9,7 @@ tags:
   - ai
 series: "ContextZip Daily"
 canonical_url: "https://github.com/jee599/contextzip"
+hashnode_url: 'https://plzai.hashnode.dev/contextzip-promo-17'
 ---
 
 ContextZip started as a fork of RTK (Reduce Toolkit). Three weeks later, it was a different tool with 1,056 tests and coverage for 102 CLI command patterns.
