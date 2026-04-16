@@ -5,6 +5,7 @@ description: "The SWE-bench 87.6% headline is the least interesting number. Five
 tags: [ai, claude, anthropic, machinelearning]
 cover_image: https://r2.jidonglab.com/blog/2026/04/opus-4-7-system-card-findings-hero.jpg
 canonical_url: https://jidonglab.com/blog/opus-4-7-system-card-findings
+hashnode_url: 'https://plzai.hashnode.dev/2026-04-16-opus-4-7-system-card-findings'
 ---
 
 A system card is the document Anthropic publishes with every major Claude release, detailing capabilities and safety evaluations. The Claude Opus 4.7 edition, published April 16, 2026, runs 232 pages. I read all of it.
