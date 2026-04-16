@@ -5,6 +5,8 @@ description: "Claude Opus 4.7 dropped April 16 with three silent breaking change
 tags: [ai, claude, anthropic, webdev]
 cover_image: https://r2.jidonglab.com/blog/2026/04/opus-4-7-killed-budget-tokens-hero.jpg
 canonical_url: https://jidonglab.com/blog/opus-4-7-killed-budget-tokens
+id: 3511087
+date: 'draft'
 ---
 
 Adaptive thinking is Claude Opus 4.7's only supported reasoning mode: you pass `thinking: {type: "adaptive"}` and the model decides how much to reason, with `budget_tokens` removed from the API entirely. My production trading bot threw 400 Bad Request on its first inference after I bumped `claude-opus-4-6` to `claude-opus-4-7` — one character in a model ID, three breaking changes attached.

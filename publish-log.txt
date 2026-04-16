@@ -69,6 +69,38 @@ PUBLISHING: posts/2026-04-02-openai-codex-open-source-analysis-en.md
   FAILED to create draft: {"error":"The article you're looking for does not exist: gpt5-codex-5800-line-bootstrap-en","status":422}
 SKIP (has id): posts/2026-04-02-openai-codex-practical-guide-en.md
 SKIP (build-log): posts/2026-04-02-portfolio-site-build-log-en.md
+SKIP (build-log): posts/2026-04-03-portfolio-site-build-log-en.md
+SKIP (build-log): posts/2026-04-04-portfolio-site-build-log-en.md
+SKIP (build-log): posts/2026-04-05-portfolio-site-build-log-en.md
+SKIP (build-log): posts/2026-04-06-portfolio-site-build-log-en.md
+SKIP (build-log): posts/2026-04-07-portfolio-site-build-log-en.md
+SKIP (build-log): posts/2026-04-08-portfolio-site-build-log-en.md
+SKIP (build-log): posts/2026-04-09-portfolio-site-build-log-en.md
+SKIP (build-log): posts/2026-04-10-portfolio-site-build-log-en.md
+SKIP (build-log): posts/2026-04-11-portfolio-site-build-log-en.md
+SKIP (build-log): posts/2026-04-11-saju-global-build-log-en.md
+SKIP (build-log): posts/2026-04-12-portfolio-site-build-log-en.md
+SKIP (build-log): posts/2026-04-12-saju-global-build-log-en.md
+SKIP (build-log): posts/2026-04-13-portfolio-site-build-log-en.md
+SKIP (build-log): posts/2026-04-14-portfolio-site-build-log-en.md
+SKIP (build-log): posts/2026-04-15-portfolio-site-build-log-en.md
+
+PUBLISHING: posts/2026-04-16-openai-duct-tape-gpt-image-2-en.md
+  title: OpenAI's 'duct-tape' model appeared on Arena — then vanished
+  tags: []
+  step 1: creating draft ...
+  step 1 result: HTTP 201
+  draft created id=3511086
+  DRAFT saved id=3511086 (manual publish)
+
+PUBLISHING: posts/2026-04-16-opus-4-7-killed-budget-tokens-en.md
+  title: Opus 4.7 killed budget_tokens: what changed and how to migrate
+  tags: []
+  step 1: creating draft ...
+  step 1 result: HTTP 201
+  draft created id=3511087
+  DRAFT saved id=3511087 (manual publish)
+SKIP (build-log): posts/2026-04-16-portfolio-site-build-log-en.md
 SKIP (has id): posts/agentcrow-launch-en.md
 SKIP (has id): posts/ai-agent-i18n-tarot-compatibility-en.md
 SKIP (has id): posts/ai-content-full-automation-en.md
@@ -165,4 +197,4 @@ SKIP (has id): posts/trading-bot-win-rate-lie-en.md
 SKIP (korean filename): posts/trading-bot-win-rate-lie-ko.md
 SKIP (has id): posts/writing-claude-code-book-with-claude-code-en.md
 
-Done: 0 published, 1 failed
+Done: 2 published, 1 failed

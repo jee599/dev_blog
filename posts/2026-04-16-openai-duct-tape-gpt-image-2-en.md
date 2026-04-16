@@ -5,6 +5,8 @@ description: "Three anonymous image models nicknamed duct-tape showed up on LM A
 tags: [ai, openai, webdev, imagegen]
 cover_image: https://r2.jidonglab.com/blog/2026/04/openai-duct-tape-gpt-image-2-hero.jpg
 canonical_url: https://jidonglab.com/blog/openai-duct-tape-gpt-image-2
+id: 3511086
+date: 'draft'
 ---
 
 I opened LM Arena on a Tuesday night to A/B two image models. The one on the left had no name — just `packingtape-alpha`. Three renders in, I knew what I was looking at.
