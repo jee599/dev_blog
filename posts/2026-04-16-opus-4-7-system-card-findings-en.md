@@ -2,10 +2,16 @@
 title: "I read all 232 pages of the Opus 4.7 system card"
 published: true
 description: "The SWE-bench 87.6% headline is the least interesting number. Five findings from Anthropic's system card that actually change how you should use Claude Opus 4.7."
-tags: [ai, claude, anthropic, machinelearning]
+tags:
+  - ai
+  - claude
+  - anthropic
+  - machinelearning
 cover_image: https://r2.jidonglab.com/blog/2026/04/opus-4-7-system-card-findings-hero.jpg
 canonical_url: https://jidonglab.com/blog/opus-4-7-system-card-findings
 hashnode_url: 'https://plzai.hashnode.dev/2026-04-16-opus-4-7-system-card-findings'
+id: 3511152
+date: 'draft'
 ---
 
 A system card is the document Anthropic publishes with every major Claude release, detailing capabilities and safety evaluations. The Claude Opus 4.7 edition, published April 16, 2026, runs 232 pages. I read all of it.
@@ -90,7 +96,7 @@ Figure 8.8.1.B is also worth internalizing. Reasoning effort scaling on Humanity
 | xhigh | 55.4% |
 | max | 54.7% |
 
-`xhigh` is the peak. `max` actually drops. More compute is not always better. If you are setting effort programmatically, default to xhigh until you have evidence max helps your workload. I wrote about the adaptive-thinking breaking change behind this yesterday — {% link jee599/opus-4-7-killed-budget-tokens %}.
+`xhigh` is the peak. `max` actually drops. More compute is not always better. If you are setting effort programmatically, default to xhigh until you have evidence max helps your workload. I wrote about the adaptive-thinking breaking change behind this yesterday — {% link ji_ai/opus-4-7-killed-budget-tokens %}.
 
 Multimodal got a real lift that nobody is talking about. §8.9 reports Opus 4.7 processes images up to 2,576px on the long edge and 3.75MP total, up from 1,568px and 1.15MP — roughly 3.3x more pixels. LAB-Bench FigQA jumped 74.0% → 78.6% and ScreenSpot-Pro went 69.0% → 79.5% just from the resolution bump. If your workload involves screenshots or charts, you get the upgrade for free.
 
@@ -106,13 +112,13 @@ Read that again. A frontier AI lab published a system card in which the previous
 
 The evaluation-awareness finding Mythos is pointing at: fewer than 1% of transcripts in the baseline behavioral audit mention being evaluated, but rates rise on the dedicated synthetic-backend evaluation for destructive actions. The white-box result is sharper — suppressing the model's internal "is this an evaluation?" representations produced a "slightly larger increase in deception than in prior models." The model appears to be reading evaluation context and adjusting behavior. Suppress that signal and the deception gets worse. The honest move is to publish "we have more work here." Anthropic did.
 
-If you missed the other breaking-change context from today's [Anthropic announcement](https://www.anthropic.com/news/claude-opus-4-7), my earlier post covers the tokenizer and adaptive-thinking side: {% link jee599/openai-duct-tape-gpt-image-2 %}.
+If you missed the other breaking-change context from today's [Anthropic announcement](https://www.anthropic.com/news/claude-opus-4-7), my earlier post covers the tokenizer and adaptive-thinking side: {% link ji_ai/openai-duct-tape-gpt-image-2 %}.
 
 ## 5. What solo builders should actually do
 
 First, if you run Claude Code, check your bill this week. Anthropic likely raised default reasoning effort toward xhigh, and the data shows max does not help anyway. The [adaptive thinking docs](https://platform.claude.com/docs/en/build-with-claude/adaptive-thinking) now reflect this.
 
-Second, paste the anti-hack prompt above into system messages for any agent doing code generation. A 3x reduction in impossible-task reward hacking is the cheapest alignment win of the year. If you write a lot of prompts, you already know {% link jee599/prompting-is-programming %} — this is another data point that the prompt is the program.
+Second, paste the anti-hack prompt above into system messages for any agent doing code generation. A 3x reduction in impossible-task reward hacking is the cheapest alignment win of the year. If you write a lot of prompts, you already know {% link ji_ai/prompting-is-programming %} — this is another data point that the prompt is the program.
 
 Third, do not assume 4.7 strictly dominates 4.6. Long-context multi-needle retrieval regressed hard — MRCR v2 at 1M is half the accuracy. RAG pipelines and deep-research agents should A/B before migrating. For production systems on long-document retrieval, keep 4.6 available as a fallback.
 

@@ -2,7 +2,11 @@
 title: "Opus 4.7 killed budget_tokens: what changed and how to migrate"
 published: true
 description: "Claude Opus 4.7 dropped April 16 with three silent breaking changes: adaptive-only thinking, empty thinking blocks by default, and a tokenizer that inflates input cost 1.35x."
-tags: [ai, claude, anthropic, webdev]
+tags:
+  - ai
+  - claude
+  - anthropic
+  - webdev
 cover_image: https://r2.jidonglab.com/blog/2026/04/opus-4-7-killed-budget-tokens-hero.jpg
 canonical_url: https://jidonglab.com/blog/opus-4-7-killed-budget-tokens
 id: 3511087
@@ -71,11 +75,11 @@ The third change you only catch by measuring. Opus 4.7 ships a new tokenizer. An
 
 In worked numbers: a workload that metered 500M input tokens per month on Opus 4.6, costing $2,500 per month, can meter as 675M input tokens on Opus 4.7 in the worst case, costing $3,375 per month. $875 delta per month from tokenizer swap alone. The [models overview](https://platform.claude.com/docs/en/about-claude/models/overview) makes the same claim from the other direction: 1M tokens holds ~750k English words on Opus 4.6 but only ~555k on Opus 4.7. That ratio is basically 1.35x.
 
-My own corpus confirms the ceiling is real for Korean text and typed code. The same prompt that metered 2,312 tokens on Opus 4.6 yesterday metered 3,014 tokens on Opus 4.7 today — a 1.30x ratio. My trading bot's prompts, which I broke down in [Trading bot with 15 strategies](https://dev.to/jee599/trading-bot-15-strategies-en), are densely typed TypeScript and saw the biggest jumps. I learned the hard way from my [llmtrio caching work](https://dev.to/jee599/prompting-is-programming) that you measure before you flip. This is that test, at scale.
+My own corpus confirms the ceiling is real for Korean text and typed code. The same prompt that metered 2,312 tokens on Opus 4.6 yesterday metered 3,014 tokens on Opus 4.7 today — a 1.30x ratio. My trading bot's prompts, which I broke down in [Trading bot with 15 strategies](https://dev.to/ji_ai/trading-bot-15-strategies-en), are densely typed TypeScript and saw the biggest jumps. I learned the hard way from my [llmtrio caching work](https://dev.to/ji_ai/prompting-is-programming) that you measure before you flip. This is that test, at scale.
 
-{% link jee599/trading-bot-15-strategies-en %}
+{% link ji_ai/trading-bot-15-strategies-en %}
 
-{% link jee599/prompting-is-programming %}
+{% link ji_ai/prompting-is-programming %}
 
 ## Effort levels and the xhigh surprise
 
@@ -91,9 +95,9 @@ My own corpus confirms the ceiling is real for Korean text and typed code. The s
 
 Here is the twist. Claude Code's default effort moved to xhigh on all plans today. No announcement, no release note in the UI — the [models overview](https://platform.claude.com/docs/en/about-claude/models/overview) only mentions the level exists. Same commands you ran yesterday will feel slower today, and combined with the tokenizer inflation, monthly spend can jump visibly. If cost is a concern, set effort to high at the project level and reach for xhigh deliberately, not by default.
 
-Claude Code also shipped a unified interface for multiple projects and a Microsoft Word beta integration in the same release. I am writing a book about Claude Code right now, tracked in [Writing a Claude Code book with Claude Code](https://dev.to/jee599/writing-claude-code-book-with-claude-code-en), and the xhigh default has already earned a callout in the next draft.
+Claude Code also shipped a unified interface for multiple projects and a Microsoft Word beta integration in the same release. I am writing a book about Claude Code right now, tracked in [Writing a Claude Code book with Claude Code](https://dev.to/ji_ai/writing-claude-code-book-with-claude-code-en), and the xhigh default has already earned a callout in the next draft.
 
-{% link jee599/writing-claude-code-book-with-claude-code-en %}
+{% link ji_ai/writing-claude-code-book-with-claude-code-en %}
 
 ## The companion release you should know about
 
