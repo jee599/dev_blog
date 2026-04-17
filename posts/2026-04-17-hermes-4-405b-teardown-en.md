@@ -9,6 +9,7 @@ tags:
   - agents
 series: "The Hermes 4 Teardown"
 canonical_url: https://jidonglab.com/posts/2026-04-17-hermes-4-part-1-en
+hashnode_url: 'https://plzai.hashnode.dev/2026-04-17-hermes-4-405b-teardown'
 ---
 
 Hermes 4 405B hit 96.3% on MATH-500 when it launched on August 26, 2025. That number got copy-pasted into every coverage headline within 24 hours. Most of those headlines missed the actual story.
