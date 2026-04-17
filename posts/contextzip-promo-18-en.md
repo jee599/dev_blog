@@ -9,6 +9,7 @@ tags:
   - opensource
 series: "ContextZip Daily"
 canonical_url: "https://github.com/jee599/contextzip"
+hashnode_url: 'https://plzai.hashnode.dev/contextzip-promo-18'
 ---
 
 Go's panic behavior is aggressive. When one goroutine panics, the runtime dumps the stack trace of *every* goroutine. A production Go service with 50 active goroutines produces 2,000+ lines of stack dump on a single panic.
