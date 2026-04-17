@@ -1,5 +1,5 @@
 Fetching existing articles from DEV.to ...
-  Found 140 existing article(s) on DEV.to
+  Found 141 existing article(s) on DEV.to
 
 SKIP (korean filename): posts/2026-03-14-anthropic-partner-network-100m-ko.md
 SKIP (korean filename): posts/2026-03-14-gemini-750m-ads-ko.md
@@ -61,12 +61,12 @@ SKIP (has id): posts/2026-04-02-claude-code-source-practical-guide-en.md
 PUBLISHING: posts/2026-04-02-openai-codex-open-source-analysis-en.md
   title: 71,700 Stars and 60 Rust Crates: Inside OpenAI's Codex CLI Source
   tags: []
-  step 1: creating draft ...
+  creating article (published=True) ...
     attempt 1: HTTP 422
     response body: {"error":"The article you're looking for does not exist: gpt5-codex-5800-line-bootstrap-en","status":422}
     rate-limit-remaining=?  reset=?  retry-after=?
-  step 1 result: HTTP 422
-  FAILED to create draft: {"error":"The article you're looking for does not exist: gpt5-codex-5800-line-bootstrap-en","status":422}
+  create result: HTTP 422
+  FAILED to create: {"error":"The article you're looking for does not exist: gpt5-codex-5800-line-bootstrap-en","status":422}
 SKIP (has id): posts/2026-04-02-openai-codex-practical-guide-en.md
 SKIP (build-log): posts/2026-04-02-portfolio-site-build-log-en.md
 SKIP (build-log): posts/2026-04-03-portfolio-site-build-log-en.md
@@ -88,6 +88,8 @@ SKIP (has id): posts/2026-04-16-openai-duct-tape-gpt-image-2-en.md
 SKIP (has id): posts/2026-04-16-opus-4-7-killed-budget-tokens-en.md
 SKIP (has id): posts/2026-04-16-opus-4-7-system-card-findings-en.md
 SKIP (build-log): posts/2026-04-16-portfolio-site-build-log-en.md
+SKIP (has id): posts/2026-04-17-hermes-4-405b-teardown-en.md
+SKIP (build-log): posts/2026-04-17-portfolio-site-build-log-en.md
 SKIP (has id): posts/agentcrow-launch-en.md
 SKIP (has id): posts/ai-agent-i18n-tarot-compatibility-en.md
 SKIP (has id): posts/ai-content-full-automation-en.md
@@ -144,6 +146,13 @@ PUBLISHING: posts/contextzip-promo-17-en.md
     rate-limit-remaining=?  reset=?  retry-after=?
   publish draft result: HTTP 404
   FAILED publish existing draft id=3512014: {"error":"not found","status":404}
+
+PUBLISHING: posts/contextzip-promo-18-en.md
+  title: Go Goroutine Crashes: 97% of the Output Is Noise
+  tags: ['ai', 'programming', 'productivity', 'opensource']
+  creating article (published=True) ...
+  create result: HTTP 201
+  PUBLISHED id=3516861 date=2026-04-17T19:12:36Z
 SKIP (has id): posts/contextzip-promo-19-en.md
 SKIP (has id): posts/contextzip-promo-20-en.md
 SKIP (has id): posts/contextzip-promo-21-en.md
@@ -194,4 +203,4 @@ SKIP (has id): posts/trading-bot-win-rate-lie-en.md
 SKIP (korean filename): posts/trading-bot-win-rate-lie-ko.md
 SKIP (has id): posts/writing-claude-code-book-with-claude-code-en.md
 
-Done: 0 published, 2 failed
+Done: 1 published, 2 failed
