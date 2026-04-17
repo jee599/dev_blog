@@ -195,33 +195,30 @@ jobs:
                   published += 1
                   continue
 
-              # ── Step 1: Create as DRAFT ──
-              log(f"  step 1: creating draft ...")
+              # ── Create article (published or draft based on frontmatter) ──
+              log(f"  creating article (published={should_publish}) ...")
               code, result, hdrs = api_call("POST", f"{BASE}/articles", {
                   "article": {
                       "title": title,
                       "body_markdown": body_md,
                       "description": desc,
-                      "published": False,
+                      "published": should_publish,
                       "tags": tags[:4],
                   }
               })
-              log(f"  step 1 result: HTTP {code}")
+              log(f"  create result: HTTP {code}")
 
               if code != 201:
-                  log(f"  FAILED to create draft: {str(result)[:300]}")
+                  log(f"  FAILED to create: {str(result)[:300]}")
                   failed += 1
                   time.sleep(BETWEEN_POSTS)
                   continue
 
               aid = result["id"]
-              log(f"  draft created id={aid}")
-
-              # ── Step 2: Do NOT auto-publish ──
-              # We intentionally stop at draft creation so the user can review on DEV.to
-              # and publish manually when ready.
-              log(f"  DRAFT saved id={aid} (manual publish)")
-              new_fm = fm.rstrip() + f"\nid: {aid}\ndate: 'draft'\n"
+              pub_date = result.get("published_at") or result.get("published_timestamp") or "draft"
+              status = "PUBLISHED" if should_publish else "DRAFT"
+              log(f"  {status} id={aid} date={pub_date}")
+              new_fm = fm.rstrip() + f"\nid: {aid}\ndate: '{pub_date}'\n"
               with open(filepath, "w") as f:
                   f.write("---" + new_fm + "---" + parts[2])
               published += 1
