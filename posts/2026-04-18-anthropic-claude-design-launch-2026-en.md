@@ -5,6 +5,7 @@ description: "Anthropic launched Claude Design on April 17 on Opus 4.7 and Canva
 tags: [ai, anthropic, design, productivity]
 cover_image: https://www.anthropic.com/api/opengraph-illustration?name=Hand%20Quill&backgroundColor=cactus
 canonical_url: https://spoonai.me/blog/anthropic-claude-design-launch-2026
+hashnode_url: 'https://plzai.hashnode.dev/2026-04-18-anthropic-claude-design-launch-2026'
 ---
 
 Anthropic shipped two design products in 72 hours. On April 14, the Claude Code desktop app was rebuilt from scratch. On April 17, Claude Design launched — a standalone tool for generating prototypes, decks, and mockups from plain English, running on Opus 4.7 and Canva's Design Engine.
