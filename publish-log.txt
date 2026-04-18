@@ -1,5 +1,5 @@
 Fetching existing articles from DEV.to ...
-  Found 142 existing article(s) on DEV.to
+  Found 144 existing article(s) on DEV.to
 
 SKIP (korean filename): posts/2026-03-14-anthropic-partner-network-100m-ko.md
 SKIP (korean filename): posts/2026-03-14-gemini-750m-ads-ko.md
@@ -90,6 +90,17 @@ SKIP (has id): posts/2026-04-16-opus-4-7-system-card-findings-en.md
 SKIP (build-log): posts/2026-04-16-portfolio-site-build-log-en.md
 SKIP (has id): posts/2026-04-17-hermes-4-405b-teardown-en.md
 SKIP (build-log): posts/2026-04-17-portfolio-site-build-log-en.md
+
+PUBLISHING: posts/2026-04-18-anthropic-claude-design-launch-2026-en.md
+  title: Claude Design Ships On Canva's Engine. Figma Has a Problem.
+  tags: []
+  DUPLICATE found on DEV.to (id=3518214) — writing id to file
+
+PUBLISHING: posts/2026-04-18-hermes-4-tool-calling-en.md
+  title: Hermes 4's Tool-Calling Is Trained as a Separate Skill. Here's Why Your Agent Cares.
+  tags: ['ai', 'llm', 'agents', 'opensource']
+  DUPLICATE found on DEV.to (id=3518218) — writing id to file
+SKIP (build-log): posts/2026-04-18-portfolio-site-build-log-en.md
 SKIP (has id): posts/agentcrow-launch-en.md
 SKIP (has id): posts/ai-agent-i18n-tarot-compatibility-en.md
 SKIP (has id): posts/ai-content-full-automation-en.md
@@ -197,4 +208,4 @@ SKIP (has id): posts/trading-bot-win-rate-lie-en.md
 SKIP (korean filename): posts/trading-bot-win-rate-lie-ko.md
 SKIP (has id): posts/writing-claude-code-book-with-claude-code-en.md
 
-Done: 0 published, 2 failed
+Done: 2 published, 2 failed

@@ -10,6 +10,8 @@ tags:
 series: "The Hermes 4 Teardown"
 canonical_url: https://jidonglab.com/posts/2026-04-18-hermes-4-part-2-en
 hashnode_url: 'https://plzai.hashnode.dev/2026-04-18-hermes-4-tool-calling'
+id: 3518218
+date: '2026-04-18T06:08:33.028Z'
 ---
 
 Nous Research's Atropos RL framework runs ~1,000 task-specific verifiers. Two of those categories are Schema Adherence and Tool Use — not as a shared bucket labeled "function calling," but as separate, explicitly trained behaviors. I wired Hermes 4 405B into my agent pipeline via OpenRouter and observed tool-call behavior across a range of structured-extraction and multi-step agentic tasks. What I found lines up with what the training methodology predicts — and the implications are worth unpacking before you commit to an architecture.
