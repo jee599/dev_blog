@@ -8,6 +8,7 @@ tags:
   - llm
   - engineering
 canonical_url: https://jidonglab.com/posts/2026-04-21-opus-4-7-analysis-en
+hashnode_url: 'https://plzai.hashnode.dev/2026-04-21-opus-4-7-swe-bench-87-6'
 ---
 
 Claude Opus 4.7 scored 87.6% on SWE-bench Verified — up from 80.8% on Opus 4.6, a +6.8 point absolute jump announced on April 17, 2026. The sticker price stayed exactly where it was: $5 per million input tokens, $25 per million output. Anthropic shipped faster code, better vision, a new effort level, and a non-engineer product in the same week — and didn't raise the price on any of it.
