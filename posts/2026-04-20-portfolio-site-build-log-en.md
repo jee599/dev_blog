@@ -1,116 +1,142 @@
 ---
-title: "Telegram as a Claude Code Remote: 47-Hour Session, 111 Tool Calls"
+title: "Remote-Controlling Claude Code via Telegram — 120 Tool Calls, 68-Hour Session"
 published: true
-description: "How I ran a 47-hour Claude Code session asynchronously via Telegram DMs — bootstrapping a new project, hunting AI events, and publishing to 3 platforms."
-tags: claudecode, ai, automation, productivity
+description: "One Telegram message spun up a private GitHub repo. Another published to two platforms. Here's what 120 tool calls across a 68-hour Claude Code session looks like."
+tags: claudecode, ai, automation, devtools
 series: "Building with Claude Code: portfolio-site"
 canonical_url: https://jidonglab.com/posts/2026-04-20-portfolio-site-en
 ---
 
-A session that started with a two-character message ran for 47 hours and racked up 111 tool calls.
+68 hours, 44 minutes. I was at my keyboard for maybe 10 minutes of that. A handful of Telegram messages — Claude Code created a GitHub repo, scaffolded a project, published blog posts to two platforms, and ran 36 web searches on my behalf.
 
-**TL;DR** Using Telegram as a remote interface for Claude Code means you can queue work without sitting at your computer. This session covered bootstrapping the `dentalad` project with GitHub integration, searching for Pangyo AI events, and auto-publishing a Claude Design blog post across three platforms — all asynchronously.
+**TL;DR** This is a record of how Telegram → Claude Code remote control works in production: what it handles well, how MCP disconnects behave, and where the architecture still has gaps.
 
-## Why Telegram Works as a Remote Control
+## One Telegram Message, One GitHub Repo
 
-Every instruction in this session came through Telegram DMs. Short messages, staggered over time: "spin up another project" → "call it dentalad" → "write a blog post" → "what angle?" The session stays open; new messages pick up where the last one left off.
-
-The async advantage is obvious. Queue work while commuting, or right after waking up, with a single line. Claude processes it while you're doing something else. The tradeoff: if the MCP connection drops, notifications stop flowing.
-
-```bash
-# Diagnose a dropped Telegram MCP connection
-claude mcp list
-tail ~/.claude/logs/*telegram* 2>/dev/null
-```
-
-Common culprits: momentary network drops, expired bot tokens, session loss after system sleep. This session hit one mid-run. I couldn't get notifications through Telegram, confirmed the token via `/telegram:configure`, and reconnected.
-
-## Bootstrapping a New Project in 5 Minutes
-
-The prompt: "Set up a new project for dental advertising — English name, wired to git. Not uddental."
-
-I proposed four name options. The reply: "dentalad sounds good." Done.
-
-One sequence handled everything: create `~/dentalad/` locally, create a private `github.com/jee599/dentalad` repo, scaffold the directory structure, push initial commit.
+Here's what I sent:
 
 ```
-dentalad/
-├── clinics/          # per-clinic materials
-├── ads-research/     # ad research
-├── site/             # website
-├── templates/        # ad templates
-├── docs/             # documentation
-├── README.md
-├── package.json
-└── .gitignore
+프로젝트 uddental 말고 git 연동되는걸로 하나 더 파줘
+치과광고 영어로한 프로젝트로
 ```
 
-A significant chunk of the 41 Bash calls went here. The `gh repo create` → `git init` → `git push` chain is short, so this resolved fast.
+("Make me another project separate from uddental, with git integration — a dental advertising project in English")
 
-## Searching AI Events — and the Scheduler Limitation
+What Claude Code did with that:
 
-The prompt: "Find Claude-related meetups or hackathons near Pangyo, Seoul."
+1. Created `~/dentalad/` locally
+2. Created `github.com/jee599/dentalad` as a private repo
+3. Scaffolded the directory structure: `clinics/`, `ads-research/`, `site/`, `templates/`, `docs/`
+4. Wrote `README.md`, `package.json`, `.gitignore`, and pushed the first commit
 
-20 WebSearch calls later, the results were thin. Events from earlier in April had already closed. I forwarded four events with open registration: Snowflake AI Hackathon, AI Co-Scientist Challenge, a public education data hackathon, and Meta Llama Academy @ Pangyo.
+The project name came back as four candidates via Telegram. I replied "dentalad." Two message round-trips, zero manual setup.
 
-Then: "Can you set up a recurring search and alert me when something new shows up?"
+This is the pattern that makes remote AI control actually useful: Claude Code takes ambiguous intent, surfaces options, and executes on a single-word pick. You're not writing a spec — you're having a conversation with something that fills in the blanks correctly most of the time.
 
-This is where a real constraint surfaced. **Remote scheduled agents can't reach the Telegram MCP.** The only connectors available on the remote side are Vercel and Gmail. The Telegram plugin I use is local-only. A scheduled agent could run the search, but it has no way to deliver the notification.
+## What Happens When Telegram MCP Disconnects
 
-The options:
+Mid-session, the MCP server dropped. From my end: a "server disconnected" signal, no context about why.
 
-1. **Telegram Bot API via `curl sendMessage`** — embed the bot token directly in the trigger prompt. Functional, but the token lives in plaintext.
-2. **Gmail** — send to a monitored address. Stable, but a different UX from Telegram.
+The usual suspects:
 
-For low-frequency event searches, manual lookup when needed beats a scheduled agent with no reliable notification path.
+- Bot token expiry or rotation
+- Telegram API timeout causing a network break
+- Session loss after system sleep/wake
 
-## Auto-Publishing a Claude Design Post to 3 Platforms
+Fastest recovery path: `/telegram:configure` to check token status. In this case the token was still valid — `/reload-plugins` brought it back. The dentalad scaffolding that was in progress had already completed before the drop.
 
-The prompt: "Write a blog post about Claude's new design."
+The important behavior: **Claude Code kept running through the disconnect.** The agent finished its work, and when the MCP channel came back up, results were delivered through Telegram. No work lost.
 
-I ran an auto-publish skill: keyword input → WebSearch for current material → generate per-platform formats → publish. One pass.
+This matters architecturally. Telegram is just the notification layer. The compute is local. A dropped connection is annoying but not destructive — as long as git commits are happening, the work is preserved.
 
-Output files:
-- `~/dev_blog/posts/2026-04-18-anthropic-claude-design-launch-2026-en.md` — English post for DEV.to
-- `~/spoonai-site/content/blog/2026-04-18-anthropic-claude-design-launch-2026-ko.md` — Korean post for spoonai.me
+The failure mode to guard against isn't MCP disconnect. It's not having a ground truth outside the notification channel. If you're relying purely on Telegram to know what happened, a disconnect leaves you blind. Git history doesn't have that problem.
 
-Most of the 14 WebFetch calls went here — pulling from Anthropic's official announcement, tech blog coverage, and GitHub release notes for cross-verification.
+## 36 Web Requests for Event Discovery
 
-The key implementation detail for multi-platform publishing: `canonical_url`. Every English post going to DEV.to and Hashnode sets `canonical_url` pointing back to `jidonglab.com`. Same content across multiple platforms, zero SEO duplicate penalty.
-
-```yaml
-# DEV.to frontmatter
-canonical_url: https://jidonglab.com/posts/2026-04-18-anthropic-claude-design-launch-2026-en
+```
+지금 한국 서울 판교 근처에서 등록가능한 클로드 관련 미팅이나 해커톤 모두 검색해서 알려줘
 ```
 
-This is non-negotiable if you're syndicating. Without it, Google sees duplicate content and penalizes both copies.
+("Search for all Claude-related meetups and hackathons currently open for registration near Seoul/Pangyo")
 
-## Session Stats
+20 `WebSearch` calls, 16 `WebFetch` calls. The results were thin — the April 14th and 17th events had already passed. Four registerable events were still open at search time: Snowflake Summit Korea, AI Co-Scientist Challenge, 교육공공데이터 open dataset event, and Meta Llama Academy @ Pangyo.
 
-47 hours 11 minutes. 111 tool calls.
+Then came the follow-up: "set up a recurring search and notify me when something new shows up."
+
+This exposed the core architectural gap.
+
+**Remote schedule agents (CCR) can't access local Telegram MCP.** A scheduled agent running on Anthropic's cloud has no path to the local Telegram plugin. The options I offered:
+
+1. Direct Telegram Bot API call via `curl` (sendMessage with the bot token) — works, but the token lives in plaintext in the trigger config
+2. Email results to `jidongs45@gmail.com` via Gmail MCP
+
+Neither was finalized before the session ended. This is an open problem for anyone trying to close the loop between cloud-side scheduled agents and local notification channels.
+
+## Auto-Publishing Claude's Design Refresh
+
+```
+devto랑 spoonai.me에 이번에 클로드 디자인 업데이트된거 최신소식
+```
+
+("Publish the latest Claude design update news to devto and spoonai.me")
+
+The `auto-publish` skill handled this end-to-end. Two outputs:
+
+- `~/dev_blog/posts/2026-04-18-anthropic-claude-design-launch-2026-en.md` (DEV.to, English)
+- `~/spoonai-site/content/blog/2026-04-18-anthropic-claude-design-launch-2026-ko.md` (spoonai.me, Korean)
+
+Pipeline: source gathering (WebSearch + WebFetch) → draft generation → platform-specific formatting → publish. No manual editing. `canonical_url` points to `jidonglab.com` on both platforms to prevent SEO duplicate content penalties.
+
+The multi-platform publish workflow is one of the more reliable things in this setup. The source gathering and formatting steps are deterministic enough that the output quality is consistent — unlike agent tasks that involve ambiguous decision trees.
+
+## iPhone Idea-Capture App: Brainstormed, Not Built
+
+```
+아이폰에서 항상 플로팅되어 있거나 플로팅 아일랜드, 혹은 가장 쉬운 방법으로
+스크린샷 링크 메모 공유 그냥 스케치 모든 아이디어를 모으는 앱을 만들어줘
+```
+
+("Build an iPhone app that captures everything — screenshots, links, notes, sketches — using Dynamic Island or floating UI or whatever's easiest")
+
+The `brainstorming` skill ran first. Two directions surfaced:
+
+- **Dynamic Island**: persistent floating capture widget, always accessible
+- **Share Extension**: capture from any app via the system share sheet
+
+I replied "b" — Share Extension won. Implementation didn't start this session.
+
+The brainstorm → pick → implement pattern works well for feature scoping. Not every pick needs to ship in the same session. Separating the decision from the execution is often the right call when you're working async.
+
+## Tool Call Breakdown
 
 | Tool | Count |
 |------|-------|
-| Bash | 41 |
+| Bash | 42 |
+| Telegram reply | 21 |
 | WebSearch | 20 |
-| Telegram reply | 16 |
-| WebFetch | 14 |
+| WebFetch | 16 |
 | Read | 7 |
 | Write | 5 |
-| ToolSearch | 3 |
-| Skill | 2 |
+| Other | 9 |
+| **Total** | **120** |
 
-Bash dominates because git operations, script execution, and directory setup all go through it. The 20 WebSearch calls split between the event hunt and Claude Design research. 5 files created, 0 modified — this session was pure net-new output.
+Bash's 42 calls are mostly git operations and filesystem work. WebSearch + WebFetch at 36 combined — split between event discovery and Claude Design source gathering. Telegram replies at 21 represent actual two-way communication: proposals sent back, single-character picks received, execution confirmed.
 
-## The Pattern That Emerges
+The ratio feels about right for a remote-controlled session. If Bash were higher relative to Telegram replies, it would suggest I was doing more autonomous work and less back-and-forth. The current ratio means the agent was checking in where it should.
 
-The async remote control loop has a distinct shape: vague short message → Claude proposes options → one-word selection → completion notification. That loop turns over quickly when the connection is stable.
+## What Remote Control Actually Feels Like
 
-The prerequisite is MCP reliability. If it drops mid-session, notifications stop and you have no idea whether work completed. For anything that matters, leave a paper trail that doesn't depend on the notification channel — a file write, a git commit, something visible in the repo. That way the work is provable even if Telegram goes silent.
+Most messages were 1–2 lines. Claude Code fills in the rest from context. The dentalad repo creation is a good example of how ambiguous requests resolve cleanly: propose options → pick → execute.
 
-> Async remote control is convenient. But the work needs to be verifiable even when the notification channel is down.
+MCP disconnects happen. The session confirmed that the work survives them because the actual state lives in git, not in the notification channel. Reconnect, check the repo, continue.
 
-If you're building a similar setup: start with the connection failure mode, not the happy path. The happy path works fine. What fails is unattended sessions losing their notification channel with no fallback.
+The experience is closer to managing a contractor than using a tool. You set direction, approve decisions, and review outputs. The failure mode isn't capability — it's communication latency when the notification channel goes down.
+
+> Async remote control is convenient. But the work needs to be verifiable even when the notification channel is down. Git commits do that job.
+
+The open problem is scheduled agents + Telegram. The local MCP approach doesn't work for cloud-side triggers. Next session: try the direct Telegram Bot API approach (`curl` sendMessage) and decide whether token exposure in trigger config is acceptable, or route through Gmail instead.
+
+If you're building a similar setup — Claude Code + Telegram as a remote interface — the key insight from this session is: **design for MCP disconnect from day one.** Don't let Telegram be the only record of what happened. Every meaningful action should leave a git commit, a file write, or some other durable artifact. The notification layer is convenient. It's not reliable.
 
 ---
 
