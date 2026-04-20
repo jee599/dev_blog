@@ -8,6 +8,7 @@ tags:
   - enterprise
   - agents
 canonical_url: https://jidonglab.com/posts/2026-04-21-adobe-cx-mcp-en
+hashnode_url: 'https://plzai.hashnode.dev/2026-04-21-adobe-cx-enterprise-mcp'
 ---
 
 Seven frontier AI partners named in one press release. Twenty thousand brands running on a platform now built around MCP endpoints. One trillion experiences a year flowing through infrastructure that, until last week, had never used the words "Model Context Protocol" in a vendor contract. That changed on April 20, 2026, at the Adobe Summit keynote in Las Vegas.
