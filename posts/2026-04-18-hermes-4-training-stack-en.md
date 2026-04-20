@@ -9,6 +9,7 @@ tags:
   - opensource
 series: "The Hermes 4 Teardown"
 canonical_url: https://jidonglab.com/posts/2026-04-18-hermes-4-part-3-en
+hashnode_url: 'https://plzai.hashnode.dev/2026-04-18-hermes-4-training-stack'
 ---
 
 A 78.4% reduction in overlong outputs — bought at a 4.7–12.7% accuracy hit. That's not a footnote in Nous Research's 94-page Hermes 4 technical report. That's the central tension of their entire post-training philosophy: control costs latency and reliability, but it taxes the exact problems that need the most thinking.
