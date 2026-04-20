@@ -10,6 +10,8 @@ tags:
 series: "Solo AI Products"
 canonical_url: https://jidonglab.com/posts/2026-04-19-spoonai-en
 hashnode_url: 'https://plzai.hashnode.dev/2026-04-19-spoonai-ai-newsletter'
+id: 3527817
+date: '2026-04-20T15:43:31Z'
 ---
 
 Eleven subscribers. Forty-nine bilingual posts. One person pushing the commits. That's the entire accounting sheet of [spoonai.me](https://spoonai.me), and I'm telling you those numbers up front because I think they're the most interesting part of the project.

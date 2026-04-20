@@ -10,6 +10,8 @@ tags:
 series: "Claude Code Economics"
 canonical_url: https://jidonglab.com/posts/2026-04-18-contextzip-en
 hashnode_url: 'https://plzai.hashnode.dev/2026-04-18-contextzip-token-savings'
+id: 3527811
+date: '2026-04-20T15:41:43Z'
 ---
 
 66.5% of my Claude Code tokens were being spent on output I never needed to read in full. Over 7,172 commands, I watched 37.2M input tokens compress down to 12.5M, which is a number I had to re-check three times before I believed it. The piece of software responsible is 200 lines of glue sitting between my shell and the agent, and it cost me thirty seconds to install.

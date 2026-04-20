@@ -10,6 +10,8 @@ tags:
 series: "The Hermes 4 Teardown"
 canonical_url: https://jidonglab.com/posts/2026-04-18-hermes-4-part-4-en
 hashnode_url: 'https://plzai.hashnode.dev/2026-04-18-hermes-4-production-checklist'
+id: 3527813
+date: '2026-04-20T15:42:19Z'
 ---
 
 Four posts, one question that actually matters: should you ship this thing?
