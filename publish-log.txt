@@ -1,5 +1,5 @@
 Fetching existing articles from DEV.to ...
-  Found 144 existing article(s) on DEV.to
+  Found 149 existing article(s) on DEV.to
 
 SKIP (korean filename): posts/2026-03-14-anthropic-partner-network-100m-ko.md
 SKIP (korean filename): posts/2026-03-14-gemini-750m-ads-ko.md
@@ -91,8 +91,16 @@ SKIP (build-log): posts/2026-04-16-portfolio-site-build-log-en.md
 SKIP (has id): posts/2026-04-17-hermes-4-405b-teardown-en.md
 SKIP (build-log): posts/2026-04-17-portfolio-site-build-log-en.md
 SKIP (has id): posts/2026-04-18-anthropic-claude-design-launch-2026-en.md
+SKIP (has id): posts/2026-04-18-contextzip-token-savings-en.md
+SKIP (has id): posts/2026-04-18-hermes-4-production-checklist-en.md
 SKIP (has id): posts/2026-04-18-hermes-4-tool-calling-en.md
+SKIP (has id): posts/2026-04-18-hermes-4-training-stack-en.md
 SKIP (build-log): posts/2026-04-18-portfolio-site-build-log-en.md
+SKIP (build-log): posts/2026-04-19-portfolio-site-build-log-en.md
+SKIP (has id): posts/2026-04-19-spoonai-ai-newsletter-en.md
+SKIP (build-log): posts/2026-04-20-portfolio-site-build-log-en.md
+SKIP (has id): posts/2026-04-21-opus-4-7-swe-bench-87-6-en.md
+SKIP (build-log): posts/2026-04-21-portfolio-site-build-log-en.md
 SKIP (has id): posts/agentcrow-launch-en.md
 SKIP (has id): posts/ai-agent-i18n-tarot-compatibility-en.md
 SKIP (has id): posts/ai-content-full-automation-en.md
