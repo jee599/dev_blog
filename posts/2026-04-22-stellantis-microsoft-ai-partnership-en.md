@@ -9,6 +9,8 @@ tags:
   - enterprise
 canonical_url: https://jidonglab.com/posts/2026-04-22-stellantis-microsoft-ai-en
 hashnode_url: 'https://plzai.hashnode.dev/2026-04-22-stellantis-microsoft-ai-partnership'
+id: 3531246
+date: '2026-04-21T09:58:13.358Z'
 ---
 
 14 brands, 5 years, one hyperscaler. That's the entire structural diagram of the Stellantis-Microsoft partnership announced April 19, 2026. The deal value was not disclosed, the specific AI models were not named, and the word "co-develop" was used in a press release — which tells you almost everything you need to know.

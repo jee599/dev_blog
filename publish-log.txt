@@ -1,5 +1,5 @@
 Fetching existing articles from DEV.to ...
-  Found 151 existing article(s) on DEV.to
+  Found 152 existing article(s) on DEV.to
 
 SKIP (korean filename): posts/2026-03-14-anthropic-partner-network-100m-ko.md
 SKIP (korean filename): posts/2026-03-14-gemini-750m-ads-ko.md
@@ -103,6 +103,11 @@ SKIP (has id): posts/2026-04-21-adobe-cx-enterprise-mcp-en.md
 SKIP (has id): posts/2026-04-21-deezer-44-percent-ai-music-en.md
 SKIP (has id): posts/2026-04-21-opus-4-7-swe-bench-87-6-en.md
 SKIP (build-log): posts/2026-04-21-portfolio-site-build-log-en.md
+
+PUBLISHING: posts/2026-04-22-stellantis-microsoft-ai-partnership-en.md
+  title: Stellantis Just Outsourced Its AI Moat to Microsoft. Expect GM, Ford, and VW to Follow.
+  tags: ['ai', 'automotive', 'microsoft', 'enterprise']
+  DUPLICATE found on DEV.to (id=3531246) — writing id to file
 SKIP (has id): posts/agentcrow-launch-en.md
 SKIP (has id): posts/ai-agent-i18n-tarot-compatibility-en.md
 SKIP (has id): posts/ai-content-full-automation-en.md
@@ -210,4 +215,4 @@ SKIP (has id): posts/trading-bot-win-rate-lie-en.md
 SKIP (korean filename): posts/trading-bot-win-rate-lie-ko.md
 SKIP (has id): posts/writing-claude-code-book-with-claude-code-en.md
 
-Done: 0 published, 2 failed
+Done: 1 published, 2 failed
