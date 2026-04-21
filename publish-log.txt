@@ -100,11 +100,7 @@ SKIP (build-log): posts/2026-04-19-portfolio-site-build-log-en.md
 SKIP (has id): posts/2026-04-19-spoonai-ai-newsletter-en.md
 SKIP (build-log): posts/2026-04-20-portfolio-site-build-log-en.md
 SKIP (has id): posts/2026-04-21-adobe-cx-enterprise-mcp-en.md
-
-PUBLISHING: posts/2026-04-21-deezer-44-percent-ai-music-en.md
-  title: 44% of New Music on Deezer Is AI. Only 0.5% of Streams Are. Read That Twice.
-  tags: ['ai', 'machinelearning', 'music', 'opinion']
-  DUPLICATE found on DEV.to (id=3529639) — writing id to file
+SKIP (has id): posts/2026-04-21-deezer-44-percent-ai-music-en.md
 SKIP (has id): posts/2026-04-21-opus-4-7-swe-bench-87-6-en.md
 SKIP (build-log): posts/2026-04-21-portfolio-site-build-log-en.md
 SKIP (has id): posts/agentcrow-launch-en.md
@@ -214,4 +210,4 @@ SKIP (has id): posts/trading-bot-win-rate-lie-en.md
 SKIP (korean filename): posts/trading-bot-win-rate-lie-ko.md
 SKIP (has id): posts/writing-claude-code-book-with-claude-code-en.md
 
-Done: 1 published, 2 failed
+Done: 0 published, 2 failed
