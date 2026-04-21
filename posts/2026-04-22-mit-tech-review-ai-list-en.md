@@ -9,6 +9,8 @@ tags:
   - analysis
 canonical_url: https://jidonglab.com/posts/2026-04-22-mit-tr-ai-list-en
 hashnode_url: 'https://plzai.hashnode.dev/2026-04-22-mit-tech-review-ai-list'
+id: 3532691
+date: '2026-04-21T15:58:19.081Z'
 ---
 
 When a publication that has run a single annual list for 22 years decides it needs two lists, that's the story. MIT Technology Review unveiled "10 Things That Matter in AI Right Now" at EmTech AI on April 21, 2026 — a brand-new annual franchise, carved directly out of their long-running "10 Breakthrough Technologies." The actual 10 items matter less than the structural decision to create the list in the first place.
