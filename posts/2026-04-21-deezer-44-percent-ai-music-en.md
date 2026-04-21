@@ -9,6 +9,8 @@ tags:
   - opinion
 canonical_url: https://jidonglab.com/posts/2026-04-21-deezer-ai-music-en
 hashnode_url: 'https://plzai.hashnode.dev/2026-04-21-deezer-44-percent-ai-music'
+id: 3529639
+date: '2026-04-21T03:58:05.684Z'
 ---
 
 44% of new music uploaded to Deezer is AI-generated. It captures 0.5% of actual streams. That gap is not a quality problem — it's a business model.
