@@ -103,11 +103,7 @@ SKIP (has id): posts/2026-04-21-adobe-cx-enterprise-mcp-en.md
 SKIP (has id): posts/2026-04-21-deezer-44-percent-ai-music-en.md
 SKIP (has id): posts/2026-04-21-opus-4-7-swe-bench-87-6-en.md
 SKIP (build-log): posts/2026-04-21-portfolio-site-build-log-en.md
-
-PUBLISHING: posts/2026-04-22-mit-tech-review-ai-list-en.md
-  title: MIT Tech Review Just Split Its \"Breakthrough\" List. That's the Story.
-  tags: ['ai', 'research', 'media', 'analysis']
-  DUPLICATE found on DEV.to (id=3532691) — writing id to file
+SKIP (has id): posts/2026-04-22-mit-tech-review-ai-list-en.md
 SKIP (build-log): posts/2026-04-22-portfolio-site-build-log-en.md
 SKIP (has id): posts/2026-04-22-stellantis-microsoft-ai-partnership-en.md
 SKIP (has id): posts/agentcrow-launch-en.md
@@ -217,4 +213,4 @@ SKIP (has id): posts/trading-bot-win-rate-lie-en.md
 SKIP (korean filename): posts/trading-bot-win-rate-lie-ko.md
 SKIP (has id): posts/writing-claude-code-book-with-claude-code-en.md
 
-Done: 1 published, 2 failed
+Done: 0 published, 2 failed
