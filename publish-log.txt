@@ -106,6 +106,7 @@ SKIP (build-log): posts/2026-04-21-portfolio-site-build-log-en.md
 SKIP (has id): posts/2026-04-22-mit-tech-review-ai-list-en.md
 SKIP (build-log): posts/2026-04-22-portfolio-site-build-log-en.md
 SKIP (has id): posts/2026-04-22-stellantis-microsoft-ai-partnership-en.md
+SKIP (build-log): posts/2026-04-23-portfolio-site-build-log-en.md
 SKIP (has id): posts/agentcrow-launch-en.md
 SKIP (has id): posts/ai-agent-i18n-tarot-compatibility-en.md
 SKIP (has id): posts/ai-content-full-automation-en.md
