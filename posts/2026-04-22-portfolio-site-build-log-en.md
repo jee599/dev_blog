@@ -1,7 +1,7 @@
 ---
-title: "3 Prompts, 106 Tool Calls, 14 Components: How Claude Code Rebuilt a Portfolio Homepage"
+title: "Static Bundle → Astro Native: 3 Prompts, 106 Tool Calls, 14 Components"
 published: true
-description: "Three one-liners triggered a full Astro-native home rebuild. What 106 tool calls and 3h26m of Claude Code actually look like."
+description: "Three vague one-liners sent Claude Code on a 3h26m autonomous rebuild — diagnosing stack incompatibility, pivoting without being asked, and shipping 14 native Astro/React components."
 tags: claudecode, astro, ai, webdev
 series: "Building with Claude Code: portfolio-site"
 canonical_url: https://jidonglab.com/posts/2026-04-22-portfolio-site-en
@@ -9,11 +9,11 @@ canonical_url: https://jidonglab.com/posts/2026-04-22-portfolio-site-en
 
 Three prompts. 106 tool calls. 3 hours and 26 minutes. Fourteen components rebuilt from scratch.
 
-**TL;DR** — I tried to port an existing Vite+React static bundle into an Astro-based portfolio site. Claude hit a structural incompatibility, recognized the mismatch, and pivoted to rebuilding everything natively inside `src/components/home/`. I typed three lines the whole session.
+**TL;DR** The goal was to port an existing Vite+React static bundle into an Astro portfolio. The stacks are structurally incompatible — a static bundle has no path to Astro's Content Collections, shared components, or build pipeline. Claude Code diagnosed this without being told, proposed a native rebuild, and executed it. The user typed three lines total.
 
 ## "Apply Everything in the Deploy Folder to Jidonglab"
 
-That was the first prompt. Here's the complete user input for the entire 3h26m session:
+The full user input for the entire 3h26m session:
 
 > "apply everything in the deploy folder to jidonglab"
 
@@ -21,9 +21,9 @@ That was the first prompt. Here's the complete user input for the entire 3h26m s
 
 > "just do whatever you recommend"
 
-No spec. No component list. No architecture instructions. Claude had to figure out what "deploy folder," "jidonglab," and "whatever you recommend" actually meant before touching a single file.
+No file paths. No component list. No architecture guidance. Before touching a single file, Claude Code had to parse what each of those sentences actually meant — and in doing so, make every consequential decision in the session.
 
-The first move was locating the deploy folder — it wasn't in the obvious place. Several Bash calls later, it turned up: a self-contained Vite+React static bundle with six files.
+The first move was finding the `deploy` folder. It wasn't in the expected location. Several Bash calls across different directory paths later, it surfaced: a self-contained Vite+React static bundle with six files, ~103KB total.
 
 ```
 deploy/
@@ -35,38 +35,44 @@ deploy/
 └── thumbnails.jsx
 ```
 
-Total: ~103KB. A standalone SPA that builds independently, with its own bundler config and no connection to anything external.
+Then mapping "jidonglab." That resolved to `~/portfolio/portfolio-site/` — the codebase behind `jidonglab.com`. A structure scan returned: Astro 4 + React + Tailwind, with Content Collections wired up for `build-logs`, `tips`, `ai-news`, and `projects`.
 
-Next was finding "jidonglab." That resolved to `~/portfolio/portfolio-site/` — the codebase behind `jidonglab.com`. A structure scan revealed Astro 4 + React + Tailwind, with Content Collections wired up for `build-logs`, `tips`, and `ai-news`.
-
-Before touching anything, Claude surfaced a warning:
+Before writing anything, Claude surfaced a warning:
 
 > "Replacing the existing index.astro (19.2KB of Astro-native home page) with a simple redirect is pretty destructive."
 
-With a clean git working tree confirmed, it ran the first attempt anyway: copied the six bundle files into `public/jidonglab-home/` and swapped `src/pages/index.astro` with a 580-byte redirect.
+With a clean git working tree confirmed, it ran a safe first attempt anyway — copied the six bundle files into `public/jidonglab-home/` and replaced `src/pages/index.astro` with a 580-byte redirect. Easy to validate, easy to revert.
 
-## Why Dropping a Vite Bundle into Astro Doesn't Work
+## Why Dropping a Vite Bundle into Astro Breaks
 
-"Show me the preview" triggered a local HTTP server spin-up and a headless Chrome screenshot. The hero section rendered. But the structural problem was obvious.
+"Show me the preview" triggered a local HTTP server, headless Chrome, and a screenshot.
 
-The deploy bundle is a standalone app. Its `index.html` loads JSX directly. Its build output assumes its own bundler. None of that wires into Astro's build pipeline. More concretely:
+The hero section rendered. The rest didn't connect to anything useful.
 
-- No path to Content Collections (`build-logs`, `tips`, `ai-news`)
-- Can't reuse existing `PostCard`, `ProjectCard`, or layout components
-- CSS lives in its own scope, disconnected from Tailwind
-- Any dynamic data would need a separate fetch layer, defeating the point
+The issue isn't a missing config. A Vite+React static bundle is a fully self-contained application. Its `index.html` imports JSX directly. Its output assumes its own bundler pipeline. Serving it from Astro via redirect means it runs in a completely separate rendering context:
 
-Dropping a Vite bundle into an Astro project via redirect means running two parallel worlds that never talk. The existing Astro infrastructure — Content Collections, shared components, Tailwind design tokens — becomes unreachable from the new homepage. It's not a port; it's a parallel deployment hidden behind a redirect.
+- **Content Collections are unreachable.** `build-logs`, `tips`, and `ai-news` exist only inside Astro's build-time data layer. A static bundle served from `public/` has no mechanism to query them.
+- **Shared components can't be imported.** Existing `PostCard`, `ProjectCard`, and layout components are Astro/React files compiled by Astro. A separate Vite app can't reference them.
+- **Tailwind tokens don't cross the boundary.** The bundle's own CSS scopes styles independently — no alignment with the site's design system.
+- **Any dynamic data needs a separate fetch layer.** Which defeats the point of Content Collections entirely.
 
-## "Just Do Whatever You Recommend"
+The end result of keeping the bundle: two unrelated applications sharing a domain, with no shared state, no shared components, no shared data. Not a port — a parallel deployment hiding behind a redirect.
 
-That third prompt was the pivot point. Claude's response:
+## The Architecture Decision Claude Made Without Being Asked
+
+When "just do whatever you recommend" arrived, Claude had everything it needed:
 
 > "The deploy bundle is a static package. Using it as-is completely isolates it from Content Collections. We need to reimplement it natively on the Astro stack."
 
-It created `src/components/home/` and split the UI into 12 components by section.
+This is the session's defining moment. The user gave no architectural guidance. Claude Code evaluated the options — keep the bundle (fast, but produces broken integration) versus native rebuild (correct, but significantly more work) — and chose the rebuild. Then executed it.
 
-## The 14-File Native Rebuild
+No proposal. No "here are three approaches." A decision, then implementation.
+
+This is what makes Claude Code useful as an AI automation layer rather than a fancy autocomplete: it can evaluate constraints in context, identify the correct solution, and execute without needing to be guided step-by-step through the reasoning.
+
+## 14 Files, Built in Astro-Native
+
+`src/components/home/` was created from scratch. Components split along a single axis: static rendering vs. interactivity.
 
 | File | Type | Role |
 |---|---|---|
@@ -83,45 +89,57 @@ It created `src/components/home/` and split the UI into 12 components by section
 | `Wordmark.astro` | Astro | Logo mark |
 | `Writing.astro` | Astro | Post list section |
 
-Plus `src/data/home.ts` for extracted data, and a rebuilt `src/pages/index.astro` that composes these components instead of redirecting.
+Hardcoded data moved to `src/data/home.ts`. `src/pages/index.astro` became a composition page assembling these components rather than a redirect.
 
-The Astro vs React split is intentional. Static sections — navigation, footer, post lists, about — are Astro components. Zero JS in the bundle unless needed. Interactive sections — hero, gallery, thumbnails — are React with `client:load`. The goal: minimize client-side JS while preserving interactivity where it actually matters.
+The Astro vs React split is load-bearing, not stylistic. Astro components ship zero JavaScript by default. React only enters the client bundle where interactivity is required — hero animations, gallery state, thumbnail behavior — using `client:load`. Everything else stays in `.astro`.
 
-## 106 Tool Calls: Where They Went
+The result: `ShipLog.astro` and `Writing.astro` read directly from Content Collections at build time. That's functionality the original static bundle had no path to, regardless of how much configuration you threw at it.
 
-| Tool | Count | What it was doing |
+## 106 Tool Calls: The Full Breakdown
+
+| Tool | Count | Purpose |
 |---|---|---|
-| Bash | 40 | Folder discovery, local server, headless screenshots |
-| Read | 17 | Parsing existing components and schemas |
-| Write | 15 | Creating new components and data files |
+| Bash | 40 | Folder discovery, local dev server, headless screenshots |
+| Read | 17 | Existing components and schemas |
+| Write | 15 | New components and data files |
 | TaskUpdate | 14 | Progress tracking |
-| TaskCreate | 7 | Breaking down subtasks |
-| ToolSearch | 4 | Resolving tool schemas |
+| TaskCreate | 7 | Subtask decomposition |
+| ToolSearch | 4 | Tool schema resolution |
 | Glob + Grep | 6 | File traversal |
 
-**Edit: 0.** Everything was a fresh `Write` — no in-place modifications. `index.astro` went through three full rewrites: redirect → empty composition shell → final rebuild. Each pass was a complete file replacement.
+**Edit count: 0.** Every output file was a fresh `Write` — no diffs applied to existing code. `index.astro` itself went through three complete rewrites across the session:
 
-The 40 Bash calls break down roughly as: ~15 for folder and repo discovery in the first third of the session, ~15 for running the local dev server and capturing screenshots, ~10 for miscellaneous checks. There's a failed attempt in there too — Claude tried to capture a full-page scroll via Chrome DevTools Protocol, ran into permission issues, and fell back to viewport-only screenshots.
+1. 580-byte redirect pointing to the static bundle
+2. Empty composition scaffold (components imported but unstyled)
+3. Final rebuilt home page
+
+Each transition was a full `Write`. When direction changed, the file got replaced entirely rather than patched incrementally.
+
+The 40 Bash calls break down roughly: ~15 for folder and repo discovery in the first 20 minutes, ~15 for dev server management and headless screenshot capture, ~10 for miscellaneous checks. There's a failure in the screenshot bucket — Claude tried scroll-capture via Chrome DevTools Protocol, hit permission issues, and fell back to viewport-only screenshots.
 
 ## Short Prompts Shift the Exploration Cost to the Agent
 
-This is the session's core pattern. "Apply everything in the deploy folder to jidonglab" is seven words. For Claude, those seven words meant:
+This session exposes a specific pattern in how Claude Code handles vague input.
 
-1. Find the deploy folder (multiple Bash calls)
-2. Find the jidonglab repo
-3. Read the current `index.astro` structure
-4. Assess stack compatibility
-5. Identify the mismatch
-6. Propose an alternative
-7. Execute the rebuild
+"Apply everything in the deploy folder to jidonglab" required five sequential decisions before a single file was written:
 
-That's the exploration cost that ambiguous prompts carry. The user provides direction; the agent handles every judgment call in between. "Just do whatever you recommend" delegated an entire architecture decision — which components to build, how to split Astro vs React, where data lives — to Claude.
+1. Where is the deploy folder?
+2. Where is the jidonglab repo?
+3. What does the current `index.astro` look like?
+4. Are these stacks compatible?
+5. If not — what's the alternative, and how should it be built?
 
-It's not a worse way to work. It's a different allocation of where the cost lands:
+A more precise prompt might have pre-answered some of these. It also would have constrained the solution space. If the user had specified "port the deploy bundle by wrapping it in an Astro page component," Claude would have built exactly that — broken Content Collections integration and all. The spec would have been satisfied. The result would have been wrong.
 
-> Ambiguous prompts lower your decision overhead and raise the agent's tool call count. Precise prompts do the opposite.
+"Just do whatever you recommend" handed over the architecture decision entirely. The 14-component structure, the Astro/React split boundary, where data lives — all of it was the agent's judgment call. The user reviewed the output and accepted it.
 
-Neither is free. The tradeoff is where the time goes — and who makes the calls along the way.
+Short prompts in Claude Code aren't sloppy. They're a deliberate tradeoff in how you use it as an AI automation tool:
+
+> Set the direction. Delegate the decisions. Short prompts raise the tool call count — they also raise decision-making speed.
+
+The exploration overhead — roughly 20 of 40 Bash calls, concentrated in the first 20 minutes — is the cost of keeping the prompt ambiguous. The payoff: no spec to write, no stack decisions to make upfront, and an architecture that fits the actual constraints of the codebase rather than a prompt written before anyone looked at the code.
+
+106 tool calls across 3.5 hours for a 14-component rebuild isn't inefficiency. It's what Claude Code autonomous execution looks like when input is intentionally sparse — the agent fronts the exploration cost so the user doesn't have to.
 
 ---
 
