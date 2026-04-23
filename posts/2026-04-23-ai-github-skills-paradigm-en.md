@@ -11,6 +11,8 @@ cover_image: https://r2.jidonglab.com/blog/2026/04/ai-github-skills-paradigm-her
 canonical_url: https://jidonglab.com/posts/2026-04-23-ai-github-skills-paradigm-en
 series: "The 2026 AI GitHub Playbook"
 hashnode_url: 'https://plzai.hashnode.dev/2026-04-23-ai-github-skills-paradigm'
+id: 3542024
+date: '2026-04-23T14:55:35.047Z'
 ---
 
 A markdown file got 16,500 GitHub stars in less than a week. It contained no code. It was not a library, not a framework, not a CLI. It was a prompt — specifically, a `CLAUDE.md` file distilling [Andrej Karpathy's](https://x.com/karpathy) observations about where LLM coding agents tend to fail.

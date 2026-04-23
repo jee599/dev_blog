@@ -1,5 +1,5 @@
 Fetching existing articles from DEV.to ...
-  Found 153 existing article(s) on DEV.to
+  Found 154 existing article(s) on DEV.to
 
 SKIP (korean filename): posts/2026-03-14-anthropic-partner-network-100m-ko.md
 SKIP (korean filename): posts/2026-03-14-gemini-750m-ads-ko.md
@@ -106,7 +106,27 @@ SKIP (build-log): posts/2026-04-21-portfolio-site-build-log-en.md
 SKIP (has id): posts/2026-04-22-mit-tech-review-ai-list-en.md
 SKIP (build-log): posts/2026-04-22-portfolio-site-build-log-en.md
 SKIP (has id): posts/2026-04-22-stellantis-microsoft-ai-partnership-en.md
+
+PUBLISHING: posts/2026-04-23-ai-github-skills-paradigm-en.md
+  title: How a Markdown File Hit 16K Stars: Skills in 2026
+  tags: ['ai', 'opensource', 'agents', 'webdev']
+  DUPLICATE found on DEV.to (id=3542024) — writing id to file
 SKIP (build-log): posts/2026-04-23-portfolio-site-build-log-en.md
+SKIP (build-log): posts/2026-04-24-portfolio-site-build-log-en.md
+
+PUBLISHING: posts/2026-04-25-openclaw-local-gateway-en.md
+  title: OpenClaw Hit 295K Stars. The Reason Isn't What You Think.
+  tags: ['ai', 'opensource', 'agents', 'webdev']
+  creating article (published=False) ...
+  create result: HTTP 201
+  DRAFT id=3542304 date=draft
+
+PUBLISHING: posts/2026-04-27-opencode-terminal-agents-en.md
+  title: OpenCode Hit 140K Stars. Why Terminal Agents Won 2026.
+  tags: ['ai', 'opensource', 'agents', 'webdev']
+  creating article (published=False) ...
+  create result: HTTP 201
+  DRAFT id=3542310 date=draft
 SKIP (has id): posts/agentcrow-launch-en.md
 SKIP (has id): posts/ai-agent-i18n-tarot-compatibility-en.md
 SKIP (has id): posts/ai-content-full-automation-en.md
@@ -214,4 +234,4 @@ SKIP (has id): posts/trading-bot-win-rate-lie-en.md
 SKIP (korean filename): posts/trading-bot-win-rate-lie-ko.md
 SKIP (has id): posts/writing-claude-code-book-with-claude-code-en.md
 
-Done: 0 published, 2 failed
+Done: 3 published, 2 failed

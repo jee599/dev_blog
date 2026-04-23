@@ -10,6 +10,8 @@ tags:
 cover_image: https://r2.jidonglab.com/blog/2026/04/openclaw-local-gateway-hero.jpg
 canonical_url: https://jidonglab.com/posts/2026-04-25-openclaw-local-gateway-en
 series: "The 2026 AI GitHub Playbook"
+id: 3542304
+date: 'draft'
 ---
 
 295,000 GitHub stars in ten weeks. Nearly 2,000 contributors. A rename forced by Anthropic's trademark lawyers, then another rename because the first rename "never quite rolled off the tongue." The single fastest-growing open source project in the history of software.

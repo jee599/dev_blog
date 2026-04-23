@@ -10,6 +10,8 @@ tags:
 cover_image: https://r2.jidonglab.com/blog/2026/04/opencode-terminal-agents-hero.jpg
 canonical_url: https://jidonglab.com/posts/2026-04-27-opencode-terminal-agents-en
 series: "The 2026 AI GitHub Playbook"
+id: 3542310
+date: 'draft'
 ---
 
 140,000 stars. 850 contributors. 11,000 commits. 6.5 million developers using it every month. Zero IDE integration.
