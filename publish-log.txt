@@ -108,11 +108,7 @@ SKIP (build-log): posts/2026-04-22-portfolio-site-build-log-en.md
 SKIP (has id): posts/2026-04-22-stellantis-microsoft-ai-partnership-en.md
 SKIP (has id): posts/2026-04-23-ai-github-skills-paradigm-en.md
 SKIP (build-log): posts/2026-04-23-portfolio-site-build-log-en.md
-
-PUBLISHING: posts/2026-04-24-openai-gpt-5-5-spud-en.md
-  title: Why OpenAI Shipped GPT-5.5 Just 6 Weeks After 5.4
-  tags: ['ai', 'openai', 'webdev', 'productivity']
-  DUPLICATE found on DEV.to (id=3543507) — writing id to file
+SKIP (has id): posts/2026-04-24-openai-gpt-5-5-spud-en.md
 SKIP (build-log): posts/2026-04-24-portfolio-site-build-log-en.md
 SKIP (has id): posts/2026-04-25-openclaw-local-gateway-en.md
 SKIP (has id): posts/2026-04-27-opencode-terminal-agents-en.md
@@ -223,4 +219,4 @@ SKIP (has id): posts/trading-bot-win-rate-lie-en.md
 SKIP (korean filename): posts/trading-bot-win-rate-lie-ko.md
 SKIP (has id): posts/writing-claude-code-book-with-claude-code-en.md
 
-Done: 1 published, 2 failed
+Done: 0 published, 2 failed
