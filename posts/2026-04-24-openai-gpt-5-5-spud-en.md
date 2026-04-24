@@ -10,6 +10,7 @@ tags:
 cover_image: https://r2.jidonglab.com/blog/2026/04/openai-gpt-5-5-spud-hero.jpg
 canonical_url: https://jidonglab.com/blog/openai-gpt-5-5-spud
 series: "OpenAI Super App Roadmap"
+hashnode_url: 'https://plzai.hashnode.dev/2026-04-24-openai-gpt-5-5-spud'
 ---
 
 Six weeks. That's how long it took OpenAI to ship GPT-5.5 after 5.4. Until this year, frontier labs did that in quarters.
