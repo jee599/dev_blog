@@ -10,6 +10,7 @@ tags:
 cover_image: https://r2.jidonglab.com/blog/2026/04/openai-super-app-duct-tape-spud-hero.jpg
 canonical_url: https://jidonglab.com/blog/openai-super-app-duct-tape-spud
 series: "OpenAI Super App Roadmap"
+hashnode_url: 'https://plzai.hashnode.dev/2026-04-25-openai-super-app-duct-tape-spud'
 ---
 
 Six weeks ago OpenAI tested an anonymous image model on LM Arena under codenames like `packingtape-alpha` and `gaffertape-alpha`. Yesterday they shipped GPT-5.5. The word Greg Brockman used on release day was "super app."
