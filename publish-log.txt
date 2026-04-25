@@ -113,6 +113,7 @@ SKIP (build-log): posts/2026-04-24-portfolio-site-build-log-en.md
 SKIP (has id): posts/2026-04-25-openai-super-app-duct-tape-spud-en.md
 SKIP (has id): posts/2026-04-25-openclaw-local-gateway-en.md
 SKIP (build-log): posts/2026-04-25-portfolio-site-build-log-en.md
+SKIP (build-log): posts/2026-04-26-portfolio-site-build-log-en.md
 SKIP (has id): posts/2026-04-27-opencode-terminal-agents-en.md
 SKIP (has id): posts/agentcrow-launch-en.md
 SKIP (has id): posts/ai-agent-i18n-tarot-compatibility-en.md
