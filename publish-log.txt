@@ -117,6 +117,7 @@ SKIP (build-log): posts/2026-04-26-portfolio-site-build-log-en.md
 SKIP (has id): posts/2026-04-27-opencode-terminal-agents-en.md
 SKIP (build-log): posts/2026-04-27-portfolio-site-build-log-en.md
 SKIP (build-log): posts/2026-04-28-portfolio-site-build-log-en.md
+SKIP (build-log): posts/2026-04-28-saju-global-build-log-en.md
 SKIP (has id): posts/agentcrow-launch-en.md
 SKIP (has id): posts/ai-agent-i18n-tarot-compatibility-en.md
 SKIP (has id): posts/ai-content-full-automation-en.md
