@@ -7,6 +7,8 @@ cover_image: https://r2.jidonglab.com/blog/2026/04/gpt-5-5-codex-vs-5-3-comparis
 canonical_url: https://jidonglab.com/blog/gpt-5-5-codex-vs-5-3-comparison
 series: "Codex April 2026 Deep Dive"
 hashnode_url: 'https://plzai.hashnode.dev/2026-04-30-gpt-5-5-codex-vs-5-3-comparison'
+id: 3592359
+date: '2026-04-30T15:00:02.813Z'
 ---
 
 On a 200-task bench split across a TypeScript SaaS and a Python ML pipeline, [GPT-5.5-Codex](https://developers.openai.com/codex/models) closed 81% of tasks unattended versus 67% for [GPT-5.3-Codex](https://openai.com/index/introducing-gpt-5-3-codex/), and burned 38% fewer reasoning tokens on the multi-step ones. But on trivial single-file edits it was 22% slower wall-clock. The default-everything answer is wrong; the right answer is "route by complexity."

@@ -7,6 +7,8 @@ cover_image: https://r2.jidonglab.com/blog/2026/04/openai-symphony-codex-orchest
 canonical_url: https://jidonglab.com/blog/openai-symphony-codex-orchestration-linear
 series: "Codex April 2026 Deep Dive"
 hashnode_url: 'https://plzai.hashnode.dev/2026-04-30-openai-symphony-codex-orchestration-linear'
+id: 3592373
+date: '2026-04-30T15:01:14.098Z'
 ---
 
 OpenAI's internal teams landed five times more pull requests in the three weeks after they switched on [Symphony](https://github.com/openai/symphony). Not 50% more. Five hundred percent more, on the same headcount, in 21 days. That single number is why I cloned the repo the day it dropped.
