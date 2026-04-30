@@ -6,6 +6,7 @@ tags: [ai, typescript, webdev, openai]
 cover_image: https://r2.jidonglab.com/blog/2026/04/embedding-codex-app-server-sdk-hero.jpg
 canonical_url: https://jidonglab.com/blog/embedding-codex-app-server-sdk
 series: "Codex April 2026 Deep Dive"
+hashnode_url: 'https://plzai.hashnode.dev/2026-04-30-embedding-codex-app-server-sdk'
 ---
 
 The interesting thing about the April 2026 [Codex](https://openai.com/index/codex-now-generally-available/) update isn't computer use. It isn't the model bump either. The real story is that Codex stopped being a CLI.

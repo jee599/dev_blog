@@ -6,6 +6,7 @@ tags: [ai, webdev, openai, productivity]
 cover_image: https://r2.jidonglab.com/blog/2026/04/gpt-image-2-codex-frontend-workflow-hero.jpg
 canonical_url: https://jidonglab.com/blog/gpt-image-2-codex-frontend-workflow
 series: "Codex April 2026 Deep Dive"
+hashnode_url: 'https://plzai.hashnode.dev/2026-04-30-gpt-image-2-codex-frontend-workflow'
 ---
 
 Last quarter I shipped a single landing hero with 47 image iterations across four tools. This week I shipped three landing pages, two onboarding flows, and a full pricing section in the same tool I write code in. The thing that broke the loop is not faster pixels, it is reasoning before pixels.

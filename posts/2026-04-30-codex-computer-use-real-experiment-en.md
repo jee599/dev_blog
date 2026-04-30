@@ -6,6 +6,7 @@ tags: [ai, productivity, webdev, automation]
 cover_image: https://r2.jidonglab.com/blog/2026/04/codex-computer-use-real-experiment-hero.jpg
 canonical_url: https://jidonglab.com/blog/codex-computer-use-real-experiment
 series: "Codex April 2026 Deep Dive"
+hashnode_url: 'https://plzai.hashnode.dev/2026-04-30-codex-computer-use-real-experiment'
 ---
 
 At 9:14 a.m. on a Tuesday I watched my cursor drift across the menu bar without me touching the trackpad. It hovered over the Numbers icon, paused, then double-clicked. A spreadsheet I had not opened in three weeks slid into focus, and a new column appeared cell by cell while my hands sat in my lap.
