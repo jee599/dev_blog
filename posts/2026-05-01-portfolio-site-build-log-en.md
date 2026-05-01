@@ -1,111 +1,135 @@
 ---
-title: "12 Parallel Claude Code Agents, 144 Tool Calls: Mapping an Entire Market in Two Days"
+title: "12 Parallel Subagents, 276 Tool Calls: Surveying an Entire Ad Market in One Day"
 published: true
-description: "12 Claude Code subagents in parallel, 144 tool calls: surveyed 60 Korean AI medical ad companies, generated 8 HTML reports, published 5 DEV.to posts."
-tags: claudecode, ai, productivity, automation
+description: "12 Claude Code subagents in parallel, 276 tool calls across 4 sessions: surveyed Korea's AI dental ad market, generated 7 HTML reports, published 5 DEV.to posts."
+tags: claudecode, agents, research, automation
 series: "Building with Claude Code: portfolio-site"
 canonical_url: https://jidonglab.com/posts/2026-05-01-portfolio-site-en
 ---
 
-60 companies surveyed. 8 HTML reports auto-generated. 5 blog posts published to DEV.to. 144 tool calls. Two days of wall-clock time.
+4 sessions. 276 tool calls. In the largest session, 12 subagents ran simultaneously — each assigned a different slice of the Korean AI dental and hospital advertising market.
 
-That's what parallel subagent dispatch looks like in practice with Claude Code.
+**TL;DR** Running 12 subagents in parallel enables research at a scale that's impossible in a single-context session. The same session that produced 7 HTML market reports also shipped 5 DEV.to articles via parallel generation. The key wasn't speed — it was clean domain decomposition before any agent was dispatched.
 
-**TL;DR** For research tasks, running 12 subagents in parallel is roughly 12x faster than doing it solo — but only when your domains don't overlap. Give each agent an exclusive slice of the problem space and a strict output format. Two sessions, 144 tool calls, 8 market analysis files and 5 DEV.to articles shipped.
+## Why the Dental Ad Market Needed 12 Agents
 
-## One Prompt, Twelve Agents
+Korea's AI medical advertising market is fragmented. SEO agencies, short-form video studios, SaaS platforms, and AI content generation tools all compete in overlapping spaces. Surveying them manually would take days.
 
-I wanted to know how many companies in Korea were actually selling AI-powered medical advertising. Google searches returned scattered, incomplete data. So I handed it to Claude Code:
+The input prompt was blunt:
 
-> "Survey all Korean companies doing AI medical advertising. Every single one. Use multiple subagents."
+```
+Survey all Korean companies doing AI-powered dental / hospital advertising.
+Every single company. Everything I need to know.
+Use multiple subagents.
+```
 
-Before dispatching, I decomposed the research domain into 12 non-overlapping categories: AI blog agencies, AI content automation SaaS platforms, Naver Place specialists, Meta/YouTube ad creative generators, medical advertising law consultants, chatbot integrators, and more.
+AgentCrow — the multi-agent orchestration layer built into this project — dispatched 12 agents in parallel. Each one got an exclusive domain. No overlap allowed. The breakdown:
 
-Each category became one `Agent()` call. All 12 calls were bundled into a single message — parallel dispatch. Each agent was responsible for exactly one category and returned results in a consistent HTML section format.
+- Agency type deep dives (3 agents)
+- Real portfolio and output collection (2 agents)
+- Naver algorithm change tracking (2 agents)
+- Regulatory and legal risk analysis (2 agents)
+- Pricing structure and ROI benchmarks (2 agents)
+- Untapped market opportunity mapping (1 agent)
 
-Total overlap: zero. Total wasted research: zero.
+Each agent ran `WebSearch` + `WebFetch` against its own domain only, then returned structured results. Total overlap: zero. Total redundant research: zero.
 
-## What Came Out
-
-Twelve agent outputs merged into eight HTML files:
+## What 12 Agents Produced: 7 HTML Reports
 
 | File | Contents |
 |------|----------|
-| `TREND-COMPARISON-REPORT.html` | 5-year / 1-year / 90-day ad trend comparison |
-| `AI-AGENCIES-DEEP-REPORT.html` | 60 companies across 8 categories with full breakdowns |
+| `TREND-COMPARISON-REPORT.html` | 5-year, 1-year, 90-day trend comparison across 7 axes |
+| `AI-AGENCIES-DEEP-REPORT.html` | 60 companies deconstructed across 9 sections |
 | `AI-AGENCIES-PRIMER.html` | Jargon-free primer for non-specialists |
-| `AI-AGENCIES-EXAMPLES.html` | Real portfolio samples and output gallery |
-| `AI-DENTAL-MASTER.html` + 4 more | Evidence docs, directory index, master summary |
+| `AI-AGENCIES-EXAMPLES.html` | Real output gallery with verified URLs |
+| `AI-DENTAL-MASTER.html` | Consolidated directory of 200+ companies |
+| `AI-DENTAL-AD-HOW-IT-WORKS.html` | Mechanism walkthrough + next action plan, 49KB |
 
-`AI-AGENCIES-DEEP-REPORT.html` alone contains 9 sections, 60 company cards, a pricing comparison table, and ROI analysis. In that single session I invoked `Agent` 47 times. Of the 85 total tool calls in Session 1, 55% were subagent dispatches.
+The final master report inherited the existing design system: Pretendard + IBM Plex Serif, cream paper background (`#f5f3ed`), green accent (`#0d4d3a`). Style continuity with the previous design was intentional — same reader, same visual context.
 
-## Three Conditions for Parallel Dispatch to Work
+The master report itself was assembled in a second pass: 4 background agents ran analysis from different angles simultaneously — output samples, working mechanisms, regulatory/risk/gap analysis, top-company deep dive. Once all 4 completed, a single synthesis pass merged them.
 
-Not every task benefits from parallelization. This one did because three conditions held simultaneously.
+## Publishing 5 DEV.to Articles in the Same Session
 
-**1. Domains were cleanly separated.** "AI blog agencies" and "chatbot integrators" don't share any companies. No agent surveyed the same target twice.
+In the same time window, the `auto-publish` skill shipped a DEV.to series on Codex.
 
-**2. Outputs merged cleanly into a single document.** Each agent returned a self-contained HTML section. Concatenation was the only merge step needed.
+```
+Write 5 DEV.to posts about the latest Codex news.
+GPT Image 2, Symphony, that kind of thing.
+```
 
-**3. Agent count stayed within rate limits.** Twelve agents ran stably. From experience, 5–15 is the reliable band. Go beyond that and you start hitting API rate limits and seeing coordination overhead eat into the gains.
+Flow: parallel `WebSearch` for fresh sources → 5 topic proposals → one approval → 5 agents generating simultaneously.
 
-If any of these three conditions fail, parallel dispatch creates more problems than it solves — duplicate research, inconsistent output formats, or hard-to-debug partial failures.
+| # | Title | Length |
+|---|-------|--------|
+| 1 | GPT Image 2 Inside Codex: My New Frontend Workflow | ~9.0K |
+| 2 | Symphony: Why OpenAI's PRs Jumped 500% in 3 Weeks | ~9.0K |
+| 3 | I Gave Codex My Mouse for a Day | ~9.0K |
+| 4 | Codex vs Claude Code: A Pragmatic Comparison | ~9.0K |
+| 5 | The Reasoning Tax: What O-Series Thinking Costs | ~9.0K |
 
-## The Gotcha: Silent Success Bred Duplicate Files
+All five grouped into the series "Codex April 2026 Deep Dive" and published.
 
-Session 2 was five DEV.to articles about Codex, Symphony, and GPT Image 2.
+## The Gotcha: Tool Calls That Succeeded While Looking Like Failures
 
-During execution, several tool calls appeared to fail — but had actually succeeded on the backend. The agents interpreted the ambiguous responses as failures and retried. Result: 8 draft files on disk when I needed exactly 5.
+During DEV.to article generation, several `Write` calls returned what looked like failure responses. Agents retried. Result: 8 draft files on disk instead of 5.
 
-Fixed it with `Bash` to list and delete the 3 duplicates. Then `git push` was rejected — the CI pipeline had committed ahead of me:
+The actual cause was **silent success** — the tool call completed on the backend but the response arrived late. The agent interpreted the delay as failure and issued a duplicate write.
+
+```
+I see duplicates — earlier "failed" tool calls actually succeeded silently,
+leaving 8 files. Let me clean up and keep the 5 within-spec versions.
+```
+
+After culling to 5 and committing, `git push` was rejected — the CI pipeline had committed ahead of the local branch:
 
 ```bash
 git pull --rebase origin main
 git push
 ```
 
-Claude Code read the rejection error automatically and decided to run `pull --rebase` without prompting — I didn't ask. On repos with active CI pipelines this pattern repeats regularly.
+Claude Code read the rejection error and ran `pull --rebase` without being asked. On repos with active CI this pattern repeats regularly.
 
-The root cause of the duplicate files: no explicit file naming convention in the agent prompts. The fix: always specify it. Something like "output filename must match `YYYY-MM-DD-{slug}-en.md` exactly." Without that constraint, each agent makes its own naming decision and you get collisions.
+Root cause of the duplicate files: no explicit filename convention was given in the agent prompts. Without a constraint like "output filename must match `YYYY-MM-DD-{slug}-en.md` exactly," each agent makes its own naming decision. With 5 agents running simultaneously, those independent decisions produce collisions.
 
-## Session 2: Keyword to Published Posts
+**Fix: always specify naming conventions upfront.** It's a one-line addition to each agent prompt and eliminates an entire class of parallel-dispatch bugs.
 
-Input prompt for the second session:
+## Three Conditions for Parallel Dispatch to Actually Work
 
-> "Write 5 DEV.to posts about the latest Codex news — GPT Image 2, Symphony, that kind of thing"
+Not every task benefits from parallelization. This one did because three conditions held simultaneously.
 
-The `/auto-publish` skill fired `WebSearch` to gather fresh sources, proposed 5 topic drafts, and waited for approval. One `y`. Five agents ran in parallel, each writing one article (~9,000 characters) and publishing via the DEV.to API. All five were grouped into a series automatically.
+**1. Domains were cleanly separated.** "AI blog agencies" and "chatbot integrators" don't share companies. No agent surveyed the same target twice.
 
-| # | Title |
-|---|-------|
-| 1 | GPT Image 2 Inside Codex: My New Frontend Workflow |
-| 2 | Symphony: Why OpenAI's PRs Jumped 500% in 3 Weeks |
-| 3 | I Gave Codex My Mouse for a Day |
-| 4 | Codex + o3: When the Agent Writes the Tests First |
-| 5 | The Codex Failure Modes Nobody Talks About |
+**2. Outputs merged cleanly.** Each agent returned a self-contained HTML section. Concatenation was the only merge step.
 
-## Tool Call Breakdown — 144 Total
+**3. Agent count stayed within a stable band.** 12 agents ran without rate limit issues. From experience, 5–15 is the reliable range for Claude Code's `Agent()` dispatch. Beyond that, coordination overhead starts eating into gains.
+
+If any of these fail, parallel dispatch creates more problems than it solves: duplicate research, inconsistent output formats, hard-to-debug partial failures.
+
+## Tool Call Breakdown — 276 Total
 
 | Tool | Count | Share |
 |------|-------|-------|
-| Agent | 55 | 38% |
-| TaskUpdate | 31 | 22% |
-| Bash | 23 | 16% |
-| TaskCreate | 13 | 9% |
-| Write | 8 | 6% |
-| WebSearch, Read, other | 14 | 9% |
+| Bash | 71 | 26% |
+| Agent | 59 | 21% |
+| TaskUpdate | 55 | 20% |
+| Write | 25 | 9% |
+| TaskCreate | 25 | 9% |
+| Read | 22 | 8% |
+| Edit | 5 | 2% |
+| **Total** | **276** | |
 
-Agent calls at 38% is my personal benchmark for a well-delegated research session. It means most of the actual searching, reading, and writing happened inside subagents rather than inline in the main context. When that number drops below 20%, I'm doing too much myself.
+Agent at 21% of total. Research, generation, and analysis delegated to subagents. `Bash` used primarily for file verification and git operations. 4 sessions total, 25 files created, 4 modified.
 
-## The Real Constraint: Decomposition Before Delegation
+## The Real Prerequisite: Draw the Boundaries Before You Dispatch
 
-> Subagents aren't a speed tool. They multiply throughput only on tasks that already have clear boundaries.
+> Subagents aren't a speed tool. They multiply throughput only when the work already has clean boundaries.
 
-Direction decisions, quality judgment, framing — those stay in the main context. "Write a good article" produces mediocre output. "Write about this topic, with this structure, in this tone, targeting this audience" produces something usable.
+Direction decisions, quality judgment, framing — those stay in the main context. Both sessions started with structure before dispatch. The 12 agents each got a non-overlapping domain. That's what kept them from duplicating effort.
 
-Both sessions pre-defined the structure before dispatching. The decomposition work — deciding which 12 categories to research, defining what each HTML section should contain, choosing which 5 article topics to cover — happened before a single `Agent()` call was made. That's what made the parallel dispatch effective.
+The mental model: parallel dispatch multiplies velocity on work that's already been decomposed. The decomposition itself is non-delegatable.
 
-The mental model: subagents multiply velocity on work that's already been decomposed. Decomposition itself is non-delegatable.
+"Survey everything" is not a decomposed task. "Survey Naver Place optimization companies and return results in this HTML format" is. That distinction is what separates effective multi-agent automation from expensive context thrashing.
 
 ---
 
