@@ -128,6 +128,7 @@ SKIP (has id): posts/2026-04-30-openai-symphony-codex-orchestration-linear-en.md
 SKIP (build-log): posts/2026-04-30-portfolio-site-build-log-en.md
 SKIP (build-log): posts/2026-05-01-portfolio-site-build-log-en.md
 SKIP (build-log): posts/2026-05-02-portfolio-site-build-log-en.md
+SKIP (build-log): posts/2026-05-03-portfolio-site-build-log-en.md
 SKIP (has id): posts/agentcrow-launch-en.md
 SKIP (has id): posts/ai-agent-i18n-tarot-compatibility-en.md
 SKIP (has id): posts/ai-content-full-automation-en.md
