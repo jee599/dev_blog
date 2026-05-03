@@ -6,6 +6,8 @@ tags: [ai, opensource, rust, programming]
 cover_image: https://r2.jidonglab.com/blog/2026/04/openai-codex-open-source-analysis-hero.jpg
 canonical_url: https://jidonglab.com/blog/openai-codex-open-source-analysis
 hashnode_url: 'https://plzai.hashnode.dev/2026-04-02-openai-codex-open-source-analysis'
+id: 3604966
+date: '2026-05-03T17:54:42Z'
 ---
 
 71,700 stars. 5,006 commits. 665 releases. 94.7% Rust. When [OpenAI](https://openai.com/) dropped the full source code of [Codex CLI](https://github.com/openai/codex) under the [Apache 2.0 license](https://www.apache.org/licenses/LICENSE-2.0), I expected a thin wrapper around an API. What I found was a deeply engineered system with over 60 Rust crates, OS-level sandboxing on three platforms, and an agent loop architecture that reveals how OpenAI thinks about local AI tooling.
