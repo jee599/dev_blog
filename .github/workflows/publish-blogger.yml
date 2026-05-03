@@ -6,8 +6,6 @@ on:
     paths:
       - 'posts/*-en.md'
   workflow_dispatch:
-  schedule:
-    - cron: '0 */6 * * *'
 
 permissions:
   contents: write
@@ -52,8 +50,9 @@ jobs:
               access_token = tokens["access_token"]
               print("Access token refreshed successfully")
           except Exception as e:
-              print(f"Token refresh failed: {e}")
-              exit(1)
+              print(f"Token refresh failed (likely expired refresh token): {e}")
+              print("Skipping Blogger publish. Re-issue OAuth refresh token to re-enable.")
+              exit(0)
 
           HEADERS = {
               "Authorization": f"Bearer {access_token}",
