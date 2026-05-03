@@ -10,6 +10,8 @@ tags:
 cover_image: https://r2.jidonglab.com/blog/2026/05/pentagon-anthropic-blacklist-hero.jpg
 canonical_url: https://spoonai.me/posts/2026-05-02-pentagon-anthropic-blacklist-confirmed-en
 hashnode_url: 'https://plzai.hashnode.dev/2026-05-02-pentagon-anthropic-blacklist'
+id: 3604619
+date: '2026-05-03T15:53:14Z'
 ---
 
 The most safety-focused AI lab on the planet just got blacklisted by the Pentagon for being too safe. On May 1, the U.S. Department of Defense signed IL6/IL7 classified AI deals with eight companies. Anthropic — the one that publishes its safety policy — was not on the list.

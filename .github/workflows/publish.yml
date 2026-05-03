@@ -153,9 +153,17 @@ jobs:
               m = re.search(r'^description:\s*["\']?(.*?)["\']?\s*$', fm, re.M)
               desc = m.group(1).strip() if m else ""
               tags = re.findall(r'^\s*-\s*(\w+)', fm, re.M)
+              m = re.search(r'^canonical_url:\s*["\']?(.*?)["\']?\s*$', fm, re.M)
+              canonical = m.group(1).strip() if m else ""
+              m = re.search(r'^cover_image:\s*["\']?(.*?)["\']?\s*$', fm, re.M)
+              cover = m.group(1).strip() if m else ""
 
               log(f"  title: {title}")
               log(f"  tags: {tags}")
+              if canonical:
+                  log(f"  canonical: {canonical}")
+              if cover:
+                  log(f"  cover_image: {cover}")
 
               if has_id and should_publish and current_date == "draft":
                   aid = int(m_id.group(1))
@@ -197,15 +205,18 @@ jobs:
 
               # ── Create article (published or draft based on frontmatter) ──
               log(f"  creating article (published={should_publish}) ...")
-              code, result, hdrs = api_call("POST", f"{BASE}/articles", {
-                  "article": {
-                      "title": title,
-                      "body_markdown": body_md,
-                      "description": desc,
-                      "published": should_publish,
-                      "tags": tags[:4],
-                  }
-              })
+              article_payload = {
+                  "title": title,
+                  "body_markdown": body_md,
+                  "description": desc,
+                  "published": should_publish,
+                  "tags": tags[:4],
+              }
+              if canonical:
+                  article_payload["canonical_url"] = canonical
+              if cover:
+                  article_payload["main_image"] = cover
+              code, result, hdrs = api_call("POST", f"{BASE}/articles", {"article": article_payload})
               log(f"  create result: HTTP {code}")
 
               if code != 201:

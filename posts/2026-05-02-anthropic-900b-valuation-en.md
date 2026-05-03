@@ -10,6 +10,8 @@ tags:
 cover_image: https://r2.jidonglab.com/blog/2026/05/anthropic-900b-valuation-hero.jpg
 canonical_url: https://spoonai.me/posts/2026-05-02-anthropic-900b-valuation-48h-deadline-en
 hashnode_url: 'https://plzai.hashnode.dev/2026-05-02-anthropic-900b-valuation'
+id: 3604615
+date: '2026-05-03T15:52:38Z'
 ---
 
 Three months ago, Anthropic was valued at $380B. Today the number on the table is $900B. That is a 2.4x jump in 90 days, and the round closes in two weeks.
