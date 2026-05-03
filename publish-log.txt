@@ -1,5 +1,5 @@
 Fetching existing articles from DEV.to ...
-  Found 164 existing article(s) on DEV.to
+  Found 165 existing article(s) on DEV.to
 
 SKIP (korean filename): posts/2026-03-14-anthropic-partner-network-100m-ko.md
 SKIP (korean filename): posts/2026-03-14-gemini-750m-ads-ko.md
@@ -57,15 +57,7 @@ SKIP (build-log): posts/2026-03-31-portfolio-site-build-log-en.md
 SKIP (build-log): posts/2026-04-01-portfolio-site-build-log-en.md
 SKIP (has id): posts/2026-04-02-claude-code-source-leak-analysis-en.md
 SKIP (has id): posts/2026-04-02-claude-code-source-practical-guide-en.md
-
-PUBLISHING: posts/2026-04-02-openai-codex-open-source-analysis-en.md
-  title: 71,700 Stars and 60 Rust Crates: Inside OpenAI's Codex CLI Source
-  tags: []
-  canonical: https://jidonglab.com/blog/openai-codex-open-source-analysis
-  cover_image: https://r2.jidonglab.com/blog/2026/04/openai-codex-open-source-analysis-hero.jpg
-  creating article (published=True) ...
-  create result: HTTP 201
-  PUBLISHED id=3604966 date=2026-05-03T17:54:42Z
+SKIP (has id): posts/2026-04-02-openai-codex-open-source-analysis-en.md
 SKIP (has id): posts/2026-04-02-openai-codex-practical-guide-en.md
 SKIP (build-log): posts/2026-04-02-portfolio-site-build-log-en.md
 SKIP (build-log): posts/2026-04-03-portfolio-site-build-log-en.md
@@ -176,12 +168,7 @@ SKIP (has id): posts/contextzip-promo-13-en.md
 SKIP (has id): posts/contextzip-promo-14-en.md
 SKIP (has id): posts/contextzip-promo-15-en.md
 SKIP (has id): posts/contextzip-promo-16-en.md
-
-PUBLISHING: posts/contextzip-promo-17-en.md
-  title: How I Built a 1,056-Test Rust CLI in 3 Weeks
-  tags: ['rust', 'opensource', 'programming', 'ai']
-  canonical: https://github.com/jee599/contextzip
-  DUPLICATE found on DEV.to (id=3511297) — writing id to file
+SKIP (has id): posts/contextzip-promo-17-en.md
 SKIP (has id): posts/contextzip-promo-18-en.md
 SKIP (has id): posts/contextzip-promo-19-en.md
 SKIP (has id): posts/contextzip-promo-20-en.md
@@ -233,4 +220,4 @@ SKIP (has id): posts/trading-bot-win-rate-lie-en.md
 SKIP (korean filename): posts/trading-bot-win-rate-lie-ko.md
 SKIP (has id): posts/writing-claude-code-book-with-claude-code-en.md
 
-Done: 2 published, 0 failed
+Done: 0 published, 0 failed
