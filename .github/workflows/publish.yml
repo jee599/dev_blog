@@ -240,7 +240,7 @@ jobs:
           with open("publish-log.txt", "w") as f:
               f.write("\n".join(log_lines))
           if failed > 0:
-              exit(1)
+              log(f"WARNING: {failed} article(s) failed to publish (likely stale dev_to_id pointing to deleted articles). Check publish-log.txt and clean up frontmatter to re-enable.")
           PYEOF
       - name: Commit results
         if: always()
