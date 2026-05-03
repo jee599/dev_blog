@@ -1,5 +1,5 @@
 Fetching existing articles from DEV.to ...
-  Found 162 existing article(s) on DEV.to
+  Found 164 existing article(s) on DEV.to
 
 SKIP (korean filename): posts/2026-03-14-anthropic-partner-network-100m-ko.md
 SKIP (korean filename): posts/2026-03-14-gemini-750m-ads-ko.md
@@ -61,6 +61,8 @@ SKIP (has id): posts/2026-04-02-claude-code-source-practical-guide-en.md
 PUBLISHING: posts/2026-04-02-openai-codex-open-source-analysis-en.md
   title: 71,700 Stars and 60 Rust Crates: Inside OpenAI's Codex CLI Source
   tags: []
+  canonical: https://jidonglab.com/blog/openai-codex-open-source-analysis
+  cover_image: https://r2.jidonglab.com/blog/2026/04/openai-codex-open-source-analysis-hero.jpg
   creating article (published=True) ...
     attempt 1: HTTP 422
     response body: {"error":"The article you're looking for does not exist: gpt5-codex-5800-line-bootstrap-en","status":422}
@@ -127,6 +129,8 @@ SKIP (has id): posts/2026-04-30-gpt-image-2-codex-frontend-workflow-en.md
 SKIP (has id): posts/2026-04-30-openai-symphony-codex-orchestration-linear-en.md
 SKIP (build-log): posts/2026-04-30-portfolio-site-build-log-en.md
 SKIP (build-log): posts/2026-05-01-portfolio-site-build-log-en.md
+SKIP (has id): posts/2026-05-02-anthropic-900b-valuation-en.md
+SKIP (has id): posts/2026-05-02-pentagon-anthropic-blacklist-en.md
 SKIP (build-log): posts/2026-05-02-portfolio-site-build-log-en.md
 SKIP (build-log): posts/2026-05-03-portfolio-site-build-log-en.md
 SKIP (has id): posts/agentcrow-launch-en.md
@@ -179,6 +183,7 @@ SKIP (has id): posts/contextzip-promo-16-en.md
 PUBLISHING: posts/contextzip-promo-17-en.md
   title: How I Built a 1,056-Test Rust CLI in 3 Weeks
   tags: ['rust', 'opensource', 'programming', 'ai']
+  canonical: https://github.com/jee599/contextzip
   draft detected (id=3512014) -> publish update
     attempt 1: HTTP 404
     response body: {"error":"not found","status":404}
