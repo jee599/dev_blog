@@ -16,7 +16,7 @@ I spent a weekend reading through the repository. This is what I found.
 
 I've been building with AI coding tools for over a year. I wrote about bootstrapping a full pipeline with GPT-5 Codex in a single day, and I've documented my experience running parallel subagents with Claude Code. But every tool I've used has been a black box at some level. The model is remote. The agent logic is proprietary. The sandbox rules are opaque.
 
-{% link gpt5-codex-5800-line-bootstrap-en %}
+> Related: [5,800 Lines in One Day: Bootstrapping a Full Pipeline With gpt-5-codex](https://jidonglab.com/blog/gpt5-codex-5800-line-bootstrap)
 
 When Codex CLI went open-source, the appeal was obvious: for the first time, I could read the exact code that decides what an AI agent can and cannot do on my machine. Not a documentation page. Not a blog summary. The actual Rust source.
 
@@ -61,7 +61,7 @@ The tool system is defined through a `ToolSpec` enum. Each tool declares its inp
 
 What makes this extensible is [MCP](https://modelcontextprotocol.io/) integration. MCP, the Model Context Protocol, allows external servers to register tools dynamically. If you have a custom database tool or a deployment script that you want the agent to use, you spin up an MCP server and Codex CLI discovers it at runtime. The agent treats MCP tools identically to built-in ones. Same schema validation. Same sandbox restrictions.
 
-{% link claude-code-config-guide-en %}
+> Related: [Claude Code Config Guide](https://jidonglab.com/blog/claude-code-config-guide)
 
 The system prompt lives in `codex-rs/core/prompt.md`, a plain Markdown file that anyone can read and modify. Configuration sits in `~/.codex/config.toml`. Session state persists to a local [SQLite](https://sqlite.org/) database. There's no cloud state. Everything lives on your machine.
 
@@ -77,7 +77,7 @@ On Windows, Restricted Tokens limit the process's access rights. It's the least 
 
 This is fundamentally different from how [Claude Code](https://code.claude.com/) handles security. Claude Code runs its model inference on Anthropic's cloud. The local client, written in TypeScript, executes tools on your machine but relies on a permission-based model rather than OS-level sandboxing. You approve or deny each action. With Codex CLI, the sandbox enforces restrictions regardless of what the model requests. The model can ask to read `/etc/passwd` all day long. Seatbelt will say no.
 
-{% link 2026-03-27-claude-code-subagents-parallel-guide-en %}
+> Related: [Claude Code Subagents Parallel Guide](https://jidonglab.com/blog/2026-03-27-claude-code-subagents-parallel-guide)
 
 ## Performance: Caching and the Model Question
 
