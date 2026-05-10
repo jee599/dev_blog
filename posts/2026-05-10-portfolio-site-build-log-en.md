@@ -1,166 +1,121 @@
 ---
-title: "5 Parallel Redesigns and the SRI Hash Bug Codex Caught Before Production"
+title: "5 Parallel Claude Code Agents, One Hard Pivot, and a SRI Bug Only Codex Found (79 Tool Calls)"
 published: true
-description: "Redesigned a Korean game-industry mentoring site with 5 parallel Claude Code agents. Codex cross-verification caught an SRI hash mismatch before production. 79 tool calls."
+description: "Dispatched 5 parallel frontend-implementer agents for a coffee chat redesign. Got rejected. Pivoted to education platform tone. Codex caught a SRI hash mismatch code-verifier missed. 79 tool calls."
 tags: claudecode, ai, multiagent, webdev
 series: "Building with Claude Code: portfolio-site"
 canonical_url: https://jidonglab.com/posts/2026-05-10-portfolio-site-en
 ---
 
-"None of these look professional. Not a single one."
+The brief was one line: "Redesign the coffee chat site. Give me at least 5 options."
 
-That was the feedback after 5 complete design variants landed simultaneously — each built by a separate Claude Code agent running in parallel. It's a useful kind of failure. The feedback told me exactly what the original brief was missing.
+No reference imagery. No target user. No mood direction. Just that.
 
-**TL;DR:** Dispatched 5 `frontend-implementer` subagents in parallel to redesign `coffeechat.it.kr`, a Korean game industry mentoring platform. First round failed the professional-trust test — so the whole brief got reworked. Then Codex cross-verification caught an SRI hash mismatch across 4 files that would have silently broken React in every modern browser before production. Total: 79 tool calls across 2 sessions.
+**TL;DR** Dispatched 5 `frontend-implementer` agents in parallel to generate simultaneous redesign variants for a coffee chat mentoring site. Got "none of these feel professional" feedback, reworked the entire brief around education platform trust signals, ran another 5 in parallel. Codex cross-verification (`codex-cross-verify`) then caught a SRI hash mismatch across 4 files that `code-verifier` had missed — production React would have been silently blocked in every modern browser. 79 tool calls total.
 
-This is a build log from my Claude Code multi-agent workflow. If you're not familiar with the setup: I orchestrate Claude Code agents from a main session, dispatch specialized subagents for parallel or isolated tasks, and use Codex as an external cross-verification layer after internal verification passes.
+This is a build log from my Claude Code multi-agent workflow. I orchestrate from a main session, dispatch specialized subagents for parallel or isolated tasks, and use Codex as an external cross-verification layer after internal verification passes.
 
-## Why Site Analysis Has to Come Before the Brief
+## The Problem with Starting Blind
 
-The project started with a single URL: `coffeechat.it.kr`. Before writing a spec or picking a design direction, I ran `WebFetch` against the live site.
+Jumping straight to 5 designs from a vague brief produces exactly what you'd expect: generic templates that could belong to any product in any industry.
 
-What came back wasn't what I expected. This wasn't a generic networking app where people schedule casual coffee chats. It was a **1:1 mentoring platform specifically for the Korean game industry** — structured sessions with people currently working at major Korean game studios (Nexon, Krafton, NCSoft, Smilegate, Pearl Abyss). The actual product is career acceleration: resume reviews, mock interviews, direct mentorship with verified game industry professionals.
+The first real step was running `WebFetch` on the site to understand what it actually was. Not a general networking app — a **1:1 mentoring platform for the Korean game industry**. Current studio employees meet with job seekers for coffee chats, resume reviews, and mock interviews. That's the core product.
 
-The difference matters enormously for design direction:
+With that context captured in `plan.md`, a `general-purpose` agent defined 5 distinct design directions and wrote specs detailed enough that each `frontend-implementer` could run without making judgment calls. Then all 5 went out in parallel:
 
-- A generic coffee-chat app optimizes for social warmth and low friction
-- A career mentoring platform for a specific industry optimizes for **credibility, trust, and demonstrated expertise**
+| Variant | Direction | Key Characteristics |
+|---------|-----------|---------------------|
+| V1 Editorial Magazine | Korean indie editorial | Serif type, cream background `#f4eee4` |
+| V2 Soft Brutalist | Bold borders + pastel accent blocks | High typographic contrast |
+| V3 Premium Dark | Motion-heavy | Floating gradient blobs, `@keyframes drift` |
+| V4 Neo-Minimal | Clean, information-dense | White base, Inflearn-adjacent layout |
+| V5 Retro Arcade | Game industry identity | Pixel aesthetics, nostalgia cues |
 
-Skip the site analysis and you get generic SaaS templates. Run the analysis first and you know you're designing something that needs to compete for trust against real careers and job decisions.
+Five agents, running concurrently, each building a different visual direction from a clean context.
 
-After the analysis, a `general-purpose` agent built `plan.md` — each variant described in enough specificity that the implementer agents could execute independently without ambiguity. Then all 5 variants went to `frontend-implementer` subagents simultaneously.
+## "None of These Are Any Good"
 
-| Variant | Mood | Key Design Elements |
-|---|---|---|
-| V1 Editorial Magazine | Korean indie magazine | Instrument Serif, cream `#f4eee4` background |
-| V2 Soft Brutalist | Bold borders, block color | Lime/pink color blocks, strong typographic contrast |
-| V3 Motion Dark | Animation-heavy dark theme | Floating gradient blobs, `@keyframes drift`, `#0a0a0f` |
-| V4 Minimal Pro | Clean, information-dense | White base, Inflearn-adjacent structure |
-| V5 Korean Editorial | Korean editorial print | Vertical type emphasis, structured hierarchy |
+All 5 variants came back. The response was blunt: "None of these feel professional. Not one. Go look at Inflearn or similar education platforms."
 
-## When "All of Them Are Wrong" Is Useful
+The problem was visible in retrospect. Every variant had explored aesthetic differentiation — editorial typography, motion gradients, brutalist grids — without touching the actual gap: **educational platform trust signals**. Inflearn and FastCampus don't lead with visual novelty. They lead with credibility, structure, and evidence that the platform has delivered real outcomes.
 
-Five variants finished. The response was: "None of these look professional. Look at Inflearn, or similar education platforms."
+By anchoring the brief to the game industry identity, the designs had skipped the trust layer that a first-time visitor needs before booking a session with a stranger. They were visually interesting in the way a design portfolio piece is interesting — not in the way that makes someone think "I could trust this platform with my job search."
 
-At first that's a frustrating feedback format — "none of them" leaves nowhere obvious to go. But it's actually precise. It identifies the category of failure without ambiguity: this doesn't feel like a platform I'd trust with a career decision.
+Reclassified the complexity, rebuilt the plan with education-service credibility as the explicit north star, defined 5 new variants grounded in an Inflearn site analysis, and ran another parallel batch.
 
-The problem was visible in retrospect. Every variant had been competing on visual distinctiveness — editorial typography, motion design, brutalist grids, dark mode aesthetics. None of them addressed what actually creates trust in an educational or career platform: **evidence of delivered value**.
+## The Bug Codex Found That code-verifier Missed
 
-Inflearn, Class101, and Fastcampus don't just look polished. They build trust through specific repeating UI patterns:
-- Enrollment counts with large formatted numbers ("12,847 students")
-- Completion rates and student outcome metrics
-- Mentor profile cards that show current employer, team, and years of experience
-- Verified credentials and review systems
-- Structured cohort information that signals a real ongoing community
+After round two, `design-reviewer` ran a review pass. Then `codex-cross-verify` ran — and a critical bug surfaced.
 
-V1 through V5 had none of this. They were visually interesting — the kind of interesting that makes a designer nod in approval — but missing the signals that make a career-stage user think "I could trust this with my job search."
-
-The fix wasn't a sixth aesthetic variation. Round 2 started with a dedicated Inflearn site analysis as the baseline reference, then built toward the same trust-signal patterns applied to a game industry context.
-
-## The SRI Hash Bug Codex Found That the Verifier Missed
-
-This is the part that made the Codex cross-verification step obviously worth running.
-
-After implementing the second round of variants, `code-verifier` ran first — checking the diff for obvious issues, running lint, checking for common mistakes. It passed.
-
-Then Codex cross-verification read `plan.md`, `diff.patch`, and the verifier report together and found something the verifier hadn't flagged:
-
-V2, V3, V4, and V5 all loaded `react.production.min.js` from a CDN — but the `integrity` attributes were set to SHA-384 hashes computed from `react.development.js`.
+Variants V2 through V5 all loaded `react.production.min.js`, but the SRI (Subresource Integrity) hashes in each `<script>` tag were computed from `react.development.js`. When SRI validation fails, the browser blocks the script entirely. The pages looked visually complete — the HTML rendered, the CSS applied — but React wouldn't have loaded in any production browser.
 
 ```html
-<!-- What was actually in the code — wrong hash -->
+<!-- Bug: production file URL, development build hash -->
 <script
   src="https://unpkg.com/react@18/umd/react.production.min.js"
-  integrity="sha384-[hash from development.js, NOT production.min.js]"
+  integrity="sha384-[hash computed from development.js]"
   crossorigin="anonymous"
 ></script>
 ```
 
-### Why This Is a Silent Production Killer
+Production and development builds have different file contents: different minification, source maps stripped, tree-shaking applied differently. Different contents → different SHA-384 hashes. SRI validation is a byte-level comparison — the browser fetches the file, hashes it, and compares against the declared value. One bit off and the script gets blocked.
 
-Subresource Integrity (SRI) is a browser security feature that validates external scripts before executing them. The browser fetches the file, computes its SHA-384 hash, and compares it to the `integrity` attribute. If they don't match, the script is blocked — no execution, no error thrown to the page, just a console security violation and a non-interactive site.
+This doesn't surface in ESLint. It doesn't show up in a design review or a visual regression test. It surfaces when something reads the file with enough context to know what the hash values are *supposed* to reference.
 
-The production and development React builds have different file contents. The development build includes warnings, helpful error messages, and debug tooling. The production build strips all of that. Different content → different SHA-384 hash.
+`code-verifier` had missed it — the tooling runs at lint/typecheck level and doesn't cross-reference CDN file hashes against build variant. Codex caught it by reading the diff and checking hash values against the correct build target. All 4 files were updated with the correct production hashes immediately.
 
-Loading `react.production.min.js` with a hash that was computed from `react.development.js` means every modern browser would block React from executing entirely. No React runtime. No interactivity. Silent failure — the user sees the HTML shell but nothing works.
+If this had shipped, every user with SRI enforcement enabled (every modern browser) would have hit a silently broken experience. No interactive elements, no console errors surfaced to the end user, no obvious signal that something had gone wrong.
 
-This doesn't surface in ESLint (it's valid HTML). It doesn't show up in a visual design review. It doesn't fail a lighthouse audit. It surfaces when someone cross-references file paths against their hash values with enough domain knowledge to know they should match.
+## What Makes Parallel Dispatch Actually Work
 
-Codex caught it by reading the diff with context — not just checking syntax, but verifying that the values used were semantically correct for their purpose. All 4 files were updated with the correct production hashes before anything shipped.
+Five sequential variants take 5× as long as one. Five parallel variants take as long as the slowest single agent. The speedup is obvious. The less obvious requirement is what enables it.
 
-### Takeaway for CDN-loaded Libraries
+Each `frontend-implementer` agent starts with no shared state and no coordination channel with the others. For all 5 to run independently without stepping on each other or producing near-identical results, `plan.md` has to resolve every decision each agent would otherwise have to make for itself.
 
-When loading libraries from a CDN with SRI hashes, verify the hash was computed from the exact file at the exact URL you're loading. The production and development builds of the same library version have different hashes. This is an easy mistake to make when copying from docs or examples that may reference a different build variant.
+The difference:
 
-```bash
-# To generate the correct hash for any URL:
-curl -sL https://unpkg.com/react@18/umd/react.production.min.js | \
-  openssl dgst -sha384 -binary | openssl base64 -A
+```
+Vague: "Make it look professional and modern."
+
+Specific: "V3: motion dark. Background #0a0a0f.
+Hero uses floating gradient blobs via @keyframes drift.
+Canvas particle effect behind CTA.
+Font: Space Grotesk headings, Inter body.
+No light mode variant."
 ```
 
-## What Actually Makes Parallel Dispatch Work
-
-5 sequential design variants take 5x as long. Parallel dispatch takes as long as the slowest single agent. The speedup is the obvious part. The non-obvious part is what enables it.
-
-Each `frontend-implementer` agent is completely isolated — no shared state, no communication channel with the other agents, no way to coordinate mid-execution. For all 5 to produce usable, independent output, the `plan.md` has to resolve every decision each agent would otherwise have to block on or make assumptions about.
-
-**Vague (doesn't work for parallel):**
-> "V3: Make it look dark and modern with some motion effects."
-
-**Specific enough for independent execution:**
-> "V3: Motion dark theme. Background `#0a0a0f`. Hero section uses 3 floating gradient blobs animated via `@keyframes drift` with randomized delays. Canvas particle system behind the main CTA. Font: `Space Grotesk` for all headings, `Inter` for body text. No light mode variant. Primary accent: `#7c3aed`."
-
-The difference is decision surface. Vague briefs produce agents that either make assumptions (inconsistent results) or pause to ask questions (collapsing the parallelism benefit into a sequential bottleneck). Specific specs produce agents that execute and produce comparable output.
-
-The sequencing that worked: delegate `plan.md` creation to a dedicated `general-purpose` agent first, as a separate step. That agent had the space to think through each variant — color systems, font pairings, animation approaches, component structure — and write specs detailed enough that 5 other agents could pick them up cold and run without coordination.
-
-The temptation is to write the plan yourself quickly and skip the delegation. Resist it. The quality of `plan.md` is the ceiling on how well parallel dispatch works.
-
-## The Orchestration Architecture
-
-For readers not familiar with the Claude Code multi-agent setup I'm running:
-
-**Main session (orchestrator):** Handles user interaction, task classification, routing decisions, and final review. Doesn't write implementation code directly on larger tasks.
-
-**Subagents (workers):** Spawned via the `Agent` tool with a fresh context. Each gets a specific task, relevant file paths, and the output location to write to. They can't see each other's work or the main session's context beyond what's in their prompt.
-
-**Verification pipeline:**
-1. `code-verifier` — runs lint, checks the diff against the plan, greps for debug artifacts
-2. `codex-cross-verify` — external cross-validation using Codex, reads plan + diff + verifier report together
-
-The two-layer verification is worth the overhead for multi-file frontend work. The verifier catches mechanical issues (missing files, lint failures, obvious mistakes). Codex catches semantic issues — things that are syntactically valid but semantically wrong, like a hash that references the wrong file.
+Vague briefs produce agents that either fill gaps with assumptions (inconsistent outputs across variants) or pause to ask questions (losing the parallelism entirely). Specific specs produce agents that execute. The planning agent that built `plan.md` before the dispatch was not overhead — it was the precondition for everything else working.
 
 ## Tool Call Breakdown
 
-**Session 2 (redesign — 79 total):**
+**Session 1 — Coffee chat redesign (79 tool calls):**
 
-| Tool | Calls | What it did |
-|---|---|---|
-| `Agent` | 28 | Subagent dispatch: 5 parallel implementers, plan agent, verifier, Codex cross-verification |
-| `Bash` | 26 | Diff generation, file moves, server checks, directory setup |
-| `TaskUpdate` / `TaskCreate` | 13 | Progress tracking across the parallel workload |
+| Tool | Count | Purpose |
+|------|-------|---------|
+| `Agent` | 28 | Subagent dispatch — 2× rounds of 5 parallel implementers, plus orchestration and verification |
+| `Bash` | 26 | `diff.patch` generation, state updates, file moves |
+| `TaskUpdate` / `TaskCreate` | 13 | Stage tracking |
 | `ToolSearch` | 5 | Schema loading for deferred tools |
-| `WebFetch` | 5 | Site analysis (`coffeechat.it.kr`, Inflearn, reference sites) |
+| `WebFetch` | 5 | Site analysis (coffeechat.it.kr + Inflearn reference) |
+| Other | 2 | Miscellaneous |
 
-**Session 1 (dental ad cron updates — 23 total):**
+When you stack two rounds of parallel dispatch on top of the orchestration layer, the `Agent` call count rises fast. 28 `Agent` calls is not unusual when you're running 10 implementer dispatches plus 3 verification layers.
 
-A separate task that ran before the redesign: 5 file updates to a `dentalad` cron workflow plus an HTML report generation. `claude-opus-4-7` handled it directly in 7 minutes, 23 tool calls, with no subagents.
+**Session 2 — Dental ad research cron (23 tool calls, 7 minutes):**
 
-Small, well-scoped tasks don't benefit from orchestration overhead. The pipeline for simple tasks: read current state → edit → verify. Not: plan → dispatch → verify → cross-verify. Matching the pipeline to the task size matters as much as having the pipeline available.
+A separate session ran a daily update for a dental advertising research workflow. A cron agent read `medical_dental_ads_daily_goal.md`, updated 5 markdown files, and generated an HTML report. Breakdown: `Read` 9×, `Edit` 8×, `Bash` 3×, `Write` 2×.
 
-## What the Output Looks Like
+Small, well-scoped, repeating tasks don't benefit from orchestration overhead. The pipeline is: read, edit, verify — not plan, dispatch, verify, cross-verify. 23 calls, 6 outputs, done.
 
-The comparison canvas is a single HTML file at `/Users/jidong/coffee-chat-redesign/`. Each of the 5 variant cards has a "View →" link that opens the variant in a new tab. The point is browser-native comparison: no screenshots, no Figma, no tool switching. The client tabs between full-page renders and picks directly.
+## Patterns That Held Up Across Both Sessions
 
-Round 2 — professional, education-platform trust signals, Inflearn reference baseline — continues next session.
+**No context, generic output.** Starting with a URL and expecting 5 high-quality designs doesn't work. An explicit site analysis step has to be part of the plan before the design brief is written. This isn't optional — the output quality is bounded by the brief quality, and the brief quality is bounded by product understanding.
 
-## What Would Have Broken Without Cross-Verification
+**Parallel agents need concrete specs, not vague direction.** Each `frontend-implementer` in a parallel dispatch runs from a clean context. Vague specs collapse back into sequential dependency — each agent fills the gaps differently, and the variants drift toward each other. The spec granularity that enables independent execution is higher than intuition suggests.
 
-React not loading in production, across 4 of the 5 variants, in every modern browser with SRI enforcement. No obvious error to the end user — just a page that renders HTML but does nothing when clicked.
+**Codex and code-verifier serve different verification layers.** `code-verifier` catches what static analysis catches: test failures, lint errors, type errors. Codex reads for logical consistency across files — relationships between values that tooling doesn't track. The SRI hash mismatch was invisible to `code-verifier` and immediately visible to Codex. Run both, in sequence, when the output is going anywhere a browser will touch it.
 
-The verifier passed. Design review would have passed. The SRI hash issue is the kind of bug that sits in the diff as a plausible-looking string until someone with context reads it and checks whether the string is correct for its purpose.
-
-That's what Codex cross-verification is for. Not to catch obvious mistakes — to catch the subtle ones that look correct until you check them against what they're supposed to represent.
+> "None of these are any good" was the pivot point. The right response to rejection isn't defense — it's asking what "good" would actually look like, and building that into the brief before dispatching again.
 
 ---
 
