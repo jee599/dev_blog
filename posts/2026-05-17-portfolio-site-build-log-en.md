@@ -1,27 +1,29 @@
 ---
-title: "9 Tool Calls to a Clean OK: Automating Dental Ad Compliance with Claude Opus 4.7"
+title: "9 Tool Calls to Compliance: Automating Dental Ad Review with Claude Opus 4.7"
 published: true
-description: "Automating Korean medical ad compliance review with Claude Opus 4.7: 2 sessions, 9 tool calls, zero blocking issues — faster than opening the files manually."
+description: "Claude Opus 4.7 reviewed dental ad compliance in 2 sessions, 9 tool calls — checking for contradictions, hospital name leaks, and guarantee claims. Result: OK."
 tags: claudecode, ai, automation, compliance
 series: "Building with Claude Code: portfolio-site"
 canonical_url: https://jidonglab.com/posts/2026-05-17-portfolio-site-en
 ---
 
-Two sessions. Nine tool calls. The verdict: **OK**.
+2 sessions. 9 tool calls. The verdict: **OK**.
 
-That's the full output from running dental advertising compliance review through Claude Opus 4.7. What used to mean opening two files, cross-referencing their contents, and manually checking each line against Korean Medical Law Article 56 now completes in under a minute.
+That's the entire compliance audit for a daily dental advertising report, handled by Claude Opus 4.7. No manual file-diffing, no checklist scanning, no second-guessing whether "premium service" crosses a legal line. The model read both files, applied the criteria, and returned a clean pass.
 
-**TL;DR** — Bash ×5, Read ×4. The model cross-checked a daily update `.md` against an HTML analysis report, scanning for hospital name exposure, guarantee language, and missing source attribution. No blocking issues found. Zero files modified or created — pure audit.
+**TL;DR** — 5 Bash calls + 4 Read calls to cross-check a daily update `.md` against an HTML intelligence report. No blocking issues: no contradictory facts, no hospital names in user-facing copy, no guarantee language, no missing source labels.
 
-## Why Dental Ads Have a Legal Compliance Gate
+## Why Compliance Automation for Dental Ads
 
-Korean Medical Law Article 56 governs dental advertising. Certain phrases are outright violations: "guaranteed booking," "guaranteed results," "best procedure in Korea." Directly exposing a hospital's name or address in user-facing content is also prohibited regardless of context.
+Dental advertising in South Korea is governed by Article 56 of the Medical Act. The rules are specific: phrases like "guaranteed booking," "best procedure," or "proven results" are violations. So is any direct mention of a hospital's name or address in user-facing content. Every report that gets published is exposure to regulatory risk.
 
-The `dental-ad-ops` pipeline generates a new analysis report daily. Manually checking each one against the legal criteria isn't sustainable at scale. The automation target is precise: read two files, check them against each other for factual contradictions, scan for prohibited patterns, return a parseable verdict.
+Doing this manually means opening two files, comparing them line by line, and running a mental checklist against legal criteria. For a daily report cadence, that's unsustainable.
 
-## Session One: Structure First, Then Content
+The automation opportunity is clear: read the files, apply fixed criteria, surface blocking issues. Nothing more.
 
-The first prompt gave Claude a clear task with minimal framing:
+## Session 1: Open Criteria, First Pass
+
+The first prompt was intentionally broad:
 
 ```
 Read the daily update and HTML report for 2026-05-17 under
@@ -31,13 +33,13 @@ hospital names/addresses, or missing required labels.
 Return concise blocking issues only, or OK if none.
 ```
 
-Claude used Bash 5 times and Read twice — mapping the directory structure, locating both files, reading each one, and running through the checklist. Wall-clock time: under 30 seconds.
+Claude used Bash 5 times and Read 2 times — navigating the directory structure, loading both files, then running through the criteria. Elapsed time felt under 30 seconds.
 
-The first session functions as orientation. The model confirms what files exist, where they live, and what format they're in. That context makes the second session faster.
+The session established the baseline. Both files were readable, no obvious violations surfaced.
 
-## Session Two: Enumerate the Blocking Criteria
+## Session 2: Enumerating Every Blocking Condition
 
-After reviewing the first session's output, I ran a second pass with explicit, enumerated criteria:
+After confirming the first pass, the second session named the violations explicitly:
 
 ```
 Blocking review only. Read these two files:
@@ -51,9 +53,7 @@ missing source/label caveats,
 or claims of guaranteed rankings/reservations/revenue.
 ```
 
-Four blocking categories, explicitly named. Read ×2. Verdict: **OK**.
-
-The key difference from session one: the definition of "blocking" is no longer implicit. In session one, Claude inferred what a blocking issue means from context. In session two, the criteria are enumerated: factual contradictions, real hospital names or addresses, missing source attribution, and guarantee claims (rankings, reservations, revenue).
+Two Read calls to load both files. Verdict: **OK**.
 
 ## Tool Call Breakdown
 
@@ -63,30 +63,23 @@ The key difference from session one: the definition of "blocking" is no longer i
 | Read | 4 |
 | **Total** | **9** |
 
-Files modified: 0. Files created: 0. This was a read-only compliance audit.
+Files modified: 0. Files created: 0. Pure review pass.
 
-## What the Two Sessions Reveal About Prompt Design
+## The Prompt Design Lesson
 
-The gap between the two sessions comes down to one thing: who defines "blocking."
+The difference between the two sessions was specificity. Session 1 gave Claude categories. Session 2 gave it exact violations to match against.
 
-Session one says: "find blocking issues." Session two says: "here is what blocking means." The second approach is more reliable in production because it removes interpretive variability. When you spell out `guaranteed rankings/reservations/revenue`, the model's decision boundary is fixed. Runs become consistent across days, across different content, and potentially across different model versions.
+"Guarantee language" requires inference. `guaranteed rankings/reservations/revenue` removes it. The model pattern-matches against a concrete list instead of interpreting an abstract concept. At daily cadence, that predictability matters more than flexibility.
 
-The instruction `Answer exactly OK if no blocking issue` was equally important. Without it, Claude returns a paragraph summarizing what it reviewed. That's informative but not parseable. If the verdict format is variable, the downstream pipeline can't act on it. Fixed output format is a prerequisite for automation.
+The `Answer exactly OK if no blocking issue` constraint was just as important. Fixed output format means the downstream pipeline can parse the result without ambiguity. Any response other than "OK" routes to human review — no regex required.
 
-A related design pattern: both blocking criteria and output format should be specified together. The criteria determine what the model looks for; the format determines what it returns. Specify one without the other and you've only solved half the problem.
+## What's Left to Build
 
-## The Path Toward a Fully Automated Loop
+The prompt runs manually today. Next step: GitHub Actions. When the daily report generates, trigger the compliance session automatically. If the result isn't "OK," push a Slack alert before anything publishes.
 
-The current setup is still manual — prompt execution triggered by hand after each daily report generates. The next step is integrating this into GitHub Actions. The flow:
+There's also a cost question. Claude Opus 4.7 is the highest-capability model, but this task — read two files, match against a list — might not need it. Running the same review with Haiku and Sonnet will show whether a cheaper tier holds the same pass/fail accuracy. At daily cadence, the difference is real money.
 
-1. Daily report generates via cron
-2. GitHub Actions triggers the compliance session
-3. If the verdict is `OK`, no action
-4. If the verdict contains any blocking issue, fire a Slack alert before content goes live
-
-One open question on the model side: Claude Opus 4.7 may be overspecified for this task. The compliance criteria are deterministic and the files are modest in size. Whether Haiku or Sonnet delivers the same verdict consistently is a cost-versus-quality benchmark still pending.
-
-> The goal isn't to use the most powerful model. It's to find the smallest model that passes the bar reliably.
+If Haiku holds up, this becomes a nearly-free automated safeguard on every report that goes out.
 
 ---
 
