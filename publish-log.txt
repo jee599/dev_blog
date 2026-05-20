@@ -139,6 +139,7 @@ SKIP (build-log): posts/2026-05-17-portfolio-site-build-log-en.md
 SKIP (build-log): posts/2026-05-18-portfolio-site-build-log-en.md
 SKIP (build-log): posts/2026-05-19-portfolio-site-build-log-en.md
 SKIP (build-log): posts/2026-05-20-portfolio-site-build-log-en.md
+SKIP (build-log): posts/2026-05-21-portfolio-site-build-log-en.md
 SKIP (has id): posts/agentcrow-launch-en.md
 SKIP (has id): posts/ai-agent-i18n-tarot-compatibility-en.md
 SKIP (has id): posts/ai-content-full-automation-en.md
