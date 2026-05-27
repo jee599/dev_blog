@@ -1,136 +1,129 @@
 ---
-title: "18 Sessions, 302 Tool Calls: Orchestrating 6 Domains in One Day with Claude Code Parallel Agents"
+title: "6 Claude Code Sessions, 127 Tool Calls, 4 Files Written: The Context Delivery Problem"
 published: true
-description: "18 sessions, 302 tool calls, 15 files created in one day. Parallel agent dispatch cut a 2–3 hour research job to 41 minutes — here's the pattern."
+description: "127 tool calls across 6 Claude Code sessions automated 3 projects—but only 4 files got written. The bottleneck wasn't Claude. It was context delivery."
 tags: claudecode, ai, automation, productivity
 series: "Building with Claude Code: portfolio-site"
 canonical_url: https://jidonglab.com/posts/2026-05-27-portfolio-site-en
 ---
 
-302 tool calls in a single day. 18 sessions across 6 completely different domains: startup funding strategy, dental ad SERP analysis, competition entry strategy, golf app deep research, P1 product daily reports. 15 files created, 9 modified.
+127 tool calls. 6 sessions. Three separate projects automated in a single day. And yet the actual output was 4 files.
 
-**TL;DR**: The highest-leverage pattern was parallel agent dispatch in session 15. Four independent research agents ran simultaneously and finished the entire deep research brief in 41 minutes. Sequential would have been 2–3 hours. The critical detail that made it work: giving each agent an explicit output file path, not just a prompt.
+Not 40. Not 14. Four.
 
-## Spinning Up 4 Agents at Once
+That ratio tells you everything about where Claude Code's friction lives. It's not generation speed. It's not the model. It's context delivery—how much of the "what already exists and what format should this follow" overhead gets baked into the prompt versus rediscovered from scratch every session.
 
-Session 15 was the pivot point of the day.
+This is a breakdown of what happened across all 6 sessions today: what worked, what burned 3 sessions producing zero output files, and what made the most efficient session cost only 5 tool calls.
 
-The brief was simple: research the Korean golf app market and the global swing analysis market, broken down by app category. Instead of running these searches one by one, I handed the entire brief to Claude and waited.
+**TL;DR**: The Hermes relay pattern (Hermes orchestrates, Claude CLI executes) ran stably across 3 projects. The dental research sessions wasted 3 runs before a single line addition—`"Do not ask questions."`—finally unblocked output. The best session (Session 6) ran 5 tool calls and finished in 4 minutes because all context was pre-loaded in `brief.md`.
 
-Claude dispatched four independent agents simultaneously:
+## Processing 365KB of Raw JSON Into Structured Content Candidates
 
-- Agent "Korea golf matching apps" → `research_kr_matching.md`
-- Agent "Global swing analysis" → `research_swing.md`
-- Agent "Global golf matching" → `research_global_matching.md`
-- Agent "Solo-founder monetization GTM legal" → `research_monetization.md`
+Session 1 started with `2026-05-27-daily-intel-raw.json`—a 365KB raw JSON file from the daily intelligence crawl. The goal: extract two separate content candidate lists. One for general-audience card-news style AI content. One for expert-level intelligence briefings. Two files out.
 
-Each agent ran in its own context, pulled sources from the web, and wrote directly to its assigned output file. Results came in as they completed:
+The core prompt:
 
 ```
-[done] Global matching dossier — 4,769 words, 80+ source URLs
-[done] Swing analysis dossier — 5,140 words, with confirmed/estimated/unverified labels
-[done] KR matching dossier — saved
-[done] Monetization/legal dossier — 4,199 words
+Select and organize general-audience AI card-news content candidates
+and expert-level AI intelligence content candidates
+from today's collected data.
+Use only /Users/jidong/spoonai/crawl/newsite/2026-05-27-daily-intel-raw.json as the source.
 ```
 
-Once all four files landed, Claude read them together and synthesized the final report. Total wall time: 41 minutes. Tool calls: 51.
+Claude ran Bash 28 times—parsing the JSON, extracting sections, restructuring by content type, then writing `.md` and `.json` output files. 2 minutes, 32 tool calls total.
 
-The two sessions before this (12 and 14) both failed partway through — agents got killed mid-run. The fix was straightforward: sessions 12 and 14 gave agents a prompt only. Session 15 passed the brief as a file path and explicitly told each agent where to write its output. That's the entire difference between a failed parallel dispatch and a successful one.
+What made this session efficient: the prompt had a single, unambiguous source file and two clearly defined output types. No format guessing, no reference hunting, no "what does the current file look like" loop. Claude went straight to parsing.
 
-If the agent doesn't know where to put its output, it either dumps everything inline or exits without saving. Explicit file paths turn a parallel dispatch into a reliable pipeline.
+Session 2 shifted to growth and monetization signal collection: Product Hunt, Show HN, GitHub Trending. The previously collected Reddit/HN data turned out to be empty, so Claude fell back to WebFetch and pulled data directly—that's where 15 of today's WebFetch calls originated. Checking the existing file format, then generating `growth-sponsor-signals.md` took 4 minutes and 24 tool calls.
 
-## The Chrome Headless PDF Pipeline
+## 3 Sessions, 0 Files Written: The Dental Research Deadlock
 
-Five PDF reports were generated today. All five used the same one-liner:
+This was the most wasteful stretch of the day.
 
-```bash
-/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome \
-  --headless --disable-gpu \
-  --print-to-pdf=output.pdf input.html
+Session 3 had a clear objective: generate or update three files—`2026-05-27-daily-update.md`, `rolling-knowledge-base.md`, and `source-index.md`. Claude scanned the existing file structure, built a `plan.md`, and ran through 18 Bash calls and 5 Reads. Write count: 1. And that 1 Write was the `plan.md`. Actual deliverables: zero.
+
+Session 4 tried again. 13 Reads, 10 Bash calls. One minute spent checking file headers, confirming formats, understanding the directory structure. Write count: 0.
+
+The problem is structural. When sessions are split, the next session has no memory of the previous one. It has to pay the "what does the current state look like" cost from scratch. Reads go up. Bash calls go up. Actual output stays at zero because the session spends its budget on orientation rather than generation.
+
+Session 5 had one additional line in the prompt:
+
+```
+Do not ask questions.
 ```
 
-No wkhtmltopdf. No pandoc. No weasyprint. Just system Chrome.
+That unblocked execution. Session 5 ran 11 Reads and 8 Bash calls before finally producing output.
 
-This wasn't the plan originally. Session 15 included an attempt to install pandoc for converting the golf research markdown to PDF. It failed. The research output stayed as markdown files. That failed install is what cemented "Chrome headless is the reliable default" as a rule going forward.
+The fix isn't just `"do not ask questions."` It's upstream. Two approaches that prevent this pattern:
 
-The upside of HTML → Chrome → PDF is that CSS gives you precise control over the output:
+1. **Explicit output paths in the prompt**: When the previous session generates `plan.md`, the next prompt should reference it by path—`"Read /path/to/current/plan.md and execute step 3."` The session skips re-orientation entirely.
+2. **Don't split sessions for a single task**: If the full task can complete in one session, keep it in one session. Context overhead from splitting always exceeds the marginal cost of running longer.
 
-```css
-@media print {
-  header, nav { display: none; }
-  body { margin: 0; padding: 0; }
-  @page { size: A4; margin: 20mm; }
-}
+Adding `"Do not ask questions"` as a default in prompts eliminates the orientation-then-stall pattern even when sessions do get split.
+
+## The Most Efficient Session: 5 Tool Calls, 4 Minutes
+
+Session 6's prompt was the shortest of the day:
+
+```
+Read brief.md and create the required report files exactly under outputs/.
+You may use web only if available, but do not ask questions.
+Keep evidence labels explicit.
+Produce a clean mobile-friendly Korean HTML technical report for PDF export
+and a concise short_summary.md.
 ```
 
-Page breaks, A4 layout, font rendering — all controllable through CSS without any additional tooling dependency. The startup funding report came out at 10 pages, 2.5 MB. The competition strategy report at 13 pages, 2.9 MB. The P1 daily report at 4 pages, 522 KB.
+Result: Bash ×2, Write ×2, Read ×1. 5 tool calls. Two files created—`report.html` and `short_summary.md`. 4 minutes elapsed.
 
-## When the Orchestrator Gets the Complexity Wrong
+Sessions 1–5 averaged 22 tool calls each. Session 6 ran at 5. The difference isn't task complexity—generating a structured HTML report is more involved than parsing a JSON file. The difference is that `brief.md` contained everything Claude needed: the scope, the output format, the evidence labeling requirement, the target use case (mobile-friendly, PDF export). Claude skipped straight to execution.
 
-One recurring friction point today: the orchestrator hook misclassifying task complexity and causing Claude to stall.
+The `brief.md` pattern is the practical equivalent of "don't make the agent re-read the codebase." It's a handoff document—not a long project spec, just enough context to skip the orientation phase entirely.
 
-The workflow uses a four-level classification — `trivial / simple / standard / major` — and each level gates which tools and stages are allowed. Requests routed through an external relay occasionally got overclassified.
+## How the Hermes Relay Architecture Works in Practice
 
-In session 13, writing a single `smoke.txt` file got classified as `major`. Claude explicitly self-corrected: "Reclassifying to trivial." In session 8, generating an HTML report got classified as `major`, which meant the session couldn't close without verifier and codex artifacts. Claude reclassified it down to `simple` and proceeded directly.
+Looking at today's sessions, the relay architecture runs as designed.
 
-The correct rules are simple:
+Hermes receives the user's request and packages it for Claude CLI—as a `brief.md`, a `plan.md`, or a structured long-form prompt. Claude CLI receives the package, reads the relevant files, makes decisions, and produces output. Hermes relays the result. That's the complete loop.
 
-- No code changes → `trivial`
-- Single file, under 30 lines → `simple`
-- Writing an HTML report is writing one file → `simple`
+Session 3's `plan.md` creation fits this structure too. Plans are orchestration infrastructure—they describe what Claude CLI should do, not what the actual deliverables look like. Hermes can write `plan.md` directly because it's a relay artifact. The actual content files—`daily-update.md`, `rolling-knowledge-base.md`—belong to Claude CLI's execution domain.
 
-The misclassification pattern was the heuristic reacting to keywords like "research" or "report" and bumping to `major`. The fix is making the heuristic check actual file change count, not topic keywords. Claude handled the self-correction gracefully, but the friction was real — each misclassification meant an extra round of output before the session could continue.
+The boundary matters in practice. When an orchestrator starts producing deliverables directly, the validation loop breaks. The executor has mechanisms for checking its own output against requirements and iterating. The orchestrator doesn't. Keeping roles separated preserves that loop.
 
-## The Codex Review Loop That Caught Two Real Bugs
+This generalizes beyond Claude Code: in any multi-agent system, the entity that generates content should also be the entity that validates it. Mixing those responsibilities into the orchestrator creates a validation blind spot.
 
-Session 17 produced the P1 product daily report HTML. Session 18 ran a read-only review against it and surfaced two blockers before the PDF was generated.
+## Tool Usage: The 9:1 Read/Write Ratio
 
-**Blocker 1**: The "Things to drop today" section listed specific product names that shouldn't appear in a P1-focused report. Non-P1 products were named explicitly in the body.
+| Tool | Count | Primary Use |
+|------|-------|-------------|
+| Bash | 71 | File checks, JSON parsing, directory inspection |
+| Read | 36 | Existing file structure, format confirmation |
+| WebFetch | 15 | Product Hunt, Show HN direct scraping |
+| Write | 4 | Actual deliverable generation |
+| ToolSearch | 1 | WebFetch schema loading |
 
-**Blocker 2**: The date header showed `(Mon)`. The actual day was Tuesday.
+The Write count of 4 is the headline number. Across 6 sessions, Claude created 4 files. That's the actual output. The 36 Reads went mostly toward format confirmation—checking what an existing file looks like before writing a new one in the same style.
 
-Both fixes were surgical:
+A 9:1 Read/Write ratio means: for every file written, 9 files were read. In raw terms, that's 32 tool calls spent on orientation for every 4 calls spent on output.
 
-- `line 365`: Replace the product name list with category labels — "non-P1 products / ideas pending validation / separate channel work"
-- `line 229`: `(Mon)` → `(Tue)`
+Two ways to bring that ratio down:
 
-Two `Edit` calls, done. Then Chrome headless re-generated the PDF, and `pdftotext` confirmed the product names were gone from the output. Total: 19 tool calls, under a minute.
+**Embed the format reference directly in the prompt**: Instead of letting Claude hunt for an existing file to copy the format from, paste the relevant section of the format spec into the prompt. One less Read per output file.
 
-The review pattern here is low-overhead quality control. The reviewer returns a structured blocker list. Claude works through it in order. The review itself costs little; the issues it catches are concrete and actionable, not stylistic opinions.
+**Standardize templates at fixed paths**: If all daily update files follow the same structure, maintain a canonical `_template.md` at a known path. Every session that needs the format reads one file instead of hunting through recent examples. Session 6's `brief.md` approach already does this at the session level—extending it to recurring task types is the logical next step.
 
-## What 302 Tool Calls Actually Looks Like
+> 6 sessions, 127 tool calls. 4 files actually written. Redesign the context delivery layer and the tool call count drops by half.
 
-| Tool | Count |
-|------|-------|
-| Bash | 118 |
-| Read | 59 |
-| TaskUpdate | 28 |
-| TaskCreate | 26 |
-| Edit | 20 |
-| Write | 18 |
-| Agent | 14 |
-| Grep | 10 |
+## What This Actually Measures
 
-Bash at 118 is the dominant cost. Most of it was repeated across three operations: PDF generation, `pdftotext` verification, file existence checks. Every PDF went through the same generate → verify loop, each loop touching Bash twice.
+The Read/Write ratio isn't just an efficiency metric. It's a measure of how much context has been externalized into prompts versus left for the model to reconstruct.
 
-The Bash-to-Edit ratio is 118:20, roughly 6:1. That ratio tells you what kind of day it was. Not a coding day. A research, report generation, and data verification day. More execution cycles than source edits.
+When the ratio is 9:1, the model is doing a lot of archaeological work—reading existing files to figure out conventions, formats, and current state that could have been stated explicitly. That work is necessary and often correct, but it has a cost: tool calls, latency, and the occasional wrong inference.
 
-Agent at 14 is almost entirely session 15: four parallel dispatches plus follow-up synthesis calls.
+When the ratio drops toward 2:1 or 3:1 (closer to Session 6's inverted 1:2), most of the context was provided upfront. The model spends most of its budget generating, not orienting.
 
-Zero of the 18 sessions today were primarily about writing code. Every session was research, report generation, or document cleanup. The tool distribution reflects that exactly.
+The `brief.md` handoff pattern is the simplest way to push that ratio down for recurring task types. For one-off tasks, explicit path references cover most cases. Neither requires changing the model or the tooling—just the shape of the prompt.
 
-## Three Patterns Worth Keeping
-
-**1. Parallel agent dispatch requires explicit output paths.**
-Without a file path target, agents either dump output inline or exit silently. With explicit paths, the dispatch becomes reliable: fire agents, wait for files, synthesize. This is the single biggest multiplier for research-heavy work.
-
-**2. Chrome headless is good enough.**
-Before reaching for pandoc, weasyprint, or any other PDF tool, try `--print-to-pdf` with Chrome. It handles complex CSS, respects `@media print`, and is already installed on every Mac. The only dependency is the browser you already have.
-
-**3. Complexity classification should use file count, not keywords.**
-If the heuristic reads "research" and escalates to `major`, it's classifying intent, not scope. A task that writes one HTML file is `simple` whether it's labeled "research" or not. The gate should be: how many files change, and are any of them infrastructure?
-
-> 302 tool calls. Direction decisions were mine. Everything else — judgment, execution, synthesis — was Claude.
+Today's sessions demonstrate both ends of that spectrum in the same day, which makes the comparison concrete: same model, same infrastructure, 4× difference in tool call efficiency.
 
 ---
 
