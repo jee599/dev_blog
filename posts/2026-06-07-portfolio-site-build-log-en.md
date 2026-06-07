@@ -1,53 +1,66 @@
 ---
-title: "641 Tool Calls Later: Claude Code's WebSearch Hallucinates Email Addresses"
+title: "Claude Code Automation: What 14 Sessions and 700+ Tool Calls Taught Me About Email Discovery"
 published: true
-description: "Running Claude Opus 4.8 nine times a day to automate cold outreach — and discovering that WebSearch fabricates email addresses and domain names."
-tags: claudecode, ai, automation, webdev
+description: "14 sessions, 700+ tool calls, Claude Opus running every hour. Target: 220 leads. Reality: 15. WebSearch hallucinates emails—I caught it fabricating domains."
+tags: claudecode, automation, ai, webdev
 series: "Building with Claude Code: portfolio-site"
 canonical_url: https://jidonglab.com/posts/2026-06-07-portfolio-site-en
 ---
 
-Nine times a day, Claude Opus 4.8 wakes up and goes to work. Each session, it scans 15 prospecting lanes, visits real pages to collect on-page evidence, and drafts personalized copy-critique emails targeting 220 verified leads per run. One day of runtime: 9 sessions, 641 tool calls, roughly 3.5 hours.
+14 sessions. 700+ tool calls. Claude Opus firing on a 1-hour cron, scraping public emails from small business websites around the world. By end of day, one thing was undeniable: WebSearch's summarization model makes up email addresses.
 
-**TL;DR** WebSearch's summarization model fabricates email addresses and domain names. If your pipeline trusts search snippets for contact info, you're sending to hallucinated addresses. WebFetch against the actual page is the only reliable verification step.
+**TL;DR** I run a global outreach pipeline on `/jdlab-daily-cron`, firing every hour. Target per session: 220 verified leads. Real ceiling: 15–20. In session 7, I caught WebSearch fabricating both a domain name and an email that don't exist — in a pipeline that actually sends emails.
 
-## What the Pipeline Actually Does
+## How the Pipeline Works
 
-When `/jdlab-daily-cron` fires, Claude prospects for independent small businesses with publicly listed emails across 15 lanes: `us_home_services`, `us_food_cafe`, `us_pet_services`, `uk_ie_local_services`, `shopify_dtc`, and more. Each candidate gets a live page visit to verify the business exists and the email is real. Only verified leads get a personalized draft — pulling actual copy from the business's homepage to diagnose and rewrite.
+When `/jdlab-daily-cron` triggers, Claude runs 15 discovery lanes in parallel. Each lane targets a specific segment of independent small businesses likely to have public email addresses: `us_home_services`, `us_food_cafe`, `us_pet_services`, `uk_ie_local_services`, `shopify_dtc`, `woocommerce_independent`, and more.
 
-Output is per-lane JSON: `{items:[...]}`. Each item carries the business name, email, an on-page quote, a Before/After copy critique, and a `conversion_fit_score`. A downstream builder reads this JSON to generate Gmail drafts. It passes every item through safety and quality gates — so one bad email address poisons the entire run.
+Each lane produces a `{items:[...]}` JSON file. Only leads that pass both a safety gate and a quality gate get aggregated into the final output.
 
-## The Gap Between 220 and Reality
+Per-session output structure:
+- `outputs/outbound_runs/{date}/discovery_batches/{run_id}/` — 15 per-lane JSON files
+- `data/exports/{run_id}.csv` — input for the Gmail builder
+- `outputs/sheets_payloads/{run_id}.json` — Sheets payload
 
-The target was `target=220` verified leads per session. Actual results: 10–19 per run.
+The downstream builder is strict by design: one bad email address can compromise an entire send run.
 
-This isn't agent failure. It's the actual distribution of the web. Most search results for local businesses point to Yelp, Google Maps, or booking aggregators — not directly to the business. Of businesses with their own domain, about half offer only a contact form. The other half have a publicly listed email. The agent updated this reality into its `jdlab-lane-reachability.md` memory file after each run.
+## Seven Sessions Before 7AM: The Numbers
 
-Session 3 put it plainly in its own notes:
+Here's the tool call breakdown for the morning outreach sessions:
 
-> "Reaching 120 verified public emails requires 250+ successful page fetches — not achievable in a single session at honest quality."
+| Time  | Duration | Tool Calls | WebFetch | WebSearch |
+|-------|----------|------------|----------|-----------|
+| 00:49 | 31 min   | 91         | 23       | 28        |
+| 01:49 | 22 min   | 71         | 33       | 15        |
+| 02:49 | 40 min   | 122        | 68       | 26        |
+| 03:50 | 18 min   | 76         | 30       | 22        |
+| 04:50 | 19 min   | 76         | 33       | 16        |
+| 05:50 | 29 min   | 90         | 44       | 20        |
+| 06:50 | 18 min   | 47         | 22       | 8         |
 
-The pipeline documented its own ceiling.
+Session 3 stands out: 40 minutes, 122 tool calls, with WebFetch alone accounting for 68. Verification was consuming more than twice the tool calls of discovery. That ratio tells you where the bottleneck lives.
 
-## The Discovery That Changes Everything
+## WebSearch Fabricates Emails — With Confidence
 
 Session 7 surfaced the most important finding of the day.
 
-WebSearch's summarization model generates plausible-but-wrong email addresses and domain names. Not occasionally — as a pattern. Real example from this run: a search snippet returned `austinpettingsservices.com` as the domain and `info@walkatx.com` as the contact email. The actual business domain was `austinpetsittingservices.com`. Different email too. The summarizer invented a coherent-sounding string that doesn't exist.
+WebSearch doesn't just retrieve — it summarizes. And in summarizing, it generates. The model produces email addresses and domain names that look completely legitimate but don't exist anywhere on the web.
+
+Concrete example from this run: the search summary returned the domain `austinpettingsservices.com` and email `info@walkatx.com`. The actual business domain was `austinpetsittingservices.com`. The real contact domain was `walkatxpets.com`. The LLM generated plausible-looking strings — structurally valid, grammatically reasonable, completely made up.
 
 This breaks any pipeline that trusts search results for contact info. An email sent to a hallucinated address either bounces or — worse — lands in someone's inbox who has no idea why they received it. The fix is non-negotiable: every email address must be confirmed via WebFetch against the actual page. No exceptions for "the snippet looked right."
 
-## One Character Is the Difference Between Delivered and Bounced
+## One Character Makes You a Spammer
 
 Session 1 showed the same problem at the character level. A business called Toyne showed `craig@` in the search snippet. Actual page: `admin@`. Hair Studio Day Spa had `hairstudiodaypa@gmail.com` in the snippet — one letter short of the real address.
 
 If you had sent without verifying, you'd have either reached the wrong person or gotten a hard bounce. Either way, your domain reputation takes the hit.
 
-The agent's own recorded principle after this: *"No unverified email is included in an automated send pipeline."* Leads that failed verification were logged as `not_found`. The pipeline didn't lower the bar to hit a number.
+The agent's recorded principle after this: *"No unverified email is included in an automated send pipeline."* Leads that failed verification were logged as `not_found`. The pipeline didn't lower the bar to hit a number.
 
 ## WebFetch Has Its Own Constraint
 
-Session 7 confirmed a second limitation worth knowing. WebFetch redacts most emails to `[email protected]` for PII protection. So WebFetch alone can't always retrieve the actual address either.
+Session 7 confirmed a second limitation worth knowing. WebFetch redacts most email addresses to `[email protected]` for PII protection. So WebFetch alone can't always retrieve the actual address either.
 
 The working approach uses both signals together:
 
@@ -56,31 +69,44 @@ The working approach uses both signals together:
 3. Cross-check whether the snippet email matches what appears in the page's raw HTML before redaction kicks in
 4. Both signals must agree before an item is included
 
-It's more friction than just trusting the search result — but it's the only way to build a pipeline you can actually trust.
+It's more friction than trusting the search result — but it's the only way to build a pipeline you can actually trust.
 
-## Tool Call Breakdown
+## 220 Target. 15 Actual.
 
-Across 8 sessions:
+Every session ran with `target=220`. Every run delivered 10–19 verified leads.
 
-| Tool | Calls |
-|------|-------|
-| WebFetch | ~253 |
-| WebSearch | ~135 |
-| Write | ~128 |
-| Read | ~35 |
-| Edit | ~7 |
+This isn't an agent failure. The agent wrote this in session 3's own notes:
 
-WebFetch ran nearly twice as often as WebSearch. The pipeline spent more time verifying than searching — which is exactly what honest outreach automation looks like.
+> "Reaching 120 verified public emails would require 250+ successful page fetches. Honest quality in a single session makes this impossible."
 
-If your AI automation pipeline has the inverse ratio — more searches than fetches — there's a good chance you're trusting unverified data somewhere downstream.
+The structural reasons why 220 is unreachable:
 
-## What Comes Next
+**Aggregator dominance.** Most search results for local businesses point to Yelp, Google Maps, and booking platforms. No direct email — that's their business model.
 
-The realistic throughput for this pipeline is 10–20 verified leads per run. The `target=220` figure now reads as a stress test rather than a goal — useful for surfacing constraints, not a number to optimize toward blindly.
+**Contact form-only sites.** Roughly half of businesses with their own domain use contact forms exclusively. No email exposed anywhere in the HTML.
 
-Two directions from here: diversify lanes and tune search queries to improve coverage, or accept the lower volume and invest more in each lead's personalization quality.
+**JavaScript-rendered emails.** A large portion renders email addresses dynamically through JS, often with Cloudflare email obfuscation. The `a[href^="mailto:"]` the agent is looking for simply doesn't exist in the fetched DOM.
 
-Either way, the lesson from this run is the same: WebSearch summaries are a starting signal, not a source of truth. Treat every piece of contact information from a search snippet as unverified until a live page confirms it. Claude Code running 641 tool calls in a day is impressive — but the value only holds if the data it's acting on is real.
+The per-lane reachability data accumulates in `~/.claude/projects/.../memory/jdlab-lane-reachability.md` after each session — so the next run inherits this understanding instead of rediscovering it from scratch.
+
+If your AI automation pipeline has more WebSearch calls than WebFetch calls, there's a good chance you're trusting unverified data somewhere downstream.
+
+## Parallel Automation: Two Pipelines, One Day
+
+While the outreach pipeline ran through the night and morning, a separate session executed a dental advertising research agent. 8 minutes, 26 tool calls. It accumulated Naver ad policy updates and Korean local search ranking patterns into rolling knowledge base files: `rolling-knowledge-base.md`, `source-index.md`, and `competitive-serp-observations.md`.
+
+That session's finding: no new Korean healthcare advertising regulations since 2026-06-05. The ADVoost Screen DOOH notice (28168) — which prohibits digital out-of-home advertising for medical clinics — was re-confirmed via full-text re-read.
+
+Two completely different multi-agent automation workflows, feeding different downstream processes, running in parallel on the same day. The Claude Code harness makes this feel straightforward to set up — the hard part is the domain knowledge baked into each agent's memory files.
+
+## What's Next
+
+The WebFetch verification bottleneck is still unresolved. 22–68 WebFetch calls per session for a 40–50% email capture rate is expensive. Next experiments:
+
+- **Lane reprioritization** — rank lanes by historical email exposure rate, concentrate WebFetch budget where it actually returns results
+- **Query pattern improvements** — target searches more likely to surface contact pages directly, reducing the aggregator-to-direct-site ratio in results
+
+The ceiling of ~15 verified emails per session isn't a bug to fix. It's the actual market density of publicly-reachable independent businesses in these lanes. Claude Code running 700+ tool calls in a day is impressive — the value only holds if the data it's acting on is real.
 
 ---
 
