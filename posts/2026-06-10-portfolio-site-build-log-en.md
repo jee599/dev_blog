@@ -1,124 +1,102 @@
 ---
-title: "One Line in CLAUDE.md Gives Claude Autonomous Multi-Agent Workflow Authority"
+title: "789 Tool Calls in One Day: Site Rebuild, Startup Application, and Pipeline Audit with Claude Code"
 published: true
-description: "Adding a standing approval policy to CLAUDE.md lets Claude self-assess task size and spin up multi-agent workflows autonomously. 5 sessions, 12 tool calls, 1 file changed."
-tags: claudecode, multiagent, aiautomation, productivity
+description: "11 sessions, 789 tool calls, 38 files created. Rebuilt a site in 3h19m, filed an accelerator app, fixed an email pipeline, and unlocked autonomous multi-agent orchestration."
+tags: claudecode, automation, multiagent, webdev
 series: "Building with Claude Code: portfolio-site"
 canonical_url: https://jidonglab.com/posts/2026-06-10-portfolio-site-en
 ---
 
-One text file change. Six minutes. Now Claude decides on its own when to spin up a multi-agent workflow.
+11 sessions. 789 tool calls. 30 files modified, 38 files created. That's what Claude Code produced on June 10, 2026 — running on Fable 5 across a genuinely diverse set of work.
 
-**TL;DR** Added a standing authorization policy to the global `~/.claude/CLAUDE.md`. From the next session on, Claude reads task size and autonomously decides whether to run a Workflow — no per-request approval needed. One file modified. Six minutes total.
+**TL;DR** Rebuilt the coffeechat site into a resume builder + portfolio checker + AI mock interview platform in 3 hours 19 minutes (279 tool calls). Same day: Claude filled out a startup accelerator application, fixed an outbound email pipeline across 4 sessions, and I added a single standing-authorization policy to `CLAUDE.md` that unlocked autonomous Dynamic Workflow execution for all future sessions.
 
-## Why Per-Session Approval Was Slowing Things Down
+## How 279 Tool Calls Rebuilt a Site in Under 4 Hours
 
-Claude Code's default behavior requires user confirmation before executing the Workflow tool. For broad audits or work spanning many independent files, this is a bottleneck. Even when a task is clearly fan-out in nature, Claude stops and asks "Can I use a workflow?" every time.
+Coffeechat was a mentor-mentee matching platform. The ask was to replace it entirely with three features:
 
-The session started with a simple ask:
+> "I want a site that builds your resume, checks your portfolio, and runs mock interviews with 3 agents — agents communicate in text, the user responds by voice."
 
-> "I want Claude to be able to use dynamic workflows based on task size and efficiency — on its own judgment."
+Everything happened in one session: reading the existing codebase, designing API routes, building components, and iterating on design feedback. Five-plus rounds. "Don't make it look AI-generated." "Use toss-style tone." "The orange-brown color scheme is ugly." "Show an actual interview flow on the main page." After each round, Claude checked the browser render directly with `browser_batch`.
 
-The simplest implementation: write the policy into `CLAUDE.md`. No code changes. Text changes behavior.
+Output: a Next.js app at `~/coffeechat`, 5 API routes (`/interview/setup`, `/interview/turn`, `/interview/report`, `/polish`, `/portfolio`), 20+ components. GPT Image 2.0 API generated 3D assets for the favicon and section images.
 
-## The Three-Tier Sizing Criteria That Actually Works
+The resume builder is a 5-step wizard. Each section has an "AI Polish" button that returns achievement-reframed rewrites with metric coaching tips. The interview agent takes a portfolio or job posting, then asks follow-up questions in a thread. When you answer "I'm not sure," it pivots and approaches from a different angle. Role-specific question branches (developer/server/game/backend/frontend) and track variants (portfolio-based, foundational, domain expertise) were added mid-session.
 
-Added sizing criteria to the Routing section of `~/.claude/CLAUDE.md`. Two Edit calls, one Read, four Bash — done.
+3 hours 19 minutes. Bash: 132. Edit: 40. Write: 28. `browser_batch`: 33. Zero lines of code written by hand.
 
-**Tier 1 — Direct**: Simple lookups or single-file edits. Claude handles it inline, no agents.
+## The Email Pipeline That "Ran But Couldn't Be Trusted"
 
-**Tier 2 — Subagents as needed**: Multi-file work that fits within one context window. Claude spawns subagents only as warranted.
+Sessions 4, 5, 6, and 8 addressed the JDLab outbound pipeline in `local-commerce-agent`.
 
-**Tier 3 — Workflow**: Broad fan-out work. Audits, reviews, migrations, or research spanning many independent units. Requests with keywords like "thorough" or "comprehensive". Or roughly 10+ independent work items.
+**Session 4** — Companies that had already replied and been resolved were still sitting in the hot-lead queue. Created `state/jdlab_resolved_replies.json` to separate resolved state, and moved two hardcoded real email addresses from invoice defaults into `paypal-hot-leads.example.json`.
 
-Two additional constraints were baked in: agent count should scale to the task, not be maximized; and before fanning out, Claude must say in one line what's being parallelized and at what scale.
+**Session 5** — Bounce CSVs were hardcoded to a specific timestamp filename. New audit files wouldn't be picked up automatically. Built `resolveBounceCsvSelection()` to pattern-match `~/.hermes/document_cache/` and always select the most recent file. Result: 28 existing + 3 new = 31 tests passing. Bash: 12. Edit: 9.
 
-Here's what the actual policy addition looks like in `CLAUDE.md`:
+**Session 6** — Full pipeline audit. 33 minutes, 107 tool calls. Fixed free-mail domain suppression, added MX record preflight checks, atomic writes for the draft loop with run_id cross-validation, comprehensive exception handling overhaul. Audit results saved to `outputs/reviews/claude_jdlab_codex_cron_audit.md`. Edit: 43. Bash: 32.
 
-```markdown
-## Routing
-- **Dynamic workflow (standing opt-in)**: Jidong grants standing authorization
-  for the Workflow tool — Claude decides on its own judgment when task
-  size/efficiency warrants multi-agent orchestration. Sizing guide:
-  ① lookup/single-file edit → direct, no agents;
-  ② multi-file work that fits one context → Agent subagents as needed;
-  ③ broad fan-out work (audits/reviews/migrations/research over many
-  independent units, "thorough/comprehensive" asks, or roughly 10+
-  independent work items) → launch a dynamic Workflow.
-  Scale agent count to the task, not maximally; say in one line what is
-  fanning out and the rough scale before launching.
+**Session 8** — Quality upgrade. 38 minutes, 111 tool calls. Contact tiering (C-suite/VP/Director/Manager weights), send-window upper bounds, template repetition suppression cap. Six new test files: `jdlab_contact_tier.test.js`, `jdlab_copy_calibration.test.js`, `jdlab_send_window_caps.test.js`, and others.
+
+Four sessions, one-line summary: moved from "it runs but you can't trust it" to "auditable."
+
+## Claude Filled Out a Startup Accelerator Application
+
+Session 7: 2 hours 31 minutes, 71 tool calls. SparkClaw accelerator application.
+
+The approach was direct: paste the form text into the prompt. Claude pulled project context and real pilot data from memory and populated each field. The first draft was painfully generic.
+
+> "Strip the AI tone. Make it persuasive and expert, with lots of my actual experience and data. The pilot dental clinic didn't pay us — I'm literally just checking whether the ads I'm running are actually helping."
+
+From the second version, real numbers and firsthand observations replaced hypotheses. Instead of claims, it cited actual findings: "If the diagnostic score is wrong, the sales deck and execution plan collapse." Formulaic "firstly/secondly" list structure and unnecessary bold were removed.
+
+Same session: a one-pager company PDF via open-design (A4, converted to PDF), and a grant/credit research workflow rendered as an HTML report in the browser.
+
+Side finding confirmed mid-session: SparkClaw's "Claude Tier 4 Credits" is free high-tier Claude API access — genuinely worth applying for.
+
+## One Line in CLAUDE.md Unlocked Autonomous Orchestration
+
+Session 10 modified `~/.claude/CLAUDE.md`:
+
+```
+Dynamic workflow (standing opt-in): Jidong grants standing authorization for the Workflow tool
+— Claude decides on its own judgment when task size/efficiency warrants multi-agent orchestration.
+Sizing guide: ① lookup/single-file edit → direct; ② multi-file work that fits one context
+→ Agent subagents as needed; ③ broad fan-out work → launch a dynamic Workflow.
 ```
 
-One paragraph. Every subsequent session reads this and adjusts behavior accordingly.
+Before this, every multi-agent run required an explicit "use dynamic workflow" instruction. Now Claude assesses scope and decides autonomously. Fan-out triggers: audits/reviews/migrations/research across multiple independent units, keywords like "thorough/comprehensive," or roughly 10+ independent work items.
 
-## Switching to Fable 5 and Effort xhigh
+The policy took effect immediately. A dental agent report quality-upgrade request in the same session triggered autonomous Workflow execution: 5 phases, 11 agents. Context restore → 3 parallel re-measurements → report revision → verification → record/commit/push. About 85 minutes. Output: HTML + PDF at `~/dental-promo/dongbaek-uddental/2026-06-10/`.
 
-Same session: used `/model` to switch the default model to Fable 5. Sessions from this point forward run on Fable 5.
+Setup cost: 7 minutes. Effect: every subsequent session.
 
-Session 5 added `/effort xhigh` — a setting exclusive to Fable 5, Opus 4.8, and 4.7 that sits just below the maximum, described as "deeper reasoning than high." The configuration takes about a minute to set. The downstream effect on output quality is not minimal.
+## Subagents and Workflows Are Not the Same Layer
 
-## Subagents and Workflows Aren't Mutually Exclusive
-
-Session 5 surfaced a clarifying question that's worth addressing directly:
+A question from session 3 produced a clarification worth keeping.
 
 > "If I use subagents, can I still use dynamic workflow?"
 
-Short answer: yes. Workflows *contain* subagents. Every `agent()` call inside a workflow script is a subagent. `pipeline()` and `parallel()` are the scheduling layer that determines order and concurrency for those subagents.
+They're not mutually exclusive. Workflows *wrap* subagents. Every `agent()` call inside a workflow script is a subagent. `pipeline()` and `parallel()` determine the execution order and concurrency of those subagents. The `agentType` option lets you inject custom agents like `dental-clinic` or `code-reviewer` as pipeline stages.
 
-Custom agent types also work inside Workflows:
+This explains why dental agent work isn't a Workflow candidate. Re-measurement → report → record for one clinic is sequential and interdependent — no fan-out. Keeping `clinic.json`, `history.json`, and the cache in a single agent's context produces better output than splitting it.
 
-```javascript
-// Inside a workflow script
-const result = await agent(
-  "Review this dental clinic report",
-  { agentType: 'dental-clinic' }
-)
-```
+## Tool Call Breakdown (11 Sessions)
 
-You can slot a specialized agent — a dental marketer, a code reviewer — as a pipeline stage. This is why Workflow is an orchestration layer, not just a parallel execution tool: it lets you compose specialized roles into a coherent pipeline.
-
-## Checking In on the Dental Agent
-
-Session 3 checked the status of the dental agent (a dental clinic AI marketing agent). Nothing new was run this session — the last run was four days prior. A report quality improvement request came in, which was routed to the `dental-clinic` subagent per the routing rules. One Agent tool call.
-
-The reason the main session doesn't handle this directly: the dental agent is designed to restore full context by reading `clinic.json`, `history.json`, and the entire `cache/` directory. Having the main session re-read and process the same files is redundant work, not a shortcut.
-
-This is the routing rule pattern: each specialized agent owns its context. The main session's job is intent parsing, result synthesis, and approval gates — not re-doing the context restoration that the specialized agent already handles.
-
-## Coffee Chat Site Renewal — Planning Stage
-
-Session 4 brought a completely different project request:
-
-> "I want to rebuild the coffee chat site — not as a mentor-mentee connector, but as a platform with resume generation, portfolio review, and a mock interview with three AI agents."
-
-Four Bash calls to survey the existing codebase. The session ended at the planning stage; implementation was deferred to the next session.
-
-Each of the three features has a distinct open decision:
-- **Resume generation**: form-based input vs. freeform text
-- **Portfolio review**: URL submission vs. file upload
-- **Mock interview**: role distribution across three agents + voice input stack
-
-These decisions drive the implementation architecture. None of them have defaults that are obviously correct — which is why planning before coding matters.
-
-## Stats
-
-| Item | Value |
+| Tool | Count |
 |------|-------|
-| Total sessions | 5 |
-| Sessions with actual tool use | 2 (sessions 3, 4) |
-| Total tool calls | 12 |
-| By tool (Bash / Edit / Read / Agent) | 8 / 2 / 1 / 1 |
-| Files modified | 1 (`~/.claude/CLAUDE.md`) |
-| Time (active sessions) | ~7 minutes |
-| Default model | Changed to Fable 5 |
+| Bash | 298 |
+| Edit | 165 |
+| Read | 105 |
+| TaskUpdate | 62 |
+| Write | 48 |
+| TaskCreate | 33 |
+| browser_batch | 33 |
+| Agent | 13 |
+| **Total** | **789** |
 
-## The Policy File Is the Interface
+Bash is 38% — mostly test runs and browser render checks. Edit comes in second at 21%: most of the day's work was modifying existing files, not generating new ones. `browser_batch` 33 times reflects the coffeechat session's tight UI iteration loop.
 
-Claude's behavior is configurable through policy files, not code. One paragraph in `CLAUDE.md` determines whether Claude runs Workflow autonomously across every future session. Six minutes of configuration, permanently applied.
-
-The implication is broader than this single change: any behavioral constraint you keep re-stating in conversations could be moved into `CLAUDE.md` once and stop being a recurring cost. If you find yourself prefacing every session with "feel free to use subagents" or "go ahead and parallelize this" — that's a policy, not a conversation. Write it down once.
-
-The multi-agent AI automation story isn't just about what models can do. It's about how you configure the interface between yourself and those models. `CLAUDE.md` is that interface.
+Sessions 1, 2, and 11 hit the monthly credit limit and terminated early. Three of the day's sessions ended at a wall, not at completion.
 
 ---
 
