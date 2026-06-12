@@ -1,103 +1,102 @@
 ---
-title: "24 Claude Code Sessions, 700+ Tool Calls: Telegram Recovery to 31-Agent GTM Research"
+title: "1,394 Tool Calls, 5 Projects, One Day: Claude Code at Full Throttle"
 published: true
-description: "24 sessions, 700+ tool calls in one day: Telegram plugin recovery, 31-agent saju GTM research, full site rebuild, dental KB adversarial verification."
-tags: claudecode, multiagent, aiautomation, workflow
+description: "10 sessions, 1,394 tool calls across 5 live projects: dental pitch deck, broken email funnel, photographer site deploy, and a fortune telling redesign."
+tags: claudecode, webdev, ai, productivity
 series: "Building with Claude Code: portfolio-site"
 canonical_url: https://jidonglab.com/posts/2026-06-12-portfolio-site-en
 ---
 
-700+ tool calls. 24 sessions. One day.
+Ten sessions. 1,394 tool calls. Five completely different codebases. The longest session ran 14 hours and 23 minutes; the shortest wrapped in under a minute with a single cron status text fix. This is a raw account of what a full day of Claude Code-driven development looks like on June 12, 2026 — not a demo, not a highlight reel, but everything that shipped, broke, and got fixed.
 
-The largest single session — rebuilding a coffee-chat platform from scratch — clocked 359 tool calls: 177 Bash commands, 54 Chrome browser interactions, 43 file edits, 30 writes. The day started with tracking down why Telegram was silently disconnected (one boolean in `settings.json`), ran through a 31-agent parallel GTM research sweep that finished in 43 minutes, and ended with a dental advertising knowledge base updated by 22 parallel agents — with adversarial verification catching 4 factually wrong claims before they made it into production.
+**TL;DR**: Running claude-fable-5 across 10 sessions, the session limit hit three times. Still, every project reached deployment or a concrete deliverable. A 1-minute fix and a 14-hour full rebuild happened on the same calendar day.
 
-**TL;DR**: `"telegram@claude-plugins-official": false` in `~/.claude/settings.json` silently killed mobile Claude Code control. Flipped to `true`, restarted, mobile was back. Biggest task of the day: `fortunelab.store` global GTM strategy via 31 parallel agents, 814 tool calls, 43 minutes. Coffee-chat site full rebuild: 359 tool calls in one session from a single prompt.
+## Cutting a 20-Slide Dental Deck Down to 13
 
-## The One Boolean That Killed Mobile Control
+Session 1 (2h 58min, 175 tool calls) was clinic director meeting prep. The data sitting in `~/dental-promo/dongbaek-uddental/` got pulled into two deliverables: an HTML slide deck with keyboard/click navigation, and a per-slide speaker script.
 
-The message came in: "connection not working, check it." Opened `~/.claude/settings.json`. Late May harness cleanup — bulk-disabled a set of plugins including the Telegram one. One line:
+First draft: 20 slides. Feedback came back immediately — "too dense, too much jargon, translate the numbers into plain language." Every acronym went: `CPC`, `AEO`, gone. "Cost per click" became "37,000 won per click." The section-divider slides with black backgrounds were cut. 20 → 13.
 
-```json
-"telegram@claude-plugins-official": false
-```
+The speaker script started as markdown, then a conversion request came in. The final version was HTML with chip-based slide navigation — click a slide number chip, jump directly to that position in the script. The use case: a presenter who loses their place mid-talk can recover in two seconds. Tags like "30 seconds max" and "★ Today's objective" were added for quick scanning.
 
-Changed to `true`, restarted the session, messages started flowing immediately.
+Last task of the session: email both files. AppleScript → Mail.app → naver.com addresses, sent.
 
-This is the kind of bug that's annoying precisely because it's invisible. Telegram wasn't throwing errors. The connection just wasn't there. No fallback, no log entry that surfaces without going looking. The fix took under a minute once the cause was found; finding the cause was the whole job.
+Tool breakdown: Edit 68×, Bash 61×, Read 15×.
 
-The practical value of Telegram integration: checking session status mid-commute, sending "summarize saju project status" and getting a `STATUS.md` read-and-reply without being at a computer. That day's Telegram commands — saju project status check, git integration activation, full feature verification — were all handled automatically by Claude Code sessions running in the background. Reconnecting this made the rest of the day's work accessible from anywhere.
+## The Email Funnel That Had Been Silently Dead Since April 13
 
-## What 359 Tool Calls in One Session Actually Looks Like
+Session 4 (39min, 30 tool calls) ran a full pipeline audit on spoonai.me as a Workflow with 11 parallel agents: three audit tracks (pipeline, email, site) plus four deep research threads with adversarial verification.
 
-Session 9 was the week's largest by tool call count. The starting prompt:
+The most serious finding: subscriber emails captured on the site land in Supabase, but `send-email.js` was missing `SUPABASE_SERVICE_ROLE_KEY`. The script couldn't read the DB at all. Every subscriber since April 13 received zero emails. Worse, the unsubscribe links in those (never-sent) emails returned 404. The funnel was broken at both ends simultaneously — intake was working, delivery was completely dead.
 
-> "Rebuild the coffee-chat site — instead of mentor/mentee matching, I want: 1. fill in content and it builds your resume, 2. reviews your portfolio, 3. runs mock interviews with 3 agents where the agents respond in text and the user speaks"
+What makes this failure mode particularly insidious is how invisible it is. No errors surfaced anywhere in the UI. Subscribers signed up, got a confirmation, and then heard nothing. The multi-agent audit found it; manual monitoring would have caught it much later.
 
-That's a complete product pivot in one sentence. Codebase analysis, feature design, and full implementation — resume builder, portfolio analyzer, mock interviewer — all in one session. Final count: 177 Bash, 54 Chrome interactions, 43 edits, 30 writes.
+The research component surfaced an interesting positioning gap: generalist AI daily newsletters are saturated, but "Korean AI news, tracked daily in English" is still an open slot. With the pipeline itself confirmed healthy, funnel recovery is the next concrete step before validating that positioning.
 
-The interview feature's logic handles a common edge case: users who don't have a job posting or portfolio to attach. In that case, the agent first asks about their field, years of experience, and what they've worked on, then generates follow-up questions grounded in those answers rather than generic prompts. Model selection was split by function — mock interviews use Opus (quality-first), resume generation uses Sonnet (cost-optimized), portfolio analysis uses Opus again.
+## 57 Accelerator Programs Researched in One Fan-Out Pass
 
-Design feedback came in multiple rounds throughout the session: "looks too much like a generic AI site", "the colors are off", "favicon background isn't transparent". Each round, Chrome browser interaction rendered the current state in-session so fixes happened inside the same feedback loop rather than requiring a context switch. GPT Image 2.0 API generated Toss-style 3D visual assets; the favicon was regenerated once the transparency issue was flagged.
+Session 6 (9h 57min, 62 tool calls) covered Primer accelerator application prep — deadline 2026-06-28, standard terms: 100M KRW investment at a 1B KRW post-money valuation, roughly 10% equity.
 
-Having browser-measured renders in the same session loop compressed each design iteration cycle significantly. The important point isn't the raw tool call number — it's that the entire product direction, architecture, and UI went from single-sentence prompt to deployed state without leaving the session.
+After drafting three variants of a 200-character self-pitch (a required field in the application), the scope expanded: find comparable alternatives to Primer. A Workflow fanned out across five research categories in parallel: government programs, private accelerators, corporate/financial open innovation, AI-specific/global programs, and rolling-admission options. Five agents, 209 search-and-verify calls, 57 programs total.
 
-## 31 Agents, 43 Minutes, 814 Tool Calls
+Filtered to: solo founder + AI automation B2B + existing traction. That left 7 immediately actionable options. Sorted by deadline: DIPS Link-up AX Round 2 (Jun 22), DHP Partnership (rolling), Primer 29th cohort (Jun 28). A 1-minute pitch video script also came out of the same session.
 
-Session 10 covered global GTM strategy for `fortunelab.store`, a Korean saju (four pillars of destiny) service targeting international markets. 31 parallel agents via the Workflow tool, 814 tool calls, 43 minutes wall-clock time.
+Searching five program categories sequentially would have consumed most of the session. Running them as parallel agents compressed it to one shot.
 
-Multi-agent GTM research at this scale surfaces data that a single-context search sweep would miss. The most impactful finding came from Etsy live measurement: AI-labeled products in the spiritual/astrology category showed 0 sales. Human-persona products in the same category: 464 sales over one year. That single number decided the landing page positioning before any copy was written: don't lead with AI. Position as "1,000-year Korean traditional saju with precise manseryeok calculation." Saju.com's existing English-language product already uses a named persona — "Master Cheong-wol" — rather than surfacing the underlying technology.
+## 293 Photos, an Admin Panel, and a Live Vercel Deploy
 
-The research output: a structured HTML report (`FORTUNELAB_GTM_DEEPRESEARCH_2026-06-11.html`). 52 load-bearing claims extracted from the research, each run through adversarial verification — 38 confirmed, 13 corrected with updated values, 1 unverified. Any number cited in the report came from browser-measured source data; claims that failed verification were replaced with corrected values rather than flagged-and-kept.
+Session 7 (10h 13min, 216 tool calls) was a full redesign of the daymoon photographer site. Started with a simple inventory: 293 photos across categories.
 
-## Why `pipeline()` Beat a Barrier Model on Wall-Clock Time
+Four design directions were presented. "White curation" was selected — minimal, editorial. The structure landed as: home → full-width hero slideshow (12 hero shots, crossfade) → booking CTA, with the gallery rebuilt as a dynamic grid.
 
-The 43-minute finish for 31 parallel agents is worth unpacking, because the reason is architectural.
+Midway through the session: "the home screen looks off — just go straight to the gallery." Deleted 170 lines of intro page code, made the gallery the entry point. No homepage.
 
-`pipeline()` in the Workflow tool has no synchronization barrier between stages. Agent A can be in stage 3 while agent B is still in stage 1. That's not true of `parallel()` barriers, which wait for all items to complete a stage before proceeding.
+An admin panel was built alongside (password-free, as explicitly requested) using Vercel Blob Storage API: photo upload/delete, category management, seasonal booking management. Deployed to `daymoon-pic-motion.vercel.app`.
 
-For research workflows, this means fast agents don't sit idle waiting for slow ones. Under a barrier model, total wall-clock is bounded by the slowest agent at each stage multiplied by the number of stages. Under `pipeline()`, fast agents just move ahead.
+Two ack file conflicts occurred during the session — a separate concurrent session was overwriting the design-gate ack file. Worked around it by embedding the session ID directly in the OK file, making each session's ack unique.
 
-The practical rule: default to `pipeline()`. Only reach for a `parallel()` barrier when stage N genuinely needs all of stage N-1's output at once — deduplication across the full result set, early-exit on zero count, or when a downstream prompt needs to compare across all prior findings. Everything else is a pipeline.
+Tool breakdown: Bash 70×, Write 27×, TaskUpdate 26×, Edit 22×, Read 19×.
 
-## Adversarial Verification Caught 4 Wrong Claims Before They Shipped
+## Fortune Telling Gets Real Images — gpt-image-2 and a Payment Rail Reality Check
 
-Session 11: dental online advertising knowledge base update across all active channels. 12-dimension parallel research covering Naver search ads, smart place optimization, blog algorithm changes, AEO/GEO, Google, Meta, YouTube, Kakao/Danggeun marketplace, medical law compliance, review management, booking platforms, and trend-based cost data.
+Session 9 (11h 33min, 337 tool calls) was the second-longest of the day. The project: repositioning a saju (Korean fortune telling) site toward traditional aesthetics.
 
-The 6 highest-risk dimensions (medical law, compliance, policy specifics) got adversarial verification: 5 load-bearing claims per dimension, each challenged by an independent agent tasked with refuting the claim.
+First, a business question came up: "Won't payment processors reject it if we label it as an AI report?" The data said the opposite of what you'd expect. A natural experiment from June 11 Etsy data: storefronts openly branded "AI Reading" had 0 sales; human-persona storefronts had 464. Payment processors screen by service category (divination/fortune telling), not landing page copy. The strategic conclusion: rewording the pitch doesn't solve the problem. Finding payment rails that don't restrict divination does.
 
-Four wrong claims caught:
+Design direction: deep ink indigo + gold hairline + Fraunces serif. The three.js cosmic background was ported from the previous site, with star color shifted to gold tint and drift speed reduced — the goal was a "slow-moving night sky" feel rather than an active animation.
 
-1. "Constitutional Court non-covered discount ruling was in 2025" — actual ruling date: **2019-05-30**
-2. "Receipt review POS integration is required" — alternative certification methods exist and are accepted
-3. Two additional policy claims with incorrect specifics
+Image generation request came in: "use gpt-image-2 for the assets we need." Built `genimg.py` and `genimg-ink.py` scripts, queued four image generations via BackgroundTask. Hit the generation rate limit briefly, resumed as soon as it cleared.
 
-Without adversarial verification, all four would have shipped into the KB as facts. KB data feeds into agent decision-making for ad strategy; wrong compliance data creates downstream risk that's hard to detect until something breaks in production.
+A geometric SVG chart got flagged as "too juvenile." Removed it, replaced with scroll-synchronized parallax and micro-interactions. Seven-locale translation was delegated to a subagent, failed when the session limit hit, then continued inline.
 
-Mid-session, API overload (529 errors) killed the dental-clinic agent at 65 tool calls. Standard recovery: check which files were written, identify the last completed work item, continue from there. Files persisted through the agent crash, so resumption required no special handling.
+## 14 Hours, 476 Tool Calls: Admin Dashboard + Payments + TTS from Zero
 
-## Tool Call Distribution Across 24 Sessions
+Session 10 was the day's longest. The full scope: admin dashboard, user auth, token usage tracking, payments, and TTS — all in one session, because the project needed all of it to be testable together.
 
-| Tool | Count |
+Stack decisions: Turso (SQLite edge deployment) for the DB, PayPal for payments (global service, no divination category restrictions on the payment rail — directly relevant given the saju context). API keys came in as pastes during the session — Claude API key (`sk-ant-api03-...`) and OpenAI key (`sk-proj-...`) written to `.env`, TTS wired up.
+
+Vercel deploy failed with "commit author email is not valid" — git config had `jidong@jidongui-iMac.local` hardcoded from a local machine setup. Fixed the git config, re-pushed, passed.
+
+Admin feature set: per-user email/password login, per-request token usage table, payment history, credit adjustments, user management. `next-intl` added 7 locales. Portfolio enhancement, resume import, and dashboard redesign were each dispatched to separate subagents and run in parallel — three independent UI chunks building simultaneously.
+
+## Day in Numbers
+
+| Metric | Value |
 |---|---|
-| Bash | 390+ |
-| Edit | 110+ |
-| Chrome browser interactions | 71 |
-| Write | 35 |
-| Workflow (fan-out launches) | 6 |
+| Total sessions | 10 |
+| Total tool calls | 1,394 |
+| Longest session | 14h 23min (coffee chat admin) |
+| 2nd longest | 11h 33min (saju redesign) |
+| 3rd longest | 10h 13min (daymoon) |
+| Accelerator programs researched | 57 (5 agents, 209 searches) |
+| spoonai audit agents | 11 |
+| Vercel deploys | 2 (daymoon, coffee chat) |
+| Files created | 40+ |
+| Session limit hits | 3 |
 
-Sessions 9 (coffee-chat rebuild, 359) and 8 (saju Telegram control, 197) accounted for most of the volume. Sessions 3–7 were automated batch runs — claude-haiku-4-5 generating saju compatibility text content — with 0 Claude Code tool calls since those ran independently.
+The session limit hit three times across the day. Each time: reset, re-enter, re-establish context, continue. Files survive the reset. Re-establishing context costs some speed, but the work doesn't disappear — it's all in the filesystem.
 
-The 6 Workflow launches represent decision points where the work was wide enough that parallel agents were clearly faster than sequential context — not used by default, used when the task shape warranted it.
-
-## Patterns That Held Up
-
-**Adversarial verification is not optional for KB updates.** Research agents are optimistic by default — they find supporting evidence, not disconfirming evidence. A separate agent tasked with refuting each claim catches cases where source data is ambiguous, outdated, or simply wrong. 4 of 52 claims failing isn't a high rate, but in a KB used for compliance-adjacent decisions, 4 wrong facts is 4 too many.
-
-**Browser-in-session iteration changes the design loop.** The coffee-chat rebuild's fast design iteration came from having render verification inside the same session rather than as a separate step. Feedback → fix → render → repeat without context switching kept each cycle under a minute.
-
-**Single-boolean failures are worth documenting.** The Telegram `false` → `true` fix took under a minute. But "mobile control was silently broken for several weeks" is the actual story. Adding a connectivity check to post-harness-cleanup verification would catch this class of issue earlier.
-
-**Parallelism is a tool, not a default.** 31 agents for GTM research made sense because the research dimensions were genuinely independent. Most work doesn't need more than a handful of subagents, and scaling agent count to the task rather than maximally keeps things interpretable.
+The 1-minute fix and the 14-hour rebuild are the same tool, the same workflow, the same reset behavior. Scale is the variable; the process is identical.
 
 ---
 
