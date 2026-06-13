@@ -1,150 +1,131 @@
 ---
-title: "1,199 Tool Calls in 48 Hours: Shipping 5 Projects with Claude Code Fable 5"
+title: "1,212 Tool Calls in 72 Hours: Running 5 Projects in Parallel with Claude Code and Fable 5"
 published: true
-description: "7 Claude Code Fable 5 sessions over June 11–12: 1,199 tool calls, 61 files modified, 115 created. Saju redesign, full-stack auth + PayPal, 57-program startup audit, P0 fix."
-tags: claudecode, aitools, multiagent, productivity
+description: "How a multi-agent Claude Code workflow racked up 1,212 tool calls across 10 sessions in 72 hours — building auth, PayPal, TTS, i18n, and an admin dashboard in a single 27h 48min session, redesigning a saju app, and shipping a P0 fix in 22 minutes. Real numbers, real blockers, real patterns."
+tags: claudecode, ai, multiagent, automation
 series: "Building with Claude Code: portfolio-site"
 canonical_url: https://jidonglab.com/posts/2026-06-13-portfolio-site-en
 ---
 
-532 tool calls. One session. 27 hours and 48 minutes.
+532 tool calls in a single session. That's what it took to ship CoffeeChat from a blank slate to a full-stack app with auth, PayPal payments, TTS, i18n across seven locales, and an admin dashboard — all in 27 hours and 48 minutes. That number doesn't include the other four projects running in parallel during the same 72-hour window: 356 calls for a full saju app redesign, 82 for a dental clinic pitch deck, 62 for a startup program sweep across 57 programs, and 56 for a P0 hotfix that went from diagnosis to live deploy in 22 minutes. Total across 10 sessions: 1,212 tool calls.
 
-That number belongs to the coffeechat project — email/password auth, JWT session cookies, PayPal payments across three endpoints, OpenAI TTS, next-intl with 7 locales, an admin dashboard, and a full design QA pass. All from a single Claude Code session with Fable 5.
+**TL;DR** — June 11–13, 10 sessions, 1,212 tool calls, five projects running concurrently under claude-fable-5 via Claude Code. The bottleneck was never model speed. It was context separation.
 
-**TL;DR** — Over June 11–12, I ran 7 Claude Code sessions with Fable 5. Total: 1,199 tool calls, 61 files modified, 115 files created. Covered: a Korean fortune-telling site full redesign (25h, 356 calls), coffeechat full-stack auth + payments (27h, 532 calls), a dental marketing report and slide deck, a 57-program startup accelerator survey via 5 parallel agents, and a P0 bug fix shipped in 22 minutes.
+## A 22-Minute Session and a 27-Hour Session Ran the Same Week
 
----
+Before digging into any individual project, here's the full session breakdown:
 
-## Why a Coffeechat Session Ends Up at 532 Tool Calls
+| Session | Duration | Tool calls | Main work |
+|---|---|---|---|
+| CoffeeChat full-stack | 27h 48min | 532 | auth + PayPal + TTS + i18n + admin |
+| Saju redesign | 25h 26min | 356 | open-design + gpt-image-2 |
+| AEO cold-email strategy | 24h 48min | 105 | strategy + Hermes engine implementation |
+| Dental clinic report | 9h 57min | 62 | deep research + HTML report |
+| Dental clinic PPT | 7h 6min | 82 | 9-slide owner briefing deck |
+| SpoonAI P0 fix | 22min | 56 | bug fix + live deploy |
+| Daemoon status check | 5min | 6 | status audit |
+| Model error session | 2min | 0 | claude-fable-5 inaccessible |
 
-The original request was a single sentence.
+The short sessions have the highest tool-call density. SpoonAI ran 56 calls in 22 minutes — 2.5 per minute. The long sessions include agent wait time: sub-agents running in parallel while the main context idles.
 
-> "Let admins log in per user with email/password. Show token usage. Add all the ops tooling we need."
+That variance tells you something. When scope is locked tight upfront, the AI automation pipeline runs hot. When scope is open-ended, the session length is dominated by orchestration gaps, not model latency.
 
-"All the ops tooling" turned out to be everything. Here's what one session ended up building end-to-end:
+## What "All-in-One" Actually Looks Like at 532 Calls
 
-- **Turso DB layer** — SQLite-over-HTTP, schema and migrations
-- **Email/password auth + JWT session cookies** — registration, login, middleware, token refresh
-- **Credit calculation module** — usage tracking per user, rolling time windows
-- **PayPal payment flow** — three endpoints: `/api/pay/paypal/create-order`, `/capture`, `/webhook`
-- **Admin panel** — user list, detail view, individual action pages
-- **i18n routing** — next-intl with 7 locales wired through the entire app
-- **OpenAI TTS** — `/api/tts` endpoint with streaming audio response
-- **Portfolio deep-dive UI** — interactive section with animated breakdowns
-- **Resume import, template, and export** — file parsing, template selection, PDF export
+The initial prompt for CoffeeChat was deceptively short:
 
-Tool breakdown: `Bash` 190 calls, `Edit` 136, `Write` 66.
+> "Let users log in to the admin site with email and password, per user. Show token usage. Add all the ops tooling you'd need. Payments too. Global."
 
-The pattern that kept the single session from collapsing under its own weight: parallel subagents. Midway through, I spawned three independent agents — one for the portfolio UI, one for the resume import/export system, one for design QA. They ran concurrently and reported back via task notifications. The main context handled orchestration only; actual implementation happened in subagents working in parallel.
+"All the ops tooling" turned out to have no natural stopping point. The session expanded through: Turso DB layer, JWT session cookie auth, credit calculation module, PayPal across three endpoints (`create-order`, `capture`, `webhook`), admin user list and detail views with bulk actions, next-intl wired for seven locales, OpenAI TTS, a portfolio deep-dive interactive UI, resume import and template export. Over 70 files were created or modified.
 
-Right before pushing to production, Vercel blocked the commit:
+The multi-agent workflow pattern used here was functional decomposition: sub-agents ran in parallel for the portfolio enhancement UI, the resume import/template/export UI, and design QA. Each reported back via task notification. The main context handled only orchestration — routing decisions, reviewing outputs, resolving conflicts between parallel work streams.
+
+This is the practical shape of a multi-agent workflow at this scale. It's not about parallelizing compute. It's about isolating concerns so that a design QA agent doesn't need to know anything about the PayPal webhook implementation, and vice versa.
+
+Then, right before deploy, Vercel blocked the commit:
 
 ```
-The deployment was blocked because the commit author email 
+The deployment was blocked because the commit author email
 (jidong@jidongui-iMac.local) is not valid.
 ```
 
-`git config user.email` was set to the iMac's local hostname — a configuration detail that had never mattered locally. After 25 hours of work, this was the final blocker. Fixed the email, recommitted, deployed.
+`git config user.email` was set to the iMac's local hostname. After 25 hours of work, that's the blocker. One line fixed it — `git config --global user.email "jd@jidonglab.com"` — but it's a reminder that Claude Code can't fix environment-level configuration problems on your behalf. These always surface at the worst moment.
 
----
+## The Saju Redesign Started with a Payment Strategy Decision
 
-## The Payment Platform Problem Nobody Tells You About for Fortune-Telling Products
+The saju project session opened with a strategic question before a single design file was touched: "If we go with traditional saju framing, won't payment platforms reject it?"
 
-Saju is Korean fortune-telling — you enter a birth date and time, and the system generates a reading based on traditional Four Pillars (四柱) astrology. The product works. The problem is getting a payment processor to agree.
+The answer was already in memory from a deep research pass on June 11. An Etsy natural experiment: a shop that led with "AI Reading" branding did zero sales in one month. A shop using a human persona — a Korean mudang named Yeonhwa — ran for a year with 464 sales, 130 reviews, and a $34 average order value. Payment platform reviewers don't evaluate landing page copy. They evaluate **service category**. Whether you call it "AI report" or "traditional saju reading," you're selling a divination product, and that's how the underwriters classify it.
 
-The client asked: "If we call it traditional fortune-telling instead of AI reading, won't payment platforms still reject us?"
+The real fix isn't rebranding. It's switching to a payment rail that actually permits divination products. That conclusion went into the memory file (`project_saju_paypal.md`) immediately, because getting this wrong would mean shipping a beautifully redesigned checkout flow onto a payment processor that would ban the account.
 
-I had field data from a June 11 deep research session already sitting in the project memory files. An 'AI Reading' Etsy storefront ran for a full month — zero sales. A human persona shop called Yeonhwa Mansin had 464 sales and 130 reviews over a year using the same underlying service. The data was one input; the payment processor angle was another.
+With that resolved, the redesign proceeded under the "Midnight Almanac" concept: deep ink indigo, gold hairline accents, Fraunces serif. The cosmic 3D background was ported from a live Three.js component on another project, with star colors shifted to a gold tint and drift speed reduced. The version progression was v1 (static, no animation) → v2 (3D + parallax) → v3 (gpt-image-2 photorealistic imagery).
 
-Payment platform reviewers don't read landing page copy. They look at **service category**. Whether your homepage says "AI-powered birth chart report" or "traditional saju reading by a master," if you're collecting birth dates and selling a destiny report, the review outcome is identical. The category is fortune-telling, and that's what gets flagged.
+The gpt-image-2 ink-wash images came back and didn't fit the dark background. After the feedback "the spinning saju chart looks cheap — make it more technical and contemporary," the SVG chart components were cut entirely. Image generation ran as a background Task while v3 HTML was built in the foreground. When the generation notification came in, the images were inserted. That's where the parallel processing actually saved time in a measurable way — background generation overlapped with foreground HTML work, and the two streams converged cleanly.
 
-Strategic conclusion: don't reframe the copy, migrate to a payment rail that actually allows divination services. Paddle and Lemon Squeezy both have more permissive category policies than Stripe. The prior session's research fed directly into this decision without re-explaining any context, because the memory files loaded automatically at session start.
+## What 57 Programs and 209 Searches Looks Like With Dynamic Workflow
 
-The redesign itself ran through the Open Design skill. Concept: **Midnight Almanac**. Visual system: deep ink indigo (`#0D0F1A`), gold hairline accents, Fraunces serif for display text. The three.js `CosmicBackground` from the live site was ported unchanged — stars tinted gold, drift speed reduced. `gpt-image-2` generated photorealistic imagery; SVG shape charts were removed entirely.
+The startup program research task was the first session where I ran `/effort ultracode` and let the dynamic workflow expand fully. The ask was a comprehensive sweep of Korean and global accelerator programs for a Primer seed application.
 
-Three iterations shipped:
+Five search agents ran in parallel across categories: government programs (DIPS Link-up and equivalents), private accelerators, large-enterprise open innovation, AI-focused and global programs, and rolling admissions. 209 searches and verifications. 57 programs measured.
 
-- **v1** — static layout, no animation, full type system established
-- **v2** — 3D cosmic background + parallax scroll behavior
-- **v3** — gpt-image-2 photorealistic hero and section images
+After filtering for solo founders, AI automation B2B, and evidence of real traction as a selection criterion: 7 immediately actionable cards, 2 to monitor for upcoming deadlines.
 
-Total: 356 tool calls across 25 hours and 26 minutes.
+The structural advantage of the AI automation fan-out here isn't speed — it's independence. Each agent independently verified current application status from official sources as of June 2026. Sequential searching by hand would take a day. The parallel approach compresses that to a session. But more importantly, independent verification per agent means one agent's stale result doesn't contaminate the others.
 
----
+## SpoonAI P0: The 22-Minute Blueprint
 
-## Surveying 57 Startup Programs with 5 Parallel Search Agents
+This was the tightest, most replicable session of the 72-hour window. Two bugs:
 
-When the question came in about whether to apply to Primer Seed Accelerator (deadline June 28, ₩100M investment, ~10% equity), I dispatched a dynamic workflow instead of searching manually.
+1. New subscribers couldn't receive emails — permanently, not just for the first send
+2. `/unsubscribe` returned 404
 
-5 parallel search agents, each assigned a category:
+`scripts/send-email.js` had a subscriber list query that excluded newly registered users. The `/api/unsubscribe` GET endpoint was performing an immediate hard delete instead of redirecting to a confirmation page. The fix: update the subscriber query, change the GET to a 302 redirect, and create the `/unsubscribe` and `/feedback` pages that were missing.
 
-1. Government-backed programs (DIPS, Link-up Korea, etc.)
-2. Private accelerators
-3. Large corporate open innovation programs
-4. AI-focused and global accelerators
-5. Rolling or always-open applications
+```
+/unsubscribe → 200 ✓
+/feedback → 200 ✓  
+/api/unsubscribe GET → 302 → /unsubscribe?email=... ✓
+```
 
-209 searches and verifications. 57 programs surveyed. Each agent independently checked current recruitment status against official sources — no cross-agent sharing until synthesis. Filters applied post-collection: solo founder, AI automation B2B, with real revenue or usage traction.
+Commit `4a3c598`, deployed, live verified: 22 minutes.
 
-Result: 7 immediately actionable programs, 2 worth monitoring for imminent announcements.
+The reason this session ran at 2.5 tool calls per minute while the CoffeeChat session averaged far less is purely scope definition. No open-ended "what should we build?" No exploration phase. Two P0 bugs, both with clear reproduction steps. The Claude Code multi-agent workflow infrastructure doesn't do anything magical here — tight scope definition is just faster, and that's a constraint the developer sets before the first prompt.
 
-The cross-reference verification step is what made this useful over a simple web search. A program appearing in a VC's blog post from 2024 but without a current recruitment page gets dropped. One appearing across multiple independent government databases with a live application portal stays. The workflow applied this logic consistently across all 57, in parallel.
+## The Session That Lasted Two Minutes and Produced Nothing
 
-Post-synthesis verdict: applying to Primer costs essentially one 1-minute video pitch. Acceptance rate aside, the application-to-upside ratio is high enough to just do it.
+Session 8 ended at 2 minutes with zero tool calls. `claude-fable-5` had switched to the `<synthetic>` model indicator and the session was incoherent from the start:
 
----
+```
+There's an issue with the selected model (claude-fable-5[1m]).
+It may not exist or you may not have access to it.
+```
 
-## The 22-Minute P0 Fix
+A single inaccessible environment variable can void an entire session. The fix is procedural: run `/model` to confirm model access before starting any substantive work. If the model isn't responding correctly in the first two exchanges, stop and verify before spending time on prompts that won't execute.
 
-Session 7 was 22 minutes. It had the highest tool call density of the week — `Bash` 25, `Read` 13, `Write` 8, `Edit` 7 — roughly 2.5 calls per minute sustained.
+This is the Fable 5 failure mode to watch for. Model access can change between sessions without notice, and detecting it at minute 2 is much better than detecting it at minute 60.
 
-**Bug 1**: New subscribers weren't receiving any emails, ever.  
-**Bug 2**: The unsubscribe link returned 404.
+## Memory Files Are the Continuity Layer Between Sessions
 
-Root cause for Bug 1: `scripts/send-email.js` built its recipient list with a query that excluded users registered after a certain date boundary. New subscribers were invisible to the mailer.
+All 10 sessions started with `/clear`. Each session re-read project memory files to reconstruct context: `MEMORY.md` plus individual project files. Dental clinic projects use `~/dental-promo/{slug}/clinic.json`. The saju project uses `project_saju_paypal.md`. CoffeeChat uses `project_coffeechat_jobprep.md`.
 
-Root cause for Bug 2: the `/api/unsubscribe` GET endpoint was calling the database deletion immediately on click, with no confirmation step. The route existed in the API layer but had no corresponding page, so direct navigation returned 404.
+This is what makes multi-session AI automation coherent rather than repetitive. The June 11 deep research results were the basis for the June 12 payment strategy decision. The sessions are disconnected at the model level, but the memory layer creates continuity at the project level.
 
-Fixes applied:
+The risk is staleness. Memory files accumulate assumptions, and the older they get, the higher the chance that a fact they assert has been superseded by new information. Any empirical result that contradicts a memory file assumption needs to be written back immediately — this happened once during this cycle, when the Etsy payment data forced an update to `project_saju_paypal.md`. The workflow to verify and update memory files is just as important as the workflow to read them.
 
-- Corrected the subscriber query to include all confirmed registrations
-- Changed `/api/unsubscribe` to issue a `302` redirect to a confirmation page instead of performing immediate deletion
-- Created `/unsubscribe` — confirmation UI with one-click confirm action
-- Created `/feedback` — optional post-unsubscribe feedback form
+The session-based model has one other important property: it forces explicit scope. Because `/clear` resets the context, each session has to declare what it's doing. That constraint turns out to be a forcing function for tighter work — you can't casually drift into adjacent features when you have to justify the session's focus from the first prompt.
 
-Commit `4a3c598`. Deployed. Live verification done. 22 minutes total.
+## What the Numbers Actually Tell You
 
----
+1,212 tool calls across 10 sessions in 72 hours is a throughput number, but it's not the useful metric. The useful metric is how many parallel work streams ran without interfering with each other.
 
-## Session Stats Across All 7 Runs
+The CoffeeChat session at 532 calls and the SpoonAI session at 56 calls represent opposite ends of the same spectrum. One was open scope that expanded through orchestration. The other was surgical scope that ran hot from start to finish. Both worked. The difference is in what the developer chose before the first prompt — not in anything the Claude Code model did differently.
 
-| Session | Duration | Tool Calls | Main Work |
-|---|---|---|---|
-| Coffeechat full-stack | 27h 48min | 532 | auth + PayPal + TTS + i18n |
-| Saju redesign | 25h 26min | 356 | open-design + gpt-image-2 |
-| AEO cold email | 24h 48min | 105 | strategy + engine implementation |
-| Dental PPT | 7h 6min | 82 | 9-slide clinic director briefing |
-| Dental ad report | 9h 57min | 62 | deep research + HTML report |
-| spoonai P0 | 22min | 56 | bug fix + deploy |
-| Daemoon status check | 5min | 6 | current state review |
+The parallel execution model — sub-agents for isolated concerns, background tasks for generation workloads, main context for orchestration — consistently reduced wall time on the design-heavy sessions. Image generation running in parallel with HTML construction is the concrete example: the Fable 5 multi-agent workflow doesn't just let you do more, it lets you avoid blocking on async work that doesn't depend on what you're currently building.
 
-The pattern holds: shorter runs have higher tool call density. Longer sessions include wall-clock time where parallel subagents are executing — the main loop is idle while implementation happens elsewhere.
+The model error session is a useful reminder that this infrastructure depends on clean environment state. Fable 5 access, git config, Vercel account email — these are preconditions that the AI automation layer can't fix unilaterally. Pre-flight checks before long sessions pay for themselves.
 
-The two longest sessions (coffeechat and saju) both relied heavily on parallel subagents. Strip out the wait time, and the effective single-threaded work in those sessions is probably closer to 8–10 hours each.
-
----
-
-## Memory Files as the Layer That Connects Sessions
-
-All 7 sessions ran on Fable 5. The most consistently useful pattern across all of them wasn't a specific feature — it was the `~/.claude/projects/.../memory/` directory.
-
-The Etsy field data collected during the June 11 deep research session was available in June 12's saju strategy session without any manual context-passing. The memory file loaded at session start, the model referenced it during reasoning, and the decision was better for it.
-
-This matters most for projects that span multiple days. A session that ends mid-investigation doesn't lose its findings — they're written to memory and available next time. The saju payment strategy, the Primer accelerator evaluation, the coffeechat Turso schema decisions — all of it persists across session boundaries.
-
-The caveat: memory files get stale. During these two days, `project_saju_paypal.md` was updated once — to clear out an assumption that field data had overturned. Stale memory is worse than no memory because it provides false confidence. The discipline is updating the file when ground truth changes, not just when adding new information.
-
-7 sessions. 1,199 tool calls. Next cycle: saju payment rail migration and coffeechat Vercel deployment.
+Next cycle: saju payment rail migration, CoffeeChat Vercel deploy, SpoonAI subscriber growth experiments.
 
 ---
 
