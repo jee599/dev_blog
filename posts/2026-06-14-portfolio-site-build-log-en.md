@@ -1,162 +1,155 @@
 ---
-title: "532 Tool Calls, 28 Hours: What Claude Code's Ultracode Mode Actually Does"
+title: "528 Claude Code Tool Calls in One Day: Design Gates, Relay Orchestration, and What Actually Shipped"
 published: true
-description: "9 sessions, 5 projects, 1,000+ tool calls in 3 days. Here's what running Claude Fable 5 with ultracode actually looks like at scale."
-tags: claudecode, ai, webdev, productivity
+description: "11 sessions, 528 tool calls, 4 blocked by a design-gate hook. Breaking down Claude Code multi-agent patterns: what shipped and what broke at the gate."
+tags: claudecode, ai, automation, devlog
 series: "Building with Claude Code: portfolio-site"
 canonical_url: https://jidonglab.com/posts/2026-06-14-portfolio-site-en
 ---
 
-532 tool calls. 28 hours. One session. That's not a typo.
+528 tool calls. 11 sessions. One day. Most of it on `claude-opus-4-8`. Four projects running in parallel — an AI fortune-telling site visual overhaul, a SaaS hero animation restoration, a Godot wuxia game design doc, and a B2B email outreach pipeline. By end of day, three of the four shipped. One didn't.
 
-Last week I ran a single Claude Code session that lasted 27 hours and 48 minutes, touched 70+ new files, and shipped admin panels, payment integration, multilingual support, TTS, and a resume builder — all in one uninterrupted run. The model was `claude-fable-5` with the `ultracode` flag.
+The one that didn't is the most interesting part of this story.
 
-Here's what I learned about long-running AI sessions, and why the failure modes are just as interesting as the wins.
+**TL;DR**: A `design-gate` hook in my Claude Code workflow blocked 4 consecutive sessions from generating a Godot game design PDF. The Hermes relay pattern — where Hermes acts as orchestrator and Claude Code acts as executor — has a structural blind spot: it can't pass through interactive permission gates. This post documents what that looked like in practice, and why getting blocked four times in a row is actually a sign the system is working.
 
----
+## Four Images, Three Visual Languages, Zero Coherence
 
-**TL;DR:** Between June 11–13, I ran 9 sessions across 5 simultaneous projects. `ultracode` isn't just "faster Claude" — it's a switch that automatically enables fan-out workflow orchestration. The `/goal` hook is what makes 28-hour sessions possible (and occasionally dangerous).
+The Saju (Korean fortune-telling) site had a problem that sounds simple until you look at it: four hero images from three completely different visual vocabularies, all on a dark-themed site.
 
----
+`hero-sky` and `sea-moon` were dark, moody real-photo night scenes — the kind of urban landscape photography you'd see on a premium real estate portfolio. `ink-night` was a traditional Korean/Chinese ink wash painting, dark and atmospheric but in a completely different medium. `ink-cranes` was cranes on a bright white background, the style you'd find on a greeting card.
 
-## Why Would a Session Last 28 Hours?
+The i18n files compounded the problem. They still had placeholder marketing copy sitting in production: `$4.99 / 20,000+ character deep-dive by AI / Start Free, Upgrade Anytime`. Not localized, not final, just there.
 
-Normal Claude Code sessions run 30 minutes to 2 hours. This week was different.
+Claude used Dynamic Workflow to survey 10 distinct East Asian art directions:
 
-| Session | Duration | Tool Calls | Project |
-|---------|----------|------------|---------|
-| Session 4 | 25h 26min | 356 | Saju Global Redesign |
-| Session 5 | 27h 48min | 532 | CoffeeChat Admin/Payments |
-| Session 6 | 24h 48min | 105 | AEO Outreach Engine |
+- Astronomical chart (천문도) — celestial maps with gold line art on dark backgrounds
+- Folk painting (민화) — bright, flat, symbolic Korean folk art
+- Landscape ink wash (산수화) — traditional brush-and-ink mountain scenes
+- Blue-green mountain wash (청록산수) — mineral-pigment style from classical Chinese painting
+- Cosmic gold line art — geometric, modern, constellation motifs
+- ...and five more
 
-The mechanism is the `/goal` hook. When you set a goal condition, Claude won't end the session until that condition is satisfied. Session 5's goal was roughly: *"Add per-user admin panel + token usage tracking + payments + full multilingual support to CoffeeChat."* That's a wide condition. Wide conditions create long sessions. All 532 tool calls ran toward a single goal state.
+Each direction came with curated reference image URLs and a brief rationale, all compiled into `art-directions.html` for visual comparison. The user picked astronomical chart.
 
-The catch: sessions this long compress context over time. Early architectural decisions get fuzzy. I developed a `/clear` + `/goal` reset pattern — basically a manual context refresh to re-anchor direction mid-session. It's not elegant, but it works.
+Then came the pipeline fix. The existing `genimg.py` had `"Editorial photography"` hardcoded as a style constraint in the generation prompt — literally forcing gpt-image-2 toward realistic photography regardless of what else you specified. That single string was fighting every attempt to generate painterly output.
 
-In Session 5, the breakdown was: Bash (190), Edit (136), Write (66). If you're trying to hold a session together at this scale without `/clear`, you're betting on context coherence across 20+ hours. That bet sometimes loses.
+Replacing it with a cosmic gold painterly direction (specific prompt engineering for the astronomical chart aesthetic) unified all four images into a coherent visual system. Bash 82, Read 27, Edit 24.
 
----
+## Resurrecting a Deleted Animation from Git History
 
-## What `ultracode` Actually Does
+The CoffeeChat hero section was missing its `InterviewDemo` component. Not broken — deleted. Present one commit, gone the next.
 
-Running `/effort ultracode` adds `xhigh + dynamic workflow orchestration` to the system configuration. Here's what that looked like in practice:
+`git log` surfaced the cause immediately: commit `0e578da` had removed `InterviewDemo` and replaced it with a static `ReportShowcase` component. Once the cause was clear, the recovery plan was straightforward:
 
-**Session 2 — Funding Research Fan-Out**
+1. Convert the hero to a 2-column layout
+2. Restore the interview chat animation on the left column
+3. Add a new animation on the right showing 3 reports being written in sequence, at half scale so both are visible simultaneously
 
-I gave it: *"Exhaustively survey primer-level seed investment and grant programs."*
+The implementation touched four surfaces:
+- `globals.css`: new CSS animation keyframe definitions for the report-writing animation
+- `demos.tsx`: layout changes to place both components side-by-side with correct sizing
+- `i18n/en.json` and `i18n/ko.json`: updated copy for both languages
 
-What happened: it spun up 5 parallel search agents by category, ran 209 searches and verifications, filtered 57 programs down to 7 recommendations matching a solo-founder profile. Doing this manually would have taken two days. The key thing — I didn't tell it to parallelize. It decided the task structure warranted fan-out and did it.
+This was the heaviest session of the day — 210 tool calls. Bash 75, Edit 67, Read 59.
 
-**Session 9 — Outreach Failure Audit**
+What made this session complex wasn't the code. It was the continuous real-time feedback loop. "Did you deploy? It's not showing on the site yet." "Can we cover technical interviews, not just behavioral?" "The report should show 5 pages, not 3." "The stats banner looks too plain." Each message redirected the session mid-stream. All handled inside a single continuous session without context loss.
 
-Prompt: *"JDLab Dynamic Outreach Failure Audit."*
+## Why the Design Gate Blocked Four Times in a Row
 
-It first performed reconnaissance on Gmail access permissions, then hunted for quota DSN messages to diagnose the actual failure cause. The agent determined its own workflow structure based on what it found during the recon phase. This is the meaningful shift with `ultracode`: the orchestration pattern emerges from the task, not from instructions.
+This is where it gets interesting.
 
----
+My `CLAUDE.md` has a hard rule: any HTML artifact must pass through Open Design (OD) or an equivalent design-system check before it can be written to disk. This is enforced by `hooks/design-gate.sh`, which intercepts any `.html` write attempt and blocks it until `design-pass.sh` authentication has run in that session.
 
-## The Saju Global Payment Positioning Problem
+The goal is to prevent "raw Claude HTML" — output that works but has no typographic rhythm, arbitrary color choices, and spacing that doesn't follow any system. The gate creates just enough friction to catch these problems before they reach a file.
 
-Session 4 started with a genuine business question: *"If we reposition this as traditional Korean fortune-telling instead of AI-powered, does that help us get approved for payment processing?"*
+The Godot wuxia game design PDF was attempted in sessions 4, 5, 8, and 9.
 
-The empirical answer was no — and the data was interesting.
+**Session 4**: Claude checked for the Open Design server. Port 7457: nothing. The `design-systems/` and `design-templates/` directories existed but were empty placeholders — OD had been scaffolded but never installed. The server wasn't runnable.
 
-A natural experiment on Etsy told the story: a shop that led with "AI Reading" had 0 sales after one month. A shop using a human persona (연화 만신 / Yeonhwa Mansin) had 464 sales, 130 reviews, and a $34 average price. Payment platform review processes look at service category, not landing page copy. If your service takes birth date and time as inputs and returns fortune-based content, it gets classified as divination regardless of what the headline says. "AI saju" and "traditional saju" land in the same bucket.
+Fallback: apply an OD-equivalent pass manually. Read the `craft/` directory from the OD repo, extract editorial typography rules, color theory guidelines, and anti-AI-slop constraints, then run `design-pass.sh` to authenticate the session. That auth completed. But the session hit a context cutoff before any files were generated. No output.
 
-We confirmed that repositioning wouldn't circumvent the payment review, kept the traditional positioning for product reasons, and resolved the payment rails separately.
+**Session 5**: Instruction: "Don't re-explore the environment. Just produce the output." Claude ran 3 Bash commands checking environment state, then stopped. Session ended without generating the file.
 
-For the actual build: we ran the `open-design` skill and built `landing-midnight.html` through v1 → v2 → v3 iterations. `gpt-image-2` was generating images in the background while v3 code was being written in parallel. This matters because image generation is the slowest part of the pipeline — parallelizing it avoided a sequential bottleneck that would have added hours.
+**Sessions 8 and 9**: Same scenario, now routed through the Hermes relay. Hermes issued: "Create the Godot design doc directly." Claude still needed to pass the design gate. Gate auth consumed the available session time and context budget. No PDF.
 
----
+The Godot game design document was not generated on this day. Four attempts. Zero output.
 
-## The Git Email Block That Stopped a Deploy
+## The Structural Blind Spot in the Hermes Relay Pattern
 
-Session 5 hit a wall that had nothing to do with AI:
+Sessions 4 through 11 started with a system prompt structured roughly like this:
 
 ```
-The deployment was blocked because the commit author email
-(jidong@jidongui-iMac.local) is not valid.
+You are Claude Code, the actual executor.
+Hermes is only the relay/orchestrator.
+Your job: implement, verify, and ship.
+Hermes's job: planning, prioritization, task sequencing.
 ```
 
-The local machine hostname had been committed into `git config`. The author email was literally `username@machinename.local` — which Cloudflare's deployment pipeline rejected.
+The Hermes relay pattern treats Claude Code as a stateless executor — Hermes maintains high-level state and issues instructions, Claude Code runs tools and produces artifacts. This is useful when you want to maintain planning context across sessions without carrying full implementation history into every new context window.
 
-Fix was manual: update `.gitconfig` directly with the correct email, recommit. Claude Code won't touch `git config` by policy (security constraint), so this required a human in the loop. It's a small thing, but in a 532-tool-call session you don't expect a deploy to fail because of a config file you set up two years ago.
+The pattern works well — until it hits an interactive gate.
 
----
+In session 6, Hermes instructed Claude to use the Dynamic Workflow tool to build a B2B-SaaS outreach pipeline. The Workflow tool triggered its standard confirmation: "Review dynamic workflow before running." This gate requires interactive approval from a human. A relay — by definition — can't provide that approval. It's not the human; it's another automated process in the chain.
 
-## How the `design-gate` Hook Forced Better Decisions
+Claude caught this immediately and logged it in the session output:
 
-My `CLAUDE.md` has a rule: *"No HTML artifacts without passing through Open Design or an equivalent design system pass."* The hook `hooks/design-gate.sh` enforces this by blocking `.html` file writes until a pass is acknowledged.
+> "Workflow tool is gated — relay sessions can't get interactive approval. Manually decomposing into parallel sub-agents instead."
 
-When Session 6 triggered the `report-builder` skill, it had to clear the gate first:
+What followed was manual decomposition: 6 separate `Agent` tool calls across 12 B2B-SaaS niches, running in parallel. 1 Workflow call for the subset that could proceed unattended. The AEO outreach pipeline was completed:
 
-```bash
-bash ~/.claude/hooks/design-pass.sh "report-builder design system pass"
-```
+- 27 GREEN-only prospects selected against multiple qualification criteria
+- Output files: `eligible_*.json`, `email_sequences.json`, `verification.md`
 
-Initially this felt like friction. But the forced pass made one decision happen that wouldn't have happened otherwise: choosing between Stripe, Notion, and Linear design systems before writing a line of CSS. This produced a comparison page (`_theme-directions.html`) that documented the choice. Without the hook, there's a high probability I would have written improvised CSS and ended up with something inconsistent.
+Sessions 10 and 11 added a Codex review pass. Codex caught a consistency bug: `verification.md` reported "price token count: 31" in the summary, but the actual email body templates contained no price token. The count came from a placeholder in an unused template variant. Fixed.
 
-The hook creates a forcing function. The forcing function creates a decision record. The decision record is worth something six weeks later when you can't remember why the typography looks the way it does.
+The relay pattern handles orchestration well but can't reach through interactive checkpoints. Any step requiring a human-in-the-loop decision — Workflow tool review, design gate auth, destructive operation confirmation — breaks the relay chain. The solution isn't to remove the gates. It's to design auth flows that are relay-compatible: ones that Hermes can request, route to the user, and confirm on behalf of the downstream executor.
 
----
+## The Gmail Audit That Rewrote the Narrative in 5 Minutes
 
-## P0 Before GTM: The spoonai Session
+Session 3 was the cleanest session of the day. 23 tool calls. Read `claude_input.json` and `summary.json` from a Gmail outreach audit, produce 3 output documents.
 
-Session 7 started as a "how do we market this" conversation. The session opened with a P0 bug audit instead.
+The finding flipped the interpretation of the data.
 
-Two critical issues surfaced immediately: new subscribers couldn't receive emails permanently (silent failure in the subscription flow), and the unsubscribe link returned a 404. Shipping a marketing strategy on top of broken email delivery would have been actively harmful.
+Raw numbers: 86 "bounced" emails. If taken at face value, that's a list quality crisis. Time to clean the list, re-verify addresses, rethink targeting.
 
-The fixes:
-- Added `/unsubscribe` and `/feedback` pages
-- Changed `/api/unsubscribe` GET from a deletion endpoint to a 302 redirect to a confirmation page
+But breaking down the bounce types changed everything:
+- **82 of 86**: Gmail daily send quota self-throttle — Gmail hit its own sending limit and logged those deliveries as "bounced," but the email addresses themselves were valid
+- **1**: actual hard bounce (invalid address)
+- **3**: remote server rejections
+- **1**: genuine inbound reply, from Fjord
 
-Committed at `4a3c598`, deployed to `spoonai.me`, response codes verified against live URLs. The whole sequence — P0 diagnosis, fix, test, deploy, verify — ran in 56 tool calls over 22 minutes.
+A 95% bounce rate is a list problem. The same dataset with breakdown context is a rate-limiting problem. Completely different diagnosis, completely different fix.
 
-This is a pattern worth internalizing: when you give an agent a broad business question, it may correctly determine that the answer is "fix what's broken first." That's usually right.
+Bash 18, Write 3, Read 2. Roughly 5 minutes of active work.
 
----
+## By the Numbers
 
-## How 9 Sessions Share Context Without Repeating Themselves
+| Tool | Calls |
+|------|-------|
+| Bash | 237 |
+| Read | 133 |
+| Edit | 98 |
+| Write | 18 |
+| Agent | 10 |
+| Workflow | 7 |
+| **Total** | **528** |
 
-Nine sessions, each starting fresh. Without a memory system, each one would require a full context dump to re-establish what's been done.
+23 files modified. 16 files created.
 
-The setup: `~/.claude/projects/-Users-jidong/memory/` holds per-project memory files. Session start automatically reads relevant memories. The result is that "what's left to do?" gets a direct answer about Vercel Blob storage flows and admin tab structures — because that was written into memory by a previous session.
+Sessions 1 and 2 — the Saju redesign and CoffeeChat animation work — accounted for 374 tool calls, 71% of the day's total. The remaining 9 sessions, all on the Hermes relay pattern, averaged 17 tool calls each.
 
-Session 3 (daemun site) is the extreme case: 6 tool calls, 5 minutes. The brevity is only possible because the relevant memory already existed. That session didn't need to re-establish context; it just picked up where the last one left off.
+This distribution makes sense. Relay sessions were either blocked by gates or doing planning coordination that doesn't generate many tool calls. Direct interactive sessions could run tools continuously. The throughput difference is significant.
 
-The practical implication: memory hygiene matters as much as prompt quality. A session that doesn't write useful memory creates debt for the next session.
+## What Four Blocked Sessions Actually Prove
 
----
+Getting blocked four times by the same hook is frustrating in the moment. In context, it's evidence the constraint system is working correctly.
 
-## What's Still Unfinished
+The design gate has one job: prevent HTML from being written to disk without a design system pass. It did that job consistently across all four attempts — even when the attempts came through different channels (direct session, relay session, relay with "just generate it" instructions). The hook doesn't care about the instruction chain above it. It only cares whether `design-pass.sh` authentication has run in that session.
 
-Shipping 5 projects in 3 days sounds clean. The actual state is messier:
+The real gap is that the Hermes relay pattern has no defined path for gate authentication. In a direct interactive session, `design-pass.sh` takes 30 seconds. In a relay session, that same 30 seconds requires coordination between Hermes, the gate, and the human user — and no protocol for that coordination exists yet.
 
-- **CoffeeChat**: Turso DB connection and PayPal webhook production testing are incomplete. The scaffolding exists; the live integration doesn't.
-- **Saju Global v3**: Landing page code is done. Integration into the Next.js app hasn't happened.
-- **AEO Outreach Engine** (`hermes-dashboard/aeo-engine`): Structure exists, but the actual prospect pipeline isn't connected.
-
-Session 8 hit a model availability error: `claude-fable-5[1m]` returned "It may not exist or you may not have access." The session recovered, but it added unnecessary friction. Running `/model` before starting a session to confirm availability should be standard practice — it's now on my checklist.
-
----
-
-## Numbers That Stuck
-
-- **532 tool calls in one session**: mostly Bash (190), Edit (136), Write (66)
-- **70+ new files** created in Session 5
-- **209 searches** to filter 57 funding programs to 7 recommendations
-- **22 minutes** to diagnose, fix, deploy, and verify two P0 bugs
-- **5 minutes / 6 tool calls** for a full project handoff session (when memory exists)
-
-The ratio between the 22-minute session and the 28-hour session is what I keep thinking about. Both were productive. The difference is scope management, not model capability.
-
----
-
-## One Thing That Would Have Made This Week Better
-
-The `/goal` hook is powerful enough to run sessions longer than a workday. That's both the feature and the risk. A goal that's too broad creates sessions that are hard to interrupt, and context compression at hour 20 is real — early decisions get fuzzy and you start seeing the model hedge on things it was confident about early on.
-
-The pattern that works better: set a goal for a discrete milestone, not an entire feature set. "Add payment integration" is a better goal than "add payment + admin + multilingual + TTS." The second goal works if you're willing to babysit context resets. The first goal mostly runs itself.
+That's the next thing to build: a relay-compatible auth handshake. The pieces are in place. They just need an agreed protocol for passing auth tokens through the relay chain.
 
 ---
 
