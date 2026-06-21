@@ -1,129 +1,149 @@
 ---
-title: "317 Tool Calls in a Day: Claude Code Fixed Mobile UI, Generated 6 Business Plans, and Tracked Dental SERP"
+title: "7 Sessions, 489 Tool Calls: Running Two Products Simultaneously with Claude Code"
 published: true
-description: "4 sessions, 317 tool calls: 24-file mobile UI patch, 6 business plans auto-generated, dental SERP tracked across 6 keywords — inside the 182-call debugging session."
-tags: claudecode, ai, webdev, productivity
+description: "7 sessions, 489 tool calls, 35 files changed. i18n raw key bug fixed, 22-file mobile patch, 12-agent business plan in 34 min — one day of Claude Code across two products."
+tags: claudecode, ai, nextjs, multiagent
 series: "Building with Claude Code: portfolio-site"
 canonical_url: https://jidonglab.com/posts/2026-06-21-portfolio-site-en
 ---
 
-`window.innerWidth` returned **2240px**. The browser window was 784px wide.
+`window.innerWidth` returned **2240px**. The browser window was 784px wide. Content was overflowing at 2.8x — and that number only appears when you actually run the app and measure it in a live browser context.
 
-That number doesn't show up in a static code review. You have to run the thing, measure it at runtime, and let the number tell you where to look. That's how the preterview mobile debugging session started on June 20 — and it ended 4 hours and 182 tool calls later.
+That was one of seven sessions today. 489 tool calls total. 35 files changed. Claude Code ran two products simultaneously — preterview (an AI mock interview app) and a dental clinic marketing automation system — across a full working day.
 
-**TL;DR** — 4 sessions, 317 tool calls across one day. Mobile UI patched across 24 files, 6 business plan documents generated and delivered via Telegram, dental clinic SERP measured across 6 keywords and committed. All handled in one Claude Code cycle.
+**TL;DR** — The next-intl `scopeClientMessages` function silently drops the `interview` and `portfolio` namespaces when the `x-cc-pathname` header is absent, causing raw key output like `interview.room.endInterview`. Fixed in 113 tool calls. Separately: a 12-agent workflow generated a 7,747-word business plan in 34 minutes using 1.27M tokens.
 
-## The 9-Minute Session: Dental Monitoring Costs Almost Nothing
+## The 9-Minute Benchmark: What a Good Delegation Looks Like
 
-First task of the morning:
+First task of the morning was the dental clinic's weekly SERP measurement. Six keywords, six rank checks, digest file, `sync.sh`, commit to production.
+
+I didn't touch it directly. The request went to the `dental-clinic` subagent. **2 tool calls, 9 minutes.**
+
+The agent restored context from `clinic.json` and `history.json`, ran live measurements across all six keywords, wrote the digest file, and pushed the commit. One keyword slipped from rank 8 to 9. The agent logged it as rotation noise — the prompt had explicitly said "do not re-score, only record measurements" — and didn't touch the numbers.
+
+This is what the delegation pattern is for. Context restore → measure → record → sync is a self-contained pipeline running entirely inside the subagent. The main session holds no dental state. It receives a commit hash.
+
+When a task has its own context, its own data files, and a clear output format, handing it off keeps the main session clean for everything else that day.
+
+## `innerWidth: 2240px` — Why Runtime Measurement Beats Static Analysis
+
+Session 3 was the largest by volume. It started with:
 
 ```
-Routine measurement for dongbaek-uddental dental clinic.
-Delegate to the dental-clinic subagent.
-Keywords: implant bone graft · Yongin implant · Dongbaek implant
-· sinus lift · Dongbaek dental · Yongin pediatric dental
-— measure blog tab / integrated search rankings, process inbox files,
-update history.json, run sync.sh...
+preterview is broken on mobile — buttons misaligned, English text showing
+on Korean settings, layout weirdness everywhere. Check everything, find
+whitespace and line break overflow issues, fix all of it.
 ```
 
-I didn't handle this directly. The request went to the `dental-clinic` subagent. **1 Agent call, 1 Bash call — 2 tool calls total, 9 minutes.**
+The dev server went up in the background. Using browser automation with `browser_batch`, the session loaded the actual mobile viewport. Device set to iPhone at 390px. The render came back at 1568px. Then JavaScript ran `window.innerWidth` directly in the live browser context: **2240px**.
 
-The agent read `clinic.json` and `history.json` to restore context, ran live SERP measurements across all 6 keywords, generated `digests/measure-2026-06-21.md` (10KB), and pushed commit `2f49a72` to production.
+Window: 784px. Content: 2240px. Root cause identifiable before touching a single file.
 
-One keyword (`Dongbaek implant`) dropped from position 8 to 9. The agent flagged it as "rotation noise" rather than a meaningful signal — the prompt explicitly said "do not re-score, only record measurements" — so it left the numbers as-is and moved on.
+This is why live measurement reverses the debugging direction. Finding viewport overflow through source files means guessing which component is the culprit, then working inward. Measuring the rendered output gives you a number, and the number points you to the file.
 
-This is the point of a single-clinic dedicated agent: context restore → measure → record → sync is a self-contained pipeline. The main session doesn't carry any of that state. It just receives the result.
+The second issue — English buttons appearing on Korean locale settings — was an i18n routing problem. The app was detecting `Accept-Language: en` from the browser and redirecting to `/en`, overriding the explicit user language preference. Fix: `i18n/routing.ts`.
 
-9 minutes. 2 tool calls. Committed and deployed.
+Then came missing translation keys. Several components had no Korean translations at all, falling through to English strings. Each missing key required locating the component, finding the correct namespace, and filling in the JSON files.
 
-## `innerWidth: 2240px` — The Bug That Only Appears at Runtime
+**22 files modified across 4 hours:**
 
-The preterview mobile session started with a vague complaint: buttons misaligned, English text appearing on Korean language settings, general layout weirdness everywhere.
-
-The dev server went up in the background. Using `mcp__claude-in-chrome__browser_batch`, the session loaded the actual mobile viewport. The device was set to iPhone (390px). The render came back at 1568px. Then JavaScript ran `window.innerWidth` directly in the browser context: **2240px**.
-
-Window: 784px. Content: 2240px. Root cause found before touching a single file.
-
-This is why runtime measurement beats static analysis for layout bugs. Chasing viewport overflow through source files means guessing which component is the culprit and working inward. Measuring the rendered output first gives you a number, and the number points you to the file. The direction reverses — and it's much faster.
-
-The second issue, English buttons appearing on Korean settings, turned out to be an i18n routing problem. The app detected `Accept-Language: en` from the browser and redirected to `/en`, overriding the user's explicit language preference. Fix: `i18n/routing.ts`.
-
-Then came the translation keys. Several components were missing Korean translations entirely, so they fell back to English strings. Each missing key had to be located and filled.
-
-**Files modified (24 total):**
-
-- `app/globals.css` — root overflow causing the 2240px bleed
-- `i18n/routing.ts` — language detection logic
+- `app/[locale]/layout.tsx`, `globals.css` — root overflow causing the 2240px bleed
+- `i18n/routing.ts` — browser language detection logic
 - `components/interview/InterviewRoom.tsx`, `RadarChart.tsx` — mobile layout
-- `messages/ko/common.json`, `dashboard.json`, `pricing.json`, `interview.json` — missing translation keys
+- `components/resume/steps/ItemHeader.tsx` — line-break overflow
+- 6 JSON message files for `ko/` and `en/` — missing keys filled
 - 5 admin pages — no mobile handling at all
 
-The loop: edit → build → browser reload → screenshot → find next issue → repeat.
+Loop: edit → build → browser screenshot at real viewport → find next issue → repeat.
 
-**Bash 46, Edit 40, Read 35, `browser_batch` 26 — 182 tool calls, 4 hours.**
+**Bash 46, Edit 40, Read 35, `browser_batch` 26 — 182 tool calls.**
 
-The `browser_batch` calls were load-bearing. Each one gave a real screenshot at the actual viewport — not a simulated rendering, not DevTools emulation. Every round of fixes got verified against what actually appeared on screen before moving forward.
+Edit outnumbering Bash signals more actual fixing than searching. The `browser_batch` calls were load-bearing: each one gave a screenshot at the real rendered viewport, not DevTools emulation.
 
-## 12 Agents Ran in Parallel to Verify a Single Business Decision
+## The Bug That Passed Every Static Check
 
-After the mobile work, the question came up: where and how to sell preterview, and specifically whether Product Hunt is the right first move.
+Session 6 surfaced a regression. The preterview mock interview page was showing button text as raw translation keys: `interview.room.endInterview`, `portfolio.section.overview`.
 
-There was already a `preterview-global-gtm.html` from a prior session — 25 research agents plus 16 fact-checked metrics. Product Hunt had been categorized as "Channel ④ · SECONDARY · one-day spike." The question wasn't new. But the ask was to verify the current landscape.
+next-intl outputs the full key path when a key isn't found. First hypothesis: key files broken. Check: both `en/` and `ko/` had the keys. Components called `tr("room.endInterview")` correctly. Type checking passed. i18n key integrity checks passed.
 
-A Workflow launched 12 agents in parallel. The pattern was adversarial: for each headline claim, a separate agent tried to refute it. Two things got caught:
+Both passed clean. The bug was still there.
 
-- The "10x / 40–50x" multipliers in Product Hunt success stories were conventional wisdom, not measured values.
-- The 8.7%/hour engagement rate cited was from 2016 data.
+At that point the problem wasn't in the keys — it was in the **delivery path** between keys and the client.
 
-Both corrections went into the final answer. The rest of the GTM analysis held.
+The culprit: `lib/i18n/request.ts` and its `scopeClientMessages` function.
 
-Conclusion:
+`scopeClientMessages` is an optimization layer. It reads the `x-cc-pathname` header to determine which route is being rendered, then sends only the i18n namespaces relevant to that route rather than the full message bundle.
 
-> Product Hunt isn't a question of *whether* to launch — it's *when*. Not now. Not as a first channel.
+The problem: when the header is absent or resolves to `/`, the function excludes the `interview` and `portfolio` namespaces entirely.
 
-The same session handled AEO/GEO readiness. Rather than estimating, Claude searched the preterview codebase directly — structured data, meta tags, `sitemap.xml` — and reported the actual state. **35 tool calls, Bash-heavy (22).**
+```
+x-cc-pathname = "/" → interview + portfolio namespaces dropped → raw key output
+```
 
-## Six Business Plans in One Session
+`proxy.ts` injects this header, but when traffic passes through the next-intl middleware, the header isn't always propagated through to RSC. Two fixes were possible: guarantee header propagation, or make namespace scoping less aggressive. Chose the second — more robust against similar edge cases.
 
-The prompt: analyze the LLM and marketing architecture of both projects in depth, write technical reports and business plan documents, deliver results to Telegram.
+`app/[locale]/layout.tsx` updated. Playwright e2e tests added to `e2e/i18n-softnav.spec.ts` to catch regressions.
 
-First move: search `~/funding/`. Two days earlier (June 17), 57 government funding programs had already been researched and validated. No starting from scratch — the fit analysis used that data as its base.
+**Bash 64, Read 14, Edit 13, Write 10 — 113 tool calls.**
 
-Six documents generated:
+Bash dominates because all verification is shell: dev server up, `curl` with custom headers to trace the header chain, build check, Playwright run. The actual code change was small. The diagnostic work to confirm the hypothesis consumed most of the calls.
 
-- `01_preterview_기술사업분석.md` — Technical analysis of preterview's LLM stack
-- `02_치과광고자동화_기술사업분석.md` — Technical analysis of the dental automation project
-- `03_지원사업_공모전_투자_핏분석.md` — Fit analysis against 57 funding programs
-- `04_사업계획서_preterview.md` — Full business plan, preterview
-- `05_사업계획서_치과광고자동화.md` — Full business plan, dental automation
-- `06_공고분석_제출서류_체크리스트.md` — Submission checklist per program
+The real lesson from this session: **type checking and key integrity verification address the wrong layer**. The bug wasn't in key definitions or component calls. It was in the optimization logic that decides what gets transmitted to the client at runtime. Static analysis can't reach that.
 
-After generation, `hermes` sent a summary plus all 6 files to the Telegram channel.
+## 12 Agents, 34 Minutes, 1.27M Tokens
 
-**Bash 35, TaskUpdate 18, Read 12, Write 11 — 98 tool calls.**
+Session 7 was the heaviest by token count. The ask:
 
-A single business plan typically takes a person two full days minimum. Six came out of one session.
+> For both the dental automation project and preterview — produce technically and commercially rigorous business plans plus analysis of government and private funding programs.
 
-Mid-session, the instruction was added: "For any answer longer than one A4 page, output it as an HTML report." From that point forward, Claude produced `.html` files directly — openable in a browser immediately. Changing output format mid-conversation works without any configuration or restart.
+First move: check existing data. `~/funding/` had 56 entries plus 57 alternatives from a prior research session. Two funding deadlines were imminent: one on June 22 (tomorrow), one on June 28. Context was already in place — no starting from scratch.
 
-## The Numbers
+**Workflow structure: 5-phase pipeline, 12 agents.**
 
-| Session | Duration | Tool Calls | What Happened |
-|---------|----------|------------|---------------|
-| Dental monitoring | 9 min | 2 | SERP 6 keywords + commit |
-| GTM analysis | ~22 min | 35 | PH judgment + 12-agent verify |
-| Mobile UI | 4 hours | 182 | 24 files patched |
-| Business plans | ~27 min | 98 | 6 docs generated + Telegram |
+**Phase 1 — Foundation** (6 agents, parallel):
+- Product profiles for both products
+- Government and public non-equity programs
+- Private VC and accelerator landscape
+- Government PSST acceptance framework
+- Private IR formula
 
-**317 total tool calls. 29 files modified. 12 files created.** Bash led at 104 calls — dev server, SERP measurement, builds, hermes delivery, all of it runs through Bash.
+**Phase 2 — Plans** (2 agents, high effort):
+- preterview: PSST application + IR deck + 3-year financials + technical architecture
+- dental automation: same
 
-A few patterns that show up across these sessions:
+**Phase 3 — Strategy**: funding program matching and execution calendar
 
-**Dedicated agents reduce main-session overhead.** The dental monitoring session ran at 2 tool calls because everything — context loading, measurement, file generation, commit, deploy — happened inside the subagent. The main session asked once and received a commit hash.
+**Phase 4 — Verify**: fact-check pass + completeness critic agent
 
-**Runtime measurement beats static review for layout bugs.** `innerWidth: 2240px` doesn't exist in any source file. It only exists when the page renders in a real browser. `browser_batch` automates that measurement step, which means finding the actual constraint before touching code rather than guessing toward it.
+**Phase 5 — Assemble**: synthesize into a single unified document
 
-**Prior research compounds.** The business plan session built on funding data from two days earlier. The GTM session started from a document produced by a prior 25-agent workflow. Each session picks up where the last one left off — the longer a project runs, the less work each subsequent session has to redo.
+34 minutes later: 7,747 words. PSST documents, IR framework, financial projections, architecture summaries, funding catalog with fit scores, execution calendar, adversarial verification notes included.
+
+Converted to HTML and delivered.
+
+The key structural choice: each agent generates its section independently in parallel. The assembler joins them at the end. Compared to one agent writing sequentially, this produces better section quality and less total wall-clock time — because section quality doesn't depend on how much context budget remains at that point in a linear conversation.
+
+A full business plan written manually takes a minimum of two days. This took 34 minutes.
+
+## The Full Day
+
+| Session | Duration | Tool Calls | Work |
+|---------|----------|------------|------|
+| Dental measurement | 9 min | 2 | SERP 6 keywords + commit |
+| preterview GTM | ~22 min | 35 | PH judgment + validation |
+| Mobile UI | 4 hours | 182 | 22 files patched |
+| Business plans (v1) | ~27 min | 98 | 6 docs + Telegram delivery |
+| Agency analysis | 38 min | 32 | solo-agency playbook |
+| i18n bug fix | 50 min | 113 | scopeClientMessages patch + e2e |
+| Business plans (v2) | 58 min | 27 | 12-agent workflow + HTML |
+
+**489 total tool calls. Bash 189, Read 71, Edit 66, Write 26, `browser_batch` 26, TaskCreate 16, TaskUpdate 29.**
+
+Bash leads because all verification routes through it: dev server, SERP measurement, header tracing, build confirmation, Playwright. That's not overhead — it's the evidence layer.
+
+Two products running in parallel required different routing strategies. Dental: subagent delegation with full context isolation, main session receives only results. preterview: direct main session work with runtime measurement and live browser verification.
+
+The most instructive session wasn't the largest. It was the i18n bug — 50 minutes, a fix that was a few lines of code, and a reminder that type checking and key integrity checks can both pass clean while a runtime-only bug is actively breaking production. `scopeClientMessages` sits in an optimization layer that static analysis doesn't reach. Measure at runtime first.
 
 ---
 
