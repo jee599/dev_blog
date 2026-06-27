@@ -3,6 +3,8 @@ title: "Structured Output Isn't Free: The Constrained-Decoding Tax"
 published: true
 description: "Why forcing a model into a JSON schema can quietly lower its accuracy, how grammar masking actually works, and how to get structure without paying the reasoning tax."
 tags: ai, llm, structuredoutput, claude
+id: 4003603
+date: '2026-06-27T07:09:16Z'
 ---
 
 Run the same extraction prompt twice against the same model. First time, ask for free-form prose. Second time, attach a strict JSON schema with `response_format` or a tool definition. On hard inputs, the schema version is often *worse* — it misses an entity, picks the wrong enum, or confidently fills a field it should have left null. Same weights, same prompt, lower accuracy. The schema didn't just change the output shape; it changed what the model was allowed to think.
