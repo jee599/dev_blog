@@ -183,6 +183,13 @@ SKIP (build-log): posts/2026-06-26-portfolio-site-build-log-en.md
 SKIP (has id): posts/2026-06-27-ai-structured-output-tax.md
 SKIP (build-log): posts/2026-06-27-portfolio-site-build-log-en.md
 SKIP (has id): posts/2026-06-28-0357-ai-knowledge.md
+
+PUBLISHING: posts/2026-06-28-1558-ai-knowledge.md
+  title: Why Your LLM-as-Judge Disagrees With Itself (And How to Fix It)
+  tags: []
+  creating article (published=True) ...
+  create result: HTTP 201
+  PUBLISHED id=4010427 date=2026-06-28T07:00:32Z
 SKIP (has id): posts/agentcrow-launch-en.md
 SKIP (has id): posts/ai-agent-i18n-tarot-compatibility-en.md
 SKIP (has id): posts/ai-content-full-automation-en.md
@@ -281,4 +288,4 @@ SKIP (has id): posts/trading-bot-win-rate-lie-en.md
 SKIP (korean filename): posts/trading-bot-win-rate-lie-ko.md
 SKIP (has id): posts/writing-claude-code-book-with-claude-code-en.md
 
-Done: 0 published, 0 failed
+Done: 1 published, 0 failed
