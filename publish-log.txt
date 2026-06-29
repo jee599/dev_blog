@@ -185,6 +185,13 @@ SKIP (build-log): posts/2026-06-27-portfolio-site-build-log-en.md
 SKIP (has id): posts/2026-06-28-0357-ai-knowledge.md
 SKIP (has id): posts/2026-06-28-1558-ai-knowledge.md
 SKIP (has id): posts/2026-06-29-0400-ai-knowledge.md
+
+PUBLISHING: posts/2026-06-29-1601-ai-knowledge.md
+  title: Prompt Caching With Claude: Where the Cache Breakpoint Goes
+  tags: []
+  creating article (published=True) ...
+  create result: HTTP 201
+  PUBLISHED id=4018031 date=2026-06-29T07:03:30Z
 SKIP (has id): posts/agentcrow-launch-en.md
 SKIP (has id): posts/ai-agent-i18n-tarot-compatibility-en.md
 SKIP (has id): posts/ai-content-full-automation-en.md
@@ -283,4 +290,4 @@ SKIP (has id): posts/trading-bot-win-rate-lie-en.md
 SKIP (korean filename): posts/trading-bot-win-rate-lie-ko.md
 SKIP (has id): posts/writing-claude-code-book-with-claude-code-en.md
 
-Done: 0 published, 0 failed
+Done: 1 published, 0 failed
