@@ -193,6 +193,15 @@ SKIP (has id): posts/2026-07-01-1607-ai-knowledge.md
 SKIP (has id): posts/2026-07-02-0409-ai-knowledge.md
 SKIP (has id): posts/2026-07-03-0410-ai-knowledge.md
 SKIP (has id): posts/2026-07-03-1612-ai-knowledge.md
+
+PUBLISHING: posts/2026-07-03-fable-mode-opus-claude-code-en.md
+  title: How I Made Opus 4.8 Act Like Fable 5 (64%→97%, Measured)
+  tags: []
+  canonical: https://jidonglab.com/blog/fable-mode-opus-claude-code
+  cover_image: https://raw.githubusercontent.com/jee599/fable-mode-kit/main/docs/hero-1000x420.png
+  creating article (published=True) ...
+  create result: HTTP 201
+  PUBLISHED id=4060013 date=2026-07-03T12:23:03Z
 SKIP (has id): posts/agentcrow-launch-en.md
 SKIP (has id): posts/ai-agent-i18n-tarot-compatibility-en.md
 SKIP (has id): posts/ai-content-full-automation-en.md
@@ -291,4 +300,4 @@ SKIP (has id): posts/trading-bot-win-rate-lie-en.md
 SKIP (korean filename): posts/trading-bot-win-rate-lie-ko.md
 SKIP (has id): posts/writing-claude-code-book-with-claude-code-en.md
 
-Done: 0 published, 0 failed
+Done: 1 published, 0 failed

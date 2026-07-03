@@ -5,6 +5,8 @@ description: "Porting Fable 5's conduct norms onto Opus 4.8 in Claude Code at ha
 tags: [ai, claudecode, webdev, productivity]
 cover_image: https://raw.githubusercontent.com/jee599/fable-mode-kit/main/docs/hero-1000x420.png
 canonical_url: https://jidonglab.com/blog/fable-mode-opus-claude-code
+id: 4060013
+date: '2026-07-03T12:23:03Z'
 ---
 
 Fable 5 costs exactly twice what Opus 4.8 does — $10/$50 per million tokens against $5/$25. When I measured why Fable's answers felt sharper, most of the gap wasn't the weights. It was a portable layer of system-prompt conduct norms, so I ported it onto Opus and measured what happened.
