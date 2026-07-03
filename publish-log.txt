@@ -1,5 +1,5 @@
 Fetching existing articles from DEV.to ...
-  Found 176 existing article(s) on DEV.to
+  Found 177 existing article(s) on DEV.to
 
 SKIP (korean filename): posts/2026-03-14-anthropic-partner-network-100m-ko.md
 SKIP (korean filename): posts/2026-03-14-gemini-750m-ads-ko.md
@@ -192,13 +192,7 @@ SKIP (has id): posts/2026-07-01-0406-ai-knowledge.md
 SKIP (has id): posts/2026-07-01-1607-ai-knowledge.md
 SKIP (has id): posts/2026-07-02-0409-ai-knowledge.md
 SKIP (has id): posts/2026-07-03-0410-ai-knowledge.md
-
-PUBLISHING: posts/2026-07-03-1612-ai-knowledge.md
-  title: FP8 KV Cache Quantization: The Memory Math and the Accuracy Cliff
-  tags: []
-  creating article (published=True) ...
-  create result: HTTP 201
-  PUBLISHED id=4057477 date=2026-07-03T07:14:14Z
+SKIP (has id): posts/2026-07-03-1612-ai-knowledge.md
 SKIP (has id): posts/agentcrow-launch-en.md
 SKIP (has id): posts/ai-agent-i18n-tarot-compatibility-en.md
 SKIP (has id): posts/ai-content-full-automation-en.md
@@ -297,4 +291,4 @@ SKIP (has id): posts/trading-bot-win-rate-lie-en.md
 SKIP (korean filename): posts/trading-bot-win-rate-lie-ko.md
 SKIP (has id): posts/writing-claude-code-book-with-claude-code-en.md
 
-Done: 1 published, 0 failed
+Done: 0 published, 0 failed
