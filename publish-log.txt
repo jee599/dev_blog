@@ -201,6 +201,13 @@ SKIP (has id): posts/2026-07-05-1619-ai-knowledge.md
 SKIP (has id): posts/2026-07-06-0420-ai-knowledge.md
 SKIP (has id): posts/2026-07-06-1622-ai-knowledge.md
 SKIP (has id): posts/2026-07-07-0424-ai-knowledge.md
+
+PUBLISHING: posts/2026-07-07-1626-ai-knowledge.md
+  title: Prefilling Claude's Response: Steer Output Without JSON Mode
+  tags: []
+  creating article (published=True) ...
+  create result: HTTP 201
+  PUBLISHED id=4085886 date=2026-07-07T07:28:10Z
 SKIP (has id): posts/2026-07-07-fable-mode-v14-adaptive-injection-en.md
 SKIP (has id): posts/agentcrow-launch-en.md
 SKIP (has id): posts/ai-agent-i18n-tarot-compatibility-en.md
@@ -300,4 +307,4 @@ SKIP (has id): posts/trading-bot-win-rate-lie-en.md
 SKIP (korean filename): posts/trading-bot-win-rate-lie-ko.md
 SKIP (has id): posts/writing-claude-code-book-with-claude-code-en.md
 
-Done: 0 published, 0 failed
+Done: 1 published, 0 failed
