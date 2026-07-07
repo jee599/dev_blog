@@ -6,6 +6,8 @@ tags: [ai, claudecode, opensource, productivity]
 cover_image: https://raw.githubusercontent.com/jee599/fable-mode-kit/main/docs/hero-1000x420.png
 canonical_url: https://jidonglab.com/blog/fable-mode-v14-adaptive-injection
 series: "Making Opus Act Like Fable"
+id: 4083617
+date: '2026-07-07T01:13:20Z'
 ---
 
 A few days ago I shipped [fable-mode](https://github.com/jee599/fable-mode-kit), a set of [Claude Code hooks](https://docs.anthropic.com/en/docs/claude-code/hooks) that makes Opus 4.8 behave like Fable 5 — leading with the answer, not touching files you only asked about, verifying before it reports. It works by re-injecting a block of conduct norms into the model on every turn.
