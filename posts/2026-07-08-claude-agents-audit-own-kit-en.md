@@ -8,6 +8,8 @@ tags:
   - opensource
   - programming
 canonical_url: https://github.com/jee599/fable-mode-kit
+id: 4096137
+date: '2026-07-08T10:09:24Z'
 ---
 
 This morning I found out my open-source kit had spent one turn gaslighting Anthropic's flagship model.
