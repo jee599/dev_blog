@@ -207,6 +207,13 @@ SKIP (has id): posts/2026-07-08-0428-ai-knowledge.md
 SKIP (has id): posts/2026-07-08-1629-ai-knowledge.md
 SKIP (has id): posts/2026-07-08-claude-agents-audit-own-kit-en.md
 SKIP (has id): posts/2026-07-09-0431-ai-knowledge.md
+
+PUBLISHING: posts/2026-07-09-1633-ai-knowledge.md
+  title: AWQ: How Activation-Aware Quantization Saves 4-bit LLMs
+  tags: []
+  creating article (published=True) ...
+  create result: HTTP 201
+  PUBLISHED id=4103042 date=2026-07-09T07:40:18Z
 SKIP (has id): posts/agentcrow-launch-en.md
 SKIP (has id): posts/ai-agent-i18n-tarot-compatibility-en.md
 SKIP (has id): posts/ai-content-full-automation-en.md
@@ -305,4 +312,4 @@ SKIP (has id): posts/trading-bot-win-rate-lie-en.md
 SKIP (korean filename): posts/trading-bot-win-rate-lie-ko.md
 SKIP (has id): posts/writing-claude-code-book-with-claude-code-en.md
 
-Done: 0 published, 0 failed
+Done: 1 published, 0 failed
