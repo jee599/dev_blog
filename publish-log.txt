@@ -227,6 +227,13 @@ SKIP (has id): posts/2026-07-20-0502-ai-knowledge.md
 SKIP (has id): posts/2026-07-20-1703-ai-knowledge.md
 SKIP (has id): posts/2026-07-21-0505-ai-knowledge.md
 SKIP (has id): posts/2026-07-21-1707-ai-knowledge.md
+
+PUBLISHING: posts/2026-07-22-0509-ai-knowledge.md
+  title: KV Cache Quantization: Why Keys and Values Need Different Axes
+  tags: []
+  creating article (published=True) ...
+  create result: HTTP 201
+  PUBLISHED id=4199852 date=2026-07-21T20:10:49Z
 SKIP (has id): posts/agentcrow-launch-en.md
 SKIP (has id): posts/ai-agent-i18n-tarot-compatibility-en.md
 SKIP (has id): posts/ai-content-full-automation-en.md
@@ -325,4 +332,4 @@ SKIP (has id): posts/trading-bot-win-rate-lie-en.md
 SKIP (korean filename): posts/trading-bot-win-rate-lie-ko.md
 SKIP (has id): posts/writing-claude-code-book-with-claude-code-en.md
 
-Done: 0 published, 0 failed
+Done: 1 published, 0 failed
