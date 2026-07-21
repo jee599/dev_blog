@@ -1,5 +1,5 @@
 Fetching existing articles from DEV.to ...
-  Found 210 existing article(s) on DEV.to
+  Found 211 existing article(s) on DEV.to
 
 SKIP (korean filename): posts/2026-03-14-anthropic-partner-network-100m-ko.md
 SKIP (korean filename): posts/2026-03-14-gemini-750m-ads-ko.md
@@ -226,13 +226,7 @@ SKIP (has id): posts/2026-07-19-1700-ai-knowledge.md
 SKIP (has id): posts/2026-07-20-0502-ai-knowledge.md
 SKIP (has id): posts/2026-07-20-1703-ai-knowledge.md
 SKIP (has id): posts/2026-07-21-0505-ai-knowledge.md
-
-PUBLISHING: posts/2026-07-21-1707-ai-knowledge.md
-  title: Multi-LoRA Serving: Why 100 Adapters Fit on One GPU
-  tags: []
-  creating article (published=True) ...
-  create result: HTTP 201
-  PUBLISHED id=4194522 date=2026-07-21T08:09:25Z
+SKIP (has id): posts/2026-07-21-1707-ai-knowledge.md
 SKIP (has id): posts/agentcrow-launch-en.md
 SKIP (has id): posts/ai-agent-i18n-tarot-compatibility-en.md
 SKIP (has id): posts/ai-content-full-automation-en.md
@@ -331,4 +325,4 @@ SKIP (has id): posts/trading-bot-win-rate-lie-en.md
 SKIP (korean filename): posts/trading-bot-win-rate-lie-ko.md
 SKIP (has id): posts/writing-claude-code-book-with-claude-code-en.md
 
-Done: 1 published, 0 failed
+Done: 0 published, 0 failed
