@@ -235,6 +235,13 @@ SKIP (has id): posts/2026-07-25-0516-ai-knowledge.md
 SKIP (has id): posts/2026-07-25-1719-ai-knowledge.md
 SKIP (has id): posts/2026-07-26-0521-ai-knowledge.md
 SKIP (has id): posts/2026-07-26-1723-ai-knowledge.md
+
+PUBLISHING: posts/2026-07-27-0526-ai-knowledge.md
+  title: LLM Eval Noise: Why Your 2-Point Accuracy Win Isn't Real
+  tags: []
+  creating article (published=True) ...
+  create result: HTTP 201
+  PUBLISHED id=4238722 date=2026-07-26T20:28:51Z
 SKIP (has id): posts/agentcrow-launch-en.md
 SKIP (has id): posts/ai-agent-i18n-tarot-compatibility-en.md
 SKIP (has id): posts/ai-content-full-automation-en.md
@@ -333,4 +340,4 @@ SKIP (has id): posts/trading-bot-win-rate-lie-en.md
 SKIP (korean filename): posts/trading-bot-win-rate-lie-ko.md
 SKIP (has id): posts/writing-claude-code-book-with-claude-code-en.md
 
-Done: 0 published, 0 failed
+Done: 1 published, 0 failed
