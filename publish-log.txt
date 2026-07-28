@@ -1,5 +1,5 @@
 Fetching existing articles from DEV.to ...
-  Found 222 existing article(s) on DEV.to
+  Found 223 existing article(s) on DEV.to
 
 SKIP (korean filename): posts/2026-03-14-anthropic-partner-network-100m-ko.md
 SKIP (korean filename): posts/2026-03-14-gemini-750m-ads-ko.md
@@ -238,18 +238,19 @@ SKIP (has id): posts/2026-07-26-1723-ai-knowledge.md
 SKIP (has id): posts/2026-07-27-0526-ai-knowledge.md
 SKIP (has id): posts/2026-07-27-1728-ai-knowledge.md
 SKIP (has id): posts/2026-07-28-0530-ai-knowledge.md
+
+PUBLISHING: posts/2026-07-28-1733-ai-knowledge.md
+  title: Best-of-N Sampling: Why N=64 Scores Higher and Answers Worse
+  tags: []
+  creating article (published=True) ...
+  create result: HTTP 201
+  PUBLISHED id=4252029 date=2026-07-28T08:36:04Z
 SKIP (has id): posts/agentcrow-launch-en.md
 SKIP (has id): posts/ai-agent-i18n-tarot-compatibility-en.md
 SKIP (has id): posts/ai-content-full-automation-en.md
 SKIP (has id): posts/ai-fortune-architecture-en.md
 SKIP (korean filename): posts/ai-fortune-architecture-ko.md
-
-PUBLISHING: posts/ai-mock-interviewer-turn-engine-en.md
-  title: Building an AI mock interviewer that tells you why you'd fail: what the turn engine taught me
-  tags: ['ai', 'webdev', 'javascript', 'career']
-  creating article (published=True) ...
-  create result: HTTP 201
-  PUBLISHED id=4252010 date=2026-07-28T08:33:00Z
+SKIP (has id): posts/ai-mock-interviewer-turn-engine-en.md
 SKIP (has id): posts/ai-multistack-bootstrap-strategy-en.md
 SKIP (has id): posts/ai-news-bilingual-script-pattern-en.md
 SKIP (has id): posts/ai-news-claude-automation-en.md
