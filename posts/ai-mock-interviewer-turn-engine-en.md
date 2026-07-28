@@ -7,6 +7,8 @@ tags:
   - webdev
   - javascript
   - career
+id: 4252010
+date: '2026-07-28T08:33:00Z'
 ---
 
 **TL;DR** — I've been building a browser-based voice mock interviewer where three AI interviewers take turns, and the hard part was never the LLM prompt. It was the plumbing around it: detecting real silence without trusting speech-to-text timings, deciding *what an interviewer should do next* after a weak answer, and stopping the model's occasional malformed JSON from poisoning the final report. Here's the engineering, and the one interview that convinced me the design was actually working.
