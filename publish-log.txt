@@ -1,5 +1,5 @@
 Fetching existing articles from DEV.to ...
-  Found 221 existing article(s) on DEV.to
+  Found 222 existing article(s) on DEV.to
 
 SKIP (korean filename): posts/2026-03-14-anthropic-partner-network-100m-ko.md
 SKIP (korean filename): posts/2026-03-14-gemini-750m-ads-ko.md
@@ -237,13 +237,7 @@ SKIP (has id): posts/2026-07-26-0521-ai-knowledge.md
 SKIP (has id): posts/2026-07-26-1723-ai-knowledge.md
 SKIP (has id): posts/2026-07-27-0526-ai-knowledge.md
 SKIP (has id): posts/2026-07-27-1728-ai-knowledge.md
-
-PUBLISHING: posts/2026-07-28-0530-ai-knowledge.md
-  title: Reciprocal Rank Fusion: Why k=60 Buries Your Best Hit
-  tags: []
-  creating article (published=True) ...
-  create result: HTTP 201
-  PUBLISHED id=4247883 date=2026-07-27T20:33:43Z
+SKIP (has id): posts/2026-07-28-0530-ai-knowledge.md
 SKIP (has id): posts/agentcrow-launch-en.md
 SKIP (has id): posts/ai-agent-i18n-tarot-compatibility-en.md
 SKIP (has id): posts/ai-content-full-automation-en.md
@@ -342,4 +336,4 @@ SKIP (has id): posts/trading-bot-win-rate-lie-en.md
 SKIP (korean filename): posts/trading-bot-win-rate-lie-ko.md
 SKIP (has id): posts/writing-claude-code-book-with-claude-code-en.md
 
-Done: 1 published, 0 failed
+Done: 0 published, 0 failed
