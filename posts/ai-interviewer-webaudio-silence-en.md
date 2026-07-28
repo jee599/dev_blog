@@ -7,6 +7,8 @@ tags:
   - javascript
   - webdev
   - ai
+id: 4255406
+date: '2026-07-28T15:14:11Z'
 ---
 
 **TL;DR** — In a browser voice app, "did the candidate stop talking?" is a real-time signal you cannot reliably get from speech-to-text. STT event timings are polluted by network latency, buffering, and the recognizer rewriting its own guesses, so they will report a pause while someone is mid-sentence. I measure silence acoustically with a small WebAudio graph, add hysteresis so it doesn't flap, and split a "thinking pause" from "done answering" with two thresholds. The live filler-word counter comes along almost for free — from the transcript, not the waveform.
