@@ -241,6 +241,13 @@ SKIP (has id): posts/2026-07-28-0530-ai-knowledge.md
 SKIP (has id): posts/2026-07-28-1733-ai-knowledge.md
 SKIP (has id): posts/2026-07-29-0535-ai-knowledge.md
 SKIP (has id): posts/2026-07-29-1738-ai-knowledge.md
+
+PUBLISHING: posts/2026-07-30-0541-ai-knowledge.md
+  title: Activation Outliers: Why W8A8 INT8 Quantization Needs SmoothQuant
+  tags: []
+  creating article (published=True) ...
+  create result: HTTP 201
+  PUBLISHED id=4265796 date=2026-07-29T20:47:01Z
 SKIP (has id): posts/agentcrow-launch-en.md
 SKIP (has id): posts/ai-agent-i18n-tarot-compatibility-en.md
 SKIP (has id): posts/ai-content-full-automation-en.md
@@ -341,4 +348,4 @@ SKIP (has id): posts/trading-bot-win-rate-lie-en.md
 SKIP (korean filename): posts/trading-bot-win-rate-lie-ko.md
 SKIP (has id): posts/writing-claude-code-book-with-claude-code-en.md
 
-Done: 0 published, 0 failed
+Done: 1 published, 0 failed
