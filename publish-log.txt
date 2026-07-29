@@ -1,5 +1,5 @@
 Fetching existing articles from DEV.to ...
-  Found 226 existing article(s) on DEV.to
+  Found 227 existing article(s) on DEV.to
 
 SKIP (korean filename): posts/2026-03-14-anthropic-partner-network-100m-ko.md
 SKIP (korean filename): posts/2026-03-14-gemini-750m-ads-ko.md
@@ -240,13 +240,7 @@ SKIP (has id): posts/2026-07-27-1728-ai-knowledge.md
 SKIP (has id): posts/2026-07-28-0530-ai-knowledge.md
 SKIP (has id): posts/2026-07-28-1733-ai-knowledge.md
 SKIP (has id): posts/2026-07-29-0535-ai-knowledge.md
-
-PUBLISHING: posts/2026-07-29-1738-ai-knowledge.md
-  title: Cross-Encoder Reranker Score Calibration: Why 0.5 Cutoffs Fail
-  tags: []
-  creating article (published=True) ...
-  create result: HTTP 201
-  PUBLISHED id=4260764 date=2026-07-29T08:41:34Z
+SKIP (has id): posts/2026-07-29-1738-ai-knowledge.md
 SKIP (has id): posts/agentcrow-launch-en.md
 SKIP (has id): posts/ai-agent-i18n-tarot-compatibility-en.md
 SKIP (has id): posts/ai-content-full-automation-en.md
@@ -347,4 +341,4 @@ SKIP (has id): posts/trading-bot-win-rate-lie-en.md
 SKIP (korean filename): posts/trading-bot-win-rate-lie-ko.md
 SKIP (has id): posts/writing-claude-code-book-with-claude-code-en.md
 
-Done: 1 published, 0 failed
+Done: 0 published, 0 failed
