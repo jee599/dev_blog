@@ -1,5 +1,5 @@
 Fetching existing articles from DEV.to ...
-  Found 234 existing article(s) on DEV.to
+  Found 235 existing article(s) on DEV.to
 
 SKIP (korean filename): posts/2026-03-14-anthropic-partner-network-100m-ko.md
 SKIP (korean filename): posts/2026-03-14-gemini-750m-ads-ko.md
@@ -248,13 +248,7 @@ SKIP (has id): posts/2026-07-31-1752-ai-knowledge.md
 SKIP (has id): posts/2026-08-01-0554-ai-knowledge.md
 SKIP (has id): posts/2026-08-01-1757-ai-knowledge.md
 SKIP (has id): posts/2026-08-02-0600-ai-knowledge.md
-
-PUBLISHING: posts/2026-08-02-1802-ai-knowledge.md
-  title: Why temperature=0 Still Gives Different Answers: Batch Invariance
-  tags: []
-  creating article (published=True) ...
-  create result: HTTP 201
-  PUBLISHED id=4292091 date=2026-08-02T09:05:45Z
+SKIP (has id): posts/2026-08-02-1802-ai-knowledge.md
 SKIP (has id): posts/agentcrow-launch-en.md
 SKIP (has id): posts/ai-agent-i18n-tarot-compatibility-en.md
 SKIP (has id): posts/ai-content-full-automation-en.md
@@ -355,4 +349,4 @@ SKIP (has id): posts/trading-bot-win-rate-lie-en.md
 SKIP (korean filename): posts/trading-bot-win-rate-lie-ko.md
 SKIP (has id): posts/writing-claude-code-book-with-claude-code-en.md
 
-Done: 1 published, 0 failed
+Done: 0 published, 0 failed
