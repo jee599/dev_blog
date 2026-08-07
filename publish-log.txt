@@ -255,6 +255,13 @@ SKIP (has id): posts/2026-08-04-0609-ai-knowledge.md
 SKIP (has id): posts/2026-08-05-0612-ai-knowledge.md
 SKIP (has id): posts/2026-08-07-0615-ai-knowledge.md
 SKIP (has id): posts/2026-08-07-1817-ai-knowledge.md
+
+PUBLISHING: posts/2026-08-08-0619-ai-knowledge.md
+  title: Grammar-Constrained Decoding: Why Valid JSON Gets Wrong Answers
+  tags: []
+  creating article (published=True) ...
+  create result: HTTP 201
+  PUBLISHED id=4343263 date=2026-08-07T21:22:32Z
 SKIP (has id): posts/agentcrow-launch-en.md
 SKIP (has id): posts/ai-agent-i18n-tarot-compatibility-en.md
 SKIP (has id): posts/ai-content-full-automation-en.md
@@ -355,4 +362,4 @@ SKIP (has id): posts/trading-bot-win-rate-lie-en.md
 SKIP (korean filename): posts/trading-bot-win-rate-lie-ko.md
 SKIP (has id): posts/writing-claude-code-book-with-claude-code-en.md
 
-Done: 0 published, 0 failed
+Done: 1 published, 0 failed
