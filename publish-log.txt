@@ -1,5 +1,5 @@
 Fetching existing articles from DEV.to ...
-  Found 250 existing article(s) on DEV.to
+  Found 251 existing article(s) on DEV.to
 
 SKIP (korean filename): posts/2026-03-14-anthropic-partner-network-100m-ko.md
 SKIP (korean filename): posts/2026-03-14-gemini-750m-ads-ko.md
@@ -264,13 +264,7 @@ SKIP (has id): posts/2026-08-10-1832-ai-knowledge.md
 SKIP (has id): posts/2026-08-11-0635-ai-knowledge.md
 SKIP (has id): posts/2026-08-11-1837-ai-knowledge.md
 SKIP (has id): posts/2026-08-12-1840-ai-knowledge.md
-
-PUBLISHING: posts/2026-08-13-0642-ai-knowledge.md
-  title: MoE Expert Load Imbalance: Why Decode Stalls on One GPU
-  tags: []
-  creating article (published=True) ...
-  create result: HTTP 201
-  PUBLISHED id=4381792 date=2026-08-12T21:45:58Z
+SKIP (has id): posts/2026-08-13-0642-ai-knowledge.md
 SKIP (has id): posts/agentcrow-launch-en.md
 SKIP (has id): posts/ai-agent-i18n-tarot-compatibility-en.md
 SKIP (has id): posts/ai-content-full-automation-en.md
@@ -371,4 +365,4 @@ SKIP (has id): posts/trading-bot-win-rate-lie-en.md
 SKIP (korean filename): posts/trading-bot-win-rate-lie-ko.md
 SKIP (has id): posts/writing-claude-code-book-with-claude-code-en.md
 
-Done: 1 published, 0 failed
+Done: 0 published, 0 failed
