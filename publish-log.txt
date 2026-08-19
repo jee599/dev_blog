@@ -276,6 +276,13 @@ SKIP (has id): posts/2026-08-17-1159-ai-knowledge.md
 SKIP (has id): posts/2026-08-18-0001-ai-knowledge.md
 SKIP (has id): posts/2026-08-18-1204-ai-knowledge.md
 SKIP (has id): posts/2026-08-19-0007-ai-knowledge.md
+
+PUBLISHING: posts/2026-08-19-1209-ai-knowledge.md
+  title: SFT Loss Masking: Why Your Fine-Tuned LLM Never Emits EOS
+  tags: []
+  creating article (published=True) ...
+  create result: HTTP 201
+  PUBLISHED id=4430361 date=2026-08-19T03:12:15Z
 SKIP (has id): posts/agentcrow-launch-en.md
 SKIP (has id): posts/ai-agent-i18n-tarot-compatibility-en.md
 SKIP (has id): posts/ai-content-full-automation-en.md
@@ -376,4 +383,4 @@ SKIP (has id): posts/trading-bot-win-rate-lie-en.md
 SKIP (korean filename): posts/trading-bot-win-rate-lie-ko.md
 SKIP (has id): posts/writing-claude-code-book-with-claude-code-en.md
 
-Done: 0 published, 0 failed
+Done: 1 published, 0 failed
