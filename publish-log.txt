@@ -1,5 +1,5 @@
 Fetching existing articles from DEV.to ...
-  Found 265 existing article(s) on DEV.to
+  Found 266 existing article(s) on DEV.to
 
 SKIP (korean filename): posts/2026-03-14-anthropic-partner-network-100m-ko.md
 SKIP (korean filename): posts/2026-03-14-gemini-750m-ads-ko.md
@@ -279,13 +279,7 @@ SKIP (has id): posts/2026-08-19-0007-ai-knowledge.md
 SKIP (has id): posts/2026-08-19-1209-ai-knowledge.md
 SKIP (has id): posts/2026-08-20-0012-ai-knowledge.md
 SKIP (has id): posts/2026-08-20-1214-ai-knowledge.md
-
-PUBLISHING: posts/2026-08-21-0017-ai-knowledge.md
-  title: acc vs acc_norm: Why Length Bias Skews LLM Eval Scores
-  tags: []
-  creating article (published=True) ...
-  create result: HTTP 201
-  PUBLISHED id=4446116 date=2026-08-20T15:20:49Z
+SKIP (has id): posts/2026-08-21-0017-ai-knowledge.md
 SKIP (has id): posts/agentcrow-launch-en.md
 SKIP (has id): posts/ai-agent-i18n-tarot-compatibility-en.md
 SKIP (has id): posts/ai-content-full-automation-en.md
@@ -386,4 +380,4 @@ SKIP (has id): posts/trading-bot-win-rate-lie-en.md
 SKIP (korean filename): posts/trading-bot-win-rate-lie-ko.md
 SKIP (has id): posts/writing-claude-code-book-with-claude-code-en.md
 
-Done: 1 published, 0 failed
+Done: 0 published, 0 failed
