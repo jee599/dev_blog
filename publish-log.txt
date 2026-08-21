@@ -1,5 +1,5 @@
 Fetching existing articles from DEV.to ...
-  Found 267 existing article(s) on DEV.to
+  Found 268 existing article(s) on DEV.to
 
 SKIP (korean filename): posts/2026-03-14-anthropic-partner-network-100m-ko.md
 SKIP (korean filename): posts/2026-03-14-gemini-750m-ads-ko.md
@@ -281,13 +281,7 @@ SKIP (has id): posts/2026-08-20-0012-ai-knowledge.md
 SKIP (has id): posts/2026-08-20-1214-ai-knowledge.md
 SKIP (has id): posts/2026-08-21-0017-ai-knowledge.md
 SKIP (has id): posts/2026-08-21-1220-ai-knowledge.md
-
-PUBLISHING: posts/2026-08-22-0023-ai-knowledge.md
-  title: Claude Prompt Caching: Why Agent Loops Miss the 20-Block Lookback
-  tags: []
-  creating article (published=True) ...
-  create result: HTTP 201
-  PUBLISHED id=4455104 date=2026-08-21T15:25:29Z
+SKIP (has id): posts/2026-08-22-0023-ai-knowledge.md
 SKIP (has id): posts/agentcrow-launch-en.md
 SKIP (has id): posts/ai-agent-i18n-tarot-compatibility-en.md
 SKIP (has id): posts/ai-content-full-automation-en.md
@@ -388,4 +382,4 @@ SKIP (has id): posts/trading-bot-win-rate-lie-en.md
 SKIP (korean filename): posts/trading-bot-win-rate-lie-ko.md
 SKIP (has id): posts/writing-claude-code-book-with-claude-code-en.md
 
-Done: 1 published, 0 failed
+Done: 0 published, 0 failed
