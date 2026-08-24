@@ -1,5 +1,5 @@
 Fetching existing articles from DEV.to ...
-  Found 272 existing article(s) on DEV.to
+  Found 273 existing article(s) on DEV.to
 
 SKIP (korean filename): posts/2026-03-14-anthropic-partner-network-100m-ko.md
 SKIP (korean filename): posts/2026-03-14-gemini-750m-ads-ko.md
@@ -286,13 +286,7 @@ SKIP (has id): posts/2026-08-22-1225-ai-knowledge.md
 SKIP (has id): posts/2026-08-23-0027-ai-knowledge.md
 SKIP (has id): posts/2026-08-23-1230-ai-knowledge.md
 SKIP (has id): posts/2026-08-24-0032-ai-knowledge.md
-
-PUBLISHING: posts/2026-08-24-1234-ai-knowledge.md
-  title: Using AI in a Live Coding Interview: How Interviewers Know
-  tags: ['interview', 'career', 'ai', 'discuss']
-  creating article (published=True) ...
-  create result: HTTP 201
-  PUBLISHED id=4471133 date=2026-08-24T03:37:06Z
+SKIP (has id): posts/2026-08-24-1234-ai-knowledge.md
 SKIP (has id): posts/agentcrow-launch-en.md
 SKIP (has id): posts/ai-agent-i18n-tarot-compatibility-en.md
 SKIP (has id): posts/ai-content-full-automation-en.md
@@ -393,4 +387,4 @@ SKIP (has id): posts/trading-bot-win-rate-lie-en.md
 SKIP (korean filename): posts/trading-bot-win-rate-lie-ko.md
 SKIP (has id): posts/writing-claude-code-book-with-claude-code-en.md
 
-Done: 1 published, 0 failed
+Done: 0 published, 0 failed
