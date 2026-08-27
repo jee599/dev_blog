@@ -1,5 +1,5 @@
 Fetching existing articles from DEV.to ...
-  Found 277 existing article(s) on DEV.to
+  Found 278 existing article(s) on DEV.to
 
 SKIP (korean filename): posts/2026-03-14-anthropic-partner-network-100m-ko.md
 SKIP (korean filename): posts/2026-03-14-gemini-750m-ads-ko.md
@@ -291,13 +291,7 @@ SKIP (has id): posts/2026-08-25-1237-ai-knowledge.md
 SKIP (has id): posts/2026-08-26-0038-ai-knowledge.md
 SKIP (has id): posts/2026-08-26-1240-ai-knowledge.md
 SKIP (has id): posts/2026-08-27-0042-ai-knowledge.md
-
-PUBLISHING: posts/2026-08-27-1245-ai-knowledge.md
-  title: Why Great Engineers Bomb the Behavioral Interview Round
-  tags: ['interview', 'career', 'jobs', 'discuss']
-  creating article (published=True) ...
-  create result: HTTP 201
-  PUBLISHED id=4500267 date=2026-08-27T03:48:24Z
+SKIP (has id): posts/2026-08-27-1245-ai-knowledge.md
 SKIP (has id): posts/agentcrow-launch-en.md
 SKIP (has id): posts/ai-agent-i18n-tarot-compatibility-en.md
 SKIP (has id): posts/ai-content-full-automation-en.md
@@ -398,4 +392,4 @@ SKIP (has id): posts/trading-bot-win-rate-lie-en.md
 SKIP (korean filename): posts/trading-bot-win-rate-lie-ko.md
 SKIP (has id): posts/writing-claude-code-book-with-claude-code-en.md
 
-Done: 1 published, 0 failed
+Done: 0 published, 0 failed
