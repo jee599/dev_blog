@@ -294,6 +294,13 @@ SKIP (has id): posts/2026-08-27-0042-ai-knowledge.md
 SKIP (has id): posts/2026-08-27-1245-ai-knowledge.md
 SKIP (has id): posts/2026-08-28-0048-ai-knowledge.md
 SKIP (has id): posts/2026-08-28-1250-ai-knowledge.md
+
+PUBLISHING: posts/2026-08-29-0052-ai-knowledge.md
+  title: AI Killed the Take-Home Coding Test. Here's What Replaced It
+  tags: ['career', 'interview', 'ai', 'discuss']
+  creating article (published=True) ...
+  create result: HTTP 201
+  PUBLISHED id=4514498 date=2026-08-28T15:54:38Z
 SKIP (has id): posts/agentcrow-launch-en.md
 SKIP (has id): posts/ai-agent-i18n-tarot-compatibility-en.md
 SKIP (has id): posts/ai-content-full-automation-en.md
@@ -394,4 +401,4 @@ SKIP (has id): posts/trading-bot-win-rate-lie-en.md
 SKIP (korean filename): posts/trading-bot-win-rate-lie-ko.md
 SKIP (has id): posts/writing-claude-code-book-with-claude-code-en.md
 
-Done: 0 published, 0 failed
+Done: 1 published, 0 failed
