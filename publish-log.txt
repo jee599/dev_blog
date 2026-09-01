@@ -301,6 +301,13 @@ SKIP (has id): posts/2026-08-30-1258-ai-knowledge.md
 SKIP (has id): posts/2026-08-31-0100-ai-knowledge.md
 SKIP (has id): posts/2026-08-31-1302-ai-knowledge.md
 SKIP (has id): posts/2026-09-01-1304-ai-knowledge.md
+
+PUBLISHING: posts/2026-09-02-0106-ai-knowledge.md
+  title: Invert a Binary Tree: What the Interview Question Really Tests
+  tags: ['interview', 'career', 'programming', 'discuss']
+  creating article (published=True) ...
+  create result: HTTP 201
+  PUBLISHED id=4548239 date=2026-09-01T16:08:33Z
 SKIP (has id): posts/agentcrow-launch-en.md
 SKIP (has id): posts/ai-agent-i18n-tarot-compatibility-en.md
 SKIP (has id): posts/ai-content-full-automation-en.md
@@ -401,4 +408,4 @@ SKIP (has id): posts/trading-bot-win-rate-lie-en.md
 SKIP (korean filename): posts/trading-bot-win-rate-lie-ko.md
 SKIP (has id): posts/writing-claude-code-book-with-claude-code-en.md
 
-Done: 0 published, 0 failed
+Done: 1 published, 0 failed
