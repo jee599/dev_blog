@@ -305,6 +305,13 @@ SKIP (has id): posts/2026-09-02-0106-ai-knowledge.md
 SKIP (has id): posts/2026-09-02-1308-ai-knowledge.md
 SKIP (has id): posts/2026-09-03-0110-ai-knowledge.md
 SKIP (has id): posts/2026-09-03-1312-ai-knowledge.md
+
+PUBLISHING: posts/2026-09-04-0115-ai-knowledge.md
+  title: AI Commit Messages Killed My git log. Here's the Autopsy
+  tags: ['ai', 'programming', 'productivity', 'discuss']
+  creating article (published=True) ...
+  create result: HTTP 201
+  PUBLISHED id=4567113 date=2026-09-03T16:18:17Z
 SKIP (has id): posts/agentcrow-launch-en.md
 SKIP (has id): posts/ai-agent-i18n-tarot-compatibility-en.md
 SKIP (has id): posts/ai-content-full-automation-en.md
@@ -405,4 +412,4 @@ SKIP (has id): posts/trading-bot-win-rate-lie-en.md
 SKIP (korean filename): posts/trading-bot-win-rate-lie-ko.md
 SKIP (has id): posts/writing-claude-code-book-with-claude-code-en.md
 
-Done: 0 published, 0 failed
+Done: 1 published, 0 failed
