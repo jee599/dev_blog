@@ -309,6 +309,13 @@ SKIP (has id): posts/2026-09-04-0115-ai-knowledge.md
 SKIP (has id): posts/2026-09-04-1318-ai-knowledge.md
 SKIP (has id): posts/2026-09-05-1319-ai-knowledge.md
 SKIP (has id): posts/2026-09-06-0122-ai-knowledge.md
+
+PUBLISHING: posts/2026-09-06-1324-ai-knowledge.md
+  title: Backchannel Reference Checks: The Interview You Never See
+  tags: ['career', 'interview', 'jobs', 'discuss']
+  creating article (published=True) ...
+  create result: HTTP 201
+  PUBLISHED id=4585694 date=2026-09-06T04:26:43Z
 SKIP (has id): posts/agentcrow-launch-en.md
 SKIP (has id): posts/ai-agent-i18n-tarot-compatibility-en.md
 SKIP (has id): posts/ai-content-full-automation-en.md
@@ -409,4 +416,4 @@ SKIP (has id): posts/trading-bot-win-rate-lie-en.md
 SKIP (korean filename): posts/trading-bot-win-rate-lie-ko.md
 SKIP (has id): posts/writing-claude-code-book-with-claude-code-en.md
 
-Done: 0 published, 0 failed
+Done: 1 published, 0 failed
