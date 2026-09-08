@@ -314,6 +314,13 @@ SKIP (has id): posts/2026-09-07-0126-ai-knowledge.md
 SKIP (has id): posts/2026-09-07-1329-ai-knowledge.md
 SKIP (has id): posts/2026-09-08-0131-ai-knowledge.md
 SKIP (has id): posts/2026-09-08-1333-ai-knowledge.md
+
+PUBLISHING: posts/2026-09-09-0134-ai-knowledge.md
+  title: The Minute-12 Rule: Coding Interview Time Management
+  tags: ['interview', 'career', 'programming', 'discuss']
+  creating article (published=True) ...
+  create result: HTTP 201
+  PUBLISHED id=4608161 date=2026-09-08T16:37:01Z
 SKIP (has id): posts/agentcrow-launch-en.md
 SKIP (has id): posts/ai-agent-i18n-tarot-compatibility-en.md
 SKIP (has id): posts/ai-content-full-automation-en.md
@@ -414,4 +421,4 @@ SKIP (has id): posts/trading-bot-win-rate-lie-en.md
 SKIP (korean filename): posts/trading-bot-win-rate-lie-ko.md
 SKIP (has id): posts/writing-claude-code-book-with-claude-code-en.md
 
-Done: 0 published, 0 failed
+Done: 1 published, 0 failed
