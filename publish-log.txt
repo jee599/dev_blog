@@ -315,6 +315,13 @@ SKIP (has id): posts/2026-09-07-1329-ai-knowledge.md
 SKIP (has id): posts/2026-09-08-0131-ai-knowledge.md
 SKIP (has id): posts/2026-09-08-1333-ai-knowledge.md
 SKIP (has id): posts/2026-09-09-0134-ai-knowledge.md
+
+PUBLISHING: posts/2026-09-09-1336-ai-knowledge.md
+  title: The AI Code Review Bottleneck: Why Our Merge Time Tripled
+  tags: ['ai', 'programming', 'productivity', 'discuss']
+  creating article (published=True) ...
+  create result: HTTP 201
+  PUBLISHED id=4611121 date=2026-09-09T04:38:59Z
 SKIP (has id): posts/agentcrow-launch-en.md
 SKIP (has id): posts/ai-agent-i18n-tarot-compatibility-en.md
 SKIP (has id): posts/ai-content-full-automation-en.md
@@ -415,4 +422,4 @@ SKIP (has id): posts/trading-bot-win-rate-lie-en.md
 SKIP (korean filename): posts/trading-bot-win-rate-lie-ko.md
 SKIP (has id): posts/writing-claude-code-book-with-claude-code-en.md
 
-Done: 0 published, 0 failed
+Done: 1 published, 0 failed
