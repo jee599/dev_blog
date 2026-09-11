@@ -319,6 +319,13 @@ SKIP (has id): posts/2026-09-09-1336-ai-knowledge.md
 SKIP (has id): posts/2026-09-10-0138-ai-knowledge.md
 SKIP (has id): posts/2026-09-11-0140-ai-knowledge.md
 SKIP (has id): posts/2026-09-11-1343-ai-knowledge.md
+
+PUBLISHING: posts/2026-09-12-0145-ai-knowledge.md
+  title: I Ran claude -p in Cron 2,114 Times. 41 Failed Silently
+  tags: ['claudecode', 'ai', 'automation', 'productivity']
+  creating article (published=True) ...
+  create result: HTTP 201
+  PUBLISHED id=4634017 date=2026-09-11T16:46:53Z
 SKIP (has id): posts/agentcrow-launch-en.md
 SKIP (has id): posts/ai-agent-i18n-tarot-compatibility-en.md
 SKIP (has id): posts/ai-content-full-automation-en.md
@@ -419,4 +426,4 @@ SKIP (has id): posts/trading-bot-win-rate-lie-en.md
 SKIP (korean filename): posts/trading-bot-win-rate-lie-ko.md
 SKIP (has id): posts/writing-claude-code-book-with-claude-code-en.md
 
-Done: 0 published, 0 failed
+Done: 1 published, 0 failed
