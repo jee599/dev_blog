@@ -329,6 +329,13 @@ SKIP (has id): posts/2026-09-15-0154-ai-knowledge.md
 SKIP (has id): posts/2026-09-15-1355-ai-knowledge.md
 SKIP (has id): posts/2026-09-16-0156-ai-knowledge.md
 SKIP (has id): posts/2026-09-16-1357-ai-knowledge.md
+
+PUBLISHING: posts/2026-09-17-0158-ai-knowledge.md
+  title: tiktoken vs count_tokens: My Claude Budget Was 17% Off
+  tags: ['llm', 'ai', 'python', 'performance']
+  creating article (published=True) ...
+  create result: HTTP 201
+  PUBLISHED id=4669766 date=2026-09-16T16:59:57Z
 SKIP (has id): posts/agentcrow-launch-en.md
 SKIP (has id): posts/ai-agent-i18n-tarot-compatibility-en.md
 SKIP (has id): posts/ai-content-full-automation-en.md
@@ -429,4 +436,4 @@ SKIP (has id): posts/trading-bot-win-rate-lie-en.md
 SKIP (korean filename): posts/trading-bot-win-rate-lie-ko.md
 SKIP (has id): posts/writing-claude-code-book-with-claude-code-en.md
 
-Done: 0 published, 0 failed
+Done: 1 published, 0 failed
