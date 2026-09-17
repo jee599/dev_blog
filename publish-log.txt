@@ -331,6 +331,13 @@ SKIP (has id): posts/2026-09-16-0156-ai-knowledge.md
 SKIP (has id): posts/2026-09-16-1357-ai-knowledge.md
 SKIP (has id): posts/2026-09-17-0158-ai-knowledge.md
 SKIP (has id): posts/2026-09-17-1359-ai-knowledge.md
+
+PUBLISHING: posts/2026-09-18-0200-ai-knowledge.md
+  title: GITHUB_TOKEN Doesn't Trigger Workflows. My Release Never Shipped
+  tags: ['devops', 'tooling', 'tutorial']
+  creating article (published=True) ...
+  create result: HTTP 201
+  PUBLISHED id=4678569 date=2026-09-17T17:02:37Z
 SKIP (has id): posts/agentcrow-launch-en.md
 SKIP (has id): posts/ai-agent-i18n-tarot-compatibility-en.md
 SKIP (has id): posts/ai-content-full-automation-en.md
@@ -431,4 +438,4 @@ SKIP (has id): posts/trading-bot-win-rate-lie-en.md
 SKIP (korean filename): posts/trading-bot-win-rate-lie-ko.md
 SKIP (has id): posts/writing-claude-code-book-with-claude-code-en.md
 
-Done: 0 published, 0 failed
+Done: 1 published, 0 failed
