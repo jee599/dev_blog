@@ -333,6 +333,13 @@ SKIP (has id): posts/2026-09-17-0158-ai-knowledge.md
 SKIP (has id): posts/2026-09-17-1359-ai-knowledge.md
 SKIP (has id): posts/2026-09-18-0200-ai-knowledge.md
 SKIP (has id): posts/2026-09-18-1402-ai-knowledge.md
+
+PUBLISHING: posts/2026-09-19-0203-ai-knowledge.md
+  title: Claude Code /compact Forgot 31% of My Rules: 20 Trials, 1 Fix
+  tags: ['claudecode', 'ai', 'productivity', 'automation']
+  creating article (published=True) ...
+  create result: HTTP 201
+  PUBLISHED id=4687129 date=2026-09-18T17:05:12Z
 SKIP (has id): posts/agentcrow-launch-en.md
 SKIP (has id): posts/ai-agent-i18n-tarot-compatibility-en.md
 SKIP (has id): posts/ai-content-full-automation-en.md
@@ -433,4 +440,4 @@ SKIP (has id): posts/trading-bot-win-rate-lie-en.md
 SKIP (korean filename): posts/trading-bot-win-rate-lie-ko.md
 SKIP (has id): posts/writing-claude-code-book-with-claude-code-en.md
 
-Done: 0 published, 0 failed
+Done: 1 published, 0 failed
