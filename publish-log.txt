@@ -337,6 +337,13 @@ SKIP (has id): posts/2026-09-19-0203-ai-knowledge.md
 SKIP (has id): posts/2026-09-19-1404-ai-knowledge.md
 SKIP (has id): posts/2026-09-20-0206-ai-knowledge.md
 SKIP (has id): posts/2026-09-20-1407-ai-knowledge.md
+
+PUBLISHING: posts/2026-09-21-0210-ai-knowledge.md
+  title: Playwright MCP Token Usage: 9 Tool Calls, 62% of My Context
+  tags: ['claudecode', 'ai', 'tooling', 'automation']
+  creating article (published=True) ...
+  create result: HTTP 201
+  PUBLISHED id=4700934 date=2026-09-20T17:12:44Z
 SKIP (has id): posts/agentcrow-launch-en.md
 SKIP (has id): posts/ai-agent-i18n-tarot-compatibility-en.md
 SKIP (has id): posts/ai-content-full-automation-en.md
@@ -437,4 +444,4 @@ SKIP (has id): posts/trading-bot-win-rate-lie-en.md
 SKIP (korean filename): posts/trading-bot-win-rate-lie-ko.md
 SKIP (has id): posts/writing-claude-code-book-with-claude-code-en.md
 
-Done: 0 published, 0 failed
+Done: 1 published, 0 failed
