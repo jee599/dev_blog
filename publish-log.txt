@@ -1,5 +1,5 @@
 Fetching existing articles from DEV.to ...
-  Found 324 existing article(s) on DEV.to
+  Found 325 existing article(s) on DEV.to
 
 SKIP (korean filename): posts/2026-03-14-anthropic-partner-network-100m-ko.md
 SKIP (korean filename): posts/2026-03-14-gemini-750m-ads-ko.md
@@ -338,13 +338,7 @@ SKIP (has id): posts/2026-09-19-1404-ai-knowledge.md
 SKIP (has id): posts/2026-09-20-0206-ai-knowledge.md
 SKIP (has id): posts/2026-09-20-1407-ai-knowledge.md
 SKIP (has id): posts/2026-09-21-0210-ai-knowledge.md
-
-PUBLISHING: posts/2026-09-21-1412-ai-knowledge.md
-  title: npm publish Ignores .gitignore: The .npmignore Override Rule
-  tags: ['tooling', 'cli', 'devops', 'tutorial']
-  creating article (published=True) ...
-  create result: HTTP 201
-  PUBLISHED id=4703651 date=2026-09-21T05:15:29Z
+SKIP (has id): posts/2026-09-21-1412-ai-knowledge.md
 SKIP (has id): posts/agentcrow-launch-en.md
 SKIP (has id): posts/ai-agent-i18n-tarot-compatibility-en.md
 SKIP (has id): posts/ai-content-full-automation-en.md
@@ -445,4 +439,4 @@ SKIP (has id): posts/trading-bot-win-rate-lie-en.md
 SKIP (korean filename): posts/trading-bot-win-rate-lie-ko.md
 SKIP (has id): posts/writing-claude-code-book-with-claude-code-en.md
 
-Done: 1 published, 0 failed
+Done: 0 published, 0 failed
