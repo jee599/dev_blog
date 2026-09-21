@@ -339,6 +339,13 @@ SKIP (has id): posts/2026-09-20-0206-ai-knowledge.md
 SKIP (has id): posts/2026-09-20-1407-ai-knowledge.md
 SKIP (has id): posts/2026-09-21-0210-ai-knowledge.md
 SKIP (has id): posts/2026-09-21-1412-ai-knowledge.md
+
+PUBLISHING: posts/2026-09-22-0215-ai-knowledge.md
+  title: Constrained Decoding: Your JSON Schema Key Order Is a Prompt
+  tags: ['llm', 'ai', 'python', 'machinelearning']
+  creating article (published=True) ...
+  create result: HTTP 201
+  PUBLISHED id=4709532 date=2026-09-21T17:16:32Z
 SKIP (has id): posts/agentcrow-launch-en.md
 SKIP (has id): posts/ai-agent-i18n-tarot-compatibility-en.md
 SKIP (has id): posts/ai-content-full-automation-en.md
@@ -439,4 +446,4 @@ SKIP (has id): posts/trading-bot-win-rate-lie-en.md
 SKIP (korean filename): posts/trading-bot-win-rate-lie-ko.md
 SKIP (has id): posts/writing-claude-code-book-with-claude-code-en.md
 
-Done: 0 published, 0 failed
+Done: 1 published, 0 failed
