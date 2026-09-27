@@ -350,6 +350,13 @@ SKIP (has id): posts/2026-09-25-1427-ai-knowledge.md
 SKIP (has id): posts/2026-09-26-0229-ai-knowledge.md
 SKIP (has id): posts/2026-09-26-1430-ai-knowledge.md
 SKIP (has id): posts/2026-09-27-0232-ai-knowledge.md
+
+PUBLISHING: posts/2026-09-27-1433-ai-knowledge.md
+  title: KV Cache Math: Why Llama 3.1 8B at 128K Context Won't Fit in 24GB
+  tags: ['llm', 'machinelearning', 'performance', 'python']
+  creating article (published=True) ...
+  create result: HTTP 201
+  PUBLISHED id=4754099 date=2026-09-27T05:35:09Z
 SKIP (has id): posts/agentcrow-launch-en.md
 SKIP (has id): posts/ai-agent-i18n-tarot-compatibility-en.md
 SKIP (has id): posts/ai-content-full-automation-en.md
@@ -450,4 +457,4 @@ SKIP (has id): posts/trading-bot-win-rate-lie-en.md
 SKIP (korean filename): posts/trading-bot-win-rate-lie-ko.md
 SKIP (has id): posts/writing-claude-code-book-with-claude-code-en.md
 
-Done: 0 published, 0 failed
+Done: 1 published, 0 failed
