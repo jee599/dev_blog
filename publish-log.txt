@@ -352,6 +352,13 @@ SKIP (has id): posts/2026-09-26-1430-ai-knowledge.md
 SKIP (has id): posts/2026-09-27-0232-ai-knowledge.md
 SKIP (has id): posts/2026-09-27-1433-ai-knowledge.md
 SKIP (has id): posts/2026-09-28-1435-ai-knowledge.md
+
+PUBLISHING: posts/2026-09-29-0236-ai-knowledge.md
+  title: GitHub Actions Cache Never Saves on a Key Hit: 23 Days of Stale CI
+  tags: ['devops', 'tooling', 'tutorial', 'productivity']
+  creating article (published=True) ...
+  create result: HTTP 201
+  PUBLISHED id=4766029 date=2026-09-28T17:38:39Z
 SKIP (has id): posts/agentcrow-launch-en.md
 SKIP (has id): posts/ai-agent-i18n-tarot-compatibility-en.md
 SKIP (has id): posts/ai-content-full-automation-en.md
@@ -452,4 +459,4 @@ SKIP (has id): posts/trading-bot-win-rate-lie-en.md
 SKIP (korean filename): posts/trading-bot-win-rate-lie-ko.md
 SKIP (has id): posts/writing-claude-code-book-with-claude-code-en.md
 
-Done: 0 published, 0 failed
+Done: 1 published, 0 failed
