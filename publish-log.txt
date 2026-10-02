@@ -356,6 +356,13 @@ SKIP (has id): posts/2026-09-29-0236-ai-knowledge.md
 SKIP (has id): posts/2026-09-30-0756-ai-knowledge.md
 SKIP (has id): posts/2026-10-01-0558-ai-knowledge.md
 SKIP (has id): posts/2026-10-02-1759-ai-knowledge.md
+
+PUBLISHING: posts/2026-10-03-0601-ai-knowledge.md
+  title: GitHub Actions Cron Was Late 30 Nights Straight, Then Skipped One
+  tags: ['devops', 'tooling', 'tutorial', 'productivity']
+  creating article (published=True) ...
+  create result: HTTP 201
+  PUBLISHED id=4789097 date=2026-10-02T21:03:58Z
 SKIP (has id): posts/agentcrow-launch-en.md
 SKIP (has id): posts/ai-agent-i18n-tarot-compatibility-en.md
 SKIP (has id): posts/ai-content-full-automation-en.md
@@ -456,4 +463,4 @@ SKIP (has id): posts/trading-bot-win-rate-lie-en.md
 SKIP (korean filename): posts/trading-bot-win-rate-lie-ko.md
 SKIP (has id): posts/writing-claude-code-book-with-claude-code-en.md
 
-Done: 0 published, 0 failed
+Done: 1 published, 0 failed
