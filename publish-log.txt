@@ -359,6 +359,13 @@ SKIP (has id): posts/2026-10-02-1759-ai-knowledge.md
 SKIP (has id): posts/2026-10-03-0601-ai-knowledge.md
 SKIP (has id): posts/2026-10-04-0131-ai-knowledge.md
 SKIP (has id): posts/2026-10-04-1333-ai-knowledge.md
+
+PUBLISHING: posts/2026-10-05-0135-ai-knowledge.md
+  title: Claude Code in launchd: My Nightly claude -p Job Worked 6 of 14 Nights
+  tags: ['claudecode', 'automation', 'cli', 'productivity']
+  creating article (published=True) ...
+  create result: HTTP 201
+  PUBLISHED id=4796650 date=2026-10-04T16:37:08Z
 SKIP (has id): posts/agentcrow-launch-en.md
 SKIP (has id): posts/ai-agent-i18n-tarot-compatibility-en.md
 SKIP (has id): posts/ai-content-full-automation-en.md
@@ -459,4 +466,4 @@ SKIP (has id): posts/trading-bot-win-rate-lie-en.md
 SKIP (korean filename): posts/trading-bot-win-rate-lie-ko.md
 SKIP (has id): posts/writing-claude-code-book-with-claude-code-en.md
 
-Done: 0 published, 0 failed
+Done: 1 published, 0 failed
