@@ -363,6 +363,13 @@ SKIP (has id): posts/2026-10-05-0135-ai-knowledge.md
 SKIP (has id): posts/2026-10-05-1336-ai-knowledge.md
 SKIP (has id): posts/2026-10-07-0138-ai-knowledge.md
 SKIP (has id): posts/2026-10-07-1340-ai-knowledge.md
+
+PUBLISHING: posts/2026-10-08-0142-ai-knowledge.md
+  title: tiktoken Undercounts Claude Tokens: 37 of 418 Requests Blew the Limit
+  tags: ['claude', 'llm', 'python', 'ai']
+  creating article (published=True) ...
+  create result: HTTP 201
+  PUBLISHED id=4813439 date=2026-10-07T16:44:27Z
 SKIP (has id): posts/agentcrow-launch-en.md
 SKIP (has id): posts/ai-agent-i18n-tarot-compatibility-en.md
 SKIP (has id): posts/ai-content-full-automation-en.md
@@ -463,4 +470,4 @@ SKIP (has id): posts/trading-bot-win-rate-lie-en.md
 SKIP (korean filename): posts/trading-bot-win-rate-lie-ko.md
 SKIP (has id): posts/writing-claude-code-book-with-claude-code-en.md
 
-Done: 0 published, 0 failed
+Done: 1 published, 0 failed
