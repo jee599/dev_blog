@@ -157,6 +157,8 @@ jobs:
               canonical = m.group(1).strip() if m else ""
               m = re.search(r'^cover_image:\s*["\']?(.*?)["\']?\s*$', fm, re.M)
               cover = m.group(1).strip() if m else ""
+              m = re.search(r'^series:\s*["\']?(.*?)["\']?\s*$', fm, re.M)
+              series = m.group(1).strip() if m else ""
 
               log(f"  title: {title}")
               log(f"  tags: {tags}")
@@ -216,6 +218,8 @@ jobs:
                   article_payload["canonical_url"] = canonical
               if cover:
                   article_payload["main_image"] = cover
+              if series:
+                  article_payload["series"] = series
               code, result, hdrs = api_call("POST", f"{BASE}/articles", {"article": article_payload})
               log(f"  create result: HTTP {code}")
 

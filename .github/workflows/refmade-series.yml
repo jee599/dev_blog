@@ -1,0 +1,67 @@
+name: Refmade series release
+# Releases at most one post per run from scheduled/refmade/ once its date (UTC) arrives.
+# A due post whose file is missing holds the rest of the series, so order never breaks.
+on:
+  schedule:
+    - cron: '30 13 * * *'  # 13:30 UTC = 22:30 KST
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: refmade-series
+  cancel-in-progress: false
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Pick the next due post
+        id: release
+        run: |
+          python3 - <<'PYEOF'
+          import datetime, json, os, re
+
+          base = "scheduled/refmade"
+          entries = json.load(open(f"{base}/schedule.json"))
+          today = datetime.datetime.now(datetime.timezone.utc).date().isoformat()
+          released = ""
+          for e in sorted(entries, key=lambda x: x["date"]):
+              src = f"{base}/{e['file']}"
+              dest = f"posts/{e['slug']}-en.md"
+              if os.path.exists(dest):
+                  continue
+              if e["date"] > today:
+                  print(f"next: {e['file']} on {e['date']}")
+                  break
+              if not os.path.exists(src):
+                  print(f"due but not ready: {src}")
+                  break
+              text = open(src).read()
+              text = re.sub(r"^published:\s*false\s*$", "published: true", text, count=1, flags=re.M)
+              with open(dest, "w") as f:
+                  f.write(text)
+              released = dest
+              print(f"released: {src} -> {dest}")
+              break
+          with open(os.environ["GITHUB_OUTPUT"], "a") as f:
+              f.write(f"dest={released}\n")
+          PYEOF
+
+      - name: Commit and run the DEV.to publisher
+        if: steps.release.outputs.dest != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+          DEST: ${{ steps.release.outputs.dest }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add "$DEST"
+          git commit -m "series: release $DEST"
+          git push
+          # Pushes made with GITHUB_TOKEN don't trigger workflows; workflow_dispatch does.
+          gh workflow run publish.yml --ref main

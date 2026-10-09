@@ -1,0 +1,82 @@
+[
+ {
+  "file": "01-agent-team-i-couldnt-see.md",
+  "slug": "refmade-01-agent-team-i-couldnt-see",
+  "date": "2026-10-12"
+ },
+ {
+  "file": "02-plan-then-scope-creep.md",
+  "slug": "refmade-02-plan-then-scope-creep",
+  "date": "2026-10-14"
+ },
+ {
+  "file": "03-stop-trusting-agent-self-reports.md",
+  "slug": "refmade-03-stop-trusting-agent-self-reports",
+  "date": "2026-10-16"
+ },
+ {
+  "file": "04-reading-claude-code-and-codex-logs.md",
+  "slug": "refmade-04-reading-claude-code-and-codex-logs",
+  "date": "2026-10-18"
+ },
+ {
+  "file": "05-five-builder-agents-one-integrator.md",
+  "slug": "refmade-05-five-builder-agents-one-integrator",
+  "date": "2026-10-20"
+ },
+ {
+  "file": "06-shipped-friends-feature-deleted-same-day.md",
+  "slug": "refmade-06-shipped-friends-feature-deleted-same-day",
+  "date": "2026-10-22"
+ },
+ {
+  "file": "07-ai-sprites-white-turned-transparent.md",
+  "slug": "refmade-07-ai-sprites-white-turned-transparent",
+  "date": "2026-10-24"
+ },
+ {
+  "file": "08-research-agents-said-feature-was-free.md",
+  "slug": "refmade-08-research-agents-said-feature-was-free",
+  "date": "2026-10-26"
+ },
+ {
+  "file": "09-wrapping-claude-code-and-codex-in-electron.md",
+  "slug": "refmade-09-wrapping-claude-code-and-codex-in-electron",
+  "date": "2026-10-28"
+ },
+ {
+  "file": "10-measuring-what-my-app-sends.md",
+  "slug": "refmade-10-measuring-what-my-app-sends",
+  "date": "2026-10-30"
+ },
+ {
+  "file": "11-terms-fix-created-a-bug.md",
+  "slug": "refmade-11-terms-fix-created-a-bug",
+  "date": "2026-11-01"
+ },
+ {
+  "file": "12-shipping-without-notarization.md",
+  "slug": "refmade-12-shipping-without-notarization",
+  "date": "2026-11-03"
+ },
+ {
+  "file": "13-nine-releases-no-git.md",
+  "slug": "refmade-13-nine-releases-no-git",
+  "date": "2026-11-05"
+ },
+ {
+  "file": "14-release-gates-for-a-solo-app.md",
+  "slug": "refmade-14-release-gates-for-a-solo-app",
+  "date": "2026-11-07"
+ },
+ {
+  "file": "15-localizing-hardcoded-korean.md",
+  "slug": "refmade-15-localizing-hardcoded-korean",
+  "date": "2026-11-09"
+ },
+ {
+  "file": "16-launch.md",
+  "slug": "refmade-16-launch",
+  "date": "2026-11-11"
+ }
+]
