@@ -367,6 +367,13 @@ SKIP (has id): posts/2026-10-08-0142-ai-knowledge.md
 SKIP (has id): posts/2026-10-08-1344-ai-knowledge.md
 SKIP (has id): posts/2026-10-10-0146-ai-knowledge.md
 SKIP (has id): posts/2026-10-10-1348-ai-knowledge.md
+
+PUBLISHING: posts/2026-10-11-0150-ai-knowledge.md
+  title: Ollama num_ctx Truncated 287 of 400 Prompts and Never Told Me
+  tags: ['ai', 'llm', 'python', 'tutorial']
+  creating article (published=True) ...
+  create result: HTTP 201
+  PUBLISHED id=4829391 date=2026-10-10T16:52:09Z
 SKIP (has id): posts/agentcrow-launch-en.md
 SKIP (has id): posts/ai-agent-i18n-tarot-compatibility-en.md
 SKIP (has id): posts/ai-content-full-automation-en.md
@@ -467,4 +474,4 @@ SKIP (has id): posts/trading-bot-win-rate-lie-en.md
 SKIP (korean filename): posts/trading-bot-win-rate-lie-ko.md
 SKIP (has id): posts/writing-claude-code-book-with-claude-code-en.md
 
-Done: 0 published, 0 failed
+Done: 1 published, 0 failed
