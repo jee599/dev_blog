@@ -1,7 +1,7 @@
 ---
-title: "Refmade 0.4.0 Is Out: A Free Mac App in Eight Languages"
+title: "Refmade 0.4 Is Out: A Free Mac and Windows App in Eight Languages"
 published: false
-description: "Refmade 0.4.0 for Mac shipped October 10 at 20:17 KST: free, eight languages, ad-hoc signed. What it sends, who it's for, and where I want feedback."
+description: "Refmade 0.4.0 for Mac shipped October 10 and 0.4.1 brought Windows the next day: free, eight languages, unsigned. What it sends, who it's for, and where I want feedback."
 tags:
   - macos
   - electron
@@ -11,7 +11,7 @@ series: "Building Refmade"
 cover_image: "https://raw.githubusercontent.com/jee599/dev_blog/main/images/refmade/16-cover.png"
 ---
 
-Refmade 0.4.0 went live on October 10, 2026 at 20:17 KST. It is a free Mac app, now in eight languages, and this is the post where I finally link to it: [refmade.com](https://refmade.com). The translations were checked by AI agents only. No native speaker has checked them, so I'd like you to tell me where they sound wrong.
+Refmade 0.4.0 went live on October 10, 2026 at 20:17 KST as a free Mac app in eight languages. The next day, 0.4.1 brought the same version and the same languages to Windows. This is the post where I finally link to it: [refmade.com](https://refmade.com). The translations were checked by AI agents only. No native speaker has checked them, so I'd like you to tell me where they sound wrong.
 
 This is post 16, the last of "Building Refmade". I'm a solo developer based in Korea. Claude Code and Codex agents (Claude Sonnet and Opus for most of this work) wrote most of the code at my direction. I planned, decided and reviewed.
 
@@ -26,28 +26,28 @@ You need Claude Code or Codex installed and signed in. Refmade doesn't replace t
 ![The English landing page of refmade.com: headline "Using AI is not hard", a "Get it free" button and a banner announcing Mac 0.4.0 in eight languages](https://raw.githubusercontent.com/jee599/dev_blog/main/images/refmade/16-site-en.png)
 *The top of refmade.com/en/, captured with Playwright at 1280 px wide on the day of release. I cropped it to the top 620 px.*
 
-## What 0.4.0 is
+## What 0.4 is
 
 | | |
 |---|---|
 | Platform | Mac, Apple silicon, macOS 13 or later |
 | Languages | Korean, English, Japanese, Simplified Chinese, Spanish, Brazilian Portuguese, German, French |
 | Price | Free |
-| Installer | DMG, 186,077,466 bytes (the site says about 190 MB) |
-| Signing | Ad-hoc, not notarized |
-| Windows | Public build stays 0.3.2, Korean screens only |
+| Installer | Mac DMG, 186,077,466 bytes at 0.4.0 (the site says about 190 MB) |
+| Signing | Mac: ad-hoc, not notarized. Windows: not code-signed |
+| Windows | From 0.4.1 (October 11): Windows 10 and 11, 64-bit, same source, features and languages as the Mac app |
 
 Because it isn't notarized, macOS blocks the first launch. Open System Settings, go to Privacy & Security and press "Open Anyway". You do this once per version. Post 12 explains why I chose this over paying for notarization. Traditional Chinese and Hong Kong users get the English screens, and European Portuguese gets Brazilian.
 
-Windows is behind. A 0.3.8 Windows installer exists, but it was only cross-built and never run on a real Windows machine, so it isn't published. 0.3.1 is the only Windows build that has passed a check on a real PC, and 0.3.2 is public without that check.
+Windows caught up a day later. Before the 0.4.1 installer went up, it was installed and run on a GitHub Actions Windows runner: installed over the old 0.3.2, started once with a self-check, switched through all eight languages with a screenshot of each, and uninstalled. That is a real Windows machine, but not a person's PC with Claude Code signed in, so Windows reports are especially welcome. The first runs of that check caught two things the Mac never showed. A trial installer had silently left out a dependency, so the easy workspace would not open. And bold Chinese text in the pixel font came out smeared at 100% scaling, because that font has only one weight and the bold was being faked. Both were fixed before 0.4.1 shipped. On Windows, SmartScreen says "Windows protected your PC" the first time: press "More info", then "Run anyway".
 
-If you already have 0.3.9 or 0.3.8, the app tells you a new version exists. It does not install it for you.
+If you already have 0.3.8 or later on a Mac, the app tells you a new version exists. It does not install it for you.
 
 ## What the app sends
 
-The app itself talks to my server for two things: it checks for a new version, and on Mac it fetches a list of ads for the billboard in the office view. The ads are banners for my other services. There is no switch to turn them off. The new-version check can be switched off from the menu. The app has no usage statistics.
+The app itself talks to my server for two things: it checks for a new version, and when the app is in Korean, it fetches a list of ads for the billboard in the office view. The ads are banners for my other services, which are Korean-only, so in the other seven languages the app neither asks for the list nor shows a billboard. In Korean there is no switch to turn them off. The new-version check can be switched off from the menu. The app has no usage statistics.
 
-It does not send your work to me. When you give a job to Claude Code or Codex, that tool, running on your computer under your account, sends it to the model company. The only socket measurement I made was in post 10, on a 0.2.x build on September 29: all 94 of the app's own sockets pointed at 127.0.0.1, and the outside connections came from the tools it launches. I have not repeated that capture on 0.3.x or 0.4.0, so what I say about the version check and the ad feed comes from reading the code. I never read packet contents.
+It does not send your work to me. When you give a job to Claude Code or Codex, that tool, running on your computer under your account, sends it to the model company. The only socket measurement I made was in post 10, on a 0.2.x build on September 29: all 94 of the app's own sockets pointed at 127.0.0.1, and the outside connections came from the tools it launches. I have not repeated that capture on 0.3.x or 0.4.x, so what I say about the version check and the ad feed comes from reading the code. I never read packet contents.
 
 ![Chinese approval card in the pastel theme asking which tone to use for replying to a customer](https://raw.githubusercontent.com/jee599/dev_blog/main/images/refmade/16-chinese-decision.png)
 *Refmade 0.4.0 in Simplified Chinese, public demo data. The card asks "What tone should we use to reply to the customer?" and marks "Friendly and concise" as the AI's recommendation. The names are invented sample data.*
@@ -78,7 +78,7 @@ The easiest way is the "Send feedback" button at the bottom right of the app. It
 
 ## Looking back at the series
 
-The 16 posts cover the work from September 20 to October 10, and they are published from October 12 to November 11.
+The 16 posts cover the work from September 20 to October 11, and they are published from October 12 to November 11.
 
 The first posts were about the start: "I Built an Agent Team, Then Couldn't See What It Did", then "A Local-First Plan, Then 4 Days of Scope Creep" and "Stop Trusting Agent Self-Reports: Read the Logs Instead". The middle was craft and reversals: "Reading Claude Code and Codex Session Logs: Four Traps", "Five Parallel AI Builders, One Contract, 25 Review Fixes", "I Shipped a Friends Feature, Then Dropped It the Same Day", "Codex Image Gen Saved My White Pixels as Transparent" and "13 Research Agents Told Me My Feature Was Already Free".
 
