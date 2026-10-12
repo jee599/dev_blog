@@ -9,6 +9,8 @@ tags:
   - buildinpublic
 series: "Building Refmade"
 cover_image: "https://raw.githubusercontent.com/jee599/dev_blog/main/images/refmade/01-cover.png"
+id: 4840332
+date: '2026-10-12T21:49:53Z'
 ---
 
 The first files of my agent team were written at 22:47 on September 20, 2026. By the next day I had a web dashboard to watch it. The dashboard was only as full as the agents were diligent: when one skipped its status report, that part of the office was empty.
