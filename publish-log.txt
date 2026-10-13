@@ -372,6 +372,13 @@ SKIP (has id): posts/2026-10-11-1351-ai-knowledge.md
 SKIP (has id): posts/2026-10-12-0153-ai-knowledge.md
 SKIP (has id): posts/2026-10-12-1355-ai-knowledge.md
 SKIP (has id): posts/2026-10-13-0157-ai-knowledge.md
+
+PUBLISHING: posts/2026-10-14-0159-ai-knowledge.md
+  title: GitHub Actions fetch-depth: 1 Made My CI Skip Tests for 41 PRs
+  tags: ['devops', 'tooling', 'tutorial', 'productivity']
+  creating article (published=True) ...
+  create result: HTTP 201
+  PUBLISHED id=4845726 date=2026-10-13T17:01:25Z
 SKIP (has id): posts/agentcrow-launch-en.md
 SKIP (has id): posts/ai-agent-i18n-tarot-compatibility-en.md
 SKIP (has id): posts/ai-content-full-automation-en.md
@@ -473,4 +480,4 @@ SKIP (has id): posts/trading-bot-win-rate-lie-en.md
 SKIP (korean filename): posts/trading-bot-win-rate-lie-ko.md
 SKIP (has id): posts/writing-claude-code-book-with-claude-code-en.md
 
-Done: 0 published, 0 failed
+Done: 1 published, 0 failed
