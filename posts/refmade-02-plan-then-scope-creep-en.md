@@ -9,6 +9,8 @@ tags:
   - productivity
 series: "Building Refmade"
 cover_image: "https://raw.githubusercontent.com/jee599/dev_blog/main/images/refmade/02-cover.png"
+id: 4851952
+date: '2026-10-14T18:08:23Z'
 ---
 
 The product plan my agent team wrote on September 21, 2026 had a rule in it: never tell users their data stays on their PC. By September 25 the same project had guestbooks, gifts and a cosmetics gacha with 266 items.
