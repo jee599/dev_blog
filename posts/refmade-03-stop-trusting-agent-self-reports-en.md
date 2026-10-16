@@ -9,6 +9,8 @@ tags:
   - buildinpublic
 series: "Building Refmade"
 cover_image: "https://raw.githubusercontent.com/jee599/dev_blog/main/images/refmade/03-cover.png"
+id: 4863853
+date: '2026-10-16T17:38:50Z'
 ---
 
 My first agent dashboard depended on the agents reporting their own work. If an agent worked and said nothing, the office looked empty. That was the September 21 design. Four days and a pile of extra features later, I asked for a redesign from scratch.
