@@ -1,5 +1,5 @@
 Fetching existing articles from DEV.to ...
-  Found 361 existing article(s) on DEV.to
+  Found 362 existing article(s) on DEV.to
 
 SKIP (korean filename): posts/2026-03-14-anthropic-partner-network-100m-ko.md
 SKIP (korean filename): posts/2026-03-14-gemini-750m-ads-ko.md
@@ -465,14 +465,7 @@ SKIP (has id): posts/prompting-is-programming-en.md
 SKIP (korean filename): posts/prompting-is-programming-ko.md
 SKIP (has id): posts/refmade-01-agent-team-i-couldnt-see-en.md
 SKIP (has id): posts/refmade-02-plan-then-scope-creep-en.md
-
-PUBLISHING: posts/refmade-03-stop-trusting-agent-self-reports-en.md
-  title: Stop Trusting Agent Self-Reports: Read the Logs Instead
-  tags: ['ai', 'claudecode', 'architecture', 'buildinpublic']
-  cover_image: https://raw.githubusercontent.com/jee599/dev_blog/main/images/refmade/03-cover.png
-  creating article (published=True) ...
-  create result: HTTP 201
-  PUBLISHED id=4863853 date=2026-10-16T17:38:50Z
+SKIP (has id): posts/refmade-03-stop-trusting-agent-self-reports-en.md
 SKIP (has id): posts/saju-app-design-threejs-cosmic-en.md
 SKIP (korean filename): posts/saju-app-design-threejs-cosmic-ko.md
 SKIP (has id): posts/trading-bot-15-strategies-en.md
@@ -483,4 +476,4 @@ SKIP (has id): posts/trading-bot-win-rate-lie-en.md
 SKIP (korean filename): posts/trading-bot-win-rate-lie-ko.md
 SKIP (has id): posts/writing-claude-code-book-with-claude-code-en.md
 
-Done: 1 published, 0 failed
+Done: 0 published, 0 failed
