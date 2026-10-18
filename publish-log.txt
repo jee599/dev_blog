@@ -374,6 +374,13 @@ SKIP (has id): posts/2026-10-12-1355-ai-knowledge.md
 SKIP (has id): posts/2026-10-13-0157-ai-knowledge.md
 SKIP (has id): posts/2026-10-14-0159-ai-knowledge.md
 SKIP (has id): posts/2026-10-18-0821-ai-knowledge.md
+
+PUBLISHING: posts/2026-10-18-2023-ai-knowledge.md
+  title: vLLM Temperature 0 Isn't Deterministic: 23 of 200 Answers Changed
+  tags: ['llm', 'machinelearning', 'performance', 'python']
+  creating article (published=True) ...
+  create result: HTTP 201
+  PUBLISHED id=4871580 date=2026-10-18T11:25:01Z
 SKIP (has id): posts/agentcrow-launch-en.md
 SKIP (has id): posts/ai-agent-i18n-tarot-compatibility-en.md
 SKIP (has id): posts/ai-content-full-automation-en.md
@@ -477,4 +484,4 @@ SKIP (has id): posts/trading-bot-win-rate-lie-en.md
 SKIP (korean filename): posts/trading-bot-win-rate-lie-ko.md
 SKIP (has id): posts/writing-claude-code-book-with-claude-code-en.md
 
-Done: 0 published, 0 failed
+Done: 1 published, 0 failed
