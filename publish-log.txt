@@ -375,6 +375,13 @@ SKIP (has id): posts/2026-10-13-0157-ai-knowledge.md
 SKIP (has id): posts/2026-10-14-0159-ai-knowledge.md
 SKIP (has id): posts/2026-10-18-0821-ai-knowledge.md
 SKIP (has id): posts/2026-10-18-2023-ai-knowledge.md
+
+PUBLISHING: posts/2026-10-19-0824-ai-knowledge.md
+  title: Claude Code Hooks: Exit Code 1 Doesn't Block. 9 of 9 Commands Ran
+  tags: ['claudecode', 'claude', 'tooling', 'cli']
+  creating article (published=True) ...
+  create result: HTTP 201
+  PUBLISHED id=4874391 date=2026-10-18T23:26:30Z
 SKIP (has id): posts/agentcrow-launch-en.md
 SKIP (has id): posts/ai-agent-i18n-tarot-compatibility-en.md
 SKIP (has id): posts/ai-content-full-automation-en.md
@@ -479,4 +486,4 @@ SKIP (has id): posts/trading-bot-win-rate-lie-en.md
 SKIP (korean filename): posts/trading-bot-win-rate-lie-ko.md
 SKIP (has id): posts/writing-claude-code-book-with-claude-code-en.md
 
-Done: 0 published, 0 failed
+Done: 1 published, 0 failed
