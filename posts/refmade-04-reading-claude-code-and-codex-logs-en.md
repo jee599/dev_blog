@@ -9,6 +9,8 @@ tags:
   - debugging
 series: "Building Refmade"
 cover_image: "https://raw.githubusercontent.com/jee599/dev_blog/main/images/refmade/04-cover.png"
+id: 4873062
+date: '2026-10-18T16:45:43Z'
 ---
 
 Claude Code writes a `turn_duration` line into the session log when an interactive request finishes. `claude -p` does not. I measured that on real logs on September 27, 2026 (Claude Code 2.1.283), and it is one of four places where reading these files differs from what a first guess would be.
