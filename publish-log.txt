@@ -1,5 +1,5 @@
 Fetching existing articles from DEV.to ...
-  Found 362 existing article(s) on DEV.to
+  Found 363 existing article(s) on DEV.to
 
 SKIP (korean filename): posts/2026-03-14-anthropic-partner-network-100m-ko.md
 SKIP (korean filename): posts/2026-03-14-gemini-750m-ads-ko.md
@@ -373,13 +373,7 @@ SKIP (has id): posts/2026-10-12-0153-ai-knowledge.md
 SKIP (has id): posts/2026-10-12-1355-ai-knowledge.md
 SKIP (has id): posts/2026-10-13-0157-ai-knowledge.md
 SKIP (has id): posts/2026-10-14-0159-ai-knowledge.md
-
-PUBLISHING: posts/2026-10-18-0821-ai-knowledge.md
-  title: Whisper Hallucinations: 'Thanks for Watching' in 9% of My Transcripts
-  tags: ['ai', 'python', 'machinelearning']
-  creating article (published=True) ...
-  create result: HTTP 201
-  PUBLISHED id=4869413 date=2026-10-17T23:23:14Z
+SKIP (has id): posts/2026-10-18-0821-ai-knowledge.md
 SKIP (has id): posts/agentcrow-launch-en.md
 SKIP (has id): posts/ai-agent-i18n-tarot-compatibility-en.md
 SKIP (has id): posts/ai-content-full-automation-en.md
@@ -483,4 +477,4 @@ SKIP (has id): posts/trading-bot-win-rate-lie-en.md
 SKIP (korean filename): posts/trading-bot-win-rate-lie-ko.md
 SKIP (has id): posts/writing-claude-code-book-with-claude-code-en.md
 
-Done: 1 published, 0 failed
+Done: 0 published, 0 failed
