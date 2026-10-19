@@ -377,6 +377,13 @@ SKIP (has id): posts/2026-10-18-0821-ai-knowledge.md
 SKIP (has id): posts/2026-10-18-2023-ai-knowledge.md
 SKIP (has id): posts/2026-10-19-0824-ai-knowledge.md
 SKIP (has id): posts/2026-10-19-2026-ai-knowledge.md
+
+PUBLISHING: posts/2026-10-20-0828-ai-knowledge.md
+  title: BM25 vs Embeddings: Why My Vector Search Couldn't Find Error E4012
+  tags: ['llm', 'machinelearning', 'ai', 'python']
+  creating article (published=True) ...
+  create result: HTTP 201
+  PUBLISHED id=4880281 date=2026-10-19T23:30:03Z
 SKIP (has id): posts/agentcrow-launch-en.md
 SKIP (has id): posts/ai-agent-i18n-tarot-compatibility-en.md
 SKIP (has id): posts/ai-content-full-automation-en.md
@@ -481,4 +488,4 @@ SKIP (has id): posts/trading-bot-win-rate-lie-en.md
 SKIP (korean filename): posts/trading-bot-win-rate-lie-ko.md
 SKIP (has id): posts/writing-claude-code-book-with-claude-code-en.md
 
-Done: 0 published, 0 failed
+Done: 1 published, 0 failed
