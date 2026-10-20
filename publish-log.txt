@@ -472,6 +472,14 @@ SKIP (has id): posts/refmade-01-agent-team-i-couldnt-see-en.md
 SKIP (has id): posts/refmade-02-plan-then-scope-creep-en.md
 SKIP (has id): posts/refmade-03-stop-trusting-agent-self-reports-en.md
 SKIP (has id): posts/refmade-04-reading-claude-code-and-codex-logs-en.md
+
+PUBLISHING: posts/refmade-05-five-builder-agents-one-integrator-en.md
+  title: Five Parallel AI Builders, One Contract, 25 Review Fixes
+  tags: ['ai', 'claudecode', 'node', 'webdev']
+  cover_image: https://raw.githubusercontent.com/jee599/dev_blog/main/images/refmade/05-cover.png
+  creating article (published=True) ...
+  create result: HTTP 201
+  PUBLISHED id=4884817 date=2026-10-20T18:05:04Z
 SKIP (has id): posts/saju-app-design-threejs-cosmic-en.md
 SKIP (korean filename): posts/saju-app-design-threejs-cosmic-ko.md
 SKIP (has id): posts/trading-bot-15-strategies-en.md
@@ -482,4 +490,4 @@ SKIP (has id): posts/trading-bot-win-rate-lie-en.md
 SKIP (korean filename): posts/trading-bot-win-rate-lie-ko.md
 SKIP (has id): posts/writing-claude-code-book-with-claude-code-en.md
 
-Done: 0 published, 0 failed
+Done: 1 published, 0 failed

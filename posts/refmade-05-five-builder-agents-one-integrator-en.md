@@ -9,6 +9,8 @@ tags:
   - webdev
 series: "Building Refmade"
 cover_image: "https://raw.githubusercontent.com/jee599/dev_blog/main/images/refmade/05-cover.png"
+id: 4884817
+date: '2026-10-20T18:05:04Z'
 ---
 
 On September 26 I had five builder agents work from one markdown contract that said which files were theirs. When P0, the first local version, was done, it ran at 127.0.0.1 with 224 passing tests and no requests leaving the machine. Before that, a review pass ended in 25 fixes, and I think that number says more about parallel agent work than the test count does.
