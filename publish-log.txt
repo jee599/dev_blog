@@ -378,6 +378,13 @@ SKIP (has id): posts/2026-10-18-2023-ai-knowledge.md
 SKIP (has id): posts/2026-10-19-0824-ai-knowledge.md
 SKIP (has id): posts/2026-10-19-2026-ai-knowledge.md
 SKIP (has id): posts/2026-10-20-0828-ai-knowledge.md
+
+PUBLISHING: posts/2026-10-22-0830-ai-knowledge.md
+  title: Claude stop_reason max_tokens: 83 Reports Silently Cut Off Mid-JSON
+  tags: ['claude', 'ai', 'python', 'llm']
+  creating article (published=True) ...
+  create result: HTTP 201
+  PUBLISHED id=4892329 date=2026-10-21T23:31:59Z
 SKIP (has id): posts/agentcrow-launch-en.md
 SKIP (has id): posts/ai-agent-i18n-tarot-compatibility-en.md
 SKIP (has id): posts/ai-content-full-automation-en.md
@@ -483,4 +490,4 @@ SKIP (has id): posts/trading-bot-win-rate-lie-en.md
 SKIP (korean filename): posts/trading-bot-win-rate-lie-ko.md
 SKIP (has id): posts/writing-claude-code-book-with-claude-code-en.md
 
-Done: 0 published, 0 failed
+Done: 1 published, 0 failed
