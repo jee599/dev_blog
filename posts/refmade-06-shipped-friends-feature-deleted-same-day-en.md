@@ -9,6 +9,8 @@ tags:
   - webdev
 series: "Building Refmade"
 cover_image: "https://raw.githubusercontent.com/jee599/dev_blog/main/images/refmade/06-cover.png"
+id: 4899029
+date: '2026-10-22T18:07:31Z'
 ---
 
 On September 27 I applied a database migration to production so friends could watch each other's AI offices live. At 21:40 that same evening I decided friend sharing was not needed. I never had a second account on it, so as far as my notes show, I was the only person who ever used it.
