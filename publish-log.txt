@@ -1,5 +1,5 @@
 Fetching existing articles from DEV.to ...
-  Found 373 existing article(s) on DEV.to
+  Found 374 existing article(s) on DEV.to
 
 SKIP (korean filename): posts/2026-03-14-anthropic-partner-network-100m-ko.md
 SKIP (korean filename): posts/2026-03-14-gemini-750m-ads-ko.md
@@ -380,13 +380,7 @@ SKIP (has id): posts/2026-10-19-2026-ai-knowledge.md
 SKIP (has id): posts/2026-10-20-0828-ai-knowledge.md
 SKIP (has id): posts/2026-10-22-0830-ai-knowledge.md
 SKIP (has id): posts/2026-10-22-2031-ai-knowledge.md
-
-PUBLISHING: posts/2026-10-23-0833-ai-knowledge.md
-  title: Docker RUN rm Didn't Delete My .env. 3 of 14 Images Still Had It
-  tags: ['devops', 'tooling', 'tutorial']
-  creating article (published=True) ...
-  create result: HTTP 201
-  PUBLISHED id=4901302 date=2026-10-22T23:35:41Z
+SKIP (has id): posts/2026-10-23-0833-ai-knowledge.md
 SKIP (has id): posts/agentcrow-launch-en.md
 SKIP (has id): posts/ai-agent-i18n-tarot-compatibility-en.md
 SKIP (has id): posts/ai-content-full-automation-en.md
@@ -493,4 +487,4 @@ SKIP (has id): posts/trading-bot-win-rate-lie-en.md
 SKIP (korean filename): posts/trading-bot-win-rate-lie-ko.md
 SKIP (has id): posts/writing-claude-code-book-with-claude-code-en.md
 
-Done: 1 published, 0 failed
+Done: 0 published, 0 failed
