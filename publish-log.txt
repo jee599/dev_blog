@@ -381,6 +381,13 @@ SKIP (has id): posts/2026-10-20-0828-ai-knowledge.md
 SKIP (has id): posts/2026-10-22-0830-ai-knowledge.md
 SKIP (has id): posts/2026-10-22-2031-ai-knowledge.md
 SKIP (has id): posts/2026-10-23-0833-ai-knowledge.md
+
+PUBLISHING: posts/2026-10-23-2035-ai-knowledge.md
+  title: vLLM KV Cache Math: Why My 24GB GPU Served Only 4 Requests at Once
+  tags: ['llm', 'machinelearning', 'performance', 'python']
+  creating article (published=True) ...
+  create result: HTTP 201
+  PUBLISHED id=4904991 date=2026-10-23T11:37:20Z
 SKIP (has id): posts/agentcrow-launch-en.md
 SKIP (has id): posts/ai-agent-i18n-tarot-compatibility-en.md
 SKIP (has id): posts/ai-content-full-automation-en.md
@@ -487,4 +494,4 @@ SKIP (has id): posts/trading-bot-win-rate-lie-en.md
 SKIP (korean filename): posts/trading-bot-win-rate-lie-ko.md
 SKIP (has id): posts/writing-claude-code-book-with-claude-code-en.md
 
-Done: 0 published, 0 failed
+Done: 1 published, 0 failed
