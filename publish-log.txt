@@ -1,5 +1,5 @@
 Fetching existing articles from DEV.to ...
-  Found 376 existing article(s) on DEV.to
+  Found 377 existing article(s) on DEV.to
 
 SKIP (korean filename): posts/2026-03-14-anthropic-partner-network-100m-ko.md
 SKIP (korean filename): posts/2026-03-14-gemini-750m-ads-ko.md
@@ -383,13 +383,7 @@ SKIP (has id): posts/2026-10-22-2031-ai-knowledge.md
 SKIP (has id): posts/2026-10-23-0833-ai-knowledge.md
 SKIP (has id): posts/2026-10-23-2035-ai-knowledge.md
 SKIP (has id): posts/2026-10-24-0837-ai-knowledge.md
-
-PUBLISHING: posts/2026-10-24-2038-ai-knowledge.md
-  title: GitHub Actions Cache Never Updates: 9 Weeks of a Frozen mypy Cache
-  tags: ['devops', 'tooling', 'productivity', 'tutorial']
-  creating article (published=True) ...
-  create result: HTTP 201
-  PUBLISHED id=4910248 date=2026-10-24T11:40:19Z
+SKIP (has id): posts/2026-10-24-2038-ai-knowledge.md
 SKIP (has id): posts/agentcrow-launch-en.md
 SKIP (has id): posts/ai-agent-i18n-tarot-compatibility-en.md
 SKIP (has id): posts/ai-content-full-automation-en.md
@@ -496,4 +490,4 @@ SKIP (has id): posts/trading-bot-win-rate-lie-en.md
 SKIP (korean filename): posts/trading-bot-win-rate-lie-ko.md
 SKIP (has id): posts/writing-claude-code-book-with-claude-code-en.md
 
-Done: 1 published, 0 failed
+Done: 0 published, 0 failed
