@@ -1,5 +1,5 @@
 Fetching existing articles from DEV.to ...
-  Found 375 existing article(s) on DEV.to
+  Found 376 existing article(s) on DEV.to
 
 SKIP (korean filename): posts/2026-03-14-anthropic-partner-network-100m-ko.md
 SKIP (korean filename): posts/2026-03-14-gemini-750m-ads-ko.md
@@ -382,13 +382,7 @@ SKIP (has id): posts/2026-10-22-0830-ai-knowledge.md
 SKIP (has id): posts/2026-10-22-2031-ai-knowledge.md
 SKIP (has id): posts/2026-10-23-0833-ai-knowledge.md
 SKIP (has id): posts/2026-10-23-2035-ai-knowledge.md
-
-PUBLISHING: posts/2026-10-24-0837-ai-knowledge.md
-  title: Claude Batch API Returned Results Out of Order: 59% of My Labels Wrong
-  tags: ['claude', 'ai', 'python', 'automation']
-  creating article (published=True) ...
-  create result: HTTP 201
-  PUBLISHED id=4907909 date=2026-10-23T23:38:53Z
+SKIP (has id): posts/2026-10-24-0837-ai-knowledge.md
 SKIP (has id): posts/agentcrow-launch-en.md
 SKIP (has id): posts/ai-agent-i18n-tarot-compatibility-en.md
 SKIP (has id): posts/ai-content-full-automation-en.md
@@ -495,4 +489,4 @@ SKIP (has id): posts/trading-bot-win-rate-lie-en.md
 SKIP (korean filename): posts/trading-bot-win-rate-lie-ko.md
 SKIP (has id): posts/writing-claude-code-book-with-claude-code-en.md
 
-Done: 1 published, 0 failed
+Done: 0 published, 0 failed
