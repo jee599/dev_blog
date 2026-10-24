@@ -480,6 +480,14 @@ SKIP (has id): posts/refmade-03-stop-trusting-agent-self-reports-en.md
 SKIP (has id): posts/refmade-04-reading-claude-code-and-codex-logs-en.md
 SKIP (has id): posts/refmade-05-five-builder-agents-one-integrator-en.md
 SKIP (has id): posts/refmade-06-shipped-friends-feature-deleted-same-day-en.md
+
+PUBLISHING: posts/refmade-07-ai-sprites-white-turned-transparent-en.md
+  title: Codex Image Gen Saved My White Pixels as Transparent
+  tags: ['ai', 'gamedev', 'python', 'codex']
+  cover_image: https://raw.githubusercontent.com/jee599/dev_blog/main/images/refmade/07-cover.png
+  creating article (published=True) ...
+  create result: HTTP 201
+  PUBLISHED id=4911480 date=2026-10-24T16:51:32Z
 SKIP (has id): posts/saju-app-design-threejs-cosmic-en.md
 SKIP (korean filename): posts/saju-app-design-threejs-cosmic-ko.md
 SKIP (has id): posts/trading-bot-15-strategies-en.md
@@ -490,4 +498,4 @@ SKIP (has id): posts/trading-bot-win-rate-lie-en.md
 SKIP (korean filename): posts/trading-bot-win-rate-lie-ko.md
 SKIP (has id): posts/writing-claude-code-book-with-claude-code-en.md
 
-Done: 0 published, 0 failed
+Done: 1 published, 0 failed

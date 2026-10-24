@@ -9,6 +9,8 @@ tags:
   - codex
 series: "Building Refmade"
 cover_image: "https://raw.githubusercontent.com/jee599/dev_blog/main/images/refmade/07-cover.png"
+id: 4911480
+date: '2026-10-24T16:51:32Z'
 ---
 
 The white glow on my pixel-art monitor came back from Codex's image tool as RGBA (22, 34, 44, 1). That is dark gray at 1/255 opacity. On a white page it looked perfect. On a dark background, the same file showed a black hole in the middle of the screen.
