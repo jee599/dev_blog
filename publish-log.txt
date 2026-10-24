@@ -384,6 +384,13 @@ SKIP (has id): posts/2026-10-23-0833-ai-knowledge.md
 SKIP (has id): posts/2026-10-23-2035-ai-knowledge.md
 SKIP (has id): posts/2026-10-24-0837-ai-knowledge.md
 SKIP (has id): posts/2026-10-24-2038-ai-knowledge.md
+
+PUBLISHING: posts/2026-10-25-0840-ai-knowledge.md
+  title: Claude Prompt Caching Hit 0 of 1,412 Calls: A Timestamp Killed It
+  tags: ['claude', 'ai', 'python', 'llm']
+  creating article (published=True) ...
+  create result: HTTP 201
+  PUBLISHED id=4912707 date=2026-10-24T23:41:48Z
 SKIP (has id): posts/agentcrow-launch-en.md
 SKIP (has id): posts/ai-agent-i18n-tarot-compatibility-en.md
 SKIP (has id): posts/ai-content-full-automation-en.md
@@ -491,4 +498,4 @@ SKIP (has id): posts/trading-bot-win-rate-lie-en.md
 SKIP (korean filename): posts/trading-bot-win-rate-lie-ko.md
 SKIP (has id): posts/writing-claude-code-book-with-claude-code-en.md
 
-Done: 0 published, 0 failed
+Done: 1 published, 0 failed
