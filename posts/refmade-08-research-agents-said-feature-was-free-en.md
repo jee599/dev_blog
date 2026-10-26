@@ -9,6 +9,8 @@ tags:
   - productivity
 series: "Building Refmade"
 cover_image: "https://raw.githubusercontent.com/jee599/dev_blog/main/images/refmade/08-cover.png"
+id: 4923888
+date: '2026-10-26T19:30:31Z'
 ---
 
 On the evening of 27 September, 13 research agents and a second pass that tried to refute them agreed on one thing. The feature I was about to build, a window where you tell Claude Code or Codex what to do instead of using a terminal, is already included in the apps people pay for.
