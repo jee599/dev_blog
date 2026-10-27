@@ -1,5 +1,5 @@
 Fetching existing articles from DEV.to ...
-  Found 383 existing article(s) on DEV.to
+  Found 384 existing article(s) on DEV.to
 
 SKIP (korean filename): posts/2026-03-14-anthropic-partner-network-100m-ko.md
 SKIP (korean filename): posts/2026-03-14-gemini-750m-ads-ko.md
@@ -388,13 +388,7 @@ SKIP (has id): posts/2026-10-25-0840-ai-knowledge.md
 SKIP (has id): posts/2026-10-25-2041-ai-knowledge.md
 SKIP (has id): posts/2026-10-26-0848-ai-knowledge.md
 SKIP (has id): posts/2026-10-26-2050-ai-knowledge.md
-
-PUBLISHING: posts/2026-10-27-0852-ai-knowledge.md
-  title: BPE Tokenization: A Trailing Space in My Prompt Broke 41 of 300 Labels
-  tags: ['llm', 'machinelearning', 'python', 'ai']
-  creating article (published=True) ...
-  create result: HTTP 201
-  PUBLISHED id=4924673 date=2026-10-26T23:54:16Z
+SKIP (has id): posts/2026-10-27-0852-ai-knowledge.md
 SKIP (has id): posts/agentcrow-launch-en.md
 SKIP (has id): posts/ai-agent-i18n-tarot-compatibility-en.md
 SKIP (has id): posts/ai-content-full-automation-en.md
@@ -503,4 +497,4 @@ SKIP (has id): posts/trading-bot-win-rate-lie-en.md
 SKIP (korean filename): posts/trading-bot-win-rate-lie-ko.md
 SKIP (has id): posts/writing-claude-code-book-with-claude-code-en.md
 
-Done: 1 published, 0 failed
+Done: 0 published, 0 failed
