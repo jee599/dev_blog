@@ -1,5 +1,5 @@
 Fetching existing articles from DEV.to ...
-  Found 387 existing article(s) on DEV.to
+  Found 388 existing article(s) on DEV.to
 
 SKIP (korean filename): posts/2026-03-14-anthropic-partner-network-100m-ko.md
 SKIP (korean filename): posts/2026-03-14-gemini-750m-ads-ko.md
@@ -490,14 +490,7 @@ SKIP (has id): posts/refmade-05-five-builder-agents-one-integrator-en.md
 SKIP (has id): posts/refmade-06-shipped-friends-feature-deleted-same-day-en.md
 SKIP (has id): posts/refmade-07-ai-sprites-white-turned-transparent-en.md
 SKIP (has id): posts/refmade-08-research-agents-said-feature-was-free-en.md
-
-PUBLISHING: posts/refmade-09-wrapping-claude-code-and-codex-in-electron-en.md
-  title: Wrapping Claude Code and Codex in Electron: A Stop Bug
-  tags: ['electron', 'claudecode', 'ai', 'node']
-  cover_image: https://raw.githubusercontent.com/jee599/dev_blog/main/images/refmade/09-cover.png
-  creating article (published=True) ...
-  create result: HTTP 201
-  PUBLISHED id=4936450 date=2026-10-28T19:01:46Z
+SKIP (has id): posts/refmade-09-wrapping-claude-code-and-codex-in-electron-en.md
 SKIP (has id): posts/saju-app-design-threejs-cosmic-en.md
 SKIP (korean filename): posts/saju-app-design-threejs-cosmic-ko.md
 SKIP (has id): posts/trading-bot-15-strategies-en.md
@@ -508,4 +501,4 @@ SKIP (has id): posts/trading-bot-win-rate-lie-en.md
 SKIP (korean filename): posts/trading-bot-win-rate-lie-ko.md
 SKIP (has id): posts/writing-claude-code-book-with-claude-code-en.md
 
-Done: 1 published, 0 failed
+Done: 0 published, 0 failed
