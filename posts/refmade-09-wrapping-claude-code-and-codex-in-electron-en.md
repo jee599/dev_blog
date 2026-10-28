@@ -9,6 +9,8 @@ tags:
   - node
 series: "Building Refmade"
 cover_image: "https://raw.githubusercontent.com/jee599/dev_blog/main/images/refmade/09-cover.png"
+id: 4936450
+date: '2026-10-28T19:01:46Z'
 ---
 
 I pressed Stop on a task. When I looked 35 seconds later, a file in my test folder was gone.
