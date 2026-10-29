@@ -393,6 +393,13 @@ SKIP (has id): posts/2026-10-27-2054-ai-knowledge.md
 SKIP (has id): posts/2026-10-28-0856-ai-knowledge.md
 SKIP (has id): posts/2026-10-28-2057-ai-knowledge.md
 SKIP (has id): posts/2026-10-29-0900-ai-knowledge.md
+
+PUBLISHING: posts/2026-10-29-2102-ai-knowledge.md
+  title: pgvector HNSW Filtering Returned 0 Rows for 52 of My 400 Queries
+  tags: ['ai', 'llm', 'performance', 'python']
+  creating article (published=True) ...
+  create result: HTTP 201
+  PUBLISHED id=4940877 date=2026-10-29T12:04:57Z
 SKIP (has id): posts/agentcrow-launch-en.md
 SKIP (has id): posts/ai-agent-i18n-tarot-compatibility-en.md
 SKIP (has id): posts/ai-content-full-automation-en.md
@@ -502,4 +509,4 @@ SKIP (has id): posts/trading-bot-win-rate-lie-en.md
 SKIP (korean filename): posts/trading-bot-win-rate-lie-ko.md
 SKIP (has id): posts/writing-claude-code-book-with-claude-code-en.md
 
-Done: 0 published, 0 failed
+Done: 1 published, 0 failed
