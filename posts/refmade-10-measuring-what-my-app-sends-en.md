@@ -9,6 +9,8 @@ tags:
   - macos
 series: "Building Refmade"
 cover_image: "https://raw.githubusercontent.com/jee599/dev_blog/main/images/refmade/10-cover.png"
+id: 4949108
+date: '2026-10-30T18:46:27Z'
 ---
 
 On September 29, my Electron app opened 94 sockets across four runs, and every one of them pointed at 127.0.0.1. The same runs also caused 20 connections to the outside world from a single one-line task. Both numbers are true.
