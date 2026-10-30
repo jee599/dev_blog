@@ -1,5 +1,5 @@
 Fetching existing articles from DEV.to ...
-  Found 391 existing article(s) on DEV.to
+  Found 392 existing article(s) on DEV.to
 
 SKIP (korean filename): posts/2026-03-14-anthropic-partner-network-100m-ko.md
 SKIP (korean filename): posts/2026-03-14-gemini-750m-ads-ko.md
@@ -395,13 +395,7 @@ SKIP (has id): posts/2026-10-28-2057-ai-knowledge.md
 SKIP (has id): posts/2026-10-29-0900-ai-knowledge.md
 SKIP (has id): posts/2026-10-29-2102-ai-knowledge.md
 SKIP (has id): posts/2026-10-30-0904-ai-knowledge.md
-
-PUBLISHING: posts/2026-10-30-2106-ai-knowledge.md
-  title: vLLM Speculative Decoding: 1.8x Faster Alone, Slower at 32 Users
-  tags: ['llm', 'performance', 'machinelearning', 'python']
-  creating article (published=True) ...
-  create result: HTTP 201
-  PUBLISHED id=4947312 date=2026-10-30T12:08:39Z
+SKIP (has id): posts/2026-10-30-2106-ai-knowledge.md
 SKIP (has id): posts/agentcrow-launch-en.md
 SKIP (has id): posts/ai-agent-i18n-tarot-compatibility-en.md
 SKIP (has id): posts/ai-content-full-automation-en.md
@@ -511,4 +505,4 @@ SKIP (has id): posts/trading-bot-win-rate-lie-en.md
 SKIP (korean filename): posts/trading-bot-win-rate-lie-ko.md
 SKIP (has id): posts/writing-claude-code-book-with-claude-code-en.md
 
-Done: 1 published, 0 failed
+Done: 0 published, 0 failed
