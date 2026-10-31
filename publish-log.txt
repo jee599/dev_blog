@@ -397,6 +397,13 @@ SKIP (has id): posts/2026-10-29-2102-ai-knowledge.md
 SKIP (has id): posts/2026-10-30-0904-ai-knowledge.md
 SKIP (has id): posts/2026-10-30-2106-ai-knowledge.md
 SKIP (has id): posts/2026-10-31-0908-ai-knowledge.md
+
+PUBLISHING: posts/2026-10-31-2109-ai-knowledge.md
+  title: Python ThreadPoolExecutor Swallowed 212 Claude API Errors Silently
+  tags: ['python', 'ai', 'automation']
+  creating article (published=True) ...
+  create result: HTTP 201
+  PUBLISHED id=4952550 date=2026-10-31T12:11:49Z
 SKIP (has id): posts/agentcrow-launch-en.md
 SKIP (has id): posts/ai-agent-i18n-tarot-compatibility-en.md
 SKIP (has id): posts/ai-content-full-automation-en.md
@@ -507,4 +514,4 @@ SKIP (has id): posts/trading-bot-win-rate-lie-en.md
 SKIP (korean filename): posts/trading-bot-win-rate-lie-ko.md
 SKIP (has id): posts/writing-claude-code-book-with-claude-code-en.md
 
-Done: 0 published, 0 failed
+Done: 1 published, 0 failed
