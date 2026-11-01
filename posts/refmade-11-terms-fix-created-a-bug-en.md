@@ -9,6 +9,8 @@ tags:
   - ai
 series: "Building Refmade"
 cover_image: "https://raw.githubusercontent.com/jee599/dev_blog/main/images/refmade/11-cover.png"
+id: 4958693
+date: '2026-11-01T18:29:43Z'
 ---
 
 On September 29 I removed a sign-in refusal from my app. The next day a review pass whose only job was to break that change found that it left some sign-ins reported as ready that then failed, and my repair of that opened a second hole. Both were caught before the first public release on October 1.
