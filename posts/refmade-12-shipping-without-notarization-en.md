@@ -9,6 +9,8 @@ tags:
   - claudecode
 series: "Building Refmade"
 cover_image: "https://raw.githubusercontent.com/jee599/dev_blog/main/images/refmade/12-cover.png"
+id: 4971459
+date: '2026-11-03T20:15:17Z'
 ---
 
 Every new version of Refmade asks every Mac user to click "Open Anyway" in System Settings again. I chose that. The macOS signature check on the app reports one fatal finding, a missing notarization, and I decided to leave it there.

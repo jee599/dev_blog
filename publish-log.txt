@@ -505,6 +505,14 @@ SKIP (has id): posts/refmade-08-research-agents-said-feature-was-free-en.md
 SKIP (has id): posts/refmade-09-wrapping-claude-code-and-codex-in-electron-en.md
 SKIP (has id): posts/refmade-10-measuring-what-my-app-sends-en.md
 SKIP (has id): posts/refmade-11-terms-fix-created-a-bug-en.md
+
+PUBLISHING: posts/refmade-12-shipping-without-notarization-en.md
+  title: Shipping a Mac Electron App Without Apple Notarization
+  tags: ['electron', 'macos', 'buildinpublic', 'claudecode']
+  cover_image: https://raw.githubusercontent.com/jee599/dev_blog/main/images/refmade/12-cover.png
+  creating article (published=True) ...
+  create result: HTTP 201
+  PUBLISHED id=4971459 date=2026-11-03T20:15:17Z
 SKIP (has id): posts/saju-app-design-threejs-cosmic-en.md
 SKIP (korean filename): posts/saju-app-design-threejs-cosmic-ko.md
 SKIP (has id): posts/trading-bot-15-strategies-en.md
@@ -515,4 +523,4 @@ SKIP (has id): posts/trading-bot-win-rate-lie-en.md
 SKIP (korean filename): posts/trading-bot-win-rate-lie-ko.md
 SKIP (has id): posts/writing-claude-code-book-with-claude-code-en.md
 
-Done: 0 published, 0 failed
+Done: 1 published, 0 failed
