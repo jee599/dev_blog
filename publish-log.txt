@@ -405,6 +405,13 @@ SKIP (has id): posts/2026-11-02-2116-ai-knowledge.md
 SKIP (has id): posts/2026-11-03-0918-ai-knowledge.md
 SKIP (has id): posts/2026-11-03-2119-ai-knowledge.md
 SKIP (has id): posts/2026-11-04-0922-ai-knowledge.md
+
+PUBLISHING: posts/2026-11-04-2128-ai-knowledge.md
+  title: Claude Code Token Usage: 97% of 44.6B Tokens Were Cache Re-Reads
+  tags: ['claudecode', 'ai', 'productivity', 'python']
+  creating article (published=True) ...
+  create result: HTTP 201
+  PUBLISHED id=4975480 date=2026-11-04T12:35:35Z
 SKIP (has id): posts/agentcrow-launch-en.md
 SKIP (has id): posts/ai-agent-i18n-tarot-compatibility-en.md
 SKIP (has id): posts/ai-content-full-automation-en.md
@@ -517,4 +524,4 @@ SKIP (has id): posts/trading-bot-win-rate-lie-en.md
 SKIP (korean filename): posts/trading-bot-win-rate-lie-ko.md
 SKIP (has id): posts/writing-claude-code-book-with-claude-code-en.md
 
-Done: 0 published, 0 failed
+Done: 1 published, 0 failed
