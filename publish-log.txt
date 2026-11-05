@@ -1,5 +1,5 @@
 Fetching existing articles from DEV.to ...
-  Found 405 existing article(s) on DEV.to
+  Found 406 existing article(s) on DEV.to
 
 SKIP (korean filename): posts/2026-03-14-anthropic-partner-network-100m-ko.md
 SKIP (korean filename): posts/2026-03-14-gemini-750m-ads-ko.md
@@ -406,13 +406,7 @@ SKIP (has id): posts/2026-11-03-0918-ai-knowledge.md
 SKIP (has id): posts/2026-11-03-2119-ai-knowledge.md
 SKIP (has id): posts/2026-11-04-0922-ai-knowledge.md
 SKIP (has id): posts/2026-11-04-2128-ai-knowledge.md
-
-PUBLISHING: posts/2026-11-05-0935-ai-knowledge.md
-  title: Claude Code Env Vars Don't Persist: 3 of 80 Runs Fell Back to Prod
-  tags: ['claudecode', 'ai', 'productivity', 'cli']
-  creating article (published=True) ...
-  create result: HTTP 201
-  PUBLISHED id=4978365 date=2026-11-05T00:43:59Z
+SKIP (has id): posts/2026-11-05-0935-ai-knowledge.md
 SKIP (has id): posts/agentcrow-launch-en.md
 SKIP (has id): posts/ai-agent-i18n-tarot-compatibility-en.md
 SKIP (has id): posts/ai-content-full-automation-en.md
@@ -525,4 +519,4 @@ SKIP (has id): posts/trading-bot-win-rate-lie-en.md
 SKIP (korean filename): posts/trading-bot-win-rate-lie-ko.md
 SKIP (has id): posts/writing-claude-code-book-with-claude-code-en.md
 
-Done: 1 published, 0 failed
+Done: 0 published, 0 failed
