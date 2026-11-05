@@ -9,6 +9,8 @@ tags:
   - buildinpublic
 series: "Building Refmade"
 cover_image: "https://raw.githubusercontent.com/jee599/dev_blog/main/images/refmade/13-cover.png"
+id: 4984269
+date: '2026-11-05T20:46:46Z'
 ---
 
 On October 7 I asked an agent why Refmade was not on GitHub. The answer was short: it had never been in Git. Seventeen days of work, from September 20 to October 7, and every installer I had published up to 0.3.2, existed only as a folder on a laptop.
