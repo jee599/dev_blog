@@ -1,5 +1,5 @@
 Fetching existing articles from DEV.to ...
-  Found 406 existing article(s) on DEV.to
+  Found 407 existing article(s) on DEV.to
 
 SKIP (korean filename): posts/2026-03-14-anthropic-partner-network-100m-ko.md
 SKIP (korean filename): posts/2026-03-14-gemini-750m-ads-ko.md
@@ -407,6 +407,13 @@ SKIP (has id): posts/2026-11-03-2119-ai-knowledge.md
 SKIP (has id): posts/2026-11-04-0922-ai-knowledge.md
 SKIP (has id): posts/2026-11-04-2128-ai-knowledge.md
 SKIP (has id): posts/2026-11-05-0935-ai-knowledge.md
+
+PUBLISHING: posts/2026-11-06-1008-ai-knowledge.md
+  title: LangChain chunk_overlap=200: 2,181 of 4,155 Chunks Got No Overlap
+  tags: ['llm', 'python', 'ai', 'machinelearning']
+  creating article (published=True) ...
+  create result: HTTP 201
+  PUBLISHED id=4985103 date=2026-11-06T01:15:36Z
 SKIP (has id): posts/agentcrow-launch-en.md
 SKIP (has id): posts/ai-agent-i18n-tarot-compatibility-en.md
 SKIP (has id): posts/ai-content-full-automation-en.md
@@ -509,14 +516,7 @@ SKIP (has id): posts/refmade-09-wrapping-claude-code-and-codex-in-electron-en.md
 SKIP (has id): posts/refmade-10-measuring-what-my-app-sends-en.md
 SKIP (has id): posts/refmade-11-terms-fix-created-a-bug-en.md
 SKIP (has id): posts/refmade-12-shipping-without-notarization-en.md
-
-PUBLISHING: posts/refmade-13-nine-releases-no-git-en.md
-  title: Refmade Shipped Without Git: 2,764 Files in One Snapshot
-  tags: ['git', 'ai', 'webdev', 'buildinpublic']
-  cover_image: https://raw.githubusercontent.com/jee599/dev_blog/main/images/refmade/13-cover.png
-  creating article (published=True) ...
-  create result: HTTP 201
-  PUBLISHED id=4984269 date=2026-11-05T20:46:46Z
+SKIP (has id): posts/refmade-13-nine-releases-no-git-en.md
 SKIP (has id): posts/saju-app-design-threejs-cosmic-en.md
 SKIP (korean filename): posts/saju-app-design-threejs-cosmic-ko.md
 SKIP (has id): posts/trading-bot-15-strategies-en.md
