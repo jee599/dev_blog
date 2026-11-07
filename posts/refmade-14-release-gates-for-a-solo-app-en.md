@@ -9,6 +9,8 @@ tags:
   - webdev
 series: "Building Refmade"
 cover_image: "https://raw.githubusercontent.com/jee599/dev_blog/main/images/refmade/14-cover.png"
+id: 4994992
+date: '2026-11-07T18:13:15Z'
 ---
 
 On October 8 I shipped five releases of a desktop app, 0.3.3 through 0.3.7, from a first commit at 17:43 to a last deploy at 22:16. Twice in three days the packaged build was broken while the regular tests were green. This post is about the checks that caught those bugs, and the one that caught a false sentence in my own draft of the website copy.
