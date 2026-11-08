@@ -1,5 +1,5 @@
 Fetching existing articles from DEV.to ...
-  Found 412 existing article(s) on DEV.to
+  Found 413 existing article(s) on DEV.to
 
 SKIP (korean filename): posts/2026-03-14-anthropic-partner-network-100m-ko.md
 SKIP (korean filename): posts/2026-03-14-gemini-750m-ads-ko.md
@@ -411,13 +411,7 @@ SKIP (has id): posts/2026-11-06-1008-ai-knowledge.md
 SKIP (has id): posts/2026-11-07-0343-ai-knowledge.md
 SKIP (has id): posts/2026-11-07-1553-ai-knowledge.md
 SKIP (has id): posts/2026-11-08-0410-ai-knowledge.md
-
-PUBLISHING: posts/2026-11-08-1613-ai-knowledge.md
-  title: all-MiniLM-L6-v2 Silently Truncates at 256 Tokens: 38% of My Chunks
-  tags: ['llm', 'machinelearning', 'python', 'ai']
-  creating article (published=True) ...
-  create result: HTTP 201
-  PUBLISHED id=4997454 date=2026-11-08T07:14:35Z
+SKIP (has id): posts/2026-11-08-1613-ai-knowledge.md
 SKIP (has id): posts/agentcrow-launch-en.md
 SKIP (has id): posts/ai-agent-i18n-tarot-compatibility-en.md
 SKIP (has id): posts/ai-content-full-automation-en.md
@@ -532,4 +526,4 @@ SKIP (has id): posts/trading-bot-win-rate-lie-en.md
 SKIP (korean filename): posts/trading-bot-win-rate-lie-ko.md
 SKIP (has id): posts/writing-claude-code-book-with-claude-code-en.md
 
-Done: 1 published, 0 failed
+Done: 0 published, 0 failed
