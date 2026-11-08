@@ -1,4 +1,9 @@
 Fetching existing articles from DEV.to ...
+    attempt 1: HTTP 429
+    response body: Retry later
+
+    rate-limit-remaining=?  reset=?  retry-after=?
+    retrying in 19.7s ...
   Found 413 existing article(s) on DEV.to
 
 SKIP (korean filename): posts/2026-03-14-anthropic-partner-network-100m-ko.md
