@@ -1,5 +1,10 @@
 Fetching existing articles from DEV.to ...
-  Found 414 existing article(s) on DEV.to
+    attempt 1: HTTP 429
+    response body: Retry later
+
+    rate-limit-remaining=?  reset=?  retry-after=?
+    retrying in 16.8s ...
+  Found 415 existing article(s) on DEV.to
 
 SKIP (korean filename): posts/2026-03-14-anthropic-partner-network-100m-ko.md
 SKIP (korean filename): posts/2026-03-14-gemini-750m-ads-ko.md
@@ -413,13 +418,7 @@ SKIP (has id): posts/2026-11-07-1553-ai-knowledge.md
 SKIP (has id): posts/2026-11-08-0410-ai-knowledge.md
 SKIP (has id): posts/2026-11-08-1613-ai-knowledge.md
 SKIP (has id): posts/2026-11-09-1614-ai-knowledge.md
-
-PUBLISHING: posts/2026-11-10-0415-ai-knowledge.md
-  title: Whisper Hallucinates on Silence: 61 of 700 Pauses Became 'Thank You'
-  tags: ['ai', 'python', 'machinelearning']
-  creating article (published=True) ...
-  create result: HTTP 201
-  PUBLISHED id=5006386 date=2026-11-09T19:17:31Z
+SKIP (has id): posts/2026-11-10-0415-ai-knowledge.md
 SKIP (has id): posts/agentcrow-launch-en.md
 SKIP (has id): posts/ai-agent-i18n-tarot-compatibility-en.md
 SKIP (has id): posts/ai-content-full-automation-en.md
@@ -524,6 +523,14 @@ SKIP (has id): posts/refmade-11-terms-fix-created-a-bug-en.md
 SKIP (has id): posts/refmade-12-shipping-without-notarization-en.md
 SKIP (has id): posts/refmade-13-nine-releases-no-git-en.md
 SKIP (has id): posts/refmade-14-release-gates-for-a-solo-app-en.md
+
+PUBLISHING: posts/refmade-15-localizing-hardcoded-korean-en.md
+  title: Eight Languages in One Day: Localizing a Korean-Only App
+  tags: ['i18n', 'electron', 'ai', 'testing']
+  cover_image: https://raw.githubusercontent.com/jee599/dev_blog/main/images/refmade/15-cover.png
+  creating article (published=True) ...
+  create result: HTTP 201
+  PUBLISHED id=5007217 date=2026-11-09T23:07:05Z
 SKIP (has id): posts/saju-app-design-threejs-cosmic-en.md
 SKIP (korean filename): posts/saju-app-design-threejs-cosmic-ko.md
 SKIP (has id): posts/trading-bot-15-strategies-en.md

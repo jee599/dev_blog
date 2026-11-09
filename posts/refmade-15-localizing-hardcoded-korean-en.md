@@ -9,6 +9,8 @@ tags:
   - testing
 series: "Building Refmade"
 cover_image: "https://raw.githubusercontent.com/jee599/dev_blog/main/images/refmade/15-cover.png"
+id: 5007217
+date: '2026-11-09T23:07:05Z'
 ---
 
 At 08:23 on October 10 I asked for the site and the app's internal features to support many languages. That evening Refmade 0.4.0 shipped for Mac in eight: Korean, English, Japanese, Simplified Chinese, Spanish, Brazilian Portuguese, German and French. Translating was not the main problem. The app stored finished Korean sentences on disk and later used them to decide what to do.
