@@ -1,5 +1,5 @@
 Fetching existing articles from DEV.to ...
-  Found 417 existing article(s) on DEV.to
+  Found 418 existing article(s) on DEV.to
 
 SKIP (korean filename): posts/2026-03-14-anthropic-partner-network-100m-ko.md
 SKIP (korean filename): posts/2026-03-14-gemini-750m-ads-ko.md
@@ -415,13 +415,7 @@ SKIP (has id): posts/2026-11-08-1613-ai-knowledge.md
 SKIP (has id): posts/2026-11-09-1614-ai-knowledge.md
 SKIP (has id): posts/2026-11-10-0415-ai-knowledge.md
 SKIP (has id): posts/2026-11-10-1617-ai-knowledge.md
-
-PUBLISHING: posts/2026-11-11-0418-ai-knowledge.md
-  title: vLLM Prefix Caching: One Timestamp Dropped My Hit Rate From 89% to 3%
-  tags: ['llm', 'performance', 'python', 'machinelearning']
-  creating article (published=True) ...
-  create result: HTTP 201
-  PUBLISHED id=5012454 date=2026-11-10T19:20:28Z
+SKIP (has id): posts/2026-11-11-0418-ai-knowledge.md
 SKIP (has id): posts/agentcrow-launch-en.md
 SKIP (has id): posts/ai-agent-i18n-tarot-compatibility-en.md
 SKIP (has id): posts/ai-content-full-automation-en.md
@@ -537,4 +531,4 @@ SKIP (has id): posts/trading-bot-win-rate-lie-en.md
 SKIP (korean filename): posts/trading-bot-win-rate-lie-ko.md
 SKIP (has id): posts/writing-claude-code-book-with-claude-code-en.md
 
-Done: 1 published, 0 failed
+Done: 0 published, 0 failed
