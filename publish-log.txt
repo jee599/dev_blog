@@ -416,6 +416,13 @@ SKIP (has id): posts/2026-11-09-1614-ai-knowledge.md
 SKIP (has id): posts/2026-11-10-0415-ai-knowledge.md
 SKIP (has id): posts/2026-11-10-1617-ai-knowledge.md
 SKIP (has id): posts/2026-11-11-0418-ai-knowledge.md
+
+PUBLISHING: posts/2026-11-11-1620-ai-knowledge.md
+  title: SQLite 'database is locked' in 2ms: Why busy_timeout Didn't Help
+  tags: ['python', 'ai', 'automation', 'performance']
+  creating article (published=True) ...
+  create result: HTTP 201
+  PUBLISHED id=5015277 date=2026-11-11T07:22:22Z
 SKIP (has id): posts/agentcrow-launch-en.md
 SKIP (has id): posts/ai-agent-i18n-tarot-compatibility-en.md
 SKIP (has id): posts/ai-content-full-automation-en.md
@@ -531,4 +538,4 @@ SKIP (has id): posts/trading-bot-win-rate-lie-en.md
 SKIP (korean filename): posts/trading-bot-win-rate-lie-ko.md
 SKIP (has id): posts/writing-claude-code-book-with-claude-code-en.md
 
-Done: 0 published, 0 failed
+Done: 1 published, 0 failed
