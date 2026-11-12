@@ -9,6 +9,8 @@ tags:
   - showdev
 series: "Building Refmade"
 cover_image: "https://raw.githubusercontent.com/jee599/dev_blog/main/images/refmade/16-cover.png"
+id: 5025589
+date: '2026-11-12T21:01:41Z'
 ---
 
 Refmade 0.4.0 went live on October 10, 2026 at 20:17 KST as a free Mac app in eight languages. The next day, 0.4.1 brought the same version and the same languages to Windows. This is the post where I finally link to it: [refmade.com](https://refmade.com). The translations were checked by AI agents only. No native speaker has checked them, so I'd like you to tell me where they sound wrong.

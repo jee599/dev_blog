@@ -1,5 +1,5 @@
 Fetching existing articles from DEV.to ...
-  Found 421 existing article(s) on DEV.to
+  Found 422 existing article(s) on DEV.to
 
 SKIP (korean filename): posts/2026-03-14-anthropic-partner-network-100m-ko.md
 SKIP (korean filename): posts/2026-03-14-gemini-750m-ads-ko.md
@@ -419,13 +419,7 @@ SKIP (has id): posts/2026-11-11-0418-ai-knowledge.md
 SKIP (has id): posts/2026-11-11-1620-ai-knowledge.md
 SKIP (has id): posts/2026-11-12-0422-ai-knowledge.md
 SKIP (has id): posts/2026-11-12-1623-ai-knowledge.md
-
-PUBLISHING: posts/2026-11-13-0425-ai-knowledge.md
-  title: Claude Prompt Caching Minimum: 1,240 Haiku 4.5 Calls, 0 Cache Hits
-  tags: ['claude', 'ai', 'python', 'performance']
-  creating article (published=True) ...
-  create result: HTTP 201
-  PUBLISHED id=5025368 date=2026-11-12T19:27:31Z
+SKIP (has id): posts/2026-11-13-0425-ai-knowledge.md
 SKIP (has id): posts/agentcrow-launch-en.md
 SKIP (has id): posts/ai-agent-i18n-tarot-compatibility-en.md
 SKIP (has id): posts/ai-content-full-automation-en.md
@@ -531,6 +525,14 @@ SKIP (has id): posts/refmade-12-shipping-without-notarization-en.md
 SKIP (has id): posts/refmade-13-nine-releases-no-git-en.md
 SKIP (has id): posts/refmade-14-release-gates-for-a-solo-app-en.md
 SKIP (has id): posts/refmade-15-localizing-hardcoded-korean-en.md
+
+PUBLISHING: posts/refmade-16-launch-en.md
+  title: Refmade 0.4 Is Out: A Free Mac and Windows App in Eight Languages
+  tags: ['macos', 'electron', 'ai', 'showdev']
+  cover_image: https://raw.githubusercontent.com/jee599/dev_blog/main/images/refmade/16-cover.png
+  creating article (published=True) ...
+  create result: HTTP 201
+  PUBLISHED id=5025589 date=2026-11-12T21:01:41Z
 SKIP (has id): posts/saju-app-design-threejs-cosmic-en.md
 SKIP (korean filename): posts/saju-app-design-threejs-cosmic-ko.md
 SKIP (has id): posts/trading-bot-15-strategies-en.md
