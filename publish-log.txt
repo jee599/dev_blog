@@ -421,6 +421,13 @@ SKIP (has id): posts/2026-11-12-0422-ai-knowledge.md
 SKIP (has id): posts/2026-11-12-1623-ai-knowledge.md
 SKIP (has id): posts/2026-11-13-0425-ai-knowledge.md
 SKIP (has id): posts/2026-11-14-0006-ai-knowledge.md
+
+PUBLISHING: posts/2026-11-14-1230-ai-knowledge.md
+  title: docker stop Takes 10 Seconds: 5 of My 6 Containers Ignored SIGTERM
+  tags: ['devops', 'tooling', 'tutorial', 'cli']
+  creating article (published=True) ...
+  create result: HTTP 201
+  PUBLISHED id=5033154 date=2026-11-14T03:31:56Z
 SKIP (has id): posts/agentcrow-launch-en.md
 SKIP (has id): posts/ai-agent-i18n-tarot-compatibility-en.md
 SKIP (has id): posts/ai-content-full-automation-en.md
@@ -537,4 +544,4 @@ SKIP (has id): posts/trading-bot-win-rate-lie-en.md
 SKIP (korean filename): posts/trading-bot-win-rate-lie-ko.md
 SKIP (has id): posts/writing-claude-code-book-with-claude-code-en.md
 
-Done: 0 published, 0 failed
+Done: 1 published, 0 failed
