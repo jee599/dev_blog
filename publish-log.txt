@@ -1,5 +1,10 @@
 Fetching existing articles from DEV.to ...
-  Found 428 existing article(s) on DEV.to
+    attempt 1: HTTP 429
+    response body: Retry later
+
+    rate-limit-remaining=?  reset=?  retry-after=?
+    retrying in 19.7s ...
+  Found 429 existing article(s) on DEV.to
 
 SKIP (korean filename): posts/2026-03-14-anthropic-partner-network-100m-ko.md
 SKIP (korean filename): posts/2026-03-14-gemini-750m-ads-ko.md
@@ -425,13 +430,7 @@ SKIP (has id): posts/2026-11-14-1230-ai-knowledge.md
 SKIP (has id): posts/2026-11-15-0031-ai-knowledge.md
 SKIP (has id): posts/2026-11-15-1241-ai-knowledge.md
 SKIP (has id): posts/2026-11-16-0042-ai-knowledge.md
-
-PUBLISHING: posts/2026-11-16-1244-ai-knowledge.md
-  title: Silero VAD End-of-Turn: 700ms of Silence Cut Off 118 of 1,000 Answers
-  tags: ['llm', 'ai', 'python', 'performance']
-  creating article (published=True) ...
-  create result: HTTP 201
-  PUBLISHED id=5044754 date=2026-11-16T03:45:59Z
+SKIP (has id): posts/2026-11-16-1244-ai-knowledge.md
 SKIP (has id): posts/agentcrow-launch-en.md
 SKIP (has id): posts/ai-agent-i18n-tarot-compatibility-en.md
 SKIP (has id): posts/ai-content-full-automation-en.md
@@ -548,4 +547,4 @@ SKIP (has id): posts/trading-bot-win-rate-lie-en.md
 SKIP (korean filename): posts/trading-bot-win-rate-lie-ko.md
 SKIP (has id): posts/writing-claude-code-book-with-claude-code-en.md
 
-Done: 1 published, 0 failed
+Done: 0 published, 0 failed
