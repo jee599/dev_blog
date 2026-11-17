@@ -427,6 +427,13 @@ SKIP (has id): posts/2026-11-15-1241-ai-knowledge.md
 SKIP (has id): posts/2026-11-16-0042-ai-knowledge.md
 SKIP (has id): posts/2026-11-16-1244-ai-knowledge.md
 SKIP (has id): posts/2026-11-17-0540-ai-knowledge.md
+
+PUBLISHING: posts/2026-11-17-1742-ai-knowledge.md
+  title: Pydantic Lax Mode Hid 689 Type Errors in My Claude JSON Outputs
+  tags: ['python', 'llm', 'ai']
+  creating article (published=True) ...
+  create result: HTTP 201
+  PUBLISHED id=5055632 date=2026-11-17T08:45:26Z
 SKIP (has id): posts/agentcrow-launch-en.md
 SKIP (has id): posts/ai-agent-i18n-tarot-compatibility-en.md
 SKIP (has id): posts/ai-content-full-automation-en.md
@@ -543,4 +550,4 @@ SKIP (has id): posts/trading-bot-win-rate-lie-en.md
 SKIP (korean filename): posts/trading-bot-win-rate-lie-ko.md
 SKIP (has id): posts/writing-claude-code-book-with-claude-code-en.md
 
-Done: 0 published, 0 failed
+Done: 1 published, 0 failed
