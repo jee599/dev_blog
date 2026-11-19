@@ -1,5 +1,5 @@
 Fetching existing articles from DEV.to ...
-  Found 432 existing article(s) on DEV.to
+  Found 433 existing article(s) on DEV.to
 
 SKIP (korean filename): posts/2026-03-14-anthropic-partner-network-100m-ko.md
 SKIP (korean filename): posts/2026-03-14-gemini-750m-ads-ko.md
@@ -429,13 +429,7 @@ SKIP (has id): posts/2026-11-16-1244-ai-knowledge.md
 SKIP (has id): posts/2026-11-17-0540-ai-knowledge.md
 SKIP (has id): posts/2026-11-17-1742-ai-knowledge.md
 SKIP (has id): posts/2026-11-18-0545-ai-knowledge.md
-
-PUBLISHING: posts/2026-11-19-0547-ai-knowledge.md
-  title: Reciprocal Rank Fusion k=60: My #1 BM25 Match Fell to Position 31
-  tags: ['llm', 'machinelearning', 'ai', 'python']
-  creating article (published=True) ...
-  create result: HTTP 201
-  PUBLISHED id=5068307 date=2026-11-18T20:49:01Z
+SKIP (has id): posts/2026-11-19-0547-ai-knowledge.md
 SKIP (has id): posts/agentcrow-launch-en.md
 SKIP (has id): posts/ai-agent-i18n-tarot-compatibility-en.md
 SKIP (has id): posts/ai-content-full-automation-en.md
@@ -552,4 +546,4 @@ SKIP (has id): posts/trading-bot-win-rate-lie-en.md
 SKIP (korean filename): posts/trading-bot-win-rate-lie-ko.md
 SKIP (has id): posts/writing-claude-code-book-with-claude-code-en.md
 
-Done: 1 published, 0 failed
+Done: 0 published, 0 failed
