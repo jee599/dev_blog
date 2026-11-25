@@ -1,5 +1,5 @@
 Fetching existing articles from DEV.to ...
-  Found 438 existing article(s) on DEV.to
+  Found 439 existing article(s) on DEV.to
 
 SKIP (korean filename): posts/2026-03-14-anthropic-partner-network-100m-ko.md
 SKIP (korean filename): posts/2026-03-14-gemini-750m-ads-ko.md
@@ -435,13 +435,14 @@ SKIP (has id): posts/2026-11-20-0550-ai-knowledge.md
 SKIP (has id): posts/2026-11-20-1752-ai-knowledge.md
 SKIP (has id): posts/2026-11-21-0554-ai-knowledge.md
 SKIP (has id): posts/2026-11-21-1756-ai-knowledge.md
+SKIP (has id): posts/2026-11-25-1758-ai-knowledge.md
 
-PUBLISHING: posts/2026-11-25-1758-ai-knowledge.md
-  title: LLM-as-a-Judge Position Bias: Claude Flipped 103 of 400 Verdicts
-  tags: ['llm', 'ai', 'python', 'machinelearning']
+PUBLISHING: posts/2026-11-26-0559-ai-knowledge.md
+  title: GitHub Actions paths Filter: Why Required Checks Stay Pending Forever
+  tags: ['devops', 'tooling', 'tutorial', 'productivity']
   creating article (published=True) ...
   create result: HTTP 201
-  PUBLISHED id=5114781 date=2026-11-25T08:59:46Z
+  PUBLISHED id=5119263 date=2026-11-25T21:01:02Z
 SKIP (has id): posts/agentcrow-launch-en.md
 SKIP (has id): posts/ai-agent-i18n-tarot-compatibility-en.md
 SKIP (has id): posts/ai-content-full-automation-en.md
