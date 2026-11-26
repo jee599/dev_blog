@@ -437,6 +437,13 @@ SKIP (has id): posts/2026-11-21-0554-ai-knowledge.md
 SKIP (has id): posts/2026-11-21-1756-ai-knowledge.md
 SKIP (has id): posts/2026-11-25-1758-ai-knowledge.md
 SKIP (has id): posts/2026-11-26-0559-ai-knowledge.md
+
+PUBLISHING: posts/2026-11-26-1800-ai-knowledge.md
+  title: Token Healing: Why a Trailing Space Breaks Your LLM Prompt
+  tags: ['llm', 'machinelearning', 'ai', 'python']
+  creating article (published=True) ...
+  create result: HTTP 201
+  PUBLISHED id=5123108 date=2026-11-26T09:02:51Z
 SKIP (has id): posts/agentcrow-launch-en.md
 SKIP (has id): posts/ai-agent-i18n-tarot-compatibility-en.md
 SKIP (has id): posts/ai-content-full-automation-en.md
@@ -553,4 +560,4 @@ SKIP (has id): posts/trading-bot-win-rate-lie-en.md
 SKIP (korean filename): posts/trading-bot-win-rate-lie-ko.md
 SKIP (has id): posts/writing-claude-code-book-with-claude-code-en.md
 
-Done: 0 published, 0 failed
+Done: 1 published, 0 failed
