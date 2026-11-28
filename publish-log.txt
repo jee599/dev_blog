@@ -1,9 +1,4 @@
 Fetching existing articles from DEV.to ...
-    attempt 1: HTTP 429
-    response body: Retry later
-
-    rate-limit-remaining=?  reset=?  retry-after=?
-    retrying in 16.7s ...
   Found 444 existing article(s) on DEV.to
 
 SKIP (korean filename): posts/2026-03-14-anthropic-partner-network-100m-ko.md
@@ -446,6 +441,13 @@ SKIP (has id): posts/2026-11-26-1800-ai-knowledge.md
 SKIP (has id): posts/2026-11-27-0602-ai-knowledge.md
 SKIP (has id): posts/2026-11-27-1804-ai-knowledge.md
 SKIP (has id): posts/2026-11-28-0605-ai-knowledge.md
+
+PUBLISHING: posts/2026-11-28-1807-ai-knowledge.md
+  title: Python json.dumps ensure_ascii Made My Claude Prompts 2.3x Bigger
+  tags: ['python', 'llm', 'ai', 'performance']
+  creating article (published=True) ...
+  create result: HTTP 201
+  PUBLISHED id=5137945 date=2026-11-28T09:08:57Z
 SKIP (has id): posts/agentcrow-launch-en.md
 SKIP (has id): posts/ai-agent-i18n-tarot-compatibility-en.md
 SKIP (has id): posts/ai-content-full-automation-en.md
@@ -562,4 +564,4 @@ SKIP (has id): posts/trading-bot-win-rate-lie-en.md
 SKIP (korean filename): posts/trading-bot-win-rate-lie-ko.md
 SKIP (has id): posts/writing-claude-code-book-with-claude-code-en.md
 
-Done: 0 published, 0 failed
+Done: 1 published, 0 failed
